@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "./chat;pb";
+
+message ChatListRequest{
+
+}
+
+message ChatItem{
+    int32 id = 1;
+    int32 chatType = 2;
+    string username = 4;
+    string name = 6;
+    string surname = 7;
+}
+
+message ChatListResponse{
+    repeated ChatItem items = 1;
+}
+
+service ChatService {
+    rpc List(ChatListRequest) returns (ChatListResponse) {}
+}
