@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package contact;
+
+option go_package = "./contact;pb";
+
+service ContactService {
+    rpc List(GetContactListRequest) returns (GetContactListResponse) {}
+}
+
+message GetContactListRequest {}
+
+message GetContactListResponse {
+    repeated ContactItem items = 1;
+}
+
+message ContactItem {
+    int32 id = 1;
+    string username = 2;
+    string name = 3;
+    string surname = 4;
+}
