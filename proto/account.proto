@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package account;
+
+option go_package = "./account;pb";
+
+service AccountService {
+  rpc Get (GetAccountRequest) returns (GetAccountResponse);
+}
+
+message GetAccountRequest {
+
+}
+
+message GetAccountResponse {
+  int32 id = 1;
+  string username = 3;
+  string email = 4;
+  string avatar = 2;
+  string name = 5;
+  string surname = 6;
+  int32 gender = 7;
+  string birthday = 8;
+  string about = 9;
+}

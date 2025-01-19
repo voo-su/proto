@@ -15,16 +15,16 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'contact.pb.dart' as $2;
+import 'contact.pb.dart' as $3;
 
 export 'contact.pb.dart';
 
 @$pb.GrpcServiceName('contact.ContactService')
 class ContactServiceClient extends $grpc.Client {
-  static final _$list = $grpc.ClientMethod<$2.GetContactListRequest, $2.GetContactListResponse>(
+  static final _$list = $grpc.ClientMethod<$3.GetContactListRequest, $3.GetContactListResponse>(
       '/contact.ContactService/List',
-      ($2.GetContactListRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $2.GetContactListResponse.fromBuffer(value));
+      ($3.GetContactListRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.GetContactListResponse.fromBuffer(value));
 
   ContactServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,7 +32,7 @@ class ContactServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$2.GetContactListResponse> list($2.GetContactListRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$3.GetContactListResponse> list($3.GetContactListRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$list, request, options: options);
   }
 }
@@ -42,18 +42,18 @@ abstract class ContactServiceBase extends $grpc.Service {
   $core.String get $name => 'contact.ContactService';
 
   ContactServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.GetContactListRequest, $2.GetContactListResponse>(
+    $addMethod($grpc.ServiceMethod<$3.GetContactListRequest, $3.GetContactListResponse>(
         'List',
         list_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.GetContactListRequest.fromBuffer(value),
-        ($2.GetContactListResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $3.GetContactListRequest.fromBuffer(value),
+        ($3.GetContactListResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$2.GetContactListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$2.GetContactListRequest> request) async {
+  $async.Future<$3.GetContactListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$3.GetContactListRequest> request) async {
     return list(call, await request);
   }
 
-  $async.Future<$2.GetContactListResponse> list($grpc.ServiceCall call, $2.GetContactListRequest request);
+  $async.Future<$3.GetContactListResponse> list($grpc.ServiceCall call, $3.GetContactListRequest request);
 }

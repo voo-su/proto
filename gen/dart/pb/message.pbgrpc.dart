@@ -15,16 +15,16 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'message.pb.dart' as $3;
+import 'message.pb.dart' as $4;
 
 export 'message.pb.dart';
 
 @$pb.GrpcServiceName('message.MessageService')
 class MessageServiceClient extends $grpc.Client {
-  static final _$getHistory = $grpc.ClientMethod<$3.GetHistoryRequest, $3.GetHistoryResponse>(
+  static final _$getHistory = $grpc.ClientMethod<$4.GetHistoryRequest, $4.GetHistoryResponse>(
       '/message.MessageService/GetHistory',
-      ($3.GetHistoryRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.GetHistoryResponse.fromBuffer(value));
+      ($4.GetHistoryRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.GetHistoryResponse.fromBuffer(value));
 
   MessageServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,7 +32,7 @@ class MessageServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.GetHistoryResponse> getHistory($3.GetHistoryRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.GetHistoryResponse> getHistory($4.GetHistoryRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getHistory, request, options: options);
   }
 }
@@ -42,18 +42,18 @@ abstract class MessageServiceBase extends $grpc.Service {
   $core.String get $name => 'message.MessageService';
 
   MessageServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.GetHistoryRequest, $3.GetHistoryResponse>(
+    $addMethod($grpc.ServiceMethod<$4.GetHistoryRequest, $4.GetHistoryResponse>(
         'GetHistory',
         getHistory_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.GetHistoryRequest.fromBuffer(value),
-        ($3.GetHistoryResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.GetHistoryRequest.fromBuffer(value),
+        ($4.GetHistoryResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.GetHistoryResponse> getHistory_Pre($grpc.ServiceCall call, $async.Future<$3.GetHistoryRequest> request) async {
+  $async.Future<$4.GetHistoryResponse> getHistory_Pre($grpc.ServiceCall call, $async.Future<$4.GetHistoryRequest> request) async {
     return getHistory(call, await request);
   }
 
-  $async.Future<$3.GetHistoryResponse> getHistory($grpc.ServiceCall call, $3.GetHistoryRequest request);
+  $async.Future<$4.GetHistoryResponse> getHistory($grpc.ServiceCall call, $4.GetHistoryRequest request);
 }
