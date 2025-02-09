@@ -6,6 +6,8 @@ option go_package = "./message;pb";
 
 service MessageService {
     rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse) {}
+
+    rpc Send(SendMessageRequest) returns (SendMessageResponse) {}
 }
 
 message GetHistoryRequest {
@@ -26,3 +28,12 @@ message MessageItem {
     string content = 4;
 }
 
+message SendMessageRequest {
+    int64 chat_type = 1;
+    int64 receiver_id = 2;
+    string message = 3;
+}
+
+message SendMessageResponse {
+    string id = 1;
+}

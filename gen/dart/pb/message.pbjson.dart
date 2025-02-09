@@ -59,3 +59,30 @@ final $typed_data.Uint8List messageItemDescriptor = $convert.base64Decode(
     'CgtNZXNzYWdlSXRlbRIOCgJpZBgBIAEoCVICaWQSGwoJY2hhdF90eXBlGAIgASgFUghjaGF0VH'
     'lwZRIZCghtc2dfdHlwZRgDIAEoBVIHbXNnVHlwZRIYCgdjb250ZW50GAQgASgJUgdjb250ZW50');
 
+@$core.Deprecated('Use sendMessageRequestDescriptor instead')
+const SendMessageRequest$json = {
+  '1': 'SendMessageRequest',
+  '2': [
+    {'1': 'chat_type', '3': 1, '4': 1, '5': 3, '10': 'chatType'},
+    {'1': 'receiver_id', '3': 2, '4': 1, '5': 3, '10': 'receiverId'},
+    {'1': 'message', '3': 3, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `SendMessageRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendMessageRequestDescriptor = $convert.base64Decode(
+    'ChJTZW5kTWVzc2FnZVJlcXVlc3QSGwoJY2hhdF90eXBlGAEgASgDUghjaGF0VHlwZRIfCgtyZW'
+    'NlaXZlcl9pZBgCIAEoA1IKcmVjZWl2ZXJJZBIYCgdtZXNzYWdlGAMgASgJUgdtZXNzYWdl');
+
+@$core.Deprecated('Use sendMessageResponseDescriptor instead')
+const SendMessageResponse$json = {
+  '1': 'SendMessageResponse',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `SendMessageResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendMessageResponseDescriptor = $convert.base64Decode(
+    'ChNTZW5kTWVzc2FnZVJlc3BvbnNlEg4KAmlkGAEgASgJUgJpZA==');
+

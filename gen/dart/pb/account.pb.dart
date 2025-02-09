@@ -11,6 +11,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class GetAccountRequest extends $pb.GeneratedMessage {
@@ -47,7 +48,7 @@ class GetAccountRequest extends $pb.GeneratedMessage {
 
 class GetAccountResponse extends $pb.GeneratedMessage {
   factory GetAccountResponse({
-    $core.int? id,
+    $fixnum.Int64? id,
     $core.String? avatar,
     $core.String? username,
     $core.String? email,
@@ -92,7 +93,7 @@ class GetAccountResponse extends $pb.GeneratedMessage {
   factory GetAccountResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetAccountResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'avatar')
     ..aOS(3, _omitFieldNames ? '' : 'username')
     ..aOS(4, _omitFieldNames ? '' : 'email')
@@ -126,9 +127,9 @@ class GetAccountResponse extends $pb.GeneratedMessage {
   static GetAccountResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get id => $_getIZ(0);
+  $fixnum.Int64 get id => $_getI64(0);
   @$pb.TagNumber(1)
-  set id($core.int v) { $_setSignedInt32(0, v); }
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)

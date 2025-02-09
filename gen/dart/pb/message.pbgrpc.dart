@@ -25,6 +25,10 @@ class MessageServiceClient extends $grpc.Client {
       '/message.MessageService/GetHistory',
       ($4.GetHistoryRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.GetHistoryResponse.fromBuffer(value));
+  static final _$send = $grpc.ClientMethod<$4.SendMessageRequest, $4.SendMessageResponse>(
+      '/message.MessageService/Send',
+      ($4.SendMessageRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.SendMessageResponse.fromBuffer(value));
 
   MessageServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -34,6 +38,10 @@ class MessageServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$4.GetHistoryResponse> getHistory($4.GetHistoryRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getHistory, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.SendMessageResponse> send($4.SendMessageRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$send, request, options: options);
   }
 }
 
@@ -49,11 +57,23 @@ abstract class MessageServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.GetHistoryRequest.fromBuffer(value),
         ($4.GetHistoryResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.SendMessageRequest, $4.SendMessageResponse>(
+        'Send',
+        send_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.SendMessageRequest.fromBuffer(value),
+        ($4.SendMessageResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.GetHistoryResponse> getHistory_Pre($grpc.ServiceCall call, $async.Future<$4.GetHistoryRequest> request) async {
     return getHistory(call, await request);
   }
 
+  $async.Future<$4.SendMessageResponse> send_Pre($grpc.ServiceCall call, $async.Future<$4.SendMessageRequest> request) async {
+    return send(call, await request);
+  }
+
   $async.Future<$4.GetHistoryResponse> getHistory($grpc.ServiceCall call, $4.GetHistoryRequest request);
+  $async.Future<$4.SendMessageResponse> send($grpc.ServiceCall call, $4.SendMessageRequest request);
 }
