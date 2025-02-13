@@ -39,7 +39,7 @@ final $typed_data.Uint8List getContactListResponseDescriptor = $convert.base64De
 const ContactItem$json = {
   '1': 'ContactItem',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
     {'1': 'username', '3': 2, '4': 1, '5': 9, '10': 'username'},
     {'1': 'name', '3': 3, '4': 1, '5': 9, '10': 'name'},
     {'1': 'surname', '3': 4, '4': 1, '5': 9, '10': 'surname'},
@@ -48,6 +48,6 @@ const ContactItem$json = {
 
 /// Descriptor for `ContactItem`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List contactItemDescriptor = $convert.base64Decode(
-    'CgtDb250YWN0SXRlbRIOCgJpZBgBIAEoBVICaWQSGgoIdXNlcm5hbWUYAiABKAlSCHVzZXJuYW'
+    'CgtDb250YWN0SXRlbRIOCgJpZBgBIAEoA1ICaWQSGgoIdXNlcm5hbWUYAiABKAlSCHVzZXJuYW'
     '1lEhIKBG5hbWUYAyABKAlSBG5hbWUSGAoHc3VybmFtZRgEIAEoCVIHc3VybmFtZQ==');
 

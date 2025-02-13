@@ -11,6 +11,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class GetContactListRequest extends $pb.GeneratedMessage {
@@ -91,7 +92,7 @@ class GetContactListResponse extends $pb.GeneratedMessage {
 
 class ContactItem extends $pb.GeneratedMessage {
   factory ContactItem({
-    $core.int? id,
+    $fixnum.Int64? id,
     $core.String? username,
     $core.String? name,
     $core.String? surname,
@@ -116,7 +117,7 @@ class ContactItem extends $pb.GeneratedMessage {
   factory ContactItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ContactItem', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'username')
     ..aOS(3, _omitFieldNames ? '' : 'name')
     ..aOS(4, _omitFieldNames ? '' : 'surname')
@@ -145,9 +146,9 @@ class ContactItem extends $pb.GeneratedMessage {
   static ContactItem? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get id => $_getIZ(0);
+  $fixnum.Int64 get id => $_getI64(0);
   @$pb.TagNumber(1)
-  set id($core.int v) { $_setSignedInt32(0, v); }
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)

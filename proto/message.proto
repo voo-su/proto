@@ -18,14 +18,20 @@ message GetHistoryRequest {
 }
 
 message GetHistoryResponse {
-    repeated MessageItem items = 1;
+    int64 limit = 1;
+    int64 record_id = 2;
+    repeated MessageItem items = 3;
 }
 
 message MessageItem {
     string id = 1;
     int32 chat_type = 2;
     int32 msg_type = 3;
-    string content = 4;
+    int64 receiver_id = 4;
+    int64 user_id = 5;
+    string content = 6;
+    bool is_read = 7;
+    string created_at = 8;
 }
 
 message SendMessageRequest {

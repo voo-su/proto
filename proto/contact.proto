@@ -15,7 +15,7 @@ message GetContactListResponse {
 }
 
 message ContactItem {
-    int32 id = 1;
+    int64 id = 1;
     string username = 2;
     string name = 3;
     string surname = 4;

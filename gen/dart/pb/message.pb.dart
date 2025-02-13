@@ -108,9 +108,17 @@ class GetHistoryRequest extends $pb.GeneratedMessage {
 
 class GetHistoryResponse extends $pb.GeneratedMessage {
   factory GetHistoryResponse({
+    $fixnum.Int64? limit,
+    $fixnum.Int64? recordId,
     $core.Iterable<MessageItem>? items,
   }) {
     final $result = create();
+    if (limit != null) {
+      $result.limit = limit;
+    }
+    if (recordId != null) {
+      $result.recordId = recordId;
+    }
     if (items != null) {
       $result.items.addAll(items);
     }
@@ -121,7 +129,9 @@ class GetHistoryResponse extends $pb.GeneratedMessage {
   factory GetHistoryResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetHistoryResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
-    ..pc<MessageItem>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: MessageItem.create)
+    ..aInt64(1, _omitFieldNames ? '' : 'limit')
+    ..aInt64(2, _omitFieldNames ? '' : 'recordId')
+    ..pc<MessageItem>(3, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: MessageItem.create)
     ..hasRequiredFields = false
   ;
 
@@ -147,7 +157,25 @@ class GetHistoryResponse extends $pb.GeneratedMessage {
   static GetHistoryResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<MessageItem> get items => $_getList(0);
+  $fixnum.Int64 get limit => $_getI64(0);
+  @$pb.TagNumber(1)
+  set limit($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasLimit() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearLimit() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get recordId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set recordId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRecordId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRecordId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<MessageItem> get items => $_getList(2);
 }
 
 class MessageItem extends $pb.GeneratedMessage {
@@ -155,7 +183,11 @@ class MessageItem extends $pb.GeneratedMessage {
     $core.String? id,
     $core.int? chatType,
     $core.int? msgType,
+    $fixnum.Int64? receiverId,
+    $fixnum.Int64? userId,
     $core.String? content,
+    $core.bool? isRead,
+    $core.String? createdAt,
   }) {
     final $result = create();
     if (id != null) {
@@ -167,8 +199,20 @@ class MessageItem extends $pb.GeneratedMessage {
     if (msgType != null) {
       $result.msgType = msgType;
     }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
+    }
+    if (userId != null) {
+      $result.userId = userId;
+    }
     if (content != null) {
       $result.content = content;
+    }
+    if (isRead != null) {
+      $result.isRead = isRead;
+    }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
     }
     return $result;
   }
@@ -180,7 +224,11 @@ class MessageItem extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatType', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'msgType', $pb.PbFieldType.O3)
-    ..aOS(4, _omitFieldNames ? '' : 'content')
+    ..aInt64(4, _omitFieldNames ? '' : 'receiverId')
+    ..aInt64(5, _omitFieldNames ? '' : 'userId')
+    ..aOS(6, _omitFieldNames ? '' : 'content')
+    ..aOB(7, _omitFieldNames ? '' : 'isRead')
+    ..aOS(8, _omitFieldNames ? '' : 'createdAt')
     ..hasRequiredFields = false
   ;
 
@@ -233,13 +281,49 @@ class MessageItem extends $pb.GeneratedMessage {
   void clearMsgType() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get content => $_getSZ(3);
+  $fixnum.Int64 get receiverId => $_getI64(3);
   @$pb.TagNumber(4)
-  set content($core.String v) { $_setString(3, v); }
+  set receiverId($fixnum.Int64 v) { $_setInt64(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasContent() => $_has(3);
+  $core.bool hasReceiverId() => $_has(3);
   @$pb.TagNumber(4)
-  void clearContent() => clearField(4);
+  void clearReceiverId() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $fixnum.Int64 get userId => $_getI64(4);
+  @$pb.TagNumber(5)
+  set userId($fixnum.Int64 v) { $_setInt64(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasUserId() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearUserId() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get content => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set content($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasContent() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearContent() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.bool get isRead => $_getBF(6);
+  @$pb.TagNumber(7)
+  set isRead($core.bool v) { $_setBool(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasIsRead() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearIsRead() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get createdAt => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set createdAt($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasCreatedAt() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearCreatedAt() => clearField(8);
 }
 
 class SendMessageRequest extends $pb.GeneratedMessage {

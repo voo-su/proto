@@ -19,7 +19,7 @@ message AuthLoginRequest {
 
 message AuthLoginResponse {
     string token = 1;
-    int32 expires_in = 2;
+    int64 expires_in = 2;
 }
 
 message AuthVerifyRequest {
@@ -30,7 +30,7 @@ message AuthVerifyRequest {
 message AuthVerifyResponse {
     string type = 1;
     string access_token = 2;
-    int32 expires_in = 3;
+    int64 expires_in = 3;
 }
 
 message AuthLogoutRequest {

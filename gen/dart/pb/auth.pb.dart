@@ -11,6 +11,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class AuthLoginRequest extends $pb.GeneratedMessage {
@@ -80,7 +81,7 @@ class AuthLoginRequest extends $pb.GeneratedMessage {
 class AuthLoginResponse extends $pb.GeneratedMessage {
   factory AuthLoginResponse({
     $core.String? token,
-    $core.int? expiresIn,
+    $fixnum.Int64? expiresIn,
   }) {
     final $result = create();
     if (token != null) {
@@ -97,7 +98,7 @@ class AuthLoginResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AuthLoginResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'token')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'expiresIn', $pb.PbFieldType.O3)
+    ..aInt64(2, _omitFieldNames ? '' : 'expiresIn')
     ..hasRequiredFields = false
   ;
 
@@ -132,9 +133,9 @@ class AuthLoginResponse extends $pb.GeneratedMessage {
   void clearToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get expiresIn => $_getIZ(1);
+  $fixnum.Int64 get expiresIn => $_getI64(1);
   @$pb.TagNumber(2)
-  set expiresIn($core.int v) { $_setSignedInt32(1, v); }
+  set expiresIn($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasExpiresIn() => $_has(1);
   @$pb.TagNumber(2)
@@ -209,7 +210,7 @@ class AuthVerifyResponse extends $pb.GeneratedMessage {
   factory AuthVerifyResponse({
     $core.String? type,
     $core.String? accessToken,
-    $core.int? expiresIn,
+    $fixnum.Int64? expiresIn,
   }) {
     final $result = create();
     if (type != null) {
@@ -230,7 +231,7 @@ class AuthVerifyResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AuthVerifyResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'type')
     ..aOS(2, _omitFieldNames ? '' : 'accessToken')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'expiresIn', $pb.PbFieldType.O3)
+    ..aInt64(3, _omitFieldNames ? '' : 'expiresIn')
     ..hasRequiredFields = false
   ;
 
@@ -274,9 +275,9 @@ class AuthVerifyResponse extends $pb.GeneratedMessage {
   void clearAccessToken() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get expiresIn => $_getIZ(2);
+  $fixnum.Int64 get expiresIn => $_getI64(2);
   @$pb.TagNumber(3)
-  set expiresIn($core.int v) { $_setSignedInt32(2, v); }
+  set expiresIn($fixnum.Int64 v) { $_setInt64(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasExpiresIn() => $_has(2);
   @$pb.TagNumber(3)

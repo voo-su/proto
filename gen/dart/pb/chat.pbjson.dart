@@ -39,23 +39,29 @@ final $typed_data.Uint8List getChatListResponseDescriptor = $convert.base64Decod
 const ChatItem$json = {
   '1': 'ChatItem',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
     {'1': 'chat_type', '3': 2, '4': 1, '5': 5, '10': 'chatType'},
-    {'1': 'username', '3': 3, '4': 1, '5': 9, '10': 'username'},
-    {'1': 'avatar', '3': 4, '4': 1, '5': 9, '10': 'avatar'},
-    {'1': 'name', '3': 5, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'surname', '3': 6, '4': 1, '5': 9, '10': 'surname'},
-    {'1': 'msg_text', '3': 7, '4': 1, '5': 9, '10': 'msgText'},
-    {'1': 'unread_num', '3': 8, '4': 1, '5': 5, '10': 'unreadNum'},
-    {'1': 'updated_at', '3': 9, '4': 1, '5': 9, '10': 'updatedAt'},
+    {'1': 'receiver_id', '3': 3, '4': 1, '5': 3, '10': 'receiverId'},
+    {'1': 'username', '3': 4, '4': 1, '5': 9, '10': 'username'},
+    {'1': 'avatar', '3': 5, '4': 1, '5': 9, '10': 'avatar'},
+    {'1': 'name', '3': 6, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'surname', '3': 7, '4': 1, '5': 9, '10': 'surname'},
+    {'1': 'msg_text', '3': 8, '4': 1, '5': 9, '10': 'msgText'},
+    {'1': 'unread_num', '3': 9, '4': 1, '5': 3, '10': 'unreadNum'},
+    {'1': 'updated_at', '3': 10, '4': 1, '5': 9, '10': 'updatedAt'},
+    {'1': 'is_online', '3': 11, '4': 1, '5': 8, '10': 'isOnline'},
+    {'1': 'is_disturb', '3': 12, '4': 1, '5': 8, '10': 'isDisturb'},
+    {'1': 'is_bot', '3': 13, '4': 1, '5': 8, '10': 'isBot'},
   ],
 };
 
 /// Descriptor for `ChatItem`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List chatItemDescriptor = $convert.base64Decode(
-    'CghDaGF0SXRlbRIOCgJpZBgBIAEoBVICaWQSGwoJY2hhdF90eXBlGAIgASgFUghjaGF0VHlwZR'
-    'IaCgh1c2VybmFtZRgDIAEoCVIIdXNlcm5hbWUSFgoGYXZhdGFyGAQgASgJUgZhdmF0YXISEgoE'
-    'bmFtZRgFIAEoCVIEbmFtZRIYCgdzdXJuYW1lGAYgASgJUgdzdXJuYW1lEhkKCG1zZ190ZXh0GA'
-    'cgASgJUgdtc2dUZXh0Eh0KCnVucmVhZF9udW0YCCABKAVSCXVucmVhZE51bRIdCgp1cGRhdGVk'
-    'X2F0GAkgASgJUgl1cGRhdGVkQXQ=');
+    'CghDaGF0SXRlbRIOCgJpZBgBIAEoA1ICaWQSGwoJY2hhdF90eXBlGAIgASgFUghjaGF0VHlwZR'
+    'IfCgtyZWNlaXZlcl9pZBgDIAEoA1IKcmVjZWl2ZXJJZBIaCgh1c2VybmFtZRgEIAEoCVIIdXNl'
+    'cm5hbWUSFgoGYXZhdGFyGAUgASgJUgZhdmF0YXISEgoEbmFtZRgGIAEoCVIEbmFtZRIYCgdzdX'
+    'JuYW1lGAcgASgJUgdzdXJuYW1lEhkKCG1zZ190ZXh0GAggASgJUgdtc2dUZXh0Eh0KCnVucmVh'
+    'ZF9udW0YCSABKANSCXVucmVhZE51bRIdCgp1cGRhdGVkX2F0GAogASgJUgl1cGRhdGVkQXQSGw'
+    'oJaXNfb25saW5lGAsgASgIUghpc09ubGluZRIdCgppc19kaXN0dXJiGAwgASgIUglpc0Rpc3R1'
+    'cmISFQoGaXNfYm90GA0gASgIUgVpc0JvdA==');
 

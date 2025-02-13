@@ -11,6 +11,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class GetChatListRequest extends $pb.GeneratedMessage {
@@ -91,15 +92,19 @@ class GetChatListResponse extends $pb.GeneratedMessage {
 
 class ChatItem extends $pb.GeneratedMessage {
   factory ChatItem({
-    $core.int? id,
+    $fixnum.Int64? id,
     $core.int? chatType,
+    $fixnum.Int64? receiverId,
     $core.String? username,
     $core.String? avatar,
     $core.String? name,
     $core.String? surname,
     $core.String? msgText,
-    $core.int? unreadNum,
+    $fixnum.Int64? unreadNum,
     $core.String? updatedAt,
+    $core.bool? isOnline,
+    $core.bool? isDisturb,
+    $core.bool? isBot,
   }) {
     final $result = create();
     if (id != null) {
@@ -107,6 +112,9 @@ class ChatItem extends $pb.GeneratedMessage {
     }
     if (chatType != null) {
       $result.chatType = chatType;
+    }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
     }
     if (username != null) {
       $result.username = username;
@@ -129,6 +137,15 @@ class ChatItem extends $pb.GeneratedMessage {
     if (updatedAt != null) {
       $result.updatedAt = updatedAt;
     }
+    if (isOnline != null) {
+      $result.isOnline = isOnline;
+    }
+    if (isDisturb != null) {
+      $result.isDisturb = isDisturb;
+    }
+    if (isBot != null) {
+      $result.isBot = isBot;
+    }
     return $result;
   }
   ChatItem._() : super();
@@ -136,15 +153,19 @@ class ChatItem extends $pb.GeneratedMessage {
   factory ChatItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatItem', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatType', $pb.PbFieldType.O3)
-    ..aOS(3, _omitFieldNames ? '' : 'username')
-    ..aOS(4, _omitFieldNames ? '' : 'avatar')
-    ..aOS(5, _omitFieldNames ? '' : 'name')
-    ..aOS(6, _omitFieldNames ? '' : 'surname')
-    ..aOS(7, _omitFieldNames ? '' : 'msgText')
-    ..a<$core.int>(8, _omitFieldNames ? '' : 'unreadNum', $pb.PbFieldType.O3)
-    ..aOS(9, _omitFieldNames ? '' : 'updatedAt')
+    ..aInt64(3, _omitFieldNames ? '' : 'receiverId')
+    ..aOS(4, _omitFieldNames ? '' : 'username')
+    ..aOS(5, _omitFieldNames ? '' : 'avatar')
+    ..aOS(6, _omitFieldNames ? '' : 'name')
+    ..aOS(7, _omitFieldNames ? '' : 'surname')
+    ..aOS(8, _omitFieldNames ? '' : 'msgText')
+    ..aInt64(9, _omitFieldNames ? '' : 'unreadNum')
+    ..aOS(10, _omitFieldNames ? '' : 'updatedAt')
+    ..aOB(11, _omitFieldNames ? '' : 'isOnline')
+    ..aOB(12, _omitFieldNames ? '' : 'isDisturb')
+    ..aOB(13, _omitFieldNames ? '' : 'isBot')
     ..hasRequiredFields = false
   ;
 
@@ -170,9 +191,9 @@ class ChatItem extends $pb.GeneratedMessage {
   static ChatItem? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get id => $_getIZ(0);
+  $fixnum.Int64 get id => $_getI64(0);
   @$pb.TagNumber(1)
-  set id($core.int v) { $_setSignedInt32(0, v); }
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
@@ -188,67 +209,103 @@ class ChatItem extends $pb.GeneratedMessage {
   void clearChatType() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get username => $_getSZ(2);
+  $fixnum.Int64 get receiverId => $_getI64(2);
   @$pb.TagNumber(3)
-  set username($core.String v) { $_setString(2, v); }
+  set receiverId($fixnum.Int64 v) { $_setInt64(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasUsername() => $_has(2);
+  $core.bool hasReceiverId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearUsername() => clearField(3);
+  void clearReceiverId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get avatar => $_getSZ(3);
+  $core.String get username => $_getSZ(3);
   @$pb.TagNumber(4)
-  set avatar($core.String v) { $_setString(3, v); }
+  set username($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasAvatar() => $_has(3);
+  $core.bool hasUsername() => $_has(3);
   @$pb.TagNumber(4)
-  void clearAvatar() => clearField(4);
+  void clearUsername() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get name => $_getSZ(4);
+  $core.String get avatar => $_getSZ(4);
   @$pb.TagNumber(5)
-  set name($core.String v) { $_setString(4, v); }
+  set avatar($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasName() => $_has(4);
+  $core.bool hasAvatar() => $_has(4);
   @$pb.TagNumber(5)
-  void clearName() => clearField(5);
+  void clearAvatar() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get surname => $_getSZ(5);
+  $core.String get name => $_getSZ(5);
   @$pb.TagNumber(6)
-  set surname($core.String v) { $_setString(5, v); }
+  set name($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasSurname() => $_has(5);
+  $core.bool hasName() => $_has(5);
   @$pb.TagNumber(6)
-  void clearSurname() => clearField(6);
+  void clearName() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get msgText => $_getSZ(6);
+  $core.String get surname => $_getSZ(6);
   @$pb.TagNumber(7)
-  set msgText($core.String v) { $_setString(6, v); }
+  set surname($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasMsgText() => $_has(6);
+  $core.bool hasSurname() => $_has(6);
   @$pb.TagNumber(7)
-  void clearMsgText() => clearField(7);
+  void clearSurname() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.int get unreadNum => $_getIZ(7);
+  $core.String get msgText => $_getSZ(7);
   @$pb.TagNumber(8)
-  set unreadNum($core.int v) { $_setSignedInt32(7, v); }
+  set msgText($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasUnreadNum() => $_has(7);
+  $core.bool hasMsgText() => $_has(7);
   @$pb.TagNumber(8)
-  void clearUnreadNum() => clearField(8);
+  void clearMsgText() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get updatedAt => $_getSZ(8);
+  $fixnum.Int64 get unreadNum => $_getI64(8);
   @$pb.TagNumber(9)
-  set updatedAt($core.String v) { $_setString(8, v); }
+  set unreadNum($fixnum.Int64 v) { $_setInt64(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasUpdatedAt() => $_has(8);
+  $core.bool hasUnreadNum() => $_has(8);
   @$pb.TagNumber(9)
-  void clearUpdatedAt() => clearField(9);
+  void clearUnreadNum() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get updatedAt => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set updatedAt($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasUpdatedAt() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearUpdatedAt() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.bool get isOnline => $_getBF(10);
+  @$pb.TagNumber(11)
+  set isOnline($core.bool v) { $_setBool(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasIsOnline() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearIsOnline() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.bool get isDisturb => $_getBF(11);
+  @$pb.TagNumber(12)
+  set isDisturb($core.bool v) { $_setBool(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasIsDisturb() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearIsDisturb() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get isBot => $_getBF(12);
+  @$pb.TagNumber(13)
+  set isBot($core.bool v) { $_setBool(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasIsBot() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearIsBot() => clearField(13);
 }
 
 

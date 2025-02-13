@@ -32,14 +32,14 @@ const AuthLoginResponse$json = {
   '1': 'AuthLoginResponse',
   '2': [
     {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
-    {'1': 'expires_in', '3': 2, '4': 1, '5': 5, '10': 'expiresIn'},
+    {'1': 'expires_in', '3': 2, '4': 1, '5': 3, '10': 'expiresIn'},
   ],
 };
 
 /// Descriptor for `AuthLoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authLoginResponseDescriptor = $convert.base64Decode(
     'ChFBdXRoTG9naW5SZXNwb25zZRIUCgV0b2tlbhgBIAEoCVIFdG9rZW4SHQoKZXhwaXJlc19pbh'
-    'gCIAEoBVIJZXhwaXJlc0lu');
+    'gCIAEoA1IJZXhwaXJlc0lu');
 
 @$core.Deprecated('Use authVerifyRequestDescriptor instead')
 const AuthVerifyRequest$json = {
@@ -61,14 +61,14 @@ const AuthVerifyResponse$json = {
   '2': [
     {'1': 'type', '3': 1, '4': 1, '5': 9, '10': 'type'},
     {'1': 'access_token', '3': 2, '4': 1, '5': 9, '10': 'accessToken'},
-    {'1': 'expires_in', '3': 3, '4': 1, '5': 5, '10': 'expiresIn'},
+    {'1': 'expires_in', '3': 3, '4': 1, '5': 3, '10': 'expiresIn'},
   ],
 };
 
 /// Descriptor for `AuthVerifyResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authVerifyResponseDescriptor = $convert.base64Decode(
     'ChJBdXRoVmVyaWZ5UmVzcG9uc2USEgoEdHlwZRgBIAEoCVIEdHlwZRIhCgxhY2Nlc3NfdG9rZW'
-    '4YAiABKAlSC2FjY2Vzc1Rva2VuEh0KCmV4cGlyZXNfaW4YAyABKAVSCWV4cGlyZXNJbg==');
+    '4YAiABKAlSC2FjY2Vzc1Rva2VuEh0KCmV4cGlyZXNfaW4YAyABKANSCWV4cGlyZXNJbg==');
 
 @$core.Deprecated('Use authLogoutRequestDescriptor instead')
 const AuthLogoutRequest$json = {
