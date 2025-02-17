@@ -100,7 +100,7 @@ class ChatItem extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? surname,
     $core.String? msgText,
-    $fixnum.Int64? unreadNum,
+    $fixnum.Int64? unreadCount,
     $core.String? updatedAt,
     $core.bool? isOnline,
     $core.bool? isDisturb,
@@ -131,8 +131,8 @@ class ChatItem extends $pb.GeneratedMessage {
     if (msgText != null) {
       $result.msgText = msgText;
     }
-    if (unreadNum != null) {
-      $result.unreadNum = unreadNum;
+    if (unreadCount != null) {
+      $result.unreadCount = unreadCount;
     }
     if (updatedAt != null) {
       $result.updatedAt = updatedAt;
@@ -161,7 +161,7 @@ class ChatItem extends $pb.GeneratedMessage {
     ..aOS(6, _omitFieldNames ? '' : 'name')
     ..aOS(7, _omitFieldNames ? '' : 'surname')
     ..aOS(8, _omitFieldNames ? '' : 'msgText')
-    ..aInt64(9, _omitFieldNames ? '' : 'unreadNum')
+    ..aInt64(9, _omitFieldNames ? '' : 'unreadCount')
     ..aOS(10, _omitFieldNames ? '' : 'updatedAt')
     ..aOB(11, _omitFieldNames ? '' : 'isOnline')
     ..aOB(12, _omitFieldNames ? '' : 'isDisturb')
@@ -263,13 +263,13 @@ class ChatItem extends $pb.GeneratedMessage {
   void clearMsgText() => clearField(8);
 
   @$pb.TagNumber(9)
-  $fixnum.Int64 get unreadNum => $_getI64(8);
+  $fixnum.Int64 get unreadCount => $_getI64(8);
   @$pb.TagNumber(9)
-  set unreadNum($fixnum.Int64 v) { $_setInt64(8, v); }
+  set unreadCount($fixnum.Int64 v) { $_setInt64(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasUnreadNum() => $_has(8);
+  $core.bool hasUnreadCount() => $_has(8);
   @$pb.TagNumber(9)
-  void clearUnreadNum() => clearField(9);
+  void clearUnreadCount() => clearField(9);
 
   @$pb.TagNumber(10)
   $core.String get updatedAt => $_getSZ(9);

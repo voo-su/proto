@@ -47,7 +47,7 @@ const ChatItem$json = {
     {'1': 'name', '3': 6, '4': 1, '5': 9, '10': 'name'},
     {'1': 'surname', '3': 7, '4': 1, '5': 9, '10': 'surname'},
     {'1': 'msg_text', '3': 8, '4': 1, '5': 9, '10': 'msgText'},
-    {'1': 'unread_num', '3': 9, '4': 1, '5': 3, '10': 'unreadNum'},
+    {'1': 'unread_count', '3': 9, '4': 1, '5': 3, '10': 'unreadCount'},
     {'1': 'updated_at', '3': 10, '4': 1, '5': 9, '10': 'updatedAt'},
     {'1': 'is_online', '3': 11, '4': 1, '5': 8, '10': 'isOnline'},
     {'1': 'is_disturb', '3': 12, '4': 1, '5': 8, '10': 'isDisturb'},
@@ -60,8 +60,8 @@ final $typed_data.Uint8List chatItemDescriptor = $convert.base64Decode(
     'CghDaGF0SXRlbRIOCgJpZBgBIAEoA1ICaWQSGwoJY2hhdF90eXBlGAIgASgFUghjaGF0VHlwZR'
     'IfCgtyZWNlaXZlcl9pZBgDIAEoA1IKcmVjZWl2ZXJJZBIaCgh1c2VybmFtZRgEIAEoCVIIdXNl'
     'cm5hbWUSFgoGYXZhdGFyGAUgASgJUgZhdmF0YXISEgoEbmFtZRgGIAEoCVIEbmFtZRIYCgdzdX'
-    'JuYW1lGAcgASgJUgdzdXJuYW1lEhkKCG1zZ190ZXh0GAggASgJUgdtc2dUZXh0Eh0KCnVucmVh'
-    'ZF9udW0YCSABKANSCXVucmVhZE51bRIdCgp1cGRhdGVkX2F0GAogASgJUgl1cGRhdGVkQXQSGw'
-    'oJaXNfb25saW5lGAsgASgIUghpc09ubGluZRIdCgppc19kaXN0dXJiGAwgASgIUglpc0Rpc3R1'
-    'cmISFQoGaXNfYm90GA0gASgIUgVpc0JvdA==');
+    'JuYW1lGAcgASgJUgdzdXJuYW1lEhkKCG1zZ190ZXh0GAggASgJUgdtc2dUZXh0EiEKDHVucmVh'
+    'ZF9jb3VudBgJIAEoA1ILdW5yZWFkQ291bnQSHQoKdXBkYXRlZF9hdBgKIAEoCVIJdXBkYXRlZE'
+    'F0EhsKCWlzX29ubGluZRgLIAEoCFIIaXNPbmxpbmUSHQoKaXNfZGlzdHVyYhgMIAEoCFIJaXNE'
+    'aXN0dXJiEhUKBmlzX2JvdBgNIAEoCFIFaXNCb3Q=');
 

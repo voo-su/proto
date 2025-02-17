@@ -96,3 +96,37 @@ const SendMessageResponse$json = {
 final $typed_data.Uint8List sendMessageResponseDescriptor = $convert.base64Decode(
     'ChNTZW5kTWVzc2FnZVJlc3BvbnNlEg4KAmlkGAEgASgJUgJpZA==');
 
+@$core.Deprecated('Use viewMessagesRequestDescriptor instead')
+const ViewMessagesRequest$json = {
+  '1': 'ViewMessagesRequest',
+  '2': [
+    {'1': 'chat_type', '3': 1, '4': 1, '5': 3, '10': 'chatType'},
+    {'1': 'receiver_id', '3': 2, '4': 1, '5': 3, '10': 'receiverId'},
+    {'1': 'message_ids', '3': 3, '4': 3, '5': 9, '10': 'messageIds'},
+  ],
+};
+
+/// Descriptor for `ViewMessagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List viewMessagesRequestDescriptor = $convert.base64Decode(
+    'ChNWaWV3TWVzc2FnZXNSZXF1ZXN0EhsKCWNoYXRfdHlwZRgBIAEoA1IIY2hhdFR5cGUSHwoLcm'
+    'VjZWl2ZXJfaWQYAiABKANSCnJlY2VpdmVySWQSHwoLbWVzc2FnZV9pZHMYAyADKAlSCm1lc3Nh'
+    'Z2VJZHM=');
+
+@$core.Deprecated('Use viewMessagesResponseDescriptor instead')
+const ViewMessagesResponse$json = {
+  '1': 'ViewMessagesResponse',
+  '2': [
+    {'1': 'chat_type', '3': 1, '4': 1, '5': 3, '10': 'chatType'},
+    {'1': 'receiver_id', '3': 2, '4': 1, '5': 3, '10': 'receiverId'},
+    {'1': 'last_read_inbox_message_id', '3': 3, '4': 1, '5': 9, '10': 'lastReadInboxMessageId'},
+    {'1': 'unread_count', '3': 4, '4': 1, '5': 5, '10': 'unreadCount'},
+  ],
+};
+
+/// Descriptor for `ViewMessagesResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List viewMessagesResponseDescriptor = $convert.base64Decode(
+    'ChRWaWV3TWVzc2FnZXNSZXNwb25zZRIbCgljaGF0X3R5cGUYASABKANSCGNoYXRUeXBlEh8KC3'
+    'JlY2VpdmVyX2lkGAIgASgDUgpyZWNlaXZlcklkEjoKGmxhc3RfcmVhZF9pbmJveF9tZXNzYWdl'
+    'X2lkGAMgASgJUhZsYXN0UmVhZEluYm94TWVzc2FnZUlkEiEKDHVucmVhZF9jb3VudBgEIAEoBV'
+    'ILdW5yZWFkQ291bnQ=');
+

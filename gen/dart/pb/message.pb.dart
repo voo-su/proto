@@ -454,6 +454,170 @@ class SendMessageResponse extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+class ViewMessagesRequest extends $pb.GeneratedMessage {
+  factory ViewMessagesRequest({
+    $fixnum.Int64? chatType,
+    $fixnum.Int64? receiverId,
+    $core.Iterable<$core.String>? messageIds,
+  }) {
+    final $result = create();
+    if (chatType != null) {
+      $result.chatType = chatType;
+    }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
+    }
+    if (messageIds != null) {
+      $result.messageIds.addAll(messageIds);
+    }
+    return $result;
+  }
+  ViewMessagesRequest._() : super();
+  factory ViewMessagesRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ViewMessagesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ViewMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
+    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
+    ..pPS(3, _omitFieldNames ? '' : 'messageIds')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ViewMessagesRequest clone() => ViewMessagesRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ViewMessagesRequest copyWith(void Function(ViewMessagesRequest) updates) => super.copyWith((message) => updates(message as ViewMessagesRequest)) as ViewMessagesRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ViewMessagesRequest create() => ViewMessagesRequest._();
+  ViewMessagesRequest createEmptyInstance() => create();
+  static $pb.PbList<ViewMessagesRequest> createRepeated() => $pb.PbList<ViewMessagesRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ViewMessagesRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ViewMessagesRequest>(create);
+  static ViewMessagesRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get chatType => $_getI64(0);
+  @$pb.TagNumber(1)
+  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChatType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChatType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get receiverId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasReceiverId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearReceiverId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get messageIds => $_getList(2);
+}
+
+class ViewMessagesResponse extends $pb.GeneratedMessage {
+  factory ViewMessagesResponse({
+    $fixnum.Int64? chatType,
+    $fixnum.Int64? receiverId,
+    $core.String? lastReadInboxMessageId,
+    $core.int? unreadCount,
+  }) {
+    final $result = create();
+    if (chatType != null) {
+      $result.chatType = chatType;
+    }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
+    }
+    if (lastReadInboxMessageId != null) {
+      $result.lastReadInboxMessageId = lastReadInboxMessageId;
+    }
+    if (unreadCount != null) {
+      $result.unreadCount = unreadCount;
+    }
+    return $result;
+  }
+  ViewMessagesResponse._() : super();
+  factory ViewMessagesResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ViewMessagesResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ViewMessagesResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
+    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
+    ..aOS(3, _omitFieldNames ? '' : 'lastReadInboxMessageId')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'unreadCount', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ViewMessagesResponse clone() => ViewMessagesResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ViewMessagesResponse copyWith(void Function(ViewMessagesResponse) updates) => super.copyWith((message) => updates(message as ViewMessagesResponse)) as ViewMessagesResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ViewMessagesResponse create() => ViewMessagesResponse._();
+  ViewMessagesResponse createEmptyInstance() => create();
+  static $pb.PbList<ViewMessagesResponse> createRepeated() => $pb.PbList<ViewMessagesResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ViewMessagesResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ViewMessagesResponse>(create);
+  static ViewMessagesResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get chatType => $_getI64(0);
+  @$pb.TagNumber(1)
+  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChatType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChatType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get receiverId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasReceiverId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearReceiverId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get lastReadInboxMessageId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set lastReadInboxMessageId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLastReadInboxMessageId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLastReadInboxMessageId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get unreadCount => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set unreadCount($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUnreadCount() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUnreadCount() => clearField(4);
+}
+
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
 const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

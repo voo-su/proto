@@ -23,7 +23,7 @@ message ChatItem {
     string name = 6;
     string surname = 7;
     string msg_text = 8;
-    int64 unread_num = 9;
+    int64 unread_count = 9;
     string updated_at = 10;
     bool is_online = 11;
     bool is_disturb = 12;

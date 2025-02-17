@@ -29,6 +29,10 @@ class MessageServiceClient extends $grpc.Client {
       '/message.MessageService/Send',
       ($4.SendMessageRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.SendMessageResponse.fromBuffer(value));
+  static final _$viewMessages = $grpc.ClientMethod<$4.ViewMessagesRequest, $4.ViewMessagesResponse>(
+      '/message.MessageService/ViewMessages',
+      ($4.ViewMessagesRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.ViewMessagesResponse.fromBuffer(value));
 
   MessageServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -42,6 +46,10 @@ class MessageServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$4.SendMessageResponse> send($4.SendMessageRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$send, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.ViewMessagesResponse> viewMessages($4.ViewMessagesRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$viewMessages, request, options: options);
   }
 }
 
@@ -64,6 +72,13 @@ abstract class MessageServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.SendMessageRequest.fromBuffer(value),
         ($4.SendMessageResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.ViewMessagesRequest, $4.ViewMessagesResponse>(
+        'ViewMessages',
+        viewMessages_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.ViewMessagesRequest.fromBuffer(value),
+        ($4.ViewMessagesResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.GetHistoryResponse> getHistory_Pre($grpc.ServiceCall call, $async.Future<$4.GetHistoryRequest> request) async {
@@ -74,6 +89,11 @@ abstract class MessageServiceBase extends $grpc.Service {
     return send(call, await request);
   }
 
+  $async.Future<$4.ViewMessagesResponse> viewMessages_Pre($grpc.ServiceCall call, $async.Future<$4.ViewMessagesRequest> request) async {
+    return viewMessages(call, await request);
+  }
+
   $async.Future<$4.GetHistoryResponse> getHistory($grpc.ServiceCall call, $4.GetHistoryRequest request);
   $async.Future<$4.SendMessageResponse> send($grpc.ServiceCall call, $4.SendMessageRequest request);
+  $async.Future<$4.ViewMessagesResponse> viewMessages($grpc.ServiceCall call, $4.ViewMessagesRequest request);
 }
