@@ -618,6 +618,265 @@ class ViewMessagesResponse extends $pb.GeneratedMessage {
   void clearUnreadCount() => clearField(4);
 }
 
+class UpdatesRequest extends $pb.GeneratedMessage {
+  factory UpdatesRequest() => create();
+  UpdatesRequest._() : super();
+  factory UpdatesRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdatesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdatesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdatesRequest clone() => UpdatesRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdatesRequest copyWith(void Function(UpdatesRequest) updates) => super.copyWith((message) => updates(message as UpdatesRequest)) as UpdatesRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdatesRequest create() => UpdatesRequest._();
+  UpdatesRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdatesRequest> createRepeated() => $pb.PbList<UpdatesRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdatesRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdatesRequest>(create);
+  static UpdatesRequest? _defaultInstance;
+}
+
+enum Update_Update {
+  newMessage, 
+  chatReadInbox, 
+  notSet
+}
+
+class Update extends $pb.GeneratedMessage {
+  factory Update({
+    UpdateNewMessage? newMessage,
+    UpdateChatReadInbox? chatReadInbox,
+  }) {
+    final $result = create();
+    if (newMessage != null) {
+      $result.newMessage = newMessage;
+    }
+    if (chatReadInbox != null) {
+      $result.chatReadInbox = chatReadInbox;
+    }
+    return $result;
+  }
+  Update._() : super();
+  factory Update.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Update.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static const $core.Map<$core.int, Update_Update> _Update_UpdateByTag = {
+    1 : Update_Update.newMessage,
+    2 : Update_Update.chatReadInbox,
+    0 : Update_Update.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Update', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..oo(0, [1, 2])
+    ..aOM<UpdateNewMessage>(1, _omitFieldNames ? '' : 'newMessage', subBuilder: UpdateNewMessage.create)
+    ..aOM<UpdateChatReadInbox>(2, _omitFieldNames ? '' : 'chatReadInbox', subBuilder: UpdateChatReadInbox.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Update clone() => Update()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Update copyWith(void Function(Update) updates) => super.copyWith((message) => updates(message as Update)) as Update;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Update create() => Update._();
+  Update createEmptyInstance() => create();
+  static $pb.PbList<Update> createRepeated() => $pb.PbList<Update>();
+  @$core.pragma('dart2js:noInline')
+  static Update getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Update>(create);
+  static Update? _defaultInstance;
+
+  Update_Update whichUpdate() => _Update_UpdateByTag[$_whichOneof(0)]!;
+  void clearUpdate() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  UpdateNewMessage get newMessage => $_getN(0);
+  @$pb.TagNumber(1)
+  set newMessage(UpdateNewMessage v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasNewMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNewMessage() => clearField(1);
+  @$pb.TagNumber(1)
+  UpdateNewMessage ensureNewMessage() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  UpdateChatReadInbox get chatReadInbox => $_getN(1);
+  @$pb.TagNumber(2)
+  set chatReadInbox(UpdateChatReadInbox v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasChatReadInbox() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearChatReadInbox() => clearField(2);
+  @$pb.TagNumber(2)
+  UpdateChatReadInbox ensureChatReadInbox() => $_ensure(1);
+}
+
+class UpdateNewMessage extends $pb.GeneratedMessage {
+  factory UpdateNewMessage({
+    MessageItem? message,
+  }) {
+    final $result = create();
+    if (message != null) {
+      $result.message = message;
+    }
+    return $result;
+  }
+  UpdateNewMessage._() : super();
+  factory UpdateNewMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateNewMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateNewMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..aOM<MessageItem>(1, _omitFieldNames ? '' : 'message', subBuilder: MessageItem.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateNewMessage clone() => UpdateNewMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateNewMessage copyWith(void Function(UpdateNewMessage) updates) => super.copyWith((message) => updates(message as UpdateNewMessage)) as UpdateNewMessage;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateNewMessage create() => UpdateNewMessage._();
+  UpdateNewMessage createEmptyInstance() => create();
+  static $pb.PbList<UpdateNewMessage> createRepeated() => $pb.PbList<UpdateNewMessage>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateNewMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateNewMessage>(create);
+  static UpdateNewMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  MessageItem get message => $_getN(0);
+  @$pb.TagNumber(1)
+  set message(MessageItem v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => clearField(1);
+  @$pb.TagNumber(1)
+  MessageItem ensureMessage() => $_ensure(0);
+}
+
+class UpdateChatReadInbox extends $pb.GeneratedMessage {
+  factory UpdateChatReadInbox({
+    $fixnum.Int64? chatType,
+    $fixnum.Int64? receiverId,
+    $core.String? lastReadInboxMessageId,
+    $core.int? unreadCount,
+  }) {
+    final $result = create();
+    if (chatType != null) {
+      $result.chatType = chatType;
+    }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
+    }
+    if (lastReadInboxMessageId != null) {
+      $result.lastReadInboxMessageId = lastReadInboxMessageId;
+    }
+    if (unreadCount != null) {
+      $result.unreadCount = unreadCount;
+    }
+    return $result;
+  }
+  UpdateChatReadInbox._() : super();
+  factory UpdateChatReadInbox.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateChatReadInbox.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateChatReadInbox', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
+    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
+    ..aOS(3, _omitFieldNames ? '' : 'lastReadInboxMessageId')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'unreadCount', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateChatReadInbox clone() => UpdateChatReadInbox()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateChatReadInbox copyWith(void Function(UpdateChatReadInbox) updates) => super.copyWith((message) => updates(message as UpdateChatReadInbox)) as UpdateChatReadInbox;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateChatReadInbox create() => UpdateChatReadInbox._();
+  UpdateChatReadInbox createEmptyInstance() => create();
+  static $pb.PbList<UpdateChatReadInbox> createRepeated() => $pb.PbList<UpdateChatReadInbox>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateChatReadInbox getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateChatReadInbox>(create);
+  static UpdateChatReadInbox? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get chatType => $_getI64(0);
+  @$pb.TagNumber(1)
+  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChatType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChatType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get receiverId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasReceiverId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearReceiverId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get lastReadInboxMessageId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set lastReadInboxMessageId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLastReadInboxMessageId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLastReadInboxMessageId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get unreadCount => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set unreadCount($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUnreadCount() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUnreadCount() => clearField(4);
+}
+
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
 const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

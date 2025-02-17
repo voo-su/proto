@@ -22,6 +22,7 @@ const (
 	MessageService_GetHistory_FullMethodName   = "/message.MessageService/GetHistory"
 	MessageService_Send_FullMethodName         = "/message.MessageService/Send"
 	MessageService_ViewMessages_FullMethodName = "/message.MessageService/ViewMessages"
+	MessageService_GetUpdates_FullMethodName   = "/message.MessageService/GetUpdates"
 )
 
 // MessageServiceClient is the client API for MessageService service.
@@ -31,6 +32,7 @@ type MessageServiceClient interface {
 	GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error)
 	Send(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*SendMessageResponse, error)
 	ViewMessages(ctx context.Context, in *ViewMessagesRequest, opts ...grpc.CallOption) (*ViewMessagesResponse, error)
+	GetUpdates(ctx context.Context, in *UpdatesRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Update], error)
 }
 
 type messageServiceClient struct {
@@ -71,6 +73,25 @@ func (c *messageServiceClient) ViewMessages(ctx context.Context, in *ViewMessage
 	return out, nil
 }
 
+func (c *messageServiceClient) GetUpdates(ctx context.Context, in *UpdatesRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Update], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &MessageService_ServiceDesc.Streams[0], MessageService_GetUpdates_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[UpdatesRequest, Update]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MessageService_GetUpdatesClient = grpc.ServerStreamingClient[Update]
+
 // MessageServiceServer is the server API for MessageService service.
 // All implementations must embed UnimplementedMessageServiceServer
 // for forward compatibility.
@@ -78,6 +99,7 @@ type MessageServiceServer interface {
 	GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error)
 	Send(context.Context, *SendMessageRequest) (*SendMessageResponse, error)
 	ViewMessages(context.Context, *ViewMessagesRequest) (*ViewMessagesResponse, error)
+	GetUpdates(*UpdatesRequest, grpc.ServerStreamingServer[Update]) error
 	mustEmbedUnimplementedMessageServiceServer()
 }
 
@@ -96,6 +118,9 @@ func (UnimplementedMessageServiceServer) Send(context.Context, *SendMessageReque
 }
 func (UnimplementedMessageServiceServer) ViewMessages(context.Context, *ViewMessagesRequest) (*ViewMessagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ViewMessages not implemented")
+}
+func (UnimplementedMessageServiceServer) GetUpdates(*UpdatesRequest, grpc.ServerStreamingServer[Update]) error {
+	return status.Errorf(codes.Unimplemented, "method GetUpdates not implemented")
 }
 func (UnimplementedMessageServiceServer) mustEmbedUnimplementedMessageServiceServer() {}
 func (UnimplementedMessageServiceServer) testEmbeddedByValue()                        {}
@@ -172,6 +197,17 @@ func _MessageService_ViewMessages_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MessageService_GetUpdates_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(UpdatesRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MessageServiceServer).GetUpdates(m, &grpc.GenericServerStream[UpdatesRequest, Update]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MessageService_GetUpdatesServer = grpc.ServerStreamingServer[Update]
+
 // MessageService_ServiceDesc is the grpc.ServiceDesc for MessageService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -192,6 +228,12 @@ var MessageService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MessageService_ViewMessages_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "GetUpdates",
+			Handler:       _MessageService_GetUpdates_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "message.proto",
 }

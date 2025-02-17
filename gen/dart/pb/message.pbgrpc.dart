@@ -33,6 +33,10 @@ class MessageServiceClient extends $grpc.Client {
       '/message.MessageService/ViewMessages',
       ($4.ViewMessagesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.ViewMessagesResponse.fromBuffer(value));
+  static final _$getUpdates = $grpc.ClientMethod<$4.UpdatesRequest, $4.Update>(
+      '/message.MessageService/GetUpdates',
+      ($4.UpdatesRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.Update.fromBuffer(value));
 
   MessageServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -50,6 +54,10 @@ class MessageServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$4.ViewMessagesResponse> viewMessages($4.ViewMessagesRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$viewMessages, request, options: options);
+  }
+
+  $grpc.ResponseStream<$4.Update> getUpdates($4.UpdatesRequest request, {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$getUpdates, $async.Stream.fromIterable([request]), options: options);
   }
 }
 
@@ -79,6 +87,13 @@ abstract class MessageServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.ViewMessagesRequest.fromBuffer(value),
         ($4.ViewMessagesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UpdatesRequest, $4.Update>(
+        'GetUpdates',
+        getUpdates_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $4.UpdatesRequest.fromBuffer(value),
+        ($4.Update value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.GetHistoryResponse> getHistory_Pre($grpc.ServiceCall call, $async.Future<$4.GetHistoryRequest> request) async {
@@ -93,7 +108,12 @@ abstract class MessageServiceBase extends $grpc.Service {
     return viewMessages(call, await request);
   }
 
+  $async.Stream<$4.Update> getUpdates_Pre($grpc.ServiceCall call, $async.Future<$4.UpdatesRequest> request) async* {
+    yield* getUpdates(call, await request);
+  }
+
   $async.Future<$4.GetHistoryResponse> getHistory($grpc.ServiceCall call, $4.GetHistoryRequest request);
   $async.Future<$4.SendMessageResponse> send($grpc.ServiceCall call, $4.SendMessageRequest request);
   $async.Future<$4.ViewMessagesResponse> viewMessages($grpc.ServiceCall call, $4.ViewMessagesRequest request);
+  $async.Stream<$4.Update> getUpdates($grpc.ServiceCall call, $4.UpdatesRequest request);
 }

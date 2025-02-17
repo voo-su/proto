@@ -130,3 +130,61 @@ final $typed_data.Uint8List viewMessagesResponseDescriptor = $convert.base64Deco
     'X2lkGAMgASgJUhZsYXN0UmVhZEluYm94TWVzc2FnZUlkEiEKDHVucmVhZF9jb3VudBgEIAEoBV'
     'ILdW5yZWFkQ291bnQ=');
 
+@$core.Deprecated('Use updatesRequestDescriptor instead')
+const UpdatesRequest$json = {
+  '1': 'UpdatesRequest',
+};
+
+/// Descriptor for `UpdatesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updatesRequestDescriptor = $convert.base64Decode(
+    'Cg5VcGRhdGVzUmVxdWVzdA==');
+
+@$core.Deprecated('Use updateDescriptor instead')
+const Update$json = {
+  '1': 'Update',
+  '2': [
+    {'1': 'new_message', '3': 1, '4': 1, '5': 11, '6': '.message.UpdateNewMessage', '9': 0, '10': 'newMessage'},
+    {'1': 'chat_read_inbox', '3': 2, '4': 1, '5': 11, '6': '.message.UpdateChatReadInbox', '9': 0, '10': 'chatReadInbox'},
+  ],
+  '8': [
+    {'1': 'update'},
+  ],
+};
+
+/// Descriptor for `Update`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateDescriptor = $convert.base64Decode(
+    'CgZVcGRhdGUSPAoLbmV3X21lc3NhZ2UYASABKAsyGS5tZXNzYWdlLlVwZGF0ZU5ld01lc3NhZ2'
+    'VIAFIKbmV3TWVzc2FnZRJGCg9jaGF0X3JlYWRfaW5ib3gYAiABKAsyHC5tZXNzYWdlLlVwZGF0'
+    'ZUNoYXRSZWFkSW5ib3hIAFINY2hhdFJlYWRJbmJveEIICgZ1cGRhdGU=');
+
+@$core.Deprecated('Use updateNewMessageDescriptor instead')
+const UpdateNewMessage$json = {
+  '1': 'UpdateNewMessage',
+  '2': [
+    {'1': 'message', '3': 1, '4': 1, '5': 11, '6': '.message.MessageItem', '10': 'message'},
+  ],
+};
+
+/// Descriptor for `UpdateNewMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateNewMessageDescriptor = $convert.base64Decode(
+    'ChBVcGRhdGVOZXdNZXNzYWdlEi4KB21lc3NhZ2UYASABKAsyFC5tZXNzYWdlLk1lc3NhZ2VJdG'
+    'VtUgdtZXNzYWdl');
+
+@$core.Deprecated('Use updateChatReadInboxDescriptor instead')
+const UpdateChatReadInbox$json = {
+  '1': 'UpdateChatReadInbox',
+  '2': [
+    {'1': 'chat_type', '3': 1, '4': 1, '5': 3, '10': 'chatType'},
+    {'1': 'receiver_id', '3': 2, '4': 1, '5': 3, '10': 'receiverId'},
+    {'1': 'last_read_inbox_message_id', '3': 3, '4': 1, '5': 9, '10': 'lastReadInboxMessageId'},
+    {'1': 'unread_count', '3': 4, '4': 1, '5': 5, '10': 'unreadCount'},
+  ],
+};
+
+/// Descriptor for `UpdateChatReadInbox`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateChatReadInboxDescriptor = $convert.base64Decode(
+    'ChNVcGRhdGVDaGF0UmVhZEluYm94EhsKCWNoYXRfdHlwZRgBIAEoA1IIY2hhdFR5cGUSHwoLcm'
+    'VjZWl2ZXJfaWQYAiABKANSCnJlY2VpdmVySWQSOgoabGFzdF9yZWFkX2luYm94X21lc3NhZ2Vf'
+    'aWQYAyABKAlSFmxhc3RSZWFkSW5ib3hNZXNzYWdlSWQSIQoMdW5yZWFkX2NvdW50GAQgASgFUg'
+    't1bnJlYWRDb3VudA==');
+
