@@ -145,6 +145,7 @@ const Update$json = {
   '2': [
     {'1': 'new_message', '3': 1, '4': 1, '5': 11, '6': '.message.UpdateNewMessage', '9': 0, '10': 'newMessage'},
     {'1': 'chat_read_inbox', '3': 2, '4': 1, '5': 11, '6': '.message.UpdateChatReadInbox', '9': 0, '10': 'chatReadInbox'},
+    {'1': 'user_typing', '3': 3, '4': 1, '5': 11, '6': '.message.UpdateUserTyping', '9': 0, '10': 'userTyping'},
   ],
   '8': [
     {'1': 'update'},
@@ -155,7 +156,8 @@ const Update$json = {
 final $typed_data.Uint8List updateDescriptor = $convert.base64Decode(
     'CgZVcGRhdGUSPAoLbmV3X21lc3NhZ2UYASABKAsyGS5tZXNzYWdlLlVwZGF0ZU5ld01lc3NhZ2'
     'VIAFIKbmV3TWVzc2FnZRJGCg9jaGF0X3JlYWRfaW5ib3gYAiABKAsyHC5tZXNzYWdlLlVwZGF0'
-    'ZUNoYXRSZWFkSW5ib3hIAFINY2hhdFJlYWRJbmJveEIICgZ1cGRhdGU=');
+    'ZUNoYXRSZWFkSW5ib3hIAFINY2hhdFJlYWRJbmJveBI8Cgt1c2VyX3R5cGluZxgDIAEoCzIZLm'
+    '1lc3NhZ2UuVXBkYXRlVXNlclR5cGluZ0gAUgp1c2VyVHlwaW5nQggKBnVwZGF0ZQ==');
 
 @$core.Deprecated('Use updateNewMessageDescriptor instead')
 const UpdateNewMessage$json = {
@@ -187,4 +189,21 @@ final $typed_data.Uint8List updateChatReadInboxDescriptor = $convert.base64Decod
     'VjZWl2ZXJfaWQYAiABKANSCnJlY2VpdmVySWQSOgoabGFzdF9yZWFkX2luYm94X21lc3NhZ2Vf'
     'aWQYAyABKAlSFmxhc3RSZWFkSW5ib3hNZXNzYWdlSWQSIQoMdW5yZWFkX2NvdW50GAQgASgFUg'
     't1bnJlYWRDb3VudA==');
+
+@$core.Deprecated('Use updateUserTypingDescriptor instead')
+const UpdateUserTyping$json = {
+  '1': 'UpdateUserTyping',
+  '2': [
+    {'1': 'chat_type', '3': 1, '4': 1, '5': 3, '10': 'chatType'},
+    {'1': 'receiver_id', '3': 2, '4': 1, '5': 3, '10': 'receiverId'},
+    {'1': 'user_id', '3': 3, '4': 1, '5': 3, '10': 'userId'},
+    {'1': 'is_typing', '3': 4, '4': 1, '5': 8, '10': 'isTyping'},
+  ],
+};
+
+/// Descriptor for `UpdateUserTyping`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserTypingDescriptor = $convert.base64Decode(
+    'ChBVcGRhdGVVc2VyVHlwaW5nEhsKCWNoYXRfdHlwZRgBIAEoA1IIY2hhdFR5cGUSHwoLcmVjZW'
+    'l2ZXJfaWQYAiABKANSCnJlY2VpdmVySWQSFwoHdXNlcl9pZBgDIAEoA1IGdXNlcklkEhsKCWlz'
+    'X3R5cGluZxgEIAEoCFIIaXNUeXBpbmc=');
 

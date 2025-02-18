@@ -67,6 +67,7 @@ message Update {
     oneof update {
         UpdateNewMessage new_message = 1;
         UpdateChatReadInbox chat_read_inbox = 2;
+        UpdateUserTyping user_typing = 3;
     }
 }
 
@@ -79,4 +80,11 @@ message UpdateChatReadInbox {
     int64 receiver_id = 2;
     string last_read_inbox_message_id = 3;
     int32 unread_count = 4;
+}
+
+message UpdateUserTyping {
+    int64 chat_type = 1;
+    int64 receiver_id = 2;
+    int64 user_id = 3;
+    bool is_typing = 4;
 }

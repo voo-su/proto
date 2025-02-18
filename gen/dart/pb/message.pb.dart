@@ -653,6 +653,7 @@ class UpdatesRequest extends $pb.GeneratedMessage {
 enum Update_Update {
   newMessage, 
   chatReadInbox, 
+  userTyping, 
   notSet
 }
 
@@ -660,6 +661,7 @@ class Update extends $pb.GeneratedMessage {
   factory Update({
     UpdateNewMessage? newMessage,
     UpdateChatReadInbox? chatReadInbox,
+    UpdateUserTyping? userTyping,
   }) {
     final $result = create();
     if (newMessage != null) {
@@ -667,6 +669,9 @@ class Update extends $pb.GeneratedMessage {
     }
     if (chatReadInbox != null) {
       $result.chatReadInbox = chatReadInbox;
+    }
+    if (userTyping != null) {
+      $result.userTyping = userTyping;
     }
     return $result;
   }
@@ -677,12 +682,14 @@ class Update extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, Update_Update> _Update_UpdateByTag = {
     1 : Update_Update.newMessage,
     2 : Update_Update.chatReadInbox,
+    3 : Update_Update.userTyping,
     0 : Update_Update.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Update', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
-    ..oo(0, [1, 2])
+    ..oo(0, [1, 2, 3])
     ..aOM<UpdateNewMessage>(1, _omitFieldNames ? '' : 'newMessage', subBuilder: UpdateNewMessage.create)
     ..aOM<UpdateChatReadInbox>(2, _omitFieldNames ? '' : 'chatReadInbox', subBuilder: UpdateChatReadInbox.create)
+    ..aOM<UpdateUserTyping>(3, _omitFieldNames ? '' : 'userTyping', subBuilder: UpdateUserTyping.create)
     ..hasRequiredFields = false
   ;
 
@@ -731,6 +738,17 @@ class Update extends $pb.GeneratedMessage {
   void clearChatReadInbox() => clearField(2);
   @$pb.TagNumber(2)
   UpdateChatReadInbox ensureChatReadInbox() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  UpdateUserTyping get userTyping => $_getN(2);
+  @$pb.TagNumber(3)
+  set userTyping(UpdateUserTyping v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUserTyping() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUserTyping() => clearField(3);
+  @$pb.TagNumber(3)
+  UpdateUserTyping ensureUserTyping() => $_ensure(2);
 }
 
 class UpdateNewMessage extends $pb.GeneratedMessage {
@@ -875,6 +893,98 @@ class UpdateChatReadInbox extends $pb.GeneratedMessage {
   $core.bool hasUnreadCount() => $_has(3);
   @$pb.TagNumber(4)
   void clearUnreadCount() => clearField(4);
+}
+
+class UpdateUserTyping extends $pb.GeneratedMessage {
+  factory UpdateUserTyping({
+    $fixnum.Int64? chatType,
+    $fixnum.Int64? receiverId,
+    $fixnum.Int64? userId,
+    $core.bool? isTyping,
+  }) {
+    final $result = create();
+    if (chatType != null) {
+      $result.chatType = chatType;
+    }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
+    }
+    if (userId != null) {
+      $result.userId = userId;
+    }
+    if (isTyping != null) {
+      $result.isTyping = isTyping;
+    }
+    return $result;
+  }
+  UpdateUserTyping._() : super();
+  factory UpdateUserTyping.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateUserTyping.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateUserTyping', package: const $pb.PackageName(_omitMessageNames ? '' : 'message'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
+    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
+    ..aInt64(3, _omitFieldNames ? '' : 'userId')
+    ..aOB(4, _omitFieldNames ? '' : 'isTyping')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateUserTyping clone() => UpdateUserTyping()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateUserTyping copyWith(void Function(UpdateUserTyping) updates) => super.copyWith((message) => updates(message as UpdateUserTyping)) as UpdateUserTyping;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserTyping create() => UpdateUserTyping._();
+  UpdateUserTyping createEmptyInstance() => create();
+  static $pb.PbList<UpdateUserTyping> createRepeated() => $pb.PbList<UpdateUserTyping>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserTyping getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateUserTyping>(create);
+  static UpdateUserTyping? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get chatType => $_getI64(0);
+  @$pb.TagNumber(1)
+  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChatType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChatType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get receiverId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasReceiverId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearReceiverId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get userId => $_getI64(2);
+  @$pb.TagNumber(3)
+  set userId($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUserId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUserId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.bool get isTyping => $_getBF(3);
+  @$pb.TagNumber(4)
+  set isTyping($core.bool v) { $_setBool(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasIsTyping() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearIsTyping() => clearField(4);
 }
 
 
