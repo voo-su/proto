@@ -13,27 +13,27 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use getChatListRequestDescriptor instead')
-const GetChatListRequest$json = {
-  '1': 'GetChatListRequest',
+@$core.Deprecated('Use getChatsRequestDescriptor instead')
+const GetChatsRequest$json = {
+  '1': 'GetChatsRequest',
 };
 
-/// Descriptor for `GetChatListRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getChatListRequestDescriptor = $convert.base64Decode(
-    'ChJHZXRDaGF0TGlzdFJlcXVlc3Q=');
+/// Descriptor for `GetChatsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getChatsRequestDescriptor = $convert.base64Decode(
+    'Cg9HZXRDaGF0c1JlcXVlc3Q=');
 
-@$core.Deprecated('Use getChatListResponseDescriptor instead')
-const GetChatListResponse$json = {
-  '1': 'GetChatListResponse',
+@$core.Deprecated('Use getChatsResponseDescriptor instead')
+const GetChatsResponse$json = {
+  '1': 'GetChatsResponse',
   '2': [
     {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chat.ChatItem', '10': 'items'},
   ],
 };
 
-/// Descriptor for `GetChatListResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getChatListResponseDescriptor = $convert.base64Decode(
-    'ChNHZXRDaGF0TGlzdFJlc3BvbnNlEiQKBWl0ZW1zGAEgAygLMg4uY2hhdC5DaGF0SXRlbVIFaX'
-    'RlbXM=');
+/// Descriptor for `GetChatsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getChatsResponseDescriptor = $convert.base64Decode(
+    'ChBHZXRDaGF0c1Jlc3BvbnNlEiQKBWl0ZW1zGAEgAygLMg4uY2hhdC5DaGF0SXRlbVIFaXRlbX'
+    'M=');
 
 @$core.Deprecated('Use chatItemDescriptor instead')
 const ChatItem$json = {

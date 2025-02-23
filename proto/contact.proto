@@ -5,18 +5,18 @@ package contact;
 option go_package = "./contact;pb";
 
 service ContactService {
-    rpc List(GetContactListRequest) returns (GetContactListResponse) {}
+  rpc List(GetContactListRequest) returns (GetContactListResponse) {}
 }
 
 message GetContactListRequest {}
 
 message GetContactListResponse {
-    repeated ContactItem items = 1;
+  repeated ContactItem items = 1;
 }
 
 message ContactItem {
-    int64 id = 1;
-    string username = 2;
-    string name = 3;
-    string surname = 4;
+  int64 id = 1;
+  string username = 2;
+  string name = 3;
+  string surname = 4;
 }

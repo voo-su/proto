@@ -5,39 +5,39 @@ package auth;
 option go_package = "./auth;pb";
 
 service AuthService {
-    rpc Login (AuthLoginRequest) returns (AuthLoginResponse);
+  rpc Login (AuthLoginRequest) returns (AuthLoginResponse);
 
-    rpc Verify (AuthVerifyRequest) returns (AuthVerifyResponse);
+  rpc Verify (AuthVerifyRequest) returns (AuthVerifyResponse);
 
-    rpc Logout (AuthLogoutRequest) returns (AuthLogoutResponse);
+  rpc Logout (AuthLogoutRequest) returns (AuthLogoutResponse);
 }
 
 message AuthLoginRequest {
-    string email = 1;
-    string platform = 2;
+  string email = 1;
+  string platform = 2;
 }
 
 message AuthLoginResponse {
-    string token = 1;
-    int64 expires_in = 2;
+  string token = 1;
+  int64 expires_in = 2;
 }
 
 message AuthVerifyRequest {
-    string token = 1;
-    string code = 2;
+  string token = 1;
+  string code = 2;
 }
 
 message AuthVerifyResponse {
-    string type = 1;
-    string access_token = 2;
-    int64 expires_in = 3;
+  string type = 1;
+  string access_token = 2;
+  int64 expires_in = 3;
 }
 
 message AuthLogoutRequest {
-    string access_token = 1;
+  string access_token = 1;
 }
 
 message AuthLogoutResponse {
-    bool success = 1;
-    string message = 2;
+  bool success = 1;
+  string message = 2;
 }

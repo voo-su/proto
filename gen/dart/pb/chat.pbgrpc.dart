@@ -21,10 +21,10 @@ export 'chat.pb.dart';
 
 @$pb.GrpcServiceName('chat.ChatService')
 class ChatServiceClient extends $grpc.Client {
-  static final _$list = $grpc.ClientMethod<$2.GetChatListRequest, $2.GetChatListResponse>(
-      '/chat.ChatService/List',
-      ($2.GetChatListRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $2.GetChatListResponse.fromBuffer(value));
+  static final _$chats = $grpc.ClientMethod<$2.GetChatsRequest, $2.GetChatsResponse>(
+      '/chat.ChatService/Chats',
+      ($2.GetChatsRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.GetChatsResponse.fromBuffer(value));
 
   ChatServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,8 +32,8 @@ class ChatServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$2.GetChatListResponse> list($2.GetChatListRequest request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$list, request, options: options);
+  $grpc.ResponseFuture<$2.GetChatsResponse> chats($2.GetChatsRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$chats, request, options: options);
   }
 }
 
@@ -42,18 +42,18 @@ abstract class ChatServiceBase extends $grpc.Service {
   $core.String get $name => 'chat.ChatService';
 
   ChatServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.GetChatListRequest, $2.GetChatListResponse>(
-        'List',
-        list_Pre,
+    $addMethod($grpc.ServiceMethod<$2.GetChatsRequest, $2.GetChatsResponse>(
+        'Chats',
+        chats_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.GetChatListRequest.fromBuffer(value),
-        ($2.GetChatListResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $2.GetChatsRequest.fromBuffer(value),
+        ($2.GetChatsResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$2.GetChatListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$2.GetChatListRequest> request) async {
-    return list(call, await request);
+  $async.Future<$2.GetChatsResponse> chats_Pre($grpc.ServiceCall call, $async.Future<$2.GetChatsRequest> request) async {
+    return chats(call, await request);
   }
 
-  $async.Future<$2.GetChatListResponse> list($grpc.ServiceCall call, $2.GetChatListRequest request);
+  $async.Future<$2.GetChatsResponse> chats($grpc.ServiceCall call, $2.GetChatsRequest request);
 }
