@@ -5,17 +5,17 @@ package account;
 option go_package = "./account;pb";
 
 service AccountService {
-  rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
 
-  rpc UpdateProfile (UpdateProfileRequest) returns (UpdateProfileResponse);
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
 
-  rpc UpdateProfilePhoto (UpdateProfilePhotoRequest) returns (UpdateProfilePhotoResponse);
+  rpc UpdateProfilePhoto(UpdateProfilePhotoRequest) returns (UpdateProfilePhotoResponse);
 
-  rpc getNotifySettings (GetNotifySettingsRequest) returns (GetNotifySettingsResponse);
+  rpc getNotifySettings(GetNotifySettingsRequest) returns (GetNotifySettingsResponse);
 
-  rpc updateNotifySettings (UpdateNotifySettingsRequest) returns (UpdateNotifySettingsResponse);
+  rpc updateNotifySettings(UpdateNotifySettingsRequest) returns (UpdateNotifySettingsResponse);
 
-  rpc RegisterDevice (RegisterDeviceRequest) returns (RegisterDeviceResponse);
+  rpc RegisterDevice(RegisterDeviceRequest) returns (RegisterDeviceResponse);
 }
 
 message GetProfileRequest {}

@@ -5,11 +5,11 @@ package auth;
 option go_package = "./auth;pb";
 
 service AuthService {
-  rpc Login (AuthLoginRequest) returns (AuthLoginResponse);
+  rpc Login(AuthLoginRequest) returns (AuthLoginResponse);
 
-  rpc Verify (AuthVerifyRequest) returns (AuthVerifyResponse);
+  rpc Verify(AuthVerifyRequest) returns (AuthVerifyResponse);
 
-  rpc Logout (AuthLogoutRequest) returns (AuthLogoutResponse);
+  rpc Logout(AuthLogoutRequest) returns (AuthLogoutResponse);
 }
 
 message AuthLoginRequest {

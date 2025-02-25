@@ -5,7 +5,7 @@ package group_chat;
 option go_package = "./group_chat;pb";
 
 service GroupChatService {
-  rpc GetGroupChat (GetGroupChatRequest) returns (GetGroupChatResponse);
+  rpc GetGroupChat(GetGroupChatRequest) returns (GetGroupChatResponse);
 
   rpc GetMembers(GetMembersRequest) returns (GetMembersResponse) {}
 }

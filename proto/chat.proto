@@ -5,13 +5,15 @@ package chat;
 option go_package = "./chat;pb";
 
 service ChatService {
-  rpc GetUpdates (UpdatesRequest) returns (stream Update);
+  rpc GetUpdates(UpdatesRequest) returns (stream Update);
 
   rpc GetChats(GetChatsRequest) returns (GetChatsResponse) {}
 
   rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse) {}
 
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
+
+  rpc SendPhoto(SendPhotoRequest) returns (SendPhotoResponse) {}
 
   rpc ViewMessages(ViewMessagesRequest) returns (ViewMessagesResponse) {}
 
@@ -104,6 +106,16 @@ message SendMessageRequest {
 }
 
 message SendMessageResponse {
+  string id = 1;
+}
+
+message SendPhotoRequest {
+  Receiver receiver = 1;
+  bytes photo = 2;
+  optional string caption = 3;
+}
+
+message SendPhotoResponse {
   string id = 1;
 }
 
