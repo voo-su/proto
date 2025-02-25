@@ -10,13 +10,15 @@ service GroupChatService {
   rpc GetMembers(GetMembersRequest) returns (GetMembersResponse) {}
 }
 
-message GetGroupChatRequest {}
+message GetGroupChatRequest {
+  int64 id = 1;
+}
 
 message GetGroupChatResponse {
   int64 id = 1;
-  string name = 3;
-  string avatar = 2;
-  string members = 5;
+  string name = 2;
+  string avatar = 3;
+  string members = 4;
 }
 
 message GetMembersRequest {
@@ -24,10 +26,10 @@ message GetMembersRequest {
 }
 
 message GetMembersResponse {
-  repeated ContactItem items = 1;
+  repeated MemberItem items = 1;
 }
 
-message ContactItem {
+message MemberItem {
   int64 id = 1;
   string username = 2;
   string avatar = 3;

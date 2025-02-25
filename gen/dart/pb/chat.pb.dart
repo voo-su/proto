@@ -14,6 +14,70 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class Receiver extends $pb.GeneratedMessage {
+  factory Receiver({
+    $core.int? chatType,
+    $fixnum.Int64? receiverId,
+  }) {
+    final $result = create();
+    if (chatType != null) {
+      $result.chatType = chatType;
+    }
+    if (receiverId != null) {
+      $result.receiverId = receiverId;
+    }
+    return $result;
+  }
+  Receiver._() : super();
+  factory Receiver.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Receiver.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Receiver', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'chatType', $pb.PbFieldType.O3)
+    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Receiver clone() => Receiver()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Receiver copyWith(void Function(Receiver) updates) => super.copyWith((message) => updates(message as Receiver)) as Receiver;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Receiver create() => Receiver._();
+  Receiver createEmptyInstance() => create();
+  static $pb.PbList<Receiver> createRepeated() => $pb.PbList<Receiver>();
+  @$core.pragma('dart2js:noInline')
+  static Receiver getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Receiver>(create);
+  static Receiver? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get chatType => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set chatType($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChatType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChatType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get receiverId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasReceiverId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearReceiverId() => clearField(2);
+}
+
 class UpdatesRequest extends $pb.GeneratedMessage {
   factory UpdatesRequest() => create();
   UpdatesRequest._() : super();
@@ -219,17 +283,13 @@ class UpdateNewMessage extends $pb.GeneratedMessage {
 
 class UpdateChatReadInbox extends $pb.GeneratedMessage {
   factory UpdateChatReadInbox({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.String? lastReadInboxMessageId,
     $core.int? unreadCount,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (lastReadInboxMessageId != null) {
       $result.lastReadInboxMessageId = lastReadInboxMessageId;
@@ -244,10 +304,9 @@ class UpdateChatReadInbox extends $pb.GeneratedMessage {
   factory UpdateChatReadInbox.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateChatReadInbox', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..aOS(3, _omitFieldNames ? '' : 'lastReadInboxMessageId')
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'unreadCount', $pb.PbFieldType.O3)
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..aOS(2, _omitFieldNames ? '' : 'lastReadInboxMessageId')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'unreadCount', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -273,55 +332,44 @@ class UpdateChatReadInbox extends $pb.GeneratedMessage {
   static UpdateChatReadInbox? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
+  $core.String get lastReadInboxMessageId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  set lastReadInboxMessageId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
+  $core.bool hasLastReadInboxMessageId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
+  void clearLastReadInboxMessageId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get lastReadInboxMessageId => $_getSZ(2);
+  $core.int get unreadCount => $_getIZ(2);
   @$pb.TagNumber(3)
-  set lastReadInboxMessageId($core.String v) { $_setString(2, v); }
+  set unreadCount($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasLastReadInboxMessageId() => $_has(2);
+  $core.bool hasUnreadCount() => $_has(2);
   @$pb.TagNumber(3)
-  void clearLastReadInboxMessageId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get unreadCount => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set unreadCount($core.int v) { $_setSignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasUnreadCount() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearUnreadCount() => clearField(4);
+  void clearUnreadCount() => clearField(3);
 }
 
 class UpdateUserTyping extends $pb.GeneratedMessage {
   factory UpdateUserTyping({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $fixnum.Int64? userId,
     $core.bool? isTyping,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (userId != null) {
       $result.userId = userId;
@@ -336,10 +384,9 @@ class UpdateUserTyping extends $pb.GeneratedMessage {
   factory UpdateUserTyping.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateUserTyping', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..aInt64(3, _omitFieldNames ? '' : 'userId')
-    ..aOB(4, _omitFieldNames ? '' : 'isTyping')
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..aInt64(2, _omitFieldNames ? '' : 'userId')
+    ..aOB(3, _omitFieldNames ? '' : 'isTyping')
     ..hasRequiredFields = false
   ;
 
@@ -365,54 +412,43 @@ class UpdateUserTyping extends $pb.GeneratedMessage {
   static UpdateUserTyping? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
+  $fixnum.Int64 get userId => $_getI64(1);
   @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  set userId($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
+  $core.bool hasUserId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
+  void clearUserId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get userId => $_getI64(2);
+  $core.bool get isTyping => $_getBF(2);
   @$pb.TagNumber(3)
-  set userId($fixnum.Int64 v) { $_setInt64(2, v); }
+  set isTyping($core.bool v) { $_setBool(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasUserId() => $_has(2);
+  $core.bool hasIsTyping() => $_has(2);
   @$pb.TagNumber(3)
-  void clearUserId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.bool get isTyping => $_getBF(3);
-  @$pb.TagNumber(4)
-  set isTyping($core.bool v) { $_setBool(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasIsTyping() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearIsTyping() => clearField(4);
+  void clearIsTyping() => clearField(3);
 }
 
 class UpdateDeleteMessages extends $pb.GeneratedMessage {
   factory UpdateDeleteMessages({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.Iterable<$core.String>? messageIds,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (messageIds != null) {
       $result.messageIds.addAll(messageIds);
@@ -424,9 +460,8 @@ class UpdateDeleteMessages extends $pb.GeneratedMessage {
   factory UpdateDeleteMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateDeleteMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..pPS(3, _omitFieldNames ? '' : 'messageIds')
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..pPS(2, _omitFieldNames ? '' : 'messageIds')
     ..hasRequiredFields = false
   ;
 
@@ -452,25 +487,18 @@ class UpdateDeleteMessages extends $pb.GeneratedMessage {
   static UpdateDeleteMessages? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
-  @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.String> get messageIds => $_getList(2);
+  $core.List<$core.String> get messageIds => $_getList(1);
 }
 
 class GetChatsRequest extends $pb.GeneratedMessage {
@@ -552,8 +580,7 @@ class GetChatsResponse extends $pb.GeneratedMessage {
 class ChatItem extends $pb.GeneratedMessage {
   factory ChatItem({
     $fixnum.Int64? id,
-    $core.int? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.String? username,
     $core.String? avatar,
     $core.String? name,
@@ -569,11 +596,8 @@ class ChatItem extends $pb.GeneratedMessage {
     if (id != null) {
       $result.id = id;
     }
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (username != null) {
       $result.username = username;
@@ -613,18 +637,17 @@ class ChatItem extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatItem', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'chatType', $pb.PbFieldType.O3)
-    ..aInt64(3, _omitFieldNames ? '' : 'receiverId')
-    ..aOS(4, _omitFieldNames ? '' : 'username')
-    ..aOS(5, _omitFieldNames ? '' : 'avatar')
-    ..aOS(6, _omitFieldNames ? '' : 'name')
-    ..aOS(7, _omitFieldNames ? '' : 'surname')
-    ..aOS(8, _omitFieldNames ? '' : 'msgText')
-    ..aInt64(9, _omitFieldNames ? '' : 'unreadCount')
-    ..aOS(10, _omitFieldNames ? '' : 'updatedAt')
-    ..aOB(11, _omitFieldNames ? '' : 'isOnline')
-    ..aOB(12, _omitFieldNames ? '' : 'isDisturb')
-    ..aOB(13, _omitFieldNames ? '' : 'isBot')
+    ..aOM<Receiver>(2, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..aOS(3, _omitFieldNames ? '' : 'username')
+    ..aOS(4, _omitFieldNames ? '' : 'avatar')
+    ..aOS(5, _omitFieldNames ? '' : 'name')
+    ..aOS(6, _omitFieldNames ? '' : 'surname')
+    ..aOS(7, _omitFieldNames ? '' : 'msgText')
+    ..aInt64(8, _omitFieldNames ? '' : 'unreadCount')
+    ..aOS(9, _omitFieldNames ? '' : 'updatedAt')
+    ..aOB(10, _omitFieldNames ? '' : 'isOnline')
+    ..aOB(11, _omitFieldNames ? '' : 'isDisturb')
+    ..aOB(12, _omitFieldNames ? '' : 'isBot')
     ..hasRequiredFields = false
   ;
 
@@ -659,127 +682,116 @@ class ChatItem extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get chatType => $_getIZ(1);
+  Receiver get receiver => $_getN(1);
   @$pb.TagNumber(2)
-  set chatType($core.int v) { $_setSignedInt32(1, v); }
+  set receiver(Receiver v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasChatType() => $_has(1);
+  $core.bool hasReceiver() => $_has(1);
   @$pb.TagNumber(2)
-  void clearChatType() => clearField(2);
+  void clearReceiver() => clearField(2);
+  @$pb.TagNumber(2)
+  Receiver ensureReceiver() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get receiverId => $_getI64(2);
+  $core.String get username => $_getSZ(2);
   @$pb.TagNumber(3)
-  set receiverId($fixnum.Int64 v) { $_setInt64(2, v); }
+  set username($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasReceiverId() => $_has(2);
+  $core.bool hasUsername() => $_has(2);
   @$pb.TagNumber(3)
-  void clearReceiverId() => clearField(3);
+  void clearUsername() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get username => $_getSZ(3);
+  $core.String get avatar => $_getSZ(3);
   @$pb.TagNumber(4)
-  set username($core.String v) { $_setString(3, v); }
+  set avatar($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasUsername() => $_has(3);
+  $core.bool hasAvatar() => $_has(3);
   @$pb.TagNumber(4)
-  void clearUsername() => clearField(4);
+  void clearAvatar() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get avatar => $_getSZ(4);
+  $core.String get name => $_getSZ(4);
   @$pb.TagNumber(5)
-  set avatar($core.String v) { $_setString(4, v); }
+  set name($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasAvatar() => $_has(4);
+  $core.bool hasName() => $_has(4);
   @$pb.TagNumber(5)
-  void clearAvatar() => clearField(5);
+  void clearName() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get name => $_getSZ(5);
+  $core.String get surname => $_getSZ(5);
   @$pb.TagNumber(6)
-  set name($core.String v) { $_setString(5, v); }
+  set surname($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasName() => $_has(5);
+  $core.bool hasSurname() => $_has(5);
   @$pb.TagNumber(6)
-  void clearName() => clearField(6);
+  void clearSurname() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get surname => $_getSZ(6);
+  $core.String get msgText => $_getSZ(6);
   @$pb.TagNumber(7)
-  set surname($core.String v) { $_setString(6, v); }
+  set msgText($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasSurname() => $_has(6);
+  $core.bool hasMsgText() => $_has(6);
   @$pb.TagNumber(7)
-  void clearSurname() => clearField(7);
+  void clearMsgText() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.String get msgText => $_getSZ(7);
+  $fixnum.Int64 get unreadCount => $_getI64(7);
   @$pb.TagNumber(8)
-  set msgText($core.String v) { $_setString(7, v); }
+  set unreadCount($fixnum.Int64 v) { $_setInt64(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasMsgText() => $_has(7);
+  $core.bool hasUnreadCount() => $_has(7);
   @$pb.TagNumber(8)
-  void clearMsgText() => clearField(8);
+  void clearUnreadCount() => clearField(8);
 
   @$pb.TagNumber(9)
-  $fixnum.Int64 get unreadCount => $_getI64(8);
+  $core.String get updatedAt => $_getSZ(8);
   @$pb.TagNumber(9)
-  set unreadCount($fixnum.Int64 v) { $_setInt64(8, v); }
+  set updatedAt($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasUnreadCount() => $_has(8);
+  $core.bool hasUpdatedAt() => $_has(8);
   @$pb.TagNumber(9)
-  void clearUnreadCount() => clearField(9);
+  void clearUpdatedAt() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.String get updatedAt => $_getSZ(9);
+  $core.bool get isOnline => $_getBF(9);
   @$pb.TagNumber(10)
-  set updatedAt($core.String v) { $_setString(9, v); }
+  set isOnline($core.bool v) { $_setBool(9, v); }
   @$pb.TagNumber(10)
-  $core.bool hasUpdatedAt() => $_has(9);
+  $core.bool hasIsOnline() => $_has(9);
   @$pb.TagNumber(10)
-  void clearUpdatedAt() => clearField(10);
+  void clearIsOnline() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.bool get isOnline => $_getBF(10);
+  $core.bool get isDisturb => $_getBF(10);
   @$pb.TagNumber(11)
-  set isOnline($core.bool v) { $_setBool(10, v); }
+  set isDisturb($core.bool v) { $_setBool(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasIsOnline() => $_has(10);
+  $core.bool hasIsDisturb() => $_has(10);
   @$pb.TagNumber(11)
-  void clearIsOnline() => clearField(11);
+  void clearIsDisturb() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.bool get isDisturb => $_getBF(11);
+  $core.bool get isBot => $_getBF(11);
   @$pb.TagNumber(12)
-  set isDisturb($core.bool v) { $_setBool(11, v); }
+  set isBot($core.bool v) { $_setBool(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasIsDisturb() => $_has(11);
+  $core.bool hasIsBot() => $_has(11);
   @$pb.TagNumber(12)
-  void clearIsDisturb() => clearField(12);
-
-  @$pb.TagNumber(13)
-  $core.bool get isBot => $_getBF(12);
-  @$pb.TagNumber(13)
-  set isBot($core.bool v) { $_setBool(12, v); }
-  @$pb.TagNumber(13)
-  $core.bool hasIsBot() => $_has(12);
-  @$pb.TagNumber(13)
-  void clearIsBot() => clearField(13);
+  void clearIsBot() => clearField(12);
 }
 
 class GetHistoryRequest extends $pb.GeneratedMessage {
   factory GetHistoryRequest({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $fixnum.Int64? recordId,
     $fixnum.Int64? limit,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (recordId != null) {
       $result.recordId = recordId;
@@ -794,10 +806,9 @@ class GetHistoryRequest extends $pb.GeneratedMessage {
   factory GetHistoryRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetHistoryRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..aInt64(3, _omitFieldNames ? '' : 'recordId')
-    ..aInt64(4, _omitFieldNames ? '' : 'limit')
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..aInt64(2, _omitFieldNames ? '' : 'recordId')
+    ..aInt64(3, _omitFieldNames ? '' : 'limit')
     ..hasRequiredFields = false
   ;
 
@@ -823,40 +834,33 @@ class GetHistoryRequest extends $pb.GeneratedMessage {
   static GetHistoryRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
+  $fixnum.Int64 get recordId => $_getI64(1);
   @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  set recordId($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
+  $core.bool hasRecordId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
+  void clearRecordId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get recordId => $_getI64(2);
+  $fixnum.Int64 get limit => $_getI64(2);
   @$pb.TagNumber(3)
-  set recordId($fixnum.Int64 v) { $_setInt64(2, v); }
+  set limit($fixnum.Int64 v) { $_setInt64(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasRecordId() => $_has(2);
+  $core.bool hasLimit() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRecordId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $fixnum.Int64 get limit => $_getI64(3);
-  @$pb.TagNumber(4)
-  set limit($fixnum.Int64 v) { $_setInt64(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasLimit() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearLimit() => clearField(4);
+  void clearLimit() => clearField(3);
 }
 
 class GetHistoryResponse extends $pb.GeneratedMessage {
@@ -934,9 +938,8 @@ class GetHistoryResponse extends $pb.GeneratedMessage {
 class MessageItem extends $pb.GeneratedMessage {
   factory MessageItem({
     $core.String? id,
-    $core.int? chatType,
+    Receiver? receiver,
     $core.int? msgType,
-    $fixnum.Int64? receiverId,
     $fixnum.Int64? userId,
     $core.String? content,
     $core.bool? isRead,
@@ -946,14 +949,11 @@ class MessageItem extends $pb.GeneratedMessage {
     if (id != null) {
       $result.id = id;
     }
-    if (chatType != null) {
-      $result.chatType = chatType;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (msgType != null) {
       $result.msgType = msgType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
     }
     if (userId != null) {
       $result.userId = userId;
@@ -975,13 +975,12 @@ class MessageItem extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageItem', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'chatType', $pb.PbFieldType.O3)
+    ..aOM<Receiver>(2, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'msgType', $pb.PbFieldType.O3)
-    ..aInt64(4, _omitFieldNames ? '' : 'receiverId')
-    ..aInt64(5, _omitFieldNames ? '' : 'userId')
-    ..aOS(6, _omitFieldNames ? '' : 'content')
-    ..aOB(7, _omitFieldNames ? '' : 'isRead')
-    ..aOS(8, _omitFieldNames ? '' : 'createdAt')
+    ..aInt64(4, _omitFieldNames ? '' : 'userId')
+    ..aOS(5, _omitFieldNames ? '' : 'content')
+    ..aOB(6, _omitFieldNames ? '' : 'isRead')
+    ..aOS(7, _omitFieldNames ? '' : 'createdAt')
     ..hasRequiredFields = false
   ;
 
@@ -1016,13 +1015,15 @@ class MessageItem extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get chatType => $_getIZ(1);
+  Receiver get receiver => $_getN(1);
   @$pb.TagNumber(2)
-  set chatType($core.int v) { $_setSignedInt32(1, v); }
+  set receiver(Receiver v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasChatType() => $_has(1);
+  $core.bool hasReceiver() => $_has(1);
   @$pb.TagNumber(2)
-  void clearChatType() => clearField(2);
+  void clearReceiver() => clearField(2);
+  @$pb.TagNumber(2)
+  Receiver ensureReceiver() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get msgType => $_getIZ(2);
@@ -1034,63 +1035,50 @@ class MessageItem extends $pb.GeneratedMessage {
   void clearMsgType() => clearField(3);
 
   @$pb.TagNumber(4)
-  $fixnum.Int64 get receiverId => $_getI64(3);
+  $fixnum.Int64 get userId => $_getI64(3);
   @$pb.TagNumber(4)
-  set receiverId($fixnum.Int64 v) { $_setInt64(3, v); }
+  set userId($fixnum.Int64 v) { $_setInt64(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasReceiverId() => $_has(3);
+  $core.bool hasUserId() => $_has(3);
   @$pb.TagNumber(4)
-  void clearReceiverId() => clearField(4);
+  void clearUserId() => clearField(4);
 
   @$pb.TagNumber(5)
-  $fixnum.Int64 get userId => $_getI64(4);
+  $core.String get content => $_getSZ(4);
   @$pb.TagNumber(5)
-  set userId($fixnum.Int64 v) { $_setInt64(4, v); }
+  set content($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasUserId() => $_has(4);
+  $core.bool hasContent() => $_has(4);
   @$pb.TagNumber(5)
-  void clearUserId() => clearField(5);
+  void clearContent() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get content => $_getSZ(5);
+  $core.bool get isRead => $_getBF(5);
   @$pb.TagNumber(6)
-  set content($core.String v) { $_setString(5, v); }
+  set isRead($core.bool v) { $_setBool(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasContent() => $_has(5);
+  $core.bool hasIsRead() => $_has(5);
   @$pb.TagNumber(6)
-  void clearContent() => clearField(6);
+  void clearIsRead() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.bool get isRead => $_getBF(6);
+  $core.String get createdAt => $_getSZ(6);
   @$pb.TagNumber(7)
-  set isRead($core.bool v) { $_setBool(6, v); }
+  set createdAt($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasIsRead() => $_has(6);
+  $core.bool hasCreatedAt() => $_has(6);
   @$pb.TagNumber(7)
-  void clearIsRead() => clearField(7);
-
-  @$pb.TagNumber(8)
-  $core.String get createdAt => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set createdAt($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasCreatedAt() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearCreatedAt() => clearField(8);
+  void clearCreatedAt() => clearField(7);
 }
 
 class SendMessageRequest extends $pb.GeneratedMessage {
   factory SendMessageRequest({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.String? message,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (message != null) {
       $result.message = message;
@@ -1102,9 +1090,8 @@ class SendMessageRequest extends $pb.GeneratedMessage {
   factory SendMessageRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendMessageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..aOS(3, _omitFieldNames ? '' : 'message')
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..aOS(2, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
 
@@ -1130,31 +1117,24 @@ class SendMessageRequest extends $pb.GeneratedMessage {
   static SendMessageRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
+  $core.String get message => $_getSZ(1);
   @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  set message($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
+  $core.bool hasMessage() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get message => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set message($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMessage() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMessage() => clearField(3);
+  void clearMessage() => clearField(2);
 }
 
 class SendMessageResponse extends $pb.GeneratedMessage {
@@ -1209,16 +1189,12 @@ class SendMessageResponse extends $pb.GeneratedMessage {
 
 class ViewMessagesRequest extends $pb.GeneratedMessage {
   factory ViewMessagesRequest({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.Iterable<$core.String>? messageIds,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (messageIds != null) {
       $result.messageIds.addAll(messageIds);
@@ -1230,9 +1206,8 @@ class ViewMessagesRequest extends $pb.GeneratedMessage {
   factory ViewMessagesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ViewMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..pPS(3, _omitFieldNames ? '' : 'messageIds')
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..pPS(2, _omitFieldNames ? '' : 'messageIds')
     ..hasRequiredFields = false
   ;
 
@@ -1258,40 +1233,29 @@ class ViewMessagesRequest extends $pb.GeneratedMessage {
   static ViewMessagesRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
-  @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.String> get messageIds => $_getList(2);
+  $core.List<$core.String> get messageIds => $_getList(1);
 }
 
 class ViewMessagesResponse extends $pb.GeneratedMessage {
   factory ViewMessagesResponse({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.String? lastReadInboxMessageId,
     $core.int? unreadCount,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (lastReadInboxMessageId != null) {
       $result.lastReadInboxMessageId = lastReadInboxMessageId;
@@ -1306,10 +1270,9 @@ class ViewMessagesResponse extends $pb.GeneratedMessage {
   factory ViewMessagesResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ViewMessagesResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..aOS(3, _omitFieldNames ? '' : 'lastReadInboxMessageId')
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'unreadCount', $pb.PbFieldType.O3)
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..aOS(2, _omitFieldNames ? '' : 'lastReadInboxMessageId')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'unreadCount', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -1335,183 +1298,44 @@ class ViewMessagesResponse extends $pb.GeneratedMessage {
   static ViewMessagesResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
+  $core.String get lastReadInboxMessageId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
+  set lastReadInboxMessageId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
+  $core.bool hasLastReadInboxMessageId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
+  void clearLastReadInboxMessageId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get lastReadInboxMessageId => $_getSZ(2);
+  $core.int get unreadCount => $_getIZ(2);
   @$pb.TagNumber(3)
-  set lastReadInboxMessageId($core.String v) { $_setString(2, v); }
+  set unreadCount($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasLastReadInboxMessageId() => $_has(2);
+  $core.bool hasUnreadCount() => $_has(2);
   @$pb.TagNumber(3)
-  void clearLastReadInboxMessageId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get unreadCount => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set unreadCount($core.int v) { $_setSignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasUnreadCount() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearUnreadCount() => clearField(4);
-}
-
-class DeleteMessageRequest extends $pb.GeneratedMessage {
-  factory DeleteMessageRequest({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
-    $core.String? messageId,
-  }) {
-    final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
-    }
-    if (messageId != null) {
-      $result.messageId = messageId;
-    }
-    return $result;
-  }
-  DeleteMessageRequest._() : super();
-  factory DeleteMessageRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DeleteMessageRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteMessageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..aOS(3, _omitFieldNames ? '' : 'messageId')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  DeleteMessageRequest clone() => DeleteMessageRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DeleteMessageRequest copyWith(void Function(DeleteMessageRequest) updates) => super.copyWith((message) => updates(message as DeleteMessageRequest)) as DeleteMessageRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static DeleteMessageRequest create() => DeleteMessageRequest._();
-  DeleteMessageRequest createEmptyInstance() => create();
-  static $pb.PbList<DeleteMessageRequest> createRepeated() => $pb.PbList<DeleteMessageRequest>();
-  @$core.pragma('dart2js:noInline')
-  static DeleteMessageRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeleteMessageRequest>(create);
-  static DeleteMessageRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
-  @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
-  @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get messageId => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set messageId($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMessageId() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMessageId() => clearField(3);
-}
-
-class DeleteMessageResponse extends $pb.GeneratedMessage {
-  factory DeleteMessageResponse({
-    $core.bool? success,
-  }) {
-    final $result = create();
-    if (success != null) {
-      $result.success = success;
-    }
-    return $result;
-  }
-  DeleteMessageResponse._() : super();
-  factory DeleteMessageResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DeleteMessageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteMessageResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'success')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  DeleteMessageResponse clone() => DeleteMessageResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DeleteMessageResponse copyWith(void Function(DeleteMessageResponse) updates) => super.copyWith((message) => updates(message as DeleteMessageResponse)) as DeleteMessageResponse;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static DeleteMessageResponse create() => DeleteMessageResponse._();
-  DeleteMessageResponse createEmptyInstance() => create();
-  static $pb.PbList<DeleteMessageResponse> createRepeated() => $pb.PbList<DeleteMessageResponse>();
-  @$core.pragma('dart2js:noInline')
-  static DeleteMessageResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeleteMessageResponse>(create);
-  static DeleteMessageResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
-  @$pb.TagNumber(1)
-  set success($core.bool v) { $_setBool(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
+  void clearUnreadCount() => clearField(3);
 }
 
 class DeleteMessagesRequest extends $pb.GeneratedMessage {
   factory DeleteMessagesRequest({
-    $fixnum.Int64? chatType,
-    $fixnum.Int64? receiverId,
+    Receiver? receiver,
     $core.Iterable<$core.String>? messageIds,
     $core.bool? revoke,
   }) {
     final $result = create();
-    if (chatType != null) {
-      $result.chatType = chatType;
-    }
-    if (receiverId != null) {
-      $result.receiverId = receiverId;
+    if (receiver != null) {
+      $result.receiver = receiver;
     }
     if (messageIds != null) {
       $result.messageIds.addAll(messageIds);
@@ -1526,10 +1350,9 @@ class DeleteMessagesRequest extends $pb.GeneratedMessage {
   factory DeleteMessagesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'chatType')
-    ..aInt64(2, _omitFieldNames ? '' : 'receiverId')
-    ..pPS(3, _omitFieldNames ? '' : 'messageIds')
-    ..aOB(4, _omitFieldNames ? '' : 'revoke')
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..pPS(2, _omitFieldNames ? '' : 'messageIds')
+    ..aOB(3, _omitFieldNames ? '' : 'revoke')
     ..hasRequiredFields = false
   ;
 
@@ -1555,34 +1378,27 @@ class DeleteMessagesRequest extends $pb.GeneratedMessage {
   static DeleteMessagesRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get chatType => $_getI64(0);
+  Receiver get receiver => $_getN(0);
   @$pb.TagNumber(1)
-  set chatType($fixnum.Int64 v) { $_setInt64(0, v); }
+  set receiver(Receiver v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasChatType() => $_has(0);
+  $core.bool hasReceiver() => $_has(0);
   @$pb.TagNumber(1)
-  void clearChatType() => clearField(1);
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get receiverId => $_getI64(1);
-  @$pb.TagNumber(2)
-  set receiverId($fixnum.Int64 v) { $_setInt64(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasReceiverId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearReceiverId() => clearField(2);
+  $core.List<$core.String> get messageIds => $_getList(1);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get messageIds => $_getList(2);
-
-  @$pb.TagNumber(4)
-  $core.bool get revoke => $_getBF(3);
-  @$pb.TagNumber(4)
-  set revoke($core.bool v) { $_setBool(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasRevoke() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearRevoke() => clearField(4);
+  $core.bool get revoke => $_getBF(2);
+  @$pb.TagNumber(3)
+  set revoke($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasRevoke() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRevoke() => clearField(3);
 }
 
 class DeleteMessagesResponse extends $pb.GeneratedMessage {

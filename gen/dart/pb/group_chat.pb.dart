@@ -15,12 +15,21 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class GetGroupChatRequest extends $pb.GeneratedMessage {
-  factory GetGroupChatRequest() => create();
+  factory GetGroupChatRequest({
+    $fixnum.Int64? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   GetGroupChatRequest._() : super();
   factory GetGroupChatRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetGroupChatRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetGroupChatRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
@@ -44,24 +53,33 @@ class GetGroupChatRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetGroupChatRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetGroupChatRequest>(create);
   static GetGroupChatRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get id => $_getI64(0);
+  @$pb.TagNumber(1)
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
 }
 
 class GetGroupChatResponse extends $pb.GeneratedMessage {
   factory GetGroupChatResponse({
     $fixnum.Int64? id,
-    $core.String? avatar,
     $core.String? name,
+    $core.String? avatar,
     $core.String? members,
   }) {
     final $result = create();
     if (id != null) {
       $result.id = id;
     }
-    if (avatar != null) {
-      $result.avatar = avatar;
-    }
     if (name != null) {
       $result.name = name;
+    }
+    if (avatar != null) {
+      $result.avatar = avatar;
     }
     if (members != null) {
       $result.members = members;
@@ -74,9 +92,9 @@ class GetGroupChatResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetGroupChatResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'avatar')
-    ..aOS(3, _omitFieldNames ? '' : 'name')
-    ..aOS(5, _omitFieldNames ? '' : 'members')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..aOS(3, _omitFieldNames ? '' : 'avatar')
+    ..aOS(4, _omitFieldNames ? '' : 'members')
     ..hasRequiredFields = false
   ;
 
@@ -111,31 +129,31 @@ class GetGroupChatResponse extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get avatar => $_getSZ(1);
+  $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
-  set avatar($core.String v) { $_setString(1, v); }
+  set name($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasAvatar() => $_has(1);
+  $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearAvatar() => clearField(2);
+  void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get name => $_getSZ(2);
+  $core.String get avatar => $_getSZ(2);
   @$pb.TagNumber(3)
-  set name($core.String v) { $_setString(2, v); }
+  set avatar($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasName() => $_has(2);
+  $core.bool hasAvatar() => $_has(2);
   @$pb.TagNumber(3)
-  void clearName() => clearField(3);
+  void clearAvatar() => clearField(3);
 
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(4)
   $core.String get members => $_getSZ(3);
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(4)
   set members($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(4)
   $core.bool hasMembers() => $_has(3);
-  @$pb.TagNumber(5)
-  void clearMembers() => clearField(5);
+  @$pb.TagNumber(4)
+  void clearMembers() => clearField(4);
 }
 
 class GetMembersRequest extends $pb.GeneratedMessage {
@@ -190,7 +208,7 @@ class GetMembersRequest extends $pb.GeneratedMessage {
 
 class GetMembersResponse extends $pb.GeneratedMessage {
   factory GetMembersResponse({
-    $core.Iterable<ContactItem>? items,
+    $core.Iterable<MemberItem>? items,
   }) {
     final $result = create();
     if (items != null) {
@@ -203,7 +221,7 @@ class GetMembersResponse extends $pb.GeneratedMessage {
   factory GetMembersResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetMembersResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
-    ..pc<ContactItem>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: ContactItem.create)
+    ..pc<MemberItem>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: MemberItem.create)
     ..hasRequiredFields = false
   ;
 
@@ -229,11 +247,11 @@ class GetMembersResponse extends $pb.GeneratedMessage {
   static GetMembersResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<ContactItem> get items => $_getList(0);
+  $core.List<MemberItem> get items => $_getList(0);
 }
 
-class ContactItem extends $pb.GeneratedMessage {
-  factory ContactItem({
+class MemberItem extends $pb.GeneratedMessage {
+  factory MemberItem({
     $fixnum.Int64? id,
     $core.String? username,
     $core.String? avatar,
@@ -258,11 +276,11 @@ class ContactItem extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  ContactItem._() : super();
-  factory ContactItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ContactItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MemberItem._() : super();
+  factory MemberItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MemberItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ContactItem', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MemberItem', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'username')
     ..aOS(3, _omitFieldNames ? '' : 'avatar')
@@ -275,22 +293,22 @@ class ContactItem extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ContactItem clone() => ContactItem()..mergeFromMessage(this);
+  MemberItem clone() => MemberItem()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ContactItem copyWith(void Function(ContactItem) updates) => super.copyWith((message) => updates(message as ContactItem)) as ContactItem;
+  MemberItem copyWith(void Function(MemberItem) updates) => super.copyWith((message) => updates(message as MemberItem)) as MemberItem;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ContactItem create() => ContactItem._();
-  ContactItem createEmptyInstance() => create();
-  static $pb.PbList<ContactItem> createRepeated() => $pb.PbList<ContactItem>();
+  static MemberItem create() => MemberItem._();
+  MemberItem createEmptyInstance() => create();
+  static $pb.PbList<MemberItem> createRepeated() => $pb.PbList<MemberItem>();
   @$core.pragma('dart2js:noInline')
-  static ContactItem getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContactItem>(create);
-  static ContactItem? _defaultInstance;
+  static MemberItem getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MemberItem>(create);
+  static MemberItem? _defaultInstance;
 
   @$pb.TagNumber(1)
   $fixnum.Int64 get id => $_getI64(0);
