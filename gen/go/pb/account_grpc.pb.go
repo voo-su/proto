@@ -19,14 +19,24 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AccountService_Get_FullMethodName = "/account.AccountService/Get"
+	AccountService_GetProfile_FullMethodName           = "/account.AccountService/GetProfile"
+	AccountService_UpdateProfile_FullMethodName        = "/account.AccountService/UpdateProfile"
+	AccountService_UpdateProfilePhoto_FullMethodName   = "/account.AccountService/UpdateProfilePhoto"
+	AccountService_GetNotifySettings_FullMethodName    = "/account.AccountService/getNotifySettings"
+	AccountService_UpdateNotifySettings_FullMethodName = "/account.AccountService/updateNotifySettings"
+	AccountService_RegisterDevice_FullMethodName       = "/account.AccountService/RegisterDevice"
 )
 
 // AccountServiceClient is the client API for AccountService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccountServiceClient interface {
-	Get(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error)
+	GetProfile(ctx context.Context, in *GetProfileRequest, opts ...grpc.CallOption) (*GetProfileResponse, error)
+	UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UpdateProfileResponse, error)
+	UpdateProfilePhoto(ctx context.Context, in *UpdateProfilePhotoRequest, opts ...grpc.CallOption) (*UpdateProfilePhotoResponse, error)
+	GetNotifySettings(ctx context.Context, in *GetNotifySettingsRequest, opts ...grpc.CallOption) (*GetNotifySettingsResponse, error)
+	UpdateNotifySettings(ctx context.Context, in *UpdateNotifySettingsRequest, opts ...grpc.CallOption) (*UpdateNotifySettingsResponse, error)
+	RegisterDevice(ctx context.Context, in *RegisterDeviceRequest, opts ...grpc.CallOption) (*RegisterDeviceResponse, error)
 }
 
 type accountServiceClient struct {
@@ -37,10 +47,60 @@ func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
 	return &accountServiceClient{cc}
 }
 
-func (c *accountServiceClient) Get(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
+func (c *accountServiceClient) GetProfile(ctx context.Context, in *GetProfileRequest, opts ...grpc.CallOption) (*GetProfileResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAccountResponse)
-	err := c.cc.Invoke(ctx, AccountService_Get_FullMethodName, in, out, cOpts...)
+	out := new(GetProfileResponse)
+	err := c.cc.Invoke(ctx, AccountService_GetProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UpdateProfileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateProfileResponse)
+	err := c.cc.Invoke(ctx, AccountService_UpdateProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) UpdateProfilePhoto(ctx context.Context, in *UpdateProfilePhotoRequest, opts ...grpc.CallOption) (*UpdateProfilePhotoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateProfilePhotoResponse)
+	err := c.cc.Invoke(ctx, AccountService_UpdateProfilePhoto_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) GetNotifySettings(ctx context.Context, in *GetNotifySettingsRequest, opts ...grpc.CallOption) (*GetNotifySettingsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetNotifySettingsResponse)
+	err := c.cc.Invoke(ctx, AccountService_GetNotifySettings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) UpdateNotifySettings(ctx context.Context, in *UpdateNotifySettingsRequest, opts ...grpc.CallOption) (*UpdateNotifySettingsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateNotifySettingsResponse)
+	err := c.cc.Invoke(ctx, AccountService_UpdateNotifySettings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) RegisterDevice(ctx context.Context, in *RegisterDeviceRequest, opts ...grpc.CallOption) (*RegisterDeviceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterDeviceResponse)
+	err := c.cc.Invoke(ctx, AccountService_RegisterDevice_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +111,12 @@ func (c *accountServiceClient) Get(ctx context.Context, in *GetAccountRequest, o
 // All implementations must embed UnimplementedAccountServiceServer
 // for forward compatibility.
 type AccountServiceServer interface {
-	Get(context.Context, *GetAccountRequest) (*GetAccountResponse, error)
+	GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error)
+	UpdateProfile(context.Context, *UpdateProfileRequest) (*UpdateProfileResponse, error)
+	UpdateProfilePhoto(context.Context, *UpdateProfilePhotoRequest) (*UpdateProfilePhotoResponse, error)
+	GetNotifySettings(context.Context, *GetNotifySettingsRequest) (*GetNotifySettingsResponse, error)
+	UpdateNotifySettings(context.Context, *UpdateNotifySettingsRequest) (*UpdateNotifySettingsResponse, error)
+	RegisterDevice(context.Context, *RegisterDeviceRequest) (*RegisterDeviceResponse, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }
 
@@ -62,8 +127,23 @@ type AccountServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAccountServiceServer struct{}
 
-func (UnimplementedAccountServiceServer) Get(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+func (UnimplementedAccountServiceServer) GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProfile not implemented")
+}
+func (UnimplementedAccountServiceServer) UpdateProfile(context.Context, *UpdateProfileRequest) (*UpdateProfileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfile not implemented")
+}
+func (UnimplementedAccountServiceServer) UpdateProfilePhoto(context.Context, *UpdateProfilePhotoRequest) (*UpdateProfilePhotoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfilePhoto not implemented")
+}
+func (UnimplementedAccountServiceServer) GetNotifySettings(context.Context, *GetNotifySettingsRequest) (*GetNotifySettingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNotifySettings not implemented")
+}
+func (UnimplementedAccountServiceServer) UpdateNotifySettings(context.Context, *UpdateNotifySettingsRequest) (*UpdateNotifySettingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNotifySettings not implemented")
+}
+func (UnimplementedAccountServiceServer) RegisterDevice(context.Context, *RegisterDeviceRequest) (*RegisterDeviceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterDevice not implemented")
 }
 func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}
 func (UnimplementedAccountServiceServer) testEmbeddedByValue()                        {}
@@ -86,20 +166,110 @@ func RegisterAccountServiceServer(s grpc.ServiceRegistrar, srv AccountServiceSer
 	s.RegisterService(&AccountService_ServiceDesc, srv)
 }
 
-func _AccountService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountRequest)
+func _AccountService_GetProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProfileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).Get(ctx, in)
+		return srv.(AccountServiceServer).GetProfile(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AccountService_Get_FullMethodName,
+		FullMethod: AccountService_GetProfile_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).Get(ctx, req.(*GetAccountRequest))
+		return srv.(AccountServiceServer).GetProfile(ctx, req.(*GetProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_UpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProfileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).UpdateProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_UpdateProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).UpdateProfile(ctx, req.(*UpdateProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_UpdateProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProfilePhotoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).UpdateProfilePhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_UpdateProfilePhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).UpdateProfilePhoto(ctx, req.(*UpdateProfilePhotoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_GetNotifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetNotifySettingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).GetNotifySettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_GetNotifySettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).GetNotifySettings(ctx, req.(*GetNotifySettingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_UpdateNotifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNotifySettingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).UpdateNotifySettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_UpdateNotifySettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).UpdateNotifySettings(ctx, req.(*UpdateNotifySettingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_RegisterDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterDeviceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).RegisterDevice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_RegisterDevice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).RegisterDevice(ctx, req.(*RegisterDeviceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +282,28 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AccountServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Get",
-			Handler:    _AccountService_Get_Handler,
+			MethodName: "GetProfile",
+			Handler:    _AccountService_GetProfile_Handler,
+		},
+		{
+			MethodName: "UpdateProfile",
+			Handler:    _AccountService_UpdateProfile_Handler,
+		},
+		{
+			MethodName: "UpdateProfilePhoto",
+			Handler:    _AccountService_UpdateProfilePhoto_Handler,
+		},
+		{
+			MethodName: "getNotifySettings",
+			Handler:    _AccountService_GetNotifySettings_Handler,
+		},
+		{
+			MethodName: "updateNotifySettings",
+			Handler:    _AccountService_UpdateNotifySettings_Handler,
+		},
+		{
+			MethodName: "RegisterDevice",
+			Handler:    _AccountService_RegisterDevice_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

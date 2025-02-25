@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: message.proto
+//  source: group_chat.proto
 //
 // @dart = 2.12
 

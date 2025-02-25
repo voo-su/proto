@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package group_chat;
+
+option go_package = "./group_chat;pb";
+
+service GroupChatService {
+  rpc GetGroupChat (GetGroupChatRequest) returns (GetGroupChatResponse);
+
+  rpc GetMembers(GetMembersRequest) returns (GetMembersResponse) {}
+}
+
+message GetGroupChatRequest {}
+
+message GetGroupChatResponse {
+  int64 id = 1;
+  string name = 3;
+  string avatar = 2;
+  string members = 5;
+}
+
+message GetMembersRequest {
+  int64 id = 1;
+}
+
+message GetMembersResponse {
+  repeated ContactItem items = 1;
+}
+
+message ContactItem {
+  int64 id = 1;
+  string username = 2;
+  string avatar = 3;
+  string name = 4;
+  string surname = 5;
+}

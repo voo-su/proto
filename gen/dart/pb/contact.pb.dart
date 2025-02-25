@@ -96,6 +96,7 @@ class ContactItem extends $pb.GeneratedMessage {
     $core.String? username,
     $core.String? name,
     $core.String? surname,
+    $core.String? avatar,
   }) {
     final $result = create();
     if (id != null) {
@@ -110,6 +111,9 @@ class ContactItem extends $pb.GeneratedMessage {
     if (surname != null) {
       $result.surname = surname;
     }
+    if (avatar != null) {
+      $result.avatar = avatar;
+    }
     return $result;
   }
   ContactItem._() : super();
@@ -121,6 +125,7 @@ class ContactItem extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'username')
     ..aOS(3, _omitFieldNames ? '' : 'name')
     ..aOS(4, _omitFieldNames ? '' : 'surname')
+    ..aOS(5, _omitFieldNames ? '' : 'avatar')
     ..hasRequiredFields = false
   ;
 
@@ -180,6 +185,15 @@ class ContactItem extends $pb.GeneratedMessage {
   $core.bool hasSurname() => $_has(3);
   @$pb.TagNumber(4)
   void clearSurname() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get avatar => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set avatar($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasAvatar() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearAvatar() => clearField(5);
 }
 
 

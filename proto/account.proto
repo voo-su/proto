@@ -5,14 +5,22 @@ package account;
 option go_package = "./account;pb";
 
 service AccountService {
-  rpc Get (GetAccountRequest) returns (GetAccountResponse);
+  rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
+
+  rpc UpdateProfile (UpdateProfileRequest) returns (UpdateProfileResponse);
+
+  rpc UpdateProfilePhoto (UpdateProfilePhotoRequest) returns (UpdateProfilePhotoResponse);
+
+  rpc getNotifySettings (GetNotifySettingsRequest) returns (GetNotifySettingsResponse);
+
+  rpc updateNotifySettings (UpdateNotifySettingsRequest) returns (UpdateNotifySettingsResponse);
+
+  rpc RegisterDevice (RegisterDeviceRequest) returns (RegisterDeviceResponse);
 }
 
-message GetAccountRequest {
+message GetProfileRequest {}
 
-}
-
-message GetAccountResponse {
+message GetProfileResponse {
   int64 id = 1;
   string username = 3;
   string email = 4;
@@ -22,4 +30,50 @@ message GetAccountResponse {
   int32 gender = 7;
   string birthday = 8;
   string about = 9;
+}
+
+message UpdateProfileRequest {
+  string username = 1;
+  string name = 2;
+  string surname = 3;
+  int32 gender = 4;
+  string birthday = 5;
+  string about = 6;
+}
+
+message UpdateProfileResponse {
+  bool success = 1;
+}
+
+message UpdateProfilePhotoRequest {
+  bytes photo = 1;
+}
+
+message UpdateProfilePhotoResponse {
+  bool success = 1;
+}
+
+message GetNotifySettingsRequest {}
+
+message GetNotifySettingsResponse {
+  bool personal_chats = 1;
+  bool group_chats = 2;
+}
+
+message UpdateNotifySettingsRequest {
+  bool personal_chats = 2;
+  bool group_chats = 3;
+}
+
+message UpdateNotifySettingsResponse {
+  bool success = 1;
+}
+
+message RegisterDeviceRequest {
+  int32 token_type = 1;
+  string token = 2;
+}
+
+message RegisterDeviceResponse {
+  bool success = 1;
 }
