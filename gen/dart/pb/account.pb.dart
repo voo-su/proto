@@ -210,7 +210,6 @@ class GetProfileResponse extends $pb.GeneratedMessage {
 
 class UpdateProfileRequest extends $pb.GeneratedMessage {
   factory UpdateProfileRequest({
-    $core.String? username,
     $core.String? name,
     $core.String? surname,
     $core.int? gender,
@@ -218,9 +217,6 @@ class UpdateProfileRequest extends $pb.GeneratedMessage {
     $core.String? about,
   }) {
     final $result = create();
-    if (username != null) {
-      $result.username = username;
-    }
     if (name != null) {
       $result.name = name;
     }
@@ -243,12 +239,11 @@ class UpdateProfileRequest extends $pb.GeneratedMessage {
   factory UpdateProfileRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateProfileRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'username')
-    ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..aOS(3, _omitFieldNames ? '' : 'surname')
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'gender', $pb.PbFieldType.O3)
-    ..aOS(5, _omitFieldNames ? '' : 'birthday')
-    ..aOS(6, _omitFieldNames ? '' : 'about')
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..aOS(2, _omitFieldNames ? '' : 'surname')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'gender', $pb.PbFieldType.O3)
+    ..aOS(4, _omitFieldNames ? '' : 'birthday')
+    ..aOS(5, _omitFieldNames ? '' : 'about')
     ..hasRequiredFields = false
   ;
 
@@ -274,58 +269,49 @@ class UpdateProfileRequest extends $pb.GeneratedMessage {
   static UpdateProfileRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get username => $_getSZ(0);
+  $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
-  set username($core.String v) { $_setString(0, v); }
+  set name($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUsername() => $_has(0);
+  $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUsername() => clearField(1);
+  void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
+  $core.String get surname => $_getSZ(1);
   @$pb.TagNumber(2)
-  set name($core.String v) { $_setString(1, v); }
+  set surname($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
+  $core.bool hasSurname() => $_has(1);
   @$pb.TagNumber(2)
-  void clearName() => clearField(2);
+  void clearSurname() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get surname => $_getSZ(2);
+  $core.int get gender => $_getIZ(2);
   @$pb.TagNumber(3)
-  set surname($core.String v) { $_setString(2, v); }
+  set gender($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSurname() => $_has(2);
+  $core.bool hasGender() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSurname() => clearField(3);
+  void clearGender() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get gender => $_getIZ(3);
+  $core.String get birthday => $_getSZ(3);
   @$pb.TagNumber(4)
-  set gender($core.int v) { $_setSignedInt32(3, v); }
+  set birthday($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasGender() => $_has(3);
+  $core.bool hasBirthday() => $_has(3);
   @$pb.TagNumber(4)
-  void clearGender() => clearField(4);
+  void clearBirthday() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get birthday => $_getSZ(4);
+  $core.String get about => $_getSZ(4);
   @$pb.TagNumber(5)
-  set birthday($core.String v) { $_setString(4, v); }
+  set about($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasBirthday() => $_has(4);
+  $core.bool hasAbout() => $_has(4);
   @$pb.TagNumber(5)
-  void clearBirthday() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.String get about => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set about($core.String v) { $_setString(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasAbout() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearAbout() => clearField(6);
+  void clearAbout() => clearField(5);
 }
 
 class UpdateProfileResponse extends $pb.GeneratedMessage {
@@ -478,6 +464,367 @@ class UpdateProfilePhotoResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 }
 
+class EntityNotifySettings extends $pb.GeneratedMessage {
+  factory EntityNotifySettings({
+    $core.int? muteUntil,
+    $core.bool? silent,
+    $core.bool? showPreviews,
+  }) {
+    final $result = create();
+    if (muteUntil != null) {
+      $result.muteUntil = muteUntil;
+    }
+    if (silent != null) {
+      $result.silent = silent;
+    }
+    if (showPreviews != null) {
+      $result.showPreviews = showPreviews;
+    }
+    return $result;
+  }
+  EntityNotifySettings._() : super();
+  factory EntityNotifySettings.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EntityNotifySettings.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EntityNotifySettings', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'muteUntil', $pb.PbFieldType.O3)
+    ..aOB(2, _omitFieldNames ? '' : 'silent')
+    ..aOB(3, _omitFieldNames ? '' : 'showPreviews')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EntityNotifySettings clone() => EntityNotifySettings()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EntityNotifySettings copyWith(void Function(EntityNotifySettings) updates) => super.copyWith((message) => updates(message as EntityNotifySettings)) as EntityNotifySettings;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EntityNotifySettings create() => EntityNotifySettings._();
+  EntityNotifySettings createEmptyInstance() => create();
+  static $pb.PbList<EntityNotifySettings> createRepeated() => $pb.PbList<EntityNotifySettings>();
+  @$core.pragma('dart2js:noInline')
+  static EntityNotifySettings getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityNotifySettings>(create);
+  static EntityNotifySettings? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get muteUntil => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set muteUntil($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMuteUntil() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMuteUntil() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get silent => $_getBF(1);
+  @$pb.TagNumber(2)
+  set silent($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSilent() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSilent() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get showPreviews => $_getBF(2);
+  @$pb.TagNumber(3)
+  set showPreviews($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasShowPreviews() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearShowPreviews() => clearField(3);
+}
+
+enum NotifyEntity_Entity {
+  groups, 
+  chats, 
+  chat, 
+  group, 
+  notSet
+}
+
+class NotifyEntity extends $pb.GeneratedMessage {
+  factory NotifyEntity({
+    EntityGroups? groups,
+    EntityChats? chats,
+    EntityChat? chat,
+    EntityGroup? group,
+  }) {
+    final $result = create();
+    if (groups != null) {
+      $result.groups = groups;
+    }
+    if (chats != null) {
+      $result.chats = chats;
+    }
+    if (chat != null) {
+      $result.chat = chat;
+    }
+    if (group != null) {
+      $result.group = group;
+    }
+    return $result;
+  }
+  NotifyEntity._() : super();
+  factory NotifyEntity.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory NotifyEntity.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static const $core.Map<$core.int, NotifyEntity_Entity> _NotifyEntity_EntityByTag = {
+    1 : NotifyEntity_Entity.groups,
+    2 : NotifyEntity_Entity.chats,
+    4 : NotifyEntity_Entity.chat,
+    5 : NotifyEntity_Entity.group,
+    0 : NotifyEntity_Entity.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotifyEntity', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..oo(0, [1, 2, 4, 5])
+    ..aOM<EntityGroups>(1, _omitFieldNames ? '' : 'groups', subBuilder: EntityGroups.create)
+    ..aOM<EntityChats>(2, _omitFieldNames ? '' : 'chats', subBuilder: EntityChats.create)
+    ..aOM<EntityChat>(4, _omitFieldNames ? '' : 'chat', subBuilder: EntityChat.create)
+    ..aOM<EntityGroup>(5, _omitFieldNames ? '' : 'group', subBuilder: EntityGroup.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  NotifyEntity clone() => NotifyEntity()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  NotifyEntity copyWith(void Function(NotifyEntity) updates) => super.copyWith((message) => updates(message as NotifyEntity)) as NotifyEntity;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NotifyEntity create() => NotifyEntity._();
+  NotifyEntity createEmptyInstance() => create();
+  static $pb.PbList<NotifyEntity> createRepeated() => $pb.PbList<NotifyEntity>();
+  @$core.pragma('dart2js:noInline')
+  static NotifyEntity getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<NotifyEntity>(create);
+  static NotifyEntity? _defaultInstance;
+
+  NotifyEntity_Entity whichEntity() => _NotifyEntity_EntityByTag[$_whichOneof(0)]!;
+  void clearEntity() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  EntityGroups get groups => $_getN(0);
+  @$pb.TagNumber(1)
+  set groups(EntityGroups v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGroups() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGroups() => clearField(1);
+  @$pb.TagNumber(1)
+  EntityGroups ensureGroups() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  EntityChats get chats => $_getN(1);
+  @$pb.TagNumber(2)
+  set chats(EntityChats v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasChats() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearChats() => clearField(2);
+  @$pb.TagNumber(2)
+  EntityChats ensureChats() => $_ensure(1);
+
+  @$pb.TagNumber(4)
+  EntityChat get chat => $_getN(2);
+  @$pb.TagNumber(4)
+  set chat(EntityChat v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasChat() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearChat() => clearField(4);
+  @$pb.TagNumber(4)
+  EntityChat ensureChat() => $_ensure(2);
+
+  @$pb.TagNumber(5)
+  EntityGroup get group => $_getN(3);
+  @$pb.TagNumber(5)
+  set group(EntityGroup v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasGroup() => $_has(3);
+  @$pb.TagNumber(5)
+  void clearGroup() => clearField(5);
+  @$pb.TagNumber(5)
+  EntityGroup ensureGroup() => $_ensure(3);
+}
+
+class EntityChats extends $pb.GeneratedMessage {
+  factory EntityChats() => create();
+  EntityChats._() : super();
+  factory EntityChats.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EntityChats.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EntityChats', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EntityChats clone() => EntityChats()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EntityChats copyWith(void Function(EntityChats) updates) => super.copyWith((message) => updates(message as EntityChats)) as EntityChats;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EntityChats create() => EntityChats._();
+  EntityChats createEmptyInstance() => create();
+  static $pb.PbList<EntityChats> createRepeated() => $pb.PbList<EntityChats>();
+  @$core.pragma('dart2js:noInline')
+  static EntityChats getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityChats>(create);
+  static EntityChats? _defaultInstance;
+}
+
+class EntityGroups extends $pb.GeneratedMessage {
+  factory EntityGroups() => create();
+  EntityGroups._() : super();
+  factory EntityGroups.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EntityGroups.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EntityGroups', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EntityGroups clone() => EntityGroups()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EntityGroups copyWith(void Function(EntityGroups) updates) => super.copyWith((message) => updates(message as EntityGroups)) as EntityGroups;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EntityGroups create() => EntityGroups._();
+  EntityGroups createEmptyInstance() => create();
+  static $pb.PbList<EntityGroups> createRepeated() => $pb.PbList<EntityGroups>();
+  @$core.pragma('dart2js:noInline')
+  static EntityGroups getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityGroups>(create);
+  static EntityGroups? _defaultInstance;
+}
+
+class EntityChat extends $pb.GeneratedMessage {
+  factory EntityChat({
+    $fixnum.Int64? chatId,
+  }) {
+    final $result = create();
+    if (chatId != null) {
+      $result.chatId = chatId;
+    }
+    return $result;
+  }
+  EntityChat._() : super();
+  factory EntityChat.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EntityChat.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EntityChat', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'chatId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EntityChat clone() => EntityChat()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EntityChat copyWith(void Function(EntityChat) updates) => super.copyWith((message) => updates(message as EntityChat)) as EntityChat;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EntityChat create() => EntityChat._();
+  EntityChat createEmptyInstance() => create();
+  static $pb.PbList<EntityChat> createRepeated() => $pb.PbList<EntityChat>();
+  @$core.pragma('dart2js:noInline')
+  static EntityChat getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityChat>(create);
+  static EntityChat? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get chatId => $_getI64(0);
+  @$pb.TagNumber(1)
+  set chatId($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChatId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChatId() => clearField(1);
+}
+
+class EntityGroup extends $pb.GeneratedMessage {
+  factory EntityGroup({
+    $fixnum.Int64? groupId,
+  }) {
+    final $result = create();
+    if (groupId != null) {
+      $result.groupId = groupId;
+    }
+    return $result;
+  }
+  EntityGroup._() : super();
+  factory EntityGroup.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EntityGroup.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EntityGroup', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'groupId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EntityGroup clone() => EntityGroup()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EntityGroup copyWith(void Function(EntityGroup) updates) => super.copyWith((message) => updates(message as EntityGroup)) as EntityGroup;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EntityGroup create() => EntityGroup._();
+  EntityGroup createEmptyInstance() => create();
+  static $pb.PbList<EntityGroup> createRepeated() => $pb.PbList<EntityGroup>();
+  @$core.pragma('dart2js:noInline')
+  static EntityGroup getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityGroup>(create);
+  static EntityGroup? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get groupId => $_getI64(0);
+  @$pb.TagNumber(1)
+  set groupId($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGroupId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGroupId() => clearField(1);
+}
+
 class GetNotifySettingsRequest extends $pb.GeneratedMessage {
   factory GetNotifySettingsRequest() => create();
   GetNotifySettingsRequest._() : super();
@@ -512,15 +859,11 @@ class GetNotifySettingsRequest extends $pb.GeneratedMessage {
 
 class GetNotifySettingsResponse extends $pb.GeneratedMessage {
   factory GetNotifySettingsResponse({
-    $core.bool? personalChats,
-    $core.bool? groupChats,
+    EntityNotifySettings? settings,
   }) {
     final $result = create();
-    if (personalChats != null) {
-      $result.personalChats = personalChats;
-    }
-    if (groupChats != null) {
-      $result.groupChats = groupChats;
+    if (settings != null) {
+      $result.settings = settings;
     }
     return $result;
   }
@@ -529,8 +872,7 @@ class GetNotifySettingsResponse extends $pb.GeneratedMessage {
   factory GetNotifySettingsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetNotifySettingsResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'personalChats')
-    ..aOB(2, _omitFieldNames ? '' : 'groupChats')
+    ..aOM<EntityNotifySettings>(1, _omitFieldNames ? '' : 'settings', subBuilder: EntityNotifySettings.create)
     ..hasRequiredFields = false
   ;
 
@@ -556,35 +898,28 @@ class GetNotifySettingsResponse extends $pb.GeneratedMessage {
   static GetNotifySettingsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get personalChats => $_getBF(0);
+  EntityNotifySettings get settings => $_getN(0);
   @$pb.TagNumber(1)
-  set personalChats($core.bool v) { $_setBool(0, v); }
+  set settings(EntityNotifySettings v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasPersonalChats() => $_has(0);
+  $core.bool hasSettings() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPersonalChats() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.bool get groupChats => $_getBF(1);
-  @$pb.TagNumber(2)
-  set groupChats($core.bool v) { $_setBool(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasGroupChats() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearGroupChats() => clearField(2);
+  void clearSettings() => clearField(1);
+  @$pb.TagNumber(1)
+  EntityNotifySettings ensureSettings() => $_ensure(0);
 }
 
 class UpdateNotifySettingsRequest extends $pb.GeneratedMessage {
   factory UpdateNotifySettingsRequest({
-    $core.bool? personalChats,
-    $core.bool? groupChats,
+    NotifyEntity? entity,
+    EntityNotifySettings? settings,
   }) {
     final $result = create();
-    if (personalChats != null) {
-      $result.personalChats = personalChats;
+    if (entity != null) {
+      $result.entity = entity;
     }
-    if (groupChats != null) {
-      $result.groupChats = groupChats;
+    if (settings != null) {
+      $result.settings = settings;
     }
     return $result;
   }
@@ -593,8 +928,8 @@ class UpdateNotifySettingsRequest extends $pb.GeneratedMessage {
   factory UpdateNotifySettingsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateNotifySettingsRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
-    ..aOB(2, _omitFieldNames ? '' : 'personalChats')
-    ..aOB(3, _omitFieldNames ? '' : 'groupChats')
+    ..aOM<NotifyEntity>(1, _omitFieldNames ? '' : 'entity', subBuilder: NotifyEntity.create)
+    ..aOM<EntityNotifySettings>(2, _omitFieldNames ? '' : 'settings', subBuilder: EntityNotifySettings.create)
     ..hasRequiredFields = false
   ;
 
@@ -619,23 +954,27 @@ class UpdateNotifySettingsRequest extends $pb.GeneratedMessage {
   static UpdateNotifySettingsRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateNotifySettingsRequest>(create);
   static UpdateNotifySettingsRequest? _defaultInstance;
 
-  @$pb.TagNumber(2)
-  $core.bool get personalChats => $_getBF(0);
-  @$pb.TagNumber(2)
-  set personalChats($core.bool v) { $_setBool(0, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasPersonalChats() => $_has(0);
-  @$pb.TagNumber(2)
-  void clearPersonalChats() => clearField(2);
+  @$pb.TagNumber(1)
+  NotifyEntity get entity => $_getN(0);
+  @$pb.TagNumber(1)
+  set entity(NotifyEntity v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEntity() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEntity() => clearField(1);
+  @$pb.TagNumber(1)
+  NotifyEntity ensureEntity() => $_ensure(0);
 
-  @$pb.TagNumber(3)
-  $core.bool get groupChats => $_getBF(1);
-  @$pb.TagNumber(3)
-  set groupChats($core.bool v) { $_setBool(1, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasGroupChats() => $_has(1);
-  @$pb.TagNumber(3)
-  void clearGroupChats() => clearField(3);
+  @$pb.TagNumber(2)
+  EntityNotifySettings get settings => $_getN(1);
+  @$pb.TagNumber(2)
+  set settings(EntityNotifySettings v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSettings() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSettings() => clearField(2);
+  @$pb.TagNumber(2)
+  EntityNotifySettings ensureSettings() => $_ensure(1);
 }
 
 class UpdateNotifySettingsResponse extends $pb.GeneratedMessage {

@@ -1187,6 +1187,136 @@ class SendMessageResponse extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+class SendPhotoRequest extends $pb.GeneratedMessage {
+  factory SendPhotoRequest({
+    Receiver? receiver,
+    $core.List<$core.int>? photo,
+    $core.String? caption,
+  }) {
+    final $result = create();
+    if (receiver != null) {
+      $result.receiver = receiver;
+    }
+    if (photo != null) {
+      $result.photo = photo;
+    }
+    if (caption != null) {
+      $result.caption = caption;
+    }
+    return $result;
+  }
+  SendPhotoRequest._() : super();
+  factory SendPhotoRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendPhotoRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendPhotoRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
+    ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
+    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'photo', $pb.PbFieldType.OY)
+    ..aOS(3, _omitFieldNames ? '' : 'caption')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendPhotoRequest clone() => SendPhotoRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendPhotoRequest copyWith(void Function(SendPhotoRequest) updates) => super.copyWith((message) => updates(message as SendPhotoRequest)) as SendPhotoRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SendPhotoRequest create() => SendPhotoRequest._();
+  SendPhotoRequest createEmptyInstance() => create();
+  static $pb.PbList<SendPhotoRequest> createRepeated() => $pb.PbList<SendPhotoRequest>();
+  @$core.pragma('dart2js:noInline')
+  static SendPhotoRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendPhotoRequest>(create);
+  static SendPhotoRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Receiver get receiver => $_getN(0);
+  @$pb.TagNumber(1)
+  set receiver(Receiver v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasReceiver() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearReceiver() => clearField(1);
+  @$pb.TagNumber(1)
+  Receiver ensureReceiver() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get photo => $_getN(1);
+  @$pb.TagNumber(2)
+  set photo($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPhoto() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPhoto() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get caption => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set caption($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCaption() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCaption() => clearField(3);
+}
+
+class SendPhotoResponse extends $pb.GeneratedMessage {
+  factory SendPhotoResponse({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
+  SendPhotoResponse._() : super();
+  factory SendPhotoResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendPhotoResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendPhotoResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendPhotoResponse clone() => SendPhotoResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendPhotoResponse copyWith(void Function(SendPhotoResponse) updates) => super.copyWith((message) => updates(message as SendPhotoResponse)) as SendPhotoResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SendPhotoResponse create() => SendPhotoResponse._();
+  SendPhotoResponse createEmptyInstance() => create();
+  static $pb.PbList<SendPhotoResponse> createRepeated() => $pb.PbList<SendPhotoResponse>();
+  @$core.pragma('dart2js:noInline')
+  static SendPhotoResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendPhotoResponse>(create);
+  static SendPhotoResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
+
 class ViewMessagesRequest extends $pb.GeneratedMessage {
   factory ViewMessagesRequest({
     Receiver? receiver,

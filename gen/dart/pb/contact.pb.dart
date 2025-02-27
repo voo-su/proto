@@ -14,13 +14,13 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class GetContactListRequest extends $pb.GeneratedMessage {
-  factory GetContactListRequest() => create();
-  GetContactListRequest._() : super();
-  factory GetContactListRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GetContactListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class GetContactsRequest extends $pb.GeneratedMessage {
+  factory GetContactsRequest() => create();
+  GetContactsRequest._() : super();
+  factory GetContactsRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetContactsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetContactListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetContactsRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -28,26 +28,26 @@ class GetContactListRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  GetContactListRequest clone() => GetContactListRequest()..mergeFromMessage(this);
+  GetContactsRequest clone() => GetContactsRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  GetContactListRequest copyWith(void Function(GetContactListRequest) updates) => super.copyWith((message) => updates(message as GetContactListRequest)) as GetContactListRequest;
+  GetContactsRequest copyWith(void Function(GetContactsRequest) updates) => super.copyWith((message) => updates(message as GetContactsRequest)) as GetContactsRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static GetContactListRequest create() => GetContactListRequest._();
-  GetContactListRequest createEmptyInstance() => create();
-  static $pb.PbList<GetContactListRequest> createRepeated() => $pb.PbList<GetContactListRequest>();
+  static GetContactsRequest create() => GetContactsRequest._();
+  GetContactsRequest createEmptyInstance() => create();
+  static $pb.PbList<GetContactsRequest> createRepeated() => $pb.PbList<GetContactsRequest>();
   @$core.pragma('dart2js:noInline')
-  static GetContactListRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetContactListRequest>(create);
-  static GetContactListRequest? _defaultInstance;
+  static GetContactsRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetContactsRequest>(create);
+  static GetContactsRequest? _defaultInstance;
 }
 
-class GetContactListResponse extends $pb.GeneratedMessage {
-  factory GetContactListResponse({
+class GetContactsResponse extends $pb.GeneratedMessage {
+  factory GetContactsResponse({
     $core.Iterable<ContactItem>? items,
   }) {
     final $result = create();
@@ -56,11 +56,11 @@ class GetContactListResponse extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  GetContactListResponse._() : super();
-  factory GetContactListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GetContactListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  GetContactsResponse._() : super();
+  factory GetContactsResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetContactsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetContactListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetContactsResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
     ..pc<ContactItem>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: ContactItem.create)
     ..hasRequiredFields = false
   ;
@@ -69,22 +69,22 @@ class GetContactListResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  GetContactListResponse clone() => GetContactListResponse()..mergeFromMessage(this);
+  GetContactsResponse clone() => GetContactsResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  GetContactListResponse copyWith(void Function(GetContactListResponse) updates) => super.copyWith((message) => updates(message as GetContactListResponse)) as GetContactListResponse;
+  GetContactsResponse copyWith(void Function(GetContactsResponse) updates) => super.copyWith((message) => updates(message as GetContactsResponse)) as GetContactsResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static GetContactListResponse create() => GetContactListResponse._();
-  GetContactListResponse createEmptyInstance() => create();
-  static $pb.PbList<GetContactListResponse> createRepeated() => $pb.PbList<GetContactListResponse>();
+  static GetContactsResponse create() => GetContactsResponse._();
+  GetContactsResponse createEmptyInstance() => create();
+  static $pb.PbList<GetContactsResponse> createRepeated() => $pb.PbList<GetContactsResponse>();
   @$core.pragma('dart2js:noInline')
-  static GetContactListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetContactListResponse>(create);
-  static GetContactListResponse? _defaultInstance;
+  static GetContactsResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetContactsResponse>(create);
+  static GetContactsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<ContactItem> get items => $_getList(0);
@@ -194,6 +194,172 @@ class ContactItem extends $pb.GeneratedMessage {
   $core.bool hasAvatar() => $_has(4);
   @$pb.TagNumber(5)
   void clearAvatar() => clearField(5);
+}
+
+class GetUserRequest extends $pb.GeneratedMessage {
+  factory GetUserRequest() => create();
+  GetUserRequest._() : super();
+  factory GetUserRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetUserRequest clone() => GetUserRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetUserRequest copyWith(void Function(GetUserRequest) updates) => super.copyWith((message) => updates(message as GetUserRequest)) as GetUserRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetUserRequest create() => GetUserRequest._();
+  GetUserRequest createEmptyInstance() => create();
+  static $pb.PbList<GetUserRequest> createRepeated() => $pb.PbList<GetUserRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetUserRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetUserRequest>(create);
+  static GetUserRequest? _defaultInstance;
+}
+
+class GetUserResponse extends $pb.GeneratedMessage {
+  factory GetUserResponse({
+    $core.int? id,
+    $core.String? username,
+    $core.String? avatar,
+    $core.String? name,
+    $core.String? surname,
+    $core.int? gender,
+    $core.String? about,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (username != null) {
+      $result.username = username;
+    }
+    if (avatar != null) {
+      $result.avatar = avatar;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (surname != null) {
+      $result.surname = surname;
+    }
+    if (gender != null) {
+      $result.gender = gender;
+    }
+    if (about != null) {
+      $result.about = about;
+    }
+    return $result;
+  }
+  GetUserResponse._() : super();
+  factory GetUserResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetUserResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aOS(2, _omitFieldNames ? '' : 'username')
+    ..aOS(3, _omitFieldNames ? '' : 'avatar')
+    ..aOS(4, _omitFieldNames ? '' : 'name')
+    ..aOS(5, _omitFieldNames ? '' : 'surname')
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'gender', $pb.PbFieldType.O3)
+    ..aOS(7, _omitFieldNames ? '' : 'about')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetUserResponse clone() => GetUserResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetUserResponse copyWith(void Function(GetUserResponse) updates) => super.copyWith((message) => updates(message as GetUserResponse)) as GetUserResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetUserResponse create() => GetUserResponse._();
+  GetUserResponse createEmptyInstance() => create();
+  static $pb.PbList<GetUserResponse> createRepeated() => $pb.PbList<GetUserResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetUserResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetUserResponse>(create);
+  static GetUserResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get id => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set id($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get username => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set username($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUsername() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUsername() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get avatar => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set avatar($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAvatar() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAvatar() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get name => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set name($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearName() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get surname => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set surname($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSurname() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSurname() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get gender => $_getIZ(5);
+  @$pb.TagNumber(6)
+  set gender($core.int v) { $_setSignedInt32(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasGender() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearGender() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get about => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set about($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasAbout() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearAbout() => clearField(7);
 }
 
 

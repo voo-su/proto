@@ -21,10 +21,14 @@ export 'contact.pb.dart';
 
 @$pb.GrpcServiceName('contact.ContactService')
 class ContactServiceClient extends $grpc.Client {
-  static final _$list = $grpc.ClientMethod<$3.GetContactListRequest, $3.GetContactListResponse>(
-      '/contact.ContactService/List',
-      ($3.GetContactListRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.GetContactListResponse.fromBuffer(value));
+  static final _$getContacts = $grpc.ClientMethod<$3.GetContactsRequest, $3.GetContactsResponse>(
+      '/contact.ContactService/GetContacts',
+      ($3.GetContactsRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.GetContactsResponse.fromBuffer(value));
+  static final _$getUser = $grpc.ClientMethod<$3.GetUserRequest, $3.GetUserResponse>(
+      '/contact.ContactService/GetUser',
+      ($3.GetUserRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.GetUserResponse.fromBuffer(value));
 
   ContactServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,8 +36,12 @@ class ContactServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.GetContactListResponse> list($3.GetContactListRequest request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$list, request, options: options);
+  $grpc.ResponseFuture<$3.GetContactsResponse> getContacts($3.GetContactsRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getContacts, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.GetUserResponse> getUser($3.GetUserRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getUser, request, options: options);
   }
 }
 
@@ -42,18 +50,30 @@ abstract class ContactServiceBase extends $grpc.Service {
   $core.String get $name => 'contact.ContactService';
 
   ContactServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.GetContactListRequest, $3.GetContactListResponse>(
-        'List',
-        list_Pre,
+    $addMethod($grpc.ServiceMethod<$3.GetContactsRequest, $3.GetContactsResponse>(
+        'GetContacts',
+        getContacts_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.GetContactListRequest.fromBuffer(value),
-        ($3.GetContactListResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $3.GetContactsRequest.fromBuffer(value),
+        ($3.GetContactsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.GetUserRequest, $3.GetUserResponse>(
+        'GetUser',
+        getUser_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.GetUserRequest.fromBuffer(value),
+        ($3.GetUserResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.GetContactListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$3.GetContactListRequest> request) async {
-    return list(call, await request);
+  $async.Future<$3.GetContactsResponse> getContacts_Pre($grpc.ServiceCall call, $async.Future<$3.GetContactsRequest> request) async {
+    return getContacts(call, await request);
   }
 
-  $async.Future<$3.GetContactListResponse> list($grpc.ServiceCall call, $3.GetContactListRequest request);
+  $async.Future<$3.GetUserResponse> getUser_Pre($grpc.ServiceCall call, $async.Future<$3.GetUserRequest> request) async {
+    return getUser(call, await request);
+  }
+
+  $async.Future<$3.GetContactsResponse> getContacts($grpc.ServiceCall call, $3.GetContactsRequest request);
+  $async.Future<$3.GetUserResponse> getUser($grpc.ServiceCall call, $3.GetUserRequest request);
 }

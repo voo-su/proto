@@ -19,14 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ContactService_List_FullMethodName = "/contact.ContactService/List"
+	ContactService_GetContacts_FullMethodName = "/contact.ContactService/GetContacts"
+	ContactService_GetUser_FullMethodName     = "/contact.ContactService/GetUser"
 )
 
 // ContactServiceClient is the client API for ContactService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContactServiceClient interface {
-	List(ctx context.Context, in *GetContactListRequest, opts ...grpc.CallOption) (*GetContactListResponse, error)
+	GetContacts(ctx context.Context, in *GetContactsRequest, opts ...grpc.CallOption) (*GetContactsResponse, error)
+	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 }
 
 type contactServiceClient struct {
@@ -37,10 +39,20 @@ func NewContactServiceClient(cc grpc.ClientConnInterface) ContactServiceClient {
 	return &contactServiceClient{cc}
 }
 
-func (c *contactServiceClient) List(ctx context.Context, in *GetContactListRequest, opts ...grpc.CallOption) (*GetContactListResponse, error) {
+func (c *contactServiceClient) GetContacts(ctx context.Context, in *GetContactsRequest, opts ...grpc.CallOption) (*GetContactsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetContactListResponse)
-	err := c.cc.Invoke(ctx, ContactService_List_FullMethodName, in, out, cOpts...)
+	out := new(GetContactsResponse)
+	err := c.cc.Invoke(ctx, ContactService_GetContacts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contactServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserResponse)
+	err := c.cc.Invoke(ctx, ContactService_GetUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +63,8 @@ func (c *contactServiceClient) List(ctx context.Context, in *GetContactListReque
 // All implementations must embed UnimplementedContactServiceServer
 // for forward compatibility.
 type ContactServiceServer interface {
-	List(context.Context, *GetContactListRequest) (*GetContactListResponse, error)
+	GetContacts(context.Context, *GetContactsRequest) (*GetContactsResponse, error)
+	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	mustEmbedUnimplementedContactServiceServer()
 }
 
@@ -62,8 +75,11 @@ type ContactServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedContactServiceServer struct{}
 
-func (UnimplementedContactServiceServer) List(context.Context, *GetContactListRequest) (*GetContactListResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+func (UnimplementedContactServiceServer) GetContacts(context.Context, *GetContactsRequest) (*GetContactsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContacts not implemented")
+}
+func (UnimplementedContactServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
 func (UnimplementedContactServiceServer) mustEmbedUnimplementedContactServiceServer() {}
 func (UnimplementedContactServiceServer) testEmbeddedByValue()                        {}
@@ -86,20 +102,38 @@ func RegisterContactServiceServer(s grpc.ServiceRegistrar, srv ContactServiceSer
 	s.RegisterService(&ContactService_ServiceDesc, srv)
 }
 
-func _ContactService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetContactListRequest)
+func _ContactService_GetContacts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContactsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContactServiceServer).List(ctx, in)
+		return srv.(ContactServiceServer).GetContacts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContactService_List_FullMethodName,
+		FullMethod: ContactService_GetContacts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContactServiceServer).List(ctx, req.(*GetContactListRequest))
+		return srv.(ContactServiceServer).GetContacts(ctx, req.(*GetContactsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContactService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContactServiceServer).GetUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContactService_GetUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContactServiceServer).GetUser(ctx, req.(*GetUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +146,12 @@ var ContactService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ContactServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "List",
-			Handler:    _ContactService_List_Handler,
+			MethodName: "GetContacts",
+			Handler:    _ContactService_GetContacts_Handler,
+		},
+		{
+			MethodName: "GetUser",
+			Handler:    _ContactService_GetUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

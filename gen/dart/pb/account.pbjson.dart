@@ -50,21 +50,19 @@ final $typed_data.Uint8List getProfileResponseDescriptor = $convert.base64Decode
 const UpdateProfileRequest$json = {
   '1': 'UpdateProfileRequest',
   '2': [
-    {'1': 'username', '3': 1, '4': 1, '5': 9, '10': 'username'},
-    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'surname', '3': 3, '4': 1, '5': 9, '10': 'surname'},
-    {'1': 'gender', '3': 4, '4': 1, '5': 5, '10': 'gender'},
-    {'1': 'birthday', '3': 5, '4': 1, '5': 9, '10': 'birthday'},
-    {'1': 'about', '3': 6, '4': 1, '5': 9, '10': 'about'},
+    {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'surname', '3': 2, '4': 1, '5': 9, '10': 'surname'},
+    {'1': 'gender', '3': 3, '4': 1, '5': 5, '10': 'gender'},
+    {'1': 'birthday', '3': 4, '4': 1, '5': 9, '10': 'birthday'},
+    {'1': 'about', '3': 5, '4': 1, '5': 9, '10': 'about'},
   ],
 };
 
 /// Descriptor for `UpdateProfileRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateProfileRequestDescriptor = $convert.base64Decode(
-    'ChRVcGRhdGVQcm9maWxlUmVxdWVzdBIaCgh1c2VybmFtZRgBIAEoCVIIdXNlcm5hbWUSEgoEbm'
-    'FtZRgCIAEoCVIEbmFtZRIYCgdzdXJuYW1lGAMgASgJUgdzdXJuYW1lEhYKBmdlbmRlchgEIAEo'
-    'BVIGZ2VuZGVyEhoKCGJpcnRoZGF5GAUgASgJUghiaXJ0aGRheRIUCgVhYm91dBgGIAEoCVIFYW'
-    'JvdXQ=');
+    'ChRVcGRhdGVQcm9maWxlUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhgKB3N1cm5hbWUYAi'
+    'ABKAlSB3N1cm5hbWUSFgoGZ2VuZGVyGAMgASgFUgZnZW5kZXISGgoIYmlydGhkYXkYBCABKAlS'
+    'CGJpcnRoZGF5EhQKBWFib3V0GAUgASgJUgVhYm91dA==');
 
 @$core.Deprecated('Use updateProfileResponseDescriptor instead')
 const UpdateProfileResponse$json = {
@@ -102,6 +100,85 @@ const UpdateProfilePhotoResponse$json = {
 final $typed_data.Uint8List updateProfilePhotoResponseDescriptor = $convert.base64Decode(
     'ChpVcGRhdGVQcm9maWxlUGhvdG9SZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
 
+@$core.Deprecated('Use entityNotifySettingsDescriptor instead')
+const EntityNotifySettings$json = {
+  '1': 'EntityNotifySettings',
+  '2': [
+    {'1': 'mute_until', '3': 1, '4': 1, '5': 5, '10': 'muteUntil'},
+    {'1': 'silent', '3': 2, '4': 1, '5': 8, '10': 'silent'},
+    {'1': 'show_previews', '3': 3, '4': 1, '5': 8, '10': 'showPreviews'},
+  ],
+};
+
+/// Descriptor for `EntityNotifySettings`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List entityNotifySettingsDescriptor = $convert.base64Decode(
+    'ChRFbnRpdHlOb3RpZnlTZXR0aW5ncxIdCgptdXRlX3VudGlsGAEgASgFUgltdXRlVW50aWwSFg'
+    'oGc2lsZW50GAIgASgIUgZzaWxlbnQSIwoNc2hvd19wcmV2aWV3cxgDIAEoCFIMc2hvd1ByZXZp'
+    'ZXdz');
+
+@$core.Deprecated('Use notifyEntityDescriptor instead')
+const NotifyEntity$json = {
+  '1': 'NotifyEntity',
+  '2': [
+    {'1': 'chats', '3': 2, '4': 1, '5': 11, '6': '.account.EntityChats', '9': 0, '10': 'chats'},
+    {'1': 'groups', '3': 1, '4': 1, '5': 11, '6': '.account.EntityGroups', '9': 0, '10': 'groups'},
+    {'1': 'chat', '3': 4, '4': 1, '5': 11, '6': '.account.EntityChat', '9': 0, '10': 'chat'},
+    {'1': 'group', '3': 5, '4': 1, '5': 11, '6': '.account.EntityGroup', '9': 0, '10': 'group'},
+  ],
+  '8': [
+    {'1': 'entity'},
+  ],
+};
+
+/// Descriptor for `NotifyEntity`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List notifyEntityDescriptor = $convert.base64Decode(
+    'CgxOb3RpZnlFbnRpdHkSLAoFY2hhdHMYAiABKAsyFC5hY2NvdW50LkVudGl0eUNoYXRzSABSBW'
+    'NoYXRzEi8KBmdyb3VwcxgBIAEoCzIVLmFjY291bnQuRW50aXR5R3JvdXBzSABSBmdyb3VwcxIp'
+    'CgRjaGF0GAQgASgLMhMuYWNjb3VudC5FbnRpdHlDaGF0SABSBGNoYXQSLAoFZ3JvdXAYBSABKA'
+    'syFC5hY2NvdW50LkVudGl0eUdyb3VwSABSBWdyb3VwQggKBmVudGl0eQ==');
+
+@$core.Deprecated('Use entityChatsDescriptor instead')
+const EntityChats$json = {
+  '1': 'EntityChats',
+};
+
+/// Descriptor for `EntityChats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List entityChatsDescriptor = $convert.base64Decode(
+    'CgtFbnRpdHlDaGF0cw==');
+
+@$core.Deprecated('Use entityGroupsDescriptor instead')
+const EntityGroups$json = {
+  '1': 'EntityGroups',
+};
+
+/// Descriptor for `EntityGroups`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List entityGroupsDescriptor = $convert.base64Decode(
+    'CgxFbnRpdHlHcm91cHM=');
+
+@$core.Deprecated('Use entityChatDescriptor instead')
+const EntityChat$json = {
+  '1': 'EntityChat',
+  '2': [
+    {'1': 'chat_id', '3': 1, '4': 1, '5': 3, '10': 'chatId'},
+  ],
+};
+
+/// Descriptor for `EntityChat`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List entityChatDescriptor = $convert.base64Decode(
+    'CgpFbnRpdHlDaGF0EhcKB2NoYXRfaWQYASABKANSBmNoYXRJZA==');
+
+@$core.Deprecated('Use entityGroupDescriptor instead')
+const EntityGroup$json = {
+  '1': 'EntityGroup',
+  '2': [
+    {'1': 'group_id', '3': 1, '4': 1, '5': 3, '10': 'groupId'},
+  ],
+};
+
+/// Descriptor for `EntityGroup`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List entityGroupDescriptor = $convert.base64Decode(
+    'CgtFbnRpdHlHcm91cBIZCghncm91cF9pZBgBIAEoA1IHZ3JvdXBJZA==');
+
 @$core.Deprecated('Use getNotifySettingsRequestDescriptor instead')
 const GetNotifySettingsRequest$json = {
   '1': 'GetNotifySettingsRequest',
@@ -115,29 +192,29 @@ final $typed_data.Uint8List getNotifySettingsRequestDescriptor = $convert.base64
 const GetNotifySettingsResponse$json = {
   '1': 'GetNotifySettingsResponse',
   '2': [
-    {'1': 'personal_chats', '3': 1, '4': 1, '5': 8, '10': 'personalChats'},
-    {'1': 'group_chats', '3': 2, '4': 1, '5': 8, '10': 'groupChats'},
+    {'1': 'settings', '3': 1, '4': 1, '5': 11, '6': '.account.EntityNotifySettings', '10': 'settings'},
   ],
 };
 
 /// Descriptor for `GetNotifySettingsResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getNotifySettingsResponseDescriptor = $convert.base64Decode(
-    'ChlHZXROb3RpZnlTZXR0aW5nc1Jlc3BvbnNlEiUKDnBlcnNvbmFsX2NoYXRzGAEgASgIUg1wZX'
-    'Jzb25hbENoYXRzEh8KC2dyb3VwX2NoYXRzGAIgASgIUgpncm91cENoYXRz');
+    'ChlHZXROb3RpZnlTZXR0aW5nc1Jlc3BvbnNlEjkKCHNldHRpbmdzGAEgASgLMh0uYWNjb3VudC'
+    '5FbnRpdHlOb3RpZnlTZXR0aW5nc1IIc2V0dGluZ3M=');
 
 @$core.Deprecated('Use updateNotifySettingsRequestDescriptor instead')
 const UpdateNotifySettingsRequest$json = {
   '1': 'UpdateNotifySettingsRequest',
   '2': [
-    {'1': 'personal_chats', '3': 2, '4': 1, '5': 8, '10': 'personalChats'},
-    {'1': 'group_chats', '3': 3, '4': 1, '5': 8, '10': 'groupChats'},
+    {'1': 'entity', '3': 1, '4': 1, '5': 11, '6': '.account.NotifyEntity', '10': 'entity'},
+    {'1': 'settings', '3': 2, '4': 1, '5': 11, '6': '.account.EntityNotifySettings', '10': 'settings'},
   ],
 };
 
 /// Descriptor for `UpdateNotifySettingsRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateNotifySettingsRequestDescriptor = $convert.base64Decode(
-    'ChtVcGRhdGVOb3RpZnlTZXR0aW5nc1JlcXVlc3QSJQoOcGVyc29uYWxfY2hhdHMYAiABKAhSDX'
-    'BlcnNvbmFsQ2hhdHMSHwoLZ3JvdXBfY2hhdHMYAyABKAhSCmdyb3VwQ2hhdHM=');
+    'ChtVcGRhdGVOb3RpZnlTZXR0aW5nc1JlcXVlc3QSLQoGZW50aXR5GAEgASgLMhUuYWNjb3VudC'
+    '5Ob3RpZnlFbnRpdHlSBmVudGl0eRI5CghzZXR0aW5ncxgCIAEoCzIdLmFjY291bnQuRW50aXR5'
+    'Tm90aWZ5U2V0dGluZ3NSCHNldHRpbmdz');
 
 @$core.Deprecated('Use updateNotifySettingsResponseDescriptor instead')
 const UpdateNotifySettingsResponse$json = {

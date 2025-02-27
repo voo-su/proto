@@ -22,8 +22,8 @@ const (
 	AccountService_GetProfile_FullMethodName           = "/account.AccountService/GetProfile"
 	AccountService_UpdateProfile_FullMethodName        = "/account.AccountService/UpdateProfile"
 	AccountService_UpdateProfilePhoto_FullMethodName   = "/account.AccountService/UpdateProfilePhoto"
-	AccountService_GetNotifySettings_FullMethodName    = "/account.AccountService/getNotifySettings"
-	AccountService_UpdateNotifySettings_FullMethodName = "/account.AccountService/updateNotifySettings"
+	AccountService_GetNotifySettings_FullMethodName    = "/account.AccountService/GetNotifySettings"
+	AccountService_UpdateNotifySettings_FullMethodName = "/account.AccountService/UpdateNotifySettings"
 	AccountService_RegisterDevice_FullMethodName       = "/account.AccountService/RegisterDevice"
 )
 
@@ -294,11 +294,11 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccountService_UpdateProfilePhoto_Handler,
 		},
 		{
-			MethodName: "getNotifySettings",
+			MethodName: "GetNotifySettings",
 			Handler:    _AccountService_GetNotifySettings_Handler,
 		},
 		{
-			MethodName: "updateNotifySettings",
+			MethodName: "UpdateNotifySettings",
 			Handler:    _AccountService_UpdateNotifySettings_Handler,
 		},
 		{

@@ -34,11 +34,11 @@ class AccountServiceClient extends $grpc.Client {
       ($0.UpdateProfilePhotoRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.UpdateProfilePhotoResponse.fromBuffer(value));
   static final _$getNotifySettings = $grpc.ClientMethod<$0.GetNotifySettingsRequest, $0.GetNotifySettingsResponse>(
-      '/account.AccountService/getNotifySettings',
+      '/account.AccountService/GetNotifySettings',
       ($0.GetNotifySettingsRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.GetNotifySettingsResponse.fromBuffer(value));
   static final _$updateNotifySettings = $grpc.ClientMethod<$0.UpdateNotifySettingsRequest, $0.UpdateNotifySettingsResponse>(
-      '/account.AccountService/updateNotifySettings',
+      '/account.AccountService/UpdateNotifySettings',
       ($0.UpdateNotifySettingsRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.UpdateNotifySettingsResponse.fromBuffer(value));
   static final _$registerDevice = $grpc.ClientMethod<$0.RegisterDeviceRequest, $0.RegisterDeviceResponse>(
@@ -104,14 +104,14 @@ abstract class AccountServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.UpdateProfilePhotoRequest.fromBuffer(value),
         ($0.UpdateProfilePhotoResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.GetNotifySettingsRequest, $0.GetNotifySettingsResponse>(
-        'getNotifySettings',
+        'GetNotifySettings',
         getNotifySettings_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.GetNotifySettingsRequest.fromBuffer(value),
         ($0.GetNotifySettingsResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.UpdateNotifySettingsRequest, $0.UpdateNotifySettingsResponse>(
-        'updateNotifySettings',
+        'UpdateNotifySettings',
         updateNotifySettings_Pre,
         false,
         false,

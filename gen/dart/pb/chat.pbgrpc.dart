@@ -37,6 +37,10 @@ class ChatServiceClient extends $grpc.Client {
       '/chat.ChatService/SendMessage',
       ($2.SendMessageRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.SendMessageResponse.fromBuffer(value));
+  static final _$sendPhoto = $grpc.ClientMethod<$2.SendPhotoRequest, $2.SendPhotoResponse>(
+      '/chat.ChatService/SendPhoto',
+      ($2.SendPhotoRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.SendPhotoResponse.fromBuffer(value));
   static final _$viewMessages = $grpc.ClientMethod<$2.ViewMessagesRequest, $2.ViewMessagesResponse>(
       '/chat.ChatService/ViewMessages',
       ($2.ViewMessagesRequest value) => value.writeToBuffer(),
@@ -66,6 +70,10 @@ class ChatServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$2.SendMessageResponse> sendMessage($2.SendMessageRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$sendMessage, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.SendPhotoResponse> sendPhoto($2.SendPhotoRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$sendPhoto, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.ViewMessagesResponse> viewMessages($2.ViewMessagesRequest request, {$grpc.CallOptions? options}) {
@@ -110,6 +118,13 @@ abstract class ChatServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.SendMessageRequest.fromBuffer(value),
         ($2.SendMessageResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.SendPhotoRequest, $2.SendPhotoResponse>(
+        'SendPhoto',
+        sendPhoto_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.SendPhotoRequest.fromBuffer(value),
+        ($2.SendPhotoResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.ViewMessagesRequest, $2.ViewMessagesResponse>(
         'ViewMessages',
         viewMessages_Pre,
@@ -142,6 +157,10 @@ abstract class ChatServiceBase extends $grpc.Service {
     return sendMessage(call, await request);
   }
 
+  $async.Future<$2.SendPhotoResponse> sendPhoto_Pre($grpc.ServiceCall call, $async.Future<$2.SendPhotoRequest> request) async {
+    return sendPhoto(call, await request);
+  }
+
   $async.Future<$2.ViewMessagesResponse> viewMessages_Pre($grpc.ServiceCall call, $async.Future<$2.ViewMessagesRequest> request) async {
     return viewMessages(call, await request);
   }
@@ -154,6 +173,7 @@ abstract class ChatServiceBase extends $grpc.Service {
   $async.Future<$2.GetChatsResponse> getChats($grpc.ServiceCall call, $2.GetChatsRequest request);
   $async.Future<$2.GetHistoryResponse> getHistory($grpc.ServiceCall call, $2.GetHistoryRequest request);
   $async.Future<$2.SendMessageResponse> sendMessage($grpc.ServiceCall call, $2.SendMessageRequest request);
+  $async.Future<$2.SendPhotoResponse> sendPhoto($grpc.ServiceCall call, $2.SendPhotoRequest request);
   $async.Future<$2.ViewMessagesResponse> viewMessages($grpc.ServiceCall call, $2.ViewMessagesRequest request);
   $async.Future<$2.DeleteMessagesResponse> deleteMessages($grpc.ServiceCall call, $2.DeleteMessagesRequest request);
 }

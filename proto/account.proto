@@ -11,9 +11,9 @@ service AccountService {
 
   rpc UpdateProfilePhoto(UpdateProfilePhotoRequest) returns (UpdateProfilePhotoResponse);
 
-  rpc getNotifySettings(GetNotifySettingsRequest) returns (GetNotifySettingsResponse);
+  rpc GetNotifySettings(GetNotifySettingsRequest) returns (GetNotifySettingsResponse);
 
-  rpc updateNotifySettings(UpdateNotifySettingsRequest) returns (UpdateNotifySettingsResponse);
+  rpc UpdateNotifySettings(UpdateNotifySettingsRequest) returns (UpdateNotifySettingsResponse);
 
   rpc RegisterDevice(RegisterDeviceRequest) returns (RegisterDeviceResponse);
 }
@@ -33,12 +33,11 @@ message GetProfileResponse {
 }
 
 message UpdateProfileRequest {
-  string username = 1;
-  string name = 2;
-  string surname = 3;
-  int32 gender = 4;
-  string birthday = 5;
-  string about = 6;
+  string name = 1;
+  string surname = 2;
+  int32 gender = 3;
+  string birthday = 4;
+  string about = 5;
 }
 
 message UpdateProfileResponse {
@@ -53,16 +52,42 @@ message UpdateProfilePhotoResponse {
   bool success = 1;
 }
 
+message EntityNotifySettings {
+  int32 mute_until = 1;
+  bool silent = 2;
+  bool show_previews = 3;
+}
+
+message NotifyEntity {
+  oneof entity {
+    EntityChats chats = 2;
+    EntityGroups groups = 1;
+    EntityChat chat = 4;
+    EntityGroup group = 5;
+  }
+}
+
+message EntityChats {}
+
+message EntityGroups {}
+
+message EntityChat {
+  int64 chat_id = 1;
+}
+
+message EntityGroup {
+  int64 group_id = 1;
+}
+
 message GetNotifySettingsRequest {}
 
 message GetNotifySettingsResponse {
-  bool personal_chats = 1;
-  bool group_chats = 2;
+  EntityNotifySettings settings = 1;
 }
 
 message UpdateNotifySettingsRequest {
-  bool personal_chats = 2;
-  bool group_chats = 3;
+  NotifyEntity entity = 1;
+  EntityNotifySettings settings = 2;
 }
 
 message UpdateNotifySettingsResponse {
