@@ -1075,6 +1075,7 @@ class SendMessageRequest extends $pb.GeneratedMessage {
   factory SendMessageRequest({
     Receiver? receiver,
     $core.String? message,
+    $core.String? replyToMsgId,
   }) {
     final $result = create();
     if (receiver != null) {
@@ -1082,6 +1083,9 @@ class SendMessageRequest extends $pb.GeneratedMessage {
     }
     if (message != null) {
       $result.message = message;
+    }
+    if (replyToMsgId != null) {
+      $result.replyToMsgId = replyToMsgId;
     }
     return $result;
   }
@@ -1092,6 +1096,7 @@ class SendMessageRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendMessageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
     ..aOM<Receiver>(1, _omitFieldNames ? '' : 'receiver', subBuilder: Receiver.create)
     ..aOS(2, _omitFieldNames ? '' : 'message')
+    ..aOS(3, _omitFieldNames ? '' : 'replyToMsgId')
     ..hasRequiredFields = false
   ;
 
@@ -1135,6 +1140,15 @@ class SendMessageRequest extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(1);
   @$pb.TagNumber(2)
   void clearMessage() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get replyToMsgId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set replyToMsgId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasReplyToMsgId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearReplyToMsgId() => clearField(3);
 }
 
 class SendMessageResponse extends $pb.GeneratedMessage {

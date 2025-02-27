@@ -83,3 +83,25 @@ final $typed_data.Uint8List getUserResponseDescriptor = $convert.base64Decode(
     'cm5hbWUYBSABKAlSB3N1cm5hbWUSFgoGZ2VuZGVyGAYgASgFUgZnZW5kZXISFAoFYWJvdXQYBy'
     'ABKAlSBWFib3V0');
 
+@$core.Deprecated('Use searchRequestDescriptor instead')
+const SearchRequest$json = {
+  '1': 'SearchRequest',
+};
+
+/// Descriptor for `SearchRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List searchRequestDescriptor = $convert.base64Decode(
+    'Cg1TZWFyY2hSZXF1ZXN0');
+
+@$core.Deprecated('Use searchResponseDescriptor instead')
+const SearchResponse$json = {
+  '1': 'SearchResponse',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.contact.ContactItem', '10': 'items'},
+  ],
+};
+
+/// Descriptor for `SearchResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List searchResponseDescriptor = $convert.base64Decode(
+    'Cg5TZWFyY2hSZXNwb25zZRIqCgVpdGVtcxgBIAMoCzIULmNvbnRhY3QuQ29udGFjdEl0ZW1SBW'
+    'l0ZW1z');
+

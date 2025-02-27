@@ -8,6 +8,8 @@ service ContactService {
   rpc GetContacts(GetContactsRequest) returns (GetContactsResponse) {}
 
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+
+  rpc Search(SearchRequest) returns (SearchResponse) {}
 }
 
 message GetContactsRequest {}
@@ -34,4 +36,10 @@ message GetUserResponse {
   string surname = 5;
   int32 gender = 6;
   string about = 7;
+}
+
+message SearchRequest {}
+
+message SearchResponse {
+  repeated ContactItem items = 1;
 }

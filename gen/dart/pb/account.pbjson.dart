@@ -182,11 +182,15 @@ final $typed_data.Uint8List entityGroupDescriptor = $convert.base64Decode(
 @$core.Deprecated('Use getNotifySettingsRequestDescriptor instead')
 const GetNotifySettingsRequest$json = {
   '1': 'GetNotifySettingsRequest',
+  '2': [
+    {'1': 'entity', '3': 1, '4': 1, '5': 11, '6': '.account.NotifyEntity', '10': 'entity'},
+  ],
 };
 
 /// Descriptor for `GetNotifySettingsRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getNotifySettingsRequestDescriptor = $convert.base64Decode(
-    'ChhHZXROb3RpZnlTZXR0aW5nc1JlcXVlc3Q=');
+    'ChhHZXROb3RpZnlTZXR0aW5nc1JlcXVlc3QSLQoGZW50aXR5GAEgASgLMhUuYWNjb3VudC5Ob3'
+    'RpZnlFbnRpdHlSBmVudGl0eQ==');
 
 @$core.Deprecated('Use getNotifySettingsResponseDescriptor instead')
 const GetNotifySettingsResponse$json = {

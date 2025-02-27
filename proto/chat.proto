@@ -103,6 +103,7 @@ message MessageItem {
 message SendMessageRequest {
   Receiver receiver = 1;
   string message = 2;
+  string reply_to_msg_id = 3;
 }
 
 message SendMessageResponse {

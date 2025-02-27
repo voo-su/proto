@@ -29,6 +29,10 @@ class ContactServiceClient extends $grpc.Client {
       '/contact.ContactService/GetUser',
       ($3.GetUserRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.GetUserResponse.fromBuffer(value));
+  static final _$search = $grpc.ClientMethod<$3.SearchRequest, $3.SearchResponse>(
+      '/contact.ContactService/Search',
+      ($3.SearchRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.SearchResponse.fromBuffer(value));
 
   ContactServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -42,6 +46,10 @@ class ContactServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$3.GetUserResponse> getUser($3.GetUserRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getUser, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.SearchResponse> search($3.SearchRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$search, request, options: options);
   }
 }
 
@@ -64,6 +72,13 @@ abstract class ContactServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.GetUserRequest.fromBuffer(value),
         ($3.GetUserResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.SearchRequest, $3.SearchResponse>(
+        'Search',
+        search_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.SearchRequest.fromBuffer(value),
+        ($3.SearchResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$3.GetContactsResponse> getContacts_Pre($grpc.ServiceCall call, $async.Future<$3.GetContactsRequest> request) async {
@@ -74,6 +89,11 @@ abstract class ContactServiceBase extends $grpc.Service {
     return getUser(call, await request);
   }
 
+  $async.Future<$3.SearchResponse> search_Pre($grpc.ServiceCall call, $async.Future<$3.SearchRequest> request) async {
+    return search(call, await request);
+  }
+
   $async.Future<$3.GetContactsResponse> getContacts($grpc.ServiceCall call, $3.GetContactsRequest request);
   $async.Future<$3.GetUserResponse> getUser($grpc.ServiceCall call, $3.GetUserRequest request);
+  $async.Future<$3.SearchResponse> search($grpc.ServiceCall call, $3.SearchRequest request);
 }

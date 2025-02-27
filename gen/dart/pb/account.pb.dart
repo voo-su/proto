@@ -826,12 +826,21 @@ class EntityGroup extends $pb.GeneratedMessage {
 }
 
 class GetNotifySettingsRequest extends $pb.GeneratedMessage {
-  factory GetNotifySettingsRequest() => create();
+  factory GetNotifySettingsRequest({
+    NotifyEntity? entity,
+  }) {
+    final $result = create();
+    if (entity != null) {
+      $result.entity = entity;
+    }
+    return $result;
+  }
   GetNotifySettingsRequest._() : super();
   factory GetNotifySettingsRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetNotifySettingsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetNotifySettingsRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'account'), createEmptyInstance: create)
+    ..aOM<NotifyEntity>(1, _omitFieldNames ? '' : 'entity', subBuilder: NotifyEntity.create)
     ..hasRequiredFields = false
   ;
 
@@ -855,6 +864,17 @@ class GetNotifySettingsRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetNotifySettingsRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetNotifySettingsRequest>(create);
   static GetNotifySettingsRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  NotifyEntity get entity => $_getN(0);
+  @$pb.TagNumber(1)
+  set entity(NotifyEntity v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEntity() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEntity() => clearField(1);
+  @$pb.TagNumber(1)
+  NotifyEntity ensureEntity() => $_ensure(0);
 }
 
 class GetNotifySettingsResponse extends $pb.GeneratedMessage {

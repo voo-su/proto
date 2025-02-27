@@ -227,13 +227,15 @@ const SendMessageRequest$json = {
   '2': [
     {'1': 'receiver', '3': 1, '4': 1, '5': 11, '6': '.chat.Receiver', '10': 'receiver'},
     {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+    {'1': 'reply_to_msg_id', '3': 3, '4': 1, '5': 9, '10': 'replyToMsgId'},
   ],
 };
 
 /// Descriptor for `SendMessageRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendMessageRequestDescriptor = $convert.base64Decode(
     'ChJTZW5kTWVzc2FnZVJlcXVlc3QSKgoIcmVjZWl2ZXIYASABKAsyDi5jaGF0LlJlY2VpdmVyUg'
-    'hyZWNlaXZlchIYCgdtZXNzYWdlGAIgASgJUgdtZXNzYWdl');
+    'hyZWNlaXZlchIYCgdtZXNzYWdlGAIgASgJUgdtZXNzYWdlEiUKD3JlcGx5X3RvX21zZ19pZBgD'
+    'IAEoCVIMcmVwbHlUb01zZ0lk');
 
 @$core.Deprecated('Use sendMessageResponseDescriptor instead')
 const SendMessageResponse$json = {

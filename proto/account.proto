@@ -79,7 +79,9 @@ message EntityGroup {
   int64 group_id = 1;
 }
 
-message GetNotifySettingsRequest {}
+message GetNotifySettingsRequest {
+  NotifyEntity entity = 1;
+}
 
 message GetNotifySettingsResponse {
   EntityNotifySettings settings = 1;
