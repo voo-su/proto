@@ -383,14 +383,14 @@ class GetUserResponse extends $pb.GeneratedMessage {
 class SearchRequest extends $pb.GeneratedMessage {
   factory SearchRequest({
     $core.String? q,
-    $fixnum.Int64? id,
+    $fixnum.Int64? limit,
   }) {
     final $result = create();
     if (q != null) {
       $result.q = q;
     }
-    if (id != null) {
-      $result.id = id;
+    if (limit != null) {
+      $result.limit = limit;
     }
     return $result;
   }
@@ -400,7 +400,7 @@ class SearchRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'q')
-    ..aInt64(2, _omitFieldNames ? '' : 'id')
+    ..aInt64(2, _omitFieldNames ? '' : 'limit')
     ..hasRequiredFields = false
   ;
 
@@ -435,13 +435,13 @@ class SearchRequest extends $pb.GeneratedMessage {
   void clearQ() => clearField(1);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get id => $_getI64(1);
+  $fixnum.Int64 get limit => $_getI64(1);
   @$pb.TagNumber(2)
-  set id($fixnum.Int64 v) { $_setInt64(1, v); }
+  set limit($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasId() => $_has(1);
+  $core.bool hasLimit() => $_has(1);
   @$pb.TagNumber(2)
-  void clearId() => clearField(2);
+  void clearLimit() => clearField(2);
 }
 
 class SearchResponse extends $pb.GeneratedMessage {

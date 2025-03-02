@@ -43,7 +43,7 @@ message UpdateNewMessage {
 message UpdateChatReadInbox {
   Receiver receiver = 1;
   string last_read_inbox_message_id = 2;
-  int32 unread_count = 3;
+  int64 unread_count = 3;
 }
 
 message UpdateUserTyping {
@@ -87,18 +87,18 @@ message ChatItem {
 
 message GetHistoryRequest {
   Receiver receiver = 1;
-  int64 record_id = 2;
+  int64 message_id = 2;
   int64 limit = 3;
 }
 
 message GetHistoryResponse {
   int64 limit = 1;
-  int64 record_id = 2;
+  int64 message_id = 2;
   repeated MessageItem items = 3;
 }
 
 message MessageItem {
-  string id = 1;
+  int64 id = 1;
   Receiver receiver = 2;
   /*
     Regular Messages (msg_type):
@@ -133,18 +133,29 @@ message MessageItem {
   int32 msg_type = 3;
   int64 user_id = 4;
   string content = 5;
-  bool is_read = 6;
-  string created_at = 7;
+  Media media = 6;
+  bool is_read = 7;
+  string created_at = 8;
+}
+
+message Media {
+  oneof media {
+    MessageMediaPhoto message_media_photo = 1;
+  }
+}
+
+message MessageMediaPhoto {
+  string photo = 1;
 }
 
 message SendMessageRequest {
   Receiver receiver = 1;
   string message = 2;
-  string reply_to_msg_id = 3;
+  int64 reply_to_msg_id = 3;
 }
 
 message SendMessageResponse {
-  string id = 1;
+  bool success = 1;
 }
 
 message SendPhotoRequest {
@@ -154,27 +165,26 @@ message SendPhotoRequest {
 }
 
 message SendPhotoResponse {
-  string id = 1;
+  bool success = 1;
 }
 
 message ViewMessagesRequest {
   Receiver receiver = 1;
-  repeated string message_ids = 2;
+  repeated int64 message_ids = 2;
 }
 
 message ViewMessagesResponse {
   Receiver receiver = 1;
-  string last_read_inbox_message_id = 2;
-  int32 unread_count = 3;
+  int64 last_read_inbox_message_id = 2;
+  int64 unread_count = 3;
 }
 
 message DeleteMessagesRequest {
   Receiver receiver = 1;
-  repeated string message_ids = 2;
+  repeated int64 message_ids = 2;
   bool revoke = 3;
 }
 
 message DeleteMessagesResponse {
   bool success = 1;
-  string message = 2;
 }
