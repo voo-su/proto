@@ -69,7 +69,7 @@ class GetGroupChatResponse extends $pb.GeneratedMessage {
     $fixnum.Int64? id,
     $core.String? name,
     $core.String? avatar,
-    $core.String? members,
+    $fixnum.Int64? members,
   }) {
     final $result = create();
     if (id != null) {
@@ -94,7 +94,7 @@ class GetGroupChatResponse extends $pb.GeneratedMessage {
     ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'avatar')
-    ..aOS(4, _omitFieldNames ? '' : 'members')
+    ..aInt64(4, _omitFieldNames ? '' : 'members')
     ..hasRequiredFields = false
   ;
 
@@ -147,9 +147,9 @@ class GetGroupChatResponse extends $pb.GeneratedMessage {
   void clearAvatar() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get members => $_getSZ(3);
+  $fixnum.Int64 get members => $_getI64(3);
   @$pb.TagNumber(4)
-  set members($core.String v) { $_setString(3, v); }
+  set members($fixnum.Int64 v) { $_setInt64(3, v); }
   @$pb.TagNumber(4)
   $core.bool hasMembers() => $_has(3);
   @$pb.TagNumber(4)

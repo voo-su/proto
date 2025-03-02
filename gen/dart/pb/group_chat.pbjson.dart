@@ -32,14 +32,14 @@ const GetGroupChatResponse$json = {
     {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     {'1': 'avatar', '3': 3, '4': 1, '5': 9, '10': 'avatar'},
-    {'1': 'members', '3': 4, '4': 1, '5': 9, '10': 'members'},
+    {'1': 'members', '3': 4, '4': 1, '5': 3, '10': 'members'},
   ],
 };
 
 /// Descriptor for `GetGroupChatResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getGroupChatResponseDescriptor = $convert.base64Decode(
     'ChRHZXRHcm91cENoYXRSZXNwb25zZRIOCgJpZBgBIAEoA1ICaWQSEgoEbmFtZRgCIAEoCVIEbm'
-    'FtZRIWCgZhdmF0YXIYAyABKAlSBmF2YXRhchIYCgdtZW1iZXJzGAQgASgJUgdtZW1iZXJz');
+    'FtZRIWCgZhdmF0YXIYAyABKAlSBmF2YXRhchIYCgdtZW1iZXJzGAQgASgDUgdtZW1iZXJz');
 
 @$core.Deprecated('Use getMembersRequestDescriptor instead')
 const GetMembersRequest$json = {

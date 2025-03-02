@@ -53,8 +53,20 @@ message UpdateProfilePhotoResponse {
 }
 
 message EntityNotifySettings {
+  // Time until notifications are disabled (Unix timestamp)
+  // If mute_until = 0, notifications are enabled
+  // If mute_until > current time, notifications are disabled until the specified time
+  // If mute_until = 2147483647, notifications are disabled permanently
   int32 mute_until = 1;
+
+  // Mute notifications sound flag
+  // If silent = true, notifications arrive without sound
+  // If silent = false, notifications arrive with sound
   bool silent = 2;
+
+  // Message preview display flag
+  // If show_previews = true, the message text is displayed in the notification
+  // If show_previews = false, only the sender's name is shown in the notification
   bool show_previews = 3;
 }
 

@@ -285,21 +285,12 @@ class AuthVerifyResponse extends $pb.GeneratedMessage {
 }
 
 class AuthLogoutRequest extends $pb.GeneratedMessage {
-  factory AuthLogoutRequest({
-    $core.String? accessToken,
-  }) {
-    final $result = create();
-    if (accessToken != null) {
-      $result.accessToken = accessToken;
-    }
-    return $result;
-  }
+  factory AuthLogoutRequest() => create();
   AuthLogoutRequest._() : super();
   factory AuthLogoutRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory AuthLogoutRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AuthLogoutRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'accessToken')
     ..hasRequiredFields = false
   ;
 
@@ -323,28 +314,15 @@ class AuthLogoutRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static AuthLogoutRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AuthLogoutRequest>(create);
   static AuthLogoutRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get accessToken => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set accessToken($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasAccessToken() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearAccessToken() => clearField(1);
 }
 
 class AuthLogoutResponse extends $pb.GeneratedMessage {
   factory AuthLogoutResponse({
     $core.bool? success,
-    $core.String? message,
   }) {
     final $result = create();
     if (success != null) {
       $result.success = success;
-    }
-    if (message != null) {
-      $result.message = message;
     }
     return $result;
   }
@@ -354,7 +332,6 @@ class AuthLogoutResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AuthLogoutResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'success')
-    ..aOS(2, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
 
@@ -387,15 +364,6 @@ class AuthLogoutResponse extends $pb.GeneratedMessage {
   $core.bool hasSuccess() => $_has(0);
   @$pb.TagNumber(1)
   void clearSuccess() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get message => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set message($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasMessage() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMessage() => clearField(2);
 }
 
 

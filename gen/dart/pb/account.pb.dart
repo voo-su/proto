@@ -514,6 +514,10 @@ class EntityNotifySettings extends $pb.GeneratedMessage {
   static EntityNotifySettings getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EntityNotifySettings>(create);
   static EntityNotifySettings? _defaultInstance;
 
+  /// Time until notifications are disabled (Unix timestamp)
+  /// If mute_until = 0, notifications are enabled
+  /// If mute_until > current time, notifications are disabled until the specified time
+  /// If mute_until = 2147483647, notifications are disabled permanently
   @$pb.TagNumber(1)
   $core.int get muteUntil => $_getIZ(0);
   @$pb.TagNumber(1)
@@ -523,6 +527,9 @@ class EntityNotifySettings extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearMuteUntil() => clearField(1);
 
+  /// Mute notifications sound flag
+  /// If silent = true, notifications arrive without sound
+  /// If silent = false, notifications arrive with sound
   @$pb.TagNumber(2)
   $core.bool get silent => $_getBF(1);
   @$pb.TagNumber(2)
@@ -532,6 +539,9 @@ class EntityNotifySettings extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearSilent() => clearField(2);
 
+  /// Message preview display flag
+  /// If show_previews = true, the message text is displayed in the notification
+  /// If show_previews = false, only the sender's name is shown in the notification
   @$pb.TagNumber(3)
   $core.bool get showPreviews => $_getBF(2);
   @$pb.TagNumber(3)

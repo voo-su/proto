@@ -73,26 +73,21 @@ final $typed_data.Uint8List authVerifyResponseDescriptor = $convert.base64Decode
 @$core.Deprecated('Use authLogoutRequestDescriptor instead')
 const AuthLogoutRequest$json = {
   '1': 'AuthLogoutRequest',
-  '2': [
-    {'1': 'access_token', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
-  ],
 };
 
 /// Descriptor for `AuthLogoutRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authLogoutRequestDescriptor = $convert.base64Decode(
-    'ChFBdXRoTG9nb3V0UmVxdWVzdBIhCgxhY2Nlc3NfdG9rZW4YASABKAlSC2FjY2Vzc1Rva2Vu');
+    'ChFBdXRoTG9nb3V0UmVxdWVzdA==');
 
 @$core.Deprecated('Use authLogoutResponseDescriptor instead')
 const AuthLogoutResponse$json = {
   '1': 'AuthLogoutResponse',
   '2': [
     {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
-    {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
   ],
 };
 
 /// Descriptor for `AuthLogoutResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authLogoutResponseDescriptor = $convert.base64Decode(
-    'ChJBdXRoTG9nb3V0UmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2VzcxIYCgdtZXNzYW'
-    'dlGAIgASgJUgdtZXNzYWdl');
+    'ChJBdXRoTG9nb3V0UmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2Vzcw==');
 

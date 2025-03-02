@@ -840,14 +840,42 @@ func (x *GetHistoryResponse) GetItems() []*MessageItem {
 }
 
 type MessageItem struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Receiver      *Receiver              `protobuf:"bytes,2,opt,name=receiver,proto3" json:"receiver,omitempty"`
-	MsgType       int32                  `protobuf:"varint,3,opt,name=msg_type,json=msgType,proto3" json:"msg_type,omitempty"`
-	UserId        int64                  `protobuf:"varint,4,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Content       string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
-	IsRead        bool                   `protobuf:"varint,6,opt,name=is_read,json=isRead,proto3" json:"is_read,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	Id       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Receiver *Receiver              `protobuf:"bytes,2,opt,name=receiver,proto3" json:"receiver,omitempty"`
+	// Regular Messages (msg_type):
+	// 1  - Text message
+	// 2  - Code snippet
+	// 3  - Image
+	// 4  - Audio message
+	// 5  - Video message
+	// 6  - File
+	// 7  - Location
+	// 8  - Card
+	// 9  - Forwarded message
+	// 10 - Login / Authentication
+	// 11 - Voting
+	// 12 - Mixed content
+	//
+	// System Events (msg_type):
+	// 1000 - System message
+	// 1101 - Group created
+	// 1102 - New member joined the group
+	// 1103 - Member left the group
+	// 1104 - Member was removed from the group
+	// 1105 - Message deleted in the group
+	// 1106 - Group deleted
+	// 1107 - Group switched to "admins only" mode
+	// 1108 - "Admins only" mode disabled
+	// 1109 - Member muted in the group
+	// 1110 - Member unmuted in the group
+	// 1111 - Advertisement in the group
+	// 1113 - Group ownership transferred
+	MsgType       int32  `protobuf:"varint,3,opt,name=msg_type,json=msgType,proto3" json:"msg_type,omitempty"`
+	UserId        int64  `protobuf:"varint,4,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Content       string `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
+	IsRead        bool   `protobuf:"varint,6,opt,name=is_read,json=isRead,proto3" json:"is_read,omitempty"`
+	CreatedAt     string `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

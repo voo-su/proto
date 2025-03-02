@@ -1119,6 +1119,35 @@ class MessageItem extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   Receiver ensureReceiver() => $_ensure(1);
 
+  ///
+  /// Regular Messages (msg_type):
+  /// 1  - Text message
+  /// 2  - Code snippet
+  /// 3  - Image
+  /// 4  - Audio message
+  /// 5  - Video message
+  /// 6  - File
+  /// 7  - Location
+  /// 8  - Card
+  /// 9  - Forwarded message
+  /// 10 - Login / Authentication
+  /// 11 - Voting
+  /// 12 - Mixed content
+  ///
+  /// System Events (msg_type):
+  /// 1000 - System message
+  /// 1101 - Group created
+  /// 1102 - New member joined the group
+  /// 1103 - Member left the group
+  /// 1104 - Member was removed from the group
+  /// 1105 - Message deleted in the group
+  /// 1106 - Group deleted
+  /// 1107 - Group switched to "admins only" mode
+  /// 1108 - "Admins only" mode disabled
+  /// 1109 - Member muted in the group
+  /// 1110 - Member unmuted in the group
+  /// 1111 - Advertisement in the group
+  /// 1113 - Group ownership transferred
   @$pb.TagNumber(3)
   $core.int get msgType => $_getIZ(2);
   @$pb.TagNumber(3)

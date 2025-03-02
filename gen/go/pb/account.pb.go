@@ -374,10 +374,20 @@ func (x *UpdateProfilePhotoResponse) GetSuccess() bool {
 }
 
 type EntityNotifySettings struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	MuteUntil     int32                  `protobuf:"varint,1,opt,name=mute_until,json=muteUntil,proto3" json:"mute_until,omitempty"`
-	Silent        bool                   `protobuf:"varint,2,opt,name=silent,proto3" json:"silent,omitempty"`
-	ShowPreviews  bool                   `protobuf:"varint,3,opt,name=show_previews,json=showPreviews,proto3" json:"show_previews,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Time until notifications are disabled (Unix timestamp)
+	// If mute_until = 0, notifications are enabled
+	// If mute_until > current time, notifications are disabled until the specified time
+	// If mute_until = 2147483647, notifications are disabled permanently
+	MuteUntil int32 `protobuf:"varint,1,opt,name=mute_until,json=muteUntil,proto3" json:"mute_until,omitempty"`
+	// Mute notifications sound flag
+	// If silent = true, notifications arrive without sound
+	// If silent = false, notifications arrive with sound
+	Silent bool `protobuf:"varint,2,opt,name=silent,proto3" json:"silent,omitempty"`
+	// Message preview display flag
+	// If show_previews = true, the message text is displayed in the notification
+	// If show_previews = false, only the sender's name is shown in the notification
+	ShowPreviews  bool `protobuf:"varint,3,opt,name=show_previews,json=showPreviews,proto3" json:"show_previews,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
