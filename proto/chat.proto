@@ -63,6 +63,12 @@ message GetChatsResponse {
   repeated ChatItem items = 1;
 }
 
+message ChatNotifySettings {
+  int32 mute_until = 1;
+  bool silent = 2;
+  bool show_previews = 3;
+}
+
 message ChatItem {
   int64 id = 1;
   Receiver receiver = 2;
@@ -71,11 +77,12 @@ message ChatItem {
   string name = 5;
   string surname = 6;
   string msg_text = 7;
-  int64 unread_count = 8;
-  string updated_at = 9;
-  bool is_online = 10;
-  bool is_disturb = 11;
-  bool is_bot = 12;
+  ChatNotifySettings notify_settings = 8;
+  int64 unread_count = 9;
+  string updated_at = 10;
+  bool is_online = 11;
+  bool is_disturb = 12;
+  bool is_bot = 13;
 }
 
 message GetHistoryRequest {

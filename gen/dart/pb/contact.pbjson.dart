@@ -56,17 +56,20 @@ final $typed_data.Uint8List contactItemDescriptor = $convert.base64Decode(
 @$core.Deprecated('Use getUserRequestDescriptor instead')
 const GetUserRequest$json = {
   '1': 'GetUserRequest',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+  ],
 };
 
 /// Descriptor for `GetUserRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getUserRequestDescriptor = $convert.base64Decode(
-    'Cg5HZXRVc2VyUmVxdWVzdA==');
+    'Cg5HZXRVc2VyUmVxdWVzdBIOCgJpZBgBIAEoA1ICaWQ=');
 
 @$core.Deprecated('Use getUserResponseDescriptor instead')
 const GetUserResponse$json = {
   '1': 'GetUserResponse',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
     {'1': 'username', '3': 2, '4': 1, '5': 9, '10': 'username'},
     {'1': 'avatar', '3': 3, '4': 1, '5': 9, '10': 'avatar'},
     {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
@@ -78,7 +81,7 @@ const GetUserResponse$json = {
 
 /// Descriptor for `GetUserResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getUserResponseDescriptor = $convert.base64Decode(
-    'Cg9HZXRVc2VyUmVzcG9uc2USDgoCaWQYASABKAVSAmlkEhoKCHVzZXJuYW1lGAIgASgJUgh1c2'
+    'Cg9HZXRVc2VyUmVzcG9uc2USDgoCaWQYASABKANSAmlkEhoKCHVzZXJuYW1lGAIgASgJUgh1c2'
     'VybmFtZRIWCgZhdmF0YXIYAyABKAlSBmF2YXRhchISCgRuYW1lGAQgASgJUgRuYW1lEhgKB3N1'
     'cm5hbWUYBSABKAlSB3N1cm5hbWUSFgoGZ2VuZGVyGAYgASgFUgZnZW5kZXISFAoFYWJvdXQYBy'
     'ABKAlSBWFib3V0');
@@ -86,11 +89,15 @@ final $typed_data.Uint8List getUserResponseDescriptor = $convert.base64Decode(
 @$core.Deprecated('Use searchRequestDescriptor instead')
 const SearchRequest$json = {
   '1': 'SearchRequest',
+  '2': [
+    {'1': 'q', '3': 1, '4': 1, '5': 9, '10': 'q'},
+    {'1': 'id', '3': 2, '4': 1, '5': 3, '10': 'id'},
+  ],
 };
 
 /// Descriptor for `SearchRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchRequestDescriptor = $convert.base64Decode(
-    'Cg1TZWFyY2hSZXF1ZXN0');
+    'Cg1TZWFyY2hSZXF1ZXN0EgwKAXEYASABKAlSAXESDgoCaWQYAiABKANSAmlk');
 
 @$core.Deprecated('Use searchResponseDescriptor instead')
 const SearchResponse$json = {

@@ -577,6 +577,84 @@ class GetChatsResponse extends $pb.GeneratedMessage {
   $core.List<ChatItem> get items => $_getList(0);
 }
 
+class ChatNotifySettings extends $pb.GeneratedMessage {
+  factory ChatNotifySettings({
+    $core.int? muteUntil,
+    $core.bool? silent,
+    $core.bool? showPreviews,
+  }) {
+    final $result = create();
+    if (muteUntil != null) {
+      $result.muteUntil = muteUntil;
+    }
+    if (silent != null) {
+      $result.silent = silent;
+    }
+    if (showPreviews != null) {
+      $result.showPreviews = showPreviews;
+    }
+    return $result;
+  }
+  ChatNotifySettings._() : super();
+  factory ChatNotifySettings.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatNotifySettings.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatNotifySettings', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'muteUntil', $pb.PbFieldType.O3)
+    ..aOB(2, _omitFieldNames ? '' : 'silent')
+    ..aOB(3, _omitFieldNames ? '' : 'showPreviews')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ChatNotifySettings clone() => ChatNotifySettings()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ChatNotifySettings copyWith(void Function(ChatNotifySettings) updates) => super.copyWith((message) => updates(message as ChatNotifySettings)) as ChatNotifySettings;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ChatNotifySettings create() => ChatNotifySettings._();
+  ChatNotifySettings createEmptyInstance() => create();
+  static $pb.PbList<ChatNotifySettings> createRepeated() => $pb.PbList<ChatNotifySettings>();
+  @$core.pragma('dart2js:noInline')
+  static ChatNotifySettings getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatNotifySettings>(create);
+  static ChatNotifySettings? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get muteUntil => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set muteUntil($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMuteUntil() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMuteUntil() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get silent => $_getBF(1);
+  @$pb.TagNumber(2)
+  set silent($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSilent() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSilent() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get showPreviews => $_getBF(2);
+  @$pb.TagNumber(3)
+  set showPreviews($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasShowPreviews() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearShowPreviews() => clearField(3);
+}
+
 class ChatItem extends $pb.GeneratedMessage {
   factory ChatItem({
     $fixnum.Int64? id,
@@ -586,6 +664,7 @@ class ChatItem extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? surname,
     $core.String? msgText,
+    ChatNotifySettings? notifySettings,
     $fixnum.Int64? unreadCount,
     $core.String? updatedAt,
     $core.bool? isOnline,
@@ -613,6 +692,9 @@ class ChatItem extends $pb.GeneratedMessage {
     }
     if (msgText != null) {
       $result.msgText = msgText;
+    }
+    if (notifySettings != null) {
+      $result.notifySettings = notifySettings;
     }
     if (unreadCount != null) {
       $result.unreadCount = unreadCount;
@@ -643,11 +725,12 @@ class ChatItem extends $pb.GeneratedMessage {
     ..aOS(5, _omitFieldNames ? '' : 'name')
     ..aOS(6, _omitFieldNames ? '' : 'surname')
     ..aOS(7, _omitFieldNames ? '' : 'msgText')
-    ..aInt64(8, _omitFieldNames ? '' : 'unreadCount')
-    ..aOS(9, _omitFieldNames ? '' : 'updatedAt')
-    ..aOB(10, _omitFieldNames ? '' : 'isOnline')
-    ..aOB(11, _omitFieldNames ? '' : 'isDisturb')
-    ..aOB(12, _omitFieldNames ? '' : 'isBot')
+    ..aOM<ChatNotifySettings>(8, _omitFieldNames ? '' : 'notifySettings', subBuilder: ChatNotifySettings.create)
+    ..aInt64(9, _omitFieldNames ? '' : 'unreadCount')
+    ..aOS(10, _omitFieldNames ? '' : 'updatedAt')
+    ..aOB(11, _omitFieldNames ? '' : 'isOnline')
+    ..aOB(12, _omitFieldNames ? '' : 'isDisturb')
+    ..aOB(13, _omitFieldNames ? '' : 'isBot')
     ..hasRequiredFields = false
   ;
 
@@ -738,49 +821,60 @@ class ChatItem extends $pb.GeneratedMessage {
   void clearMsgText() => clearField(7);
 
   @$pb.TagNumber(8)
-  $fixnum.Int64 get unreadCount => $_getI64(7);
+  ChatNotifySettings get notifySettings => $_getN(7);
   @$pb.TagNumber(8)
-  set unreadCount($fixnum.Int64 v) { $_setInt64(7, v); }
+  set notifySettings(ChatNotifySettings v) { setField(8, v); }
   @$pb.TagNumber(8)
-  $core.bool hasUnreadCount() => $_has(7);
+  $core.bool hasNotifySettings() => $_has(7);
   @$pb.TagNumber(8)
-  void clearUnreadCount() => clearField(8);
+  void clearNotifySettings() => clearField(8);
+  @$pb.TagNumber(8)
+  ChatNotifySettings ensureNotifySettings() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $core.String get updatedAt => $_getSZ(8);
+  $fixnum.Int64 get unreadCount => $_getI64(8);
   @$pb.TagNumber(9)
-  set updatedAt($core.String v) { $_setString(8, v); }
+  set unreadCount($fixnum.Int64 v) { $_setInt64(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasUpdatedAt() => $_has(8);
+  $core.bool hasUnreadCount() => $_has(8);
   @$pb.TagNumber(9)
-  void clearUpdatedAt() => clearField(9);
+  void clearUnreadCount() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.bool get isOnline => $_getBF(9);
+  $core.String get updatedAt => $_getSZ(9);
   @$pb.TagNumber(10)
-  set isOnline($core.bool v) { $_setBool(9, v); }
+  set updatedAt($core.String v) { $_setString(9, v); }
   @$pb.TagNumber(10)
-  $core.bool hasIsOnline() => $_has(9);
+  $core.bool hasUpdatedAt() => $_has(9);
   @$pb.TagNumber(10)
-  void clearIsOnline() => clearField(10);
+  void clearUpdatedAt() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.bool get isDisturb => $_getBF(10);
+  $core.bool get isOnline => $_getBF(10);
   @$pb.TagNumber(11)
-  set isDisturb($core.bool v) { $_setBool(10, v); }
+  set isOnline($core.bool v) { $_setBool(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasIsDisturb() => $_has(10);
+  $core.bool hasIsOnline() => $_has(10);
   @$pb.TagNumber(11)
-  void clearIsDisturb() => clearField(11);
+  void clearIsOnline() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.bool get isBot => $_getBF(11);
+  $core.bool get isDisturb => $_getBF(11);
   @$pb.TagNumber(12)
-  set isBot($core.bool v) { $_setBool(11, v); }
+  set isDisturb($core.bool v) { $_setBool(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasIsBot() => $_has(11);
+  $core.bool hasIsDisturb() => $_has(11);
   @$pb.TagNumber(12)
-  void clearIsBot() => clearField(12);
+  void clearIsDisturb() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get isBot => $_getBF(12);
+  @$pb.TagNumber(13)
+  set isBot($core.bool v) { $_setBool(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasIsBot() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearIsBot() => clearField(13);
 }
 
 class GetHistoryRequest extends $pb.GeneratedMessage {

@@ -26,10 +26,12 @@ message ContactItem {
   string avatar = 5;
 }
 
-message GetUserRequest {}
+message GetUserRequest {
+  int64 id = 1;
+}
 
 message GetUserResponse {
-  int32 id = 1;
+  int64 id = 1;
   string username = 2 ;
   string avatar = 3;
   string name = 4 ;
@@ -38,7 +40,10 @@ message GetUserResponse {
   string about = 7;
 }
 
-message SearchRequest {}
+message SearchRequest {
+  string q = 1;
+  int64 id = 2;
+}
 
 message SearchResponse {
   repeated ContactItem items = 1;

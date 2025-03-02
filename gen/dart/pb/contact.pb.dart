@@ -197,12 +197,21 @@ class ContactItem extends $pb.GeneratedMessage {
 }
 
 class GetUserRequest extends $pb.GeneratedMessage {
-  factory GetUserRequest() => create();
+  factory GetUserRequest({
+    $fixnum.Int64? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   GetUserRequest._() : super();
   factory GetUserRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
@@ -226,11 +235,20 @@ class GetUserRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetUserRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetUserRequest>(create);
   static GetUserRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get id => $_getI64(0);
+  @$pb.TagNumber(1)
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
 }
 
 class GetUserResponse extends $pb.GeneratedMessage {
   factory GetUserResponse({
-    $core.int? id,
+    $fixnum.Int64? id,
     $core.String? username,
     $core.String? avatar,
     $core.String? name,
@@ -267,7 +285,7 @@ class GetUserResponse extends $pb.GeneratedMessage {
   factory GetUserResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'username')
     ..aOS(3, _omitFieldNames ? '' : 'avatar')
     ..aOS(4, _omitFieldNames ? '' : 'name')
@@ -299,9 +317,9 @@ class GetUserResponse extends $pb.GeneratedMessage {
   static GetUserResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get id => $_getIZ(0);
+  $fixnum.Int64 get id => $_getI64(0);
   @$pb.TagNumber(1)
-  set id($core.int v) { $_setSignedInt32(0, v); }
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
@@ -363,12 +381,26 @@ class GetUserResponse extends $pb.GeneratedMessage {
 }
 
 class SearchRequest extends $pb.GeneratedMessage {
-  factory SearchRequest() => create();
+  factory SearchRequest({
+    $core.String? q,
+    $fixnum.Int64? id,
+  }) {
+    final $result = create();
+    if (q != null) {
+      $result.q = q;
+    }
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   SearchRequest._() : super();
   factory SearchRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SearchRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'contact'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'q')
+    ..aInt64(2, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
@@ -392,6 +424,24 @@ class SearchRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static SearchRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SearchRequest>(create);
   static SearchRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get q => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set q($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasQ() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearQ() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get id => $_getI64(1);
+  @$pb.TagNumber(2)
+  set id($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearId() => clearField(2);
 }
 
 class SearchResponse extends $pb.GeneratedMessage {

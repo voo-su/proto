@@ -16,4 +16,6 @@ gen:
 	   --go-grpc_out=paths=source_relative:./gen/go/pb \
 	   proto/*.proto
 	# Dart
-	protoc -I proto --dart_out=grpc:./gen/dart/pb proto/*.proto
+	protoc --proto_path=./proto \
+		--dart_out=grpc:./gen/dart/pb \
+		proto/*.proto
