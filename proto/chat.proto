@@ -133,15 +133,24 @@ message MessageItem {
   int32 msg_type = 3;
   int64 user_id = 4;
   string content = 5;
-  Media media = 6;
-  bool is_read = 7;
-  string created_at = 8;
+  MessageMedia media = 6;
+  MessageReply reply = 8;
+  bool is_read = 9;
+  string created_at = 10;
 }
 
-message Media {
+message MessageMedia {
   oneof media {
     MessageMediaPhoto message_media_photo = 1;
   }
+}
+
+message MessageReply {
+  int64 id = 1;
+  int32 msg_type = 2;
+  int64 user_id = 3;
+  string username = 4;
+  string content = 5;
 }
 
 message MessageMediaPhoto {

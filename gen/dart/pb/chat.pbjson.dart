@@ -227,9 +227,10 @@ const MessageItem$json = {
     {'1': 'msg_type', '3': 3, '4': 1, '5': 5, '10': 'msgType'},
     {'1': 'user_id', '3': 4, '4': 1, '5': 3, '10': 'userId'},
     {'1': 'content', '3': 5, '4': 1, '5': 9, '10': 'content'},
-    {'1': 'media', '3': 6, '4': 1, '5': 11, '6': '.chat.Media', '10': 'media'},
-    {'1': 'is_read', '3': 7, '4': 1, '5': 8, '10': 'isRead'},
-    {'1': 'created_at', '3': 8, '4': 1, '5': 9, '10': 'createdAt'},
+    {'1': 'media', '3': 6, '4': 1, '5': 11, '6': '.chat.MessageMedia', '10': 'media'},
+    {'1': 'reply', '3': 8, '4': 1, '5': 11, '6': '.chat.MessageReply', '10': 'reply'},
+    {'1': 'is_read', '3': 9, '4': 1, '5': 8, '10': 'isRead'},
+    {'1': 'created_at', '3': 10, '4': 1, '5': 9, '10': 'createdAt'},
   ],
 };
 
@@ -237,13 +238,14 @@ const MessageItem$json = {
 final $typed_data.Uint8List messageItemDescriptor = $convert.base64Decode(
     'CgtNZXNzYWdlSXRlbRIOCgJpZBgBIAEoA1ICaWQSKgoIcmVjZWl2ZXIYAiABKAsyDi5jaGF0Ll'
     'JlY2VpdmVyUghyZWNlaXZlchIZCghtc2dfdHlwZRgDIAEoBVIHbXNnVHlwZRIXCgd1c2VyX2lk'
-    'GAQgASgDUgZ1c2VySWQSGAoHY29udGVudBgFIAEoCVIHY29udGVudBIhCgVtZWRpYRgGIAEoCz'
-    'ILLmNoYXQuTWVkaWFSBW1lZGlhEhcKB2lzX3JlYWQYByABKAhSBmlzUmVhZBIdCgpjcmVhdGVk'
-    'X2F0GAggASgJUgljcmVhdGVkQXQ=');
+    'GAQgASgDUgZ1c2VySWQSGAoHY29udGVudBgFIAEoCVIHY29udGVudBIoCgVtZWRpYRgGIAEoCz'
+    'ISLmNoYXQuTWVzc2FnZU1lZGlhUgVtZWRpYRIoCgVyZXBseRgIIAEoCzISLmNoYXQuTWVzc2Fn'
+    'ZVJlcGx5UgVyZXBseRIXCgdpc19yZWFkGAkgASgIUgZpc1JlYWQSHQoKY3JlYXRlZF9hdBgKIA'
+    'EoCVIJY3JlYXRlZEF0');
 
-@$core.Deprecated('Use mediaDescriptor instead')
-const Media$json = {
-  '1': 'Media',
+@$core.Deprecated('Use messageMediaDescriptor instead')
+const MessageMedia$json = {
+  '1': 'MessageMedia',
   '2': [
     {'1': 'message_media_photo', '3': 1, '4': 1, '5': 11, '6': '.chat.MessageMediaPhoto', '9': 0, '10': 'messageMediaPhoto'},
   ],
@@ -252,10 +254,28 @@ const Media$json = {
   ],
 };
 
-/// Descriptor for `Media`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List mediaDescriptor = $convert.base64Decode(
-    'CgVNZWRpYRJJChNtZXNzYWdlX21lZGlhX3Bob3RvGAEgASgLMhcuY2hhdC5NZXNzYWdlTWVkaW'
-    'FQaG90b0gAUhFtZXNzYWdlTWVkaWFQaG90b0IHCgVtZWRpYQ==');
+/// Descriptor for `MessageMedia`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageMediaDescriptor = $convert.base64Decode(
+    'CgxNZXNzYWdlTWVkaWESSQoTbWVzc2FnZV9tZWRpYV9waG90bxgBIAEoCzIXLmNoYXQuTWVzc2'
+    'FnZU1lZGlhUGhvdG9IAFIRbWVzc2FnZU1lZGlhUGhvdG9CBwoFbWVkaWE=');
+
+@$core.Deprecated('Use messageReplyDescriptor instead')
+const MessageReply$json = {
+  '1': 'MessageReply',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+    {'1': 'msg_type', '3': 2, '4': 1, '5': 5, '10': 'msgType'},
+    {'1': 'user_id', '3': 3, '4': 1, '5': 3, '10': 'userId'},
+    {'1': 'username', '3': 4, '4': 1, '5': 9, '10': 'username'},
+    {'1': 'content', '3': 5, '4': 1, '5': 9, '10': 'content'},
+  ],
+};
+
+/// Descriptor for `MessageReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageReplyDescriptor = $convert.base64Decode(
+    'CgxNZXNzYWdlUmVwbHkSDgoCaWQYASABKANSAmlkEhkKCG1zZ190eXBlGAIgASgFUgdtc2dUeX'
+    'BlEhcKB3VzZXJfaWQYAyABKANSBnVzZXJJZBIaCgh1c2VybmFtZRgEIAEoCVIIdXNlcm5hbWUS'
+    'GAoHY29udGVudBgFIAEoCVIHY29udGVudA==');
 
 @$core.Deprecated('Use messageMediaPhotoDescriptor instead')
 const MessageMediaPhoto$json = {

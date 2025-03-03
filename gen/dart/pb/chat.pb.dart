@@ -1036,7 +1036,8 @@ class MessageItem extends $pb.GeneratedMessage {
     $core.int? msgType,
     $fixnum.Int64? userId,
     $core.String? content,
-    Media? media,
+    MessageMedia? media,
+    MessageReply? reply,
     $core.bool? isRead,
     $core.String? createdAt,
   }) {
@@ -1059,6 +1060,9 @@ class MessageItem extends $pb.GeneratedMessage {
     if (media != null) {
       $result.media = media;
     }
+    if (reply != null) {
+      $result.reply = reply;
+    }
     if (isRead != null) {
       $result.isRead = isRead;
     }
@@ -1077,9 +1081,10 @@ class MessageItem extends $pb.GeneratedMessage {
     ..a<$core.int>(3, _omitFieldNames ? '' : 'msgType', $pb.PbFieldType.O3)
     ..aInt64(4, _omitFieldNames ? '' : 'userId')
     ..aOS(5, _omitFieldNames ? '' : 'content')
-    ..aOM<Media>(6, _omitFieldNames ? '' : 'media', subBuilder: Media.create)
-    ..aOB(7, _omitFieldNames ? '' : 'isRead')
-    ..aOS(8, _omitFieldNames ? '' : 'createdAt')
+    ..aOM<MessageMedia>(6, _omitFieldNames ? '' : 'media', subBuilder: MessageMedia.create)
+    ..aOM<MessageReply>(8, _omitFieldNames ? '' : 'reply', subBuilder: MessageReply.create)
+    ..aOB(9, _omitFieldNames ? '' : 'isRead')
+    ..aOS(10, _omitFieldNames ? '' : 'createdAt')
     ..hasRequiredFields = false
   ;
 
@@ -1181,42 +1186,53 @@ class MessageItem extends $pb.GeneratedMessage {
   void clearContent() => clearField(5);
 
   @$pb.TagNumber(6)
-  Media get media => $_getN(5);
+  MessageMedia get media => $_getN(5);
   @$pb.TagNumber(6)
-  set media(Media v) { setField(6, v); }
+  set media(MessageMedia v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasMedia() => $_has(5);
   @$pb.TagNumber(6)
   void clearMedia() => clearField(6);
   @$pb.TagNumber(6)
-  Media ensureMedia() => $_ensure(5);
-
-  @$pb.TagNumber(7)
-  $core.bool get isRead => $_getBF(6);
-  @$pb.TagNumber(7)
-  set isRead($core.bool v) { $_setBool(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasIsRead() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearIsRead() => clearField(7);
+  MessageMedia ensureMedia() => $_ensure(5);
 
   @$pb.TagNumber(8)
-  $core.String get createdAt => $_getSZ(7);
+  MessageReply get reply => $_getN(6);
   @$pb.TagNumber(8)
-  set createdAt($core.String v) { $_setString(7, v); }
+  set reply(MessageReply v) { setField(8, v); }
   @$pb.TagNumber(8)
-  $core.bool hasCreatedAt() => $_has(7);
+  $core.bool hasReply() => $_has(6);
   @$pb.TagNumber(8)
-  void clearCreatedAt() => clearField(8);
+  void clearReply() => clearField(8);
+  @$pb.TagNumber(8)
+  MessageReply ensureReply() => $_ensure(6);
+
+  @$pb.TagNumber(9)
+  $core.bool get isRead => $_getBF(7);
+  @$pb.TagNumber(9)
+  set isRead($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasIsRead() => $_has(7);
+  @$pb.TagNumber(9)
+  void clearIsRead() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get createdAt => $_getSZ(8);
+  @$pb.TagNumber(10)
+  set createdAt($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasCreatedAt() => $_has(8);
+  @$pb.TagNumber(10)
+  void clearCreatedAt() => clearField(10);
 }
 
-enum Media_Media {
+enum MessageMedia_Media {
   messageMediaPhoto, 
   notSet
 }
 
-class Media extends $pb.GeneratedMessage {
-  factory Media({
+class MessageMedia extends $pb.GeneratedMessage {
+  factory MessageMedia({
     MessageMediaPhoto? messageMediaPhoto,
   }) {
     final $result = create();
@@ -1225,15 +1241,15 @@ class Media extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  Media._() : super();
-  factory Media.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Media.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MessageMedia._() : super();
+  factory MessageMedia.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageMedia.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, Media_Media> _Media_MediaByTag = {
-    1 : Media_Media.messageMediaPhoto,
-    0 : Media_Media.notSet
+  static const $core.Map<$core.int, MessageMedia_Media> _MessageMedia_MediaByTag = {
+    1 : MessageMedia_Media.messageMediaPhoto,
+    0 : MessageMedia_Media.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Media', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageMedia', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
     ..oo(0, [1])
     ..aOM<MessageMediaPhoto>(1, _omitFieldNames ? '' : 'messageMediaPhoto', subBuilder: MessageMediaPhoto.create)
     ..hasRequiredFields = false
@@ -1243,24 +1259,24 @@ class Media extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Media clone() => Media()..mergeFromMessage(this);
+  MessageMedia clone() => MessageMedia()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Media copyWith(void Function(Media) updates) => super.copyWith((message) => updates(message as Media)) as Media;
+  MessageMedia copyWith(void Function(MessageMedia) updates) => super.copyWith((message) => updates(message as MessageMedia)) as MessageMedia;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Media create() => Media._();
-  Media createEmptyInstance() => create();
-  static $pb.PbList<Media> createRepeated() => $pb.PbList<Media>();
+  static MessageMedia create() => MessageMedia._();
+  MessageMedia createEmptyInstance() => create();
+  static $pb.PbList<MessageMedia> createRepeated() => $pb.PbList<MessageMedia>();
   @$core.pragma('dart2js:noInline')
-  static Media getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Media>(create);
-  static Media? _defaultInstance;
+  static MessageMedia getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageMedia>(create);
+  static MessageMedia? _defaultInstance;
 
-  Media_Media whichMedia() => _Media_MediaByTag[$_whichOneof(0)]!;
+  MessageMedia_Media whichMedia() => _MessageMedia_MediaByTag[$_whichOneof(0)]!;
   void clearMedia() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
@@ -1273,6 +1289,112 @@ class Media extends $pb.GeneratedMessage {
   void clearMessageMediaPhoto() => clearField(1);
   @$pb.TagNumber(1)
   MessageMediaPhoto ensureMessageMediaPhoto() => $_ensure(0);
+}
+
+class MessageReply extends $pb.GeneratedMessage {
+  factory MessageReply({
+    $fixnum.Int64? id,
+    $core.int? msgType,
+    $fixnum.Int64? userId,
+    $core.String? username,
+    $core.String? content,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (msgType != null) {
+      $result.msgType = msgType;
+    }
+    if (userId != null) {
+      $result.userId = userId;
+    }
+    if (username != null) {
+      $result.username = username;
+    }
+    if (content != null) {
+      $result.content = content;
+    }
+    return $result;
+  }
+  MessageReply._() : super();
+  factory MessageReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageReply', package: const $pb.PackageName(_omitMessageNames ? '' : 'chat'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'msgType', $pb.PbFieldType.O3)
+    ..aInt64(3, _omitFieldNames ? '' : 'userId')
+    ..aOS(4, _omitFieldNames ? '' : 'username')
+    ..aOS(5, _omitFieldNames ? '' : 'content')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MessageReply clone() => MessageReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MessageReply copyWith(void Function(MessageReply) updates) => super.copyWith((message) => updates(message as MessageReply)) as MessageReply;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageReply create() => MessageReply._();
+  MessageReply createEmptyInstance() => create();
+  static $pb.PbList<MessageReply> createRepeated() => $pb.PbList<MessageReply>();
+  @$core.pragma('dart2js:noInline')
+  static MessageReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageReply>(create);
+  static MessageReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get id => $_getI64(0);
+  @$pb.TagNumber(1)
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get msgType => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set msgType($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMsgType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMsgType() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get userId => $_getI64(2);
+  @$pb.TagNumber(3)
+  set userId($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUserId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUserId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get username => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set username($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUsername() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUsername() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get content => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set content($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasContent() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearContent() => clearField(5);
 }
 
 class MessageMediaPhoto extends $pb.GeneratedMessage {
