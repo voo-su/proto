@@ -134,15 +134,25 @@ message MessageItem {
   int64 user_id = 4;
   string content = 5;
   MessageMedia media = 6;
-  MessageReply reply = 8;
-  bool is_read = 9;
-  string created_at = 10;
+  MessageReply reply = 7;
+  bool is_read = 8;
+  string created_at = 9;
 }
 
 message MessageMedia {
   oneof media {
     MessageMediaPhoto message_media_photo = 1;
+    MessageMediaDocument message_media_document = 2;
   }
+}
+
+message MessageMediaPhoto {
+  string file = 1;
+}
+
+message MessageMediaDocument {
+  string file = 1;
+  string mime_type = 2;
 }
 
 message MessageReply {
@@ -151,10 +161,6 @@ message MessageReply {
   int64 user_id = 3;
   string username = 4;
   string content = 5;
-}
-
-message MessageMediaPhoto {
-  string photo = 1;
 }
 
 message SendMessageRequest {
