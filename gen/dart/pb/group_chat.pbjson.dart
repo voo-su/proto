@@ -13,6 +13,34 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use createGroupChatRequestDescriptor instead')
+const CreateGroupChatRequest$json = {
+  '1': 'CreateGroupChatRequest',
+  '2': [
+    {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
+    {'1': 'about', '3': 2, '4': 1, '5': 9, '10': 'about'},
+  ],
+};
+
+/// Descriptor for `CreateGroupChatRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createGroupChatRequestDescriptor = $convert.base64Decode(
+    'ChZDcmVhdGVHcm91cENoYXRSZXF1ZXN0EhQKBXRpdGxlGAEgASgJUgV0aXRsZRIUCgVhYm91dB'
+    'gCIAEoCVIFYWJvdXQ=');
+
+@$core.Deprecated('Use createGroupChatResponseDescriptor instead')
+const CreateGroupChatResponse$json = {
+  '1': 'CreateGroupChatResponse',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+    {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
+  ],
+};
+
+/// Descriptor for `CreateGroupChatResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createGroupChatResponseDescriptor = $convert.base64Decode(
+    'ChdDcmVhdGVHcm91cENoYXRSZXNwb25zZRIOCgJpZBgBIAEoA1ICaWQSFAoFdGl0bGUYAiABKA'
+    'lSBXRpdGxl');
+
 @$core.Deprecated('Use getGroupChatRequestDescriptor instead')
 const GetGroupChatRequest$json = {
   '1': 'GetGroupChatRequest',
@@ -83,4 +111,81 @@ final $typed_data.Uint8List memberItemDescriptor = $convert.base64Decode(
     'CgpNZW1iZXJJdGVtEg4KAmlkGAEgASgDUgJpZBIaCgh1c2VybmFtZRgCIAEoCVIIdXNlcm5hbW'
     'USFgoGYXZhdGFyGAMgASgJUgZhdmF0YXISEgoEbmFtZRgEIAEoCVIEbmFtZRIYCgdzdXJuYW1l'
     'GAUgASgJUgdzdXJuYW1l');
+
+@$core.Deprecated('Use addUserToGroupChatRequestDescriptor instead')
+const AddUserToGroupChatRequest$json = {
+  '1': 'AddUserToGroupChatRequest',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+    {'1': 'user_ids', '3': 2, '4': 3, '5': 3, '10': 'userIds'},
+  ],
+};
+
+/// Descriptor for `AddUserToGroupChatRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserToGroupChatRequestDescriptor = $convert.base64Decode(
+    'ChlBZGRVc2VyVG9Hcm91cENoYXRSZXF1ZXN0Eg4KAmlkGAEgASgDUgJpZBIZCgh1c2VyX2lkcx'
+    'gCIAMoA1IHdXNlcklkcw==');
+
+@$core.Deprecated('Use addUserToGroupChatResponseDescriptor instead')
+const AddUserToGroupChatResponse$json = {
+  '1': 'AddUserToGroupChatResponse',
+  '2': [
+    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+  ],
+};
+
+/// Descriptor for `AddUserToGroupChatResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserToGroupChatResponseDescriptor = $convert.base64Decode(
+    'ChpBZGRVc2VyVG9Hcm91cENoYXRSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
+
+@$core.Deprecated('Use removeUserFromGroupChatRequestDescriptor instead')
+const RemoveUserFromGroupChatRequest$json = {
+  '1': 'RemoveUserFromGroupChatRequest',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+    {'1': 'user_id', '3': 2, '4': 1, '5': 3, '10': 'userId'},
+  ],
+};
+
+/// Descriptor for `RemoveUserFromGroupChatRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List removeUserFromGroupChatRequestDescriptor = $convert.base64Decode(
+    'Ch5SZW1vdmVVc2VyRnJvbUdyb3VwQ2hhdFJlcXVlc3QSDgoCaWQYASABKANSAmlkEhcKB3VzZX'
+    'JfaWQYAiABKANSBnVzZXJJZA==');
+
+@$core.Deprecated('Use removeUserFromGroupChatResponseDescriptor instead')
+const RemoveUserFromGroupChatResponse$json = {
+  '1': 'RemoveUserFromGroupChatResponse',
+  '2': [
+    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+  ],
+};
+
+/// Descriptor for `RemoveUserFromGroupChatResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List removeUserFromGroupChatResponseDescriptor = $convert.base64Decode(
+    'Ch9SZW1vdmVVc2VyRnJvbUdyb3VwQ2hhdFJlc3BvbnNlEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2'
+    'Nlc3M=');
+
+@$core.Deprecated('Use leaveGroupChatRequestDescriptor instead')
+const LeaveGroupChatRequest$json = {
+  '1': 'LeaveGroupChatRequest',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `LeaveGroupChatRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List leaveGroupChatRequestDescriptor = $convert.base64Decode(
+    'ChVMZWF2ZUdyb3VwQ2hhdFJlcXVlc3QSDgoCaWQYASABKANSAmlk');
+
+@$core.Deprecated('Use leaveGroupChatResponseDescriptor instead')
+const LeaveGroupChatResponse$json = {
+  '1': 'LeaveGroupChatResponse',
+  '2': [
+    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+  ],
+};
+
+/// Descriptor for `LeaveGroupChatResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List leaveGroupChatResponseDescriptor = $convert.base64Decode(
+    'ChZMZWF2ZUdyb3VwQ2hhdFJlc3BvbnNlEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2Nlc3M=');
 

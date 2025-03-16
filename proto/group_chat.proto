@@ -5,9 +5,27 @@ package group_chat;
 option go_package = "./group_chat;pb";
 
 service GroupChatService {
+  rpc CreateGroupChat(CreateGroupChatRequest) returns (CreateGroupChatResponse);
+
   rpc GetGroupChat(GetGroupChatRequest) returns (GetGroupChatResponse);
 
-  rpc GetMembers(GetMembersRequest) returns (GetMembersResponse) {}
+  rpc GetMembers(GetMembersRequest) returns (GetMembersResponse);
+
+  rpc AddUserToGroupChat(AddUserToGroupChatRequest) returns (AddUserToGroupChatResponse);
+
+  rpc RemoveUserFromGroupChat(RemoveUserFromGroupChatRequest) returns (RemoveUserFromGroupChatResponse);
+
+  rpc LeaveGroupChat(LeaveGroupChatRequest) returns (LeaveGroupChatResponse);
+}
+
+message CreateGroupChatRequest {
+  string title = 1;
+  string about = 2;
+}
+
+message CreateGroupChatResponse {
+  int64 id = 1;
+  string title = 2;
 }
 
 message GetGroupChatRequest {
@@ -35,4 +53,30 @@ message MemberItem {
   string avatar = 3;
   string name = 4;
   string surname = 5;
+}
+
+message AddUserToGroupChatRequest {
+  int64 id = 1;
+  repeated int64 user_ids = 2;
+}
+
+message AddUserToGroupChatResponse {
+  bool success = 1;
+}
+
+message RemoveUserFromGroupChatRequest {
+  int64 id = 1;
+  int64 user_id = 2;
+}
+
+message RemoveUserFromGroupChatResponse {
+  bool success = 1;
+}
+
+message LeaveGroupChatRequest {
+  int64 id = 1;
+}
+
+message LeaveGroupChatResponse {
+  bool success = 1;
 }
