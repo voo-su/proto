@@ -31,11 +31,17 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GroupChatServiceClient interface {
+	// Creating a group chat
 	CreateGroupChat(ctx context.Context, in *CreateGroupChatRequest, opts ...grpc.CallOption) (*CreateGroupChatResponse, error)
+	// Retrieving information about the group chat
 	GetGroupChat(ctx context.Context, in *GetGroupChatRequest, opts ...grpc.CallOption) (*GetGroupChatResponse, error)
+	// Retrieving the list of participants in the group chat
 	GetMembers(ctx context.Context, in *GetMembersRequest, opts ...grpc.CallOption) (*GetMembersResponse, error)
+	// Adding participants to the group chat
 	AddUserToGroupChat(ctx context.Context, in *AddUserToGroupChatRequest, opts ...grpc.CallOption) (*AddUserToGroupChatResponse, error)
+	// Removing a participant from the group chat
 	RemoveUserFromGroupChat(ctx context.Context, in *RemoveUserFromGroupChatRequest, opts ...grpc.CallOption) (*RemoveUserFromGroupChatResponse, error)
+	// A user leaving the group chat
 	LeaveGroupChat(ctx context.Context, in *LeaveGroupChatRequest, opts ...grpc.CallOption) (*LeaveGroupChatResponse, error)
 }
 
@@ -111,11 +117,17 @@ func (c *groupChatServiceClient) LeaveGroupChat(ctx context.Context, in *LeaveGr
 // All implementations must embed UnimplementedGroupChatServiceServer
 // for forward compatibility.
 type GroupChatServiceServer interface {
+	// Creating a group chat
 	CreateGroupChat(context.Context, *CreateGroupChatRequest) (*CreateGroupChatResponse, error)
+	// Retrieving information about the group chat
 	GetGroupChat(context.Context, *GetGroupChatRequest) (*GetGroupChatResponse, error)
+	// Retrieving the list of participants in the group chat
 	GetMembers(context.Context, *GetMembersRequest) (*GetMembersResponse, error)
+	// Adding participants to the group chat
 	AddUserToGroupChat(context.Context, *AddUserToGroupChatRequest) (*AddUserToGroupChatResponse, error)
+	// Removing a participant from the group chat
 	RemoveUserFromGroupChat(context.Context, *RemoveUserFromGroupChatRequest) (*RemoveUserFromGroupChatResponse, error)
+	// A user leaving the group chat
 	LeaveGroupChat(context.Context, *LeaveGroupChatRequest) (*LeaveGroupChatResponse, error)
 	mustEmbedUnimplementedGroupChatServiceServer()
 }

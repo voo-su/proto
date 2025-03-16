@@ -31,11 +31,17 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccountServiceClient interface {
+	// Retrieves the profile details of the user
 	GetProfile(ctx context.Context, in *GetProfileRequest, opts ...grpc.CallOption) (*GetProfileResponse, error)
+	// Updates the profile details of the user
 	UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UpdateProfileResponse, error)
+	// Updates the profile photo of the user
 	UpdateProfilePhoto(ctx context.Context, in *UpdateProfilePhotoRequest, opts ...grpc.CallOption) (*UpdateProfilePhotoResponse, error)
+	// Retrieves the notification settings for a specific entity (chat or group)
 	GetNotifySettings(ctx context.Context, in *GetNotifySettingsRequest, opts ...grpc.CallOption) (*GetNotifySettingsResponse, error)
+	// Updates the notification settings for a specific entity (chat or group)
 	UpdateNotifySettings(ctx context.Context, in *UpdateNotifySettingsRequest, opts ...grpc.CallOption) (*UpdateNotifySettingsResponse, error)
+	// Registers a device to receive notifications
 	RegisterDevice(ctx context.Context, in *RegisterDeviceRequest, opts ...grpc.CallOption) (*RegisterDeviceResponse, error)
 }
 
@@ -111,11 +117,17 @@ func (c *accountServiceClient) RegisterDevice(ctx context.Context, in *RegisterD
 // All implementations must embed UnimplementedAccountServiceServer
 // for forward compatibility.
 type AccountServiceServer interface {
+	// Retrieves the profile details of the user
 	GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error)
+	// Updates the profile details of the user
 	UpdateProfile(context.Context, *UpdateProfileRequest) (*UpdateProfileResponse, error)
+	// Updates the profile photo of the user
 	UpdateProfilePhoto(context.Context, *UpdateProfilePhotoRequest) (*UpdateProfilePhotoResponse, error)
+	// Retrieves the notification settings for a specific entity (chat or group)
 	GetNotifySettings(context.Context, *GetNotifySettingsRequest) (*GetNotifySettingsResponse, error)
+	// Updates the notification settings for a specific entity (chat or group)
 	UpdateNotifySettings(context.Context, *UpdateNotifySettingsRequest) (*UpdateNotifySettingsResponse, error)
+	// Registers a device to receive notifications
 	RegisterDevice(context.Context, *RegisterDeviceRequest) (*RegisterDeviceResponse, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }

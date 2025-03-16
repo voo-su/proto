@@ -5,27 +5,31 @@ package group_chat;
 option go_package = "./group_chat;pb";
 
 service GroupChatService {
+  // Creating a group chat
   rpc CreateGroupChat(CreateGroupChatRequest) returns (CreateGroupChatResponse);
 
+  // Retrieving information about the group chat
   rpc GetGroupChat(GetGroupChatRequest) returns (GetGroupChatResponse);
 
+  // Retrieving the list of participants in the group chat
   rpc GetMembers(GetMembersRequest) returns (GetMembersResponse);
 
+  // Adding participants to the group chat
   rpc AddUserToGroupChat(AddUserToGroupChatRequest) returns (AddUserToGroupChatResponse);
 
+  // Removing a participant from the group chat
   rpc RemoveUserFromGroupChat(RemoveUserFromGroupChatRequest) returns (RemoveUserFromGroupChatResponse);
 
+  // A user leaving the group chat
   rpc LeaveGroupChat(LeaveGroupChatRequest) returns (LeaveGroupChatResponse);
 }
 
 message CreateGroupChatRequest {
-  string title = 1;
-  string about = 2;
+  string name = 1;
 }
 
 message CreateGroupChatResponse {
   int64 id = 1;
-  string title = 2;
 }
 
 message GetGroupChatRequest {

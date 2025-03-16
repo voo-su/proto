@@ -17,29 +17,25 @@ import 'dart:typed_data' as $typed_data;
 const CreateGroupChatRequest$json = {
   '1': 'CreateGroupChatRequest',
   '2': [
-    {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
-    {'1': 'about', '3': 2, '4': 1, '5': 9, '10': 'about'},
+    {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
   ],
 };
 
 /// Descriptor for `CreateGroupChatRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createGroupChatRequestDescriptor = $convert.base64Decode(
-    'ChZDcmVhdGVHcm91cENoYXRSZXF1ZXN0EhQKBXRpdGxlGAEgASgJUgV0aXRsZRIUCgVhYm91dB'
-    'gCIAEoCVIFYWJvdXQ=');
+    'ChZDcmVhdGVHcm91cENoYXRSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWU=');
 
 @$core.Deprecated('Use createGroupChatResponseDescriptor instead')
 const CreateGroupChatResponse$json = {
   '1': 'CreateGroupChatResponse',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
-    {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
   ],
 };
 
 /// Descriptor for `CreateGroupChatResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createGroupChatResponseDescriptor = $convert.base64Decode(
-    'ChdDcmVhdGVHcm91cENoYXRSZXNwb25zZRIOCgJpZBgBIAEoA1ICaWQSFAoFdGl0bGUYAiABKA'
-    'lSBXRpdGxl');
+    'ChdDcmVhdGVHcm91cENoYXRSZXNwb25zZRIOCgJpZBgBIAEoA1ICaWQ=');
 
 @$core.Deprecated('Use getGroupChatRequestDescriptor instead')
 const GetGroupChatRequest$json = {

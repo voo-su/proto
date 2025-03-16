@@ -5,10 +5,13 @@ package contact;
 option go_package = "./contact;pb";
 
 service ContactService {
+  // Retrieves the list of contacts for the user
   rpc GetContacts(GetContactsRequest) returns (GetContactsResponse) {}
 
+  // Retrieves detailed information about a specific user by ID
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
 
+  // Searches for users based on a query string
   rpc Search(SearchRequest) returns (SearchResponse) {}
 }
 

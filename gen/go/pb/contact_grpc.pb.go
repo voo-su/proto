@@ -28,8 +28,11 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContactServiceClient interface {
+	// Retrieves the list of contacts for the user
 	GetContacts(ctx context.Context, in *GetContactsRequest, opts ...grpc.CallOption) (*GetContactsResponse, error)
+	// Retrieves detailed information about a specific user by ID
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// Searches for users based on a query string
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 }
 
@@ -75,8 +78,11 @@ func (c *contactServiceClient) Search(ctx context.Context, in *SearchRequest, op
 // All implementations must embed UnimplementedContactServiceServer
 // for forward compatibility.
 type ContactServiceServer interface {
+	// Retrieves the list of contacts for the user
 	GetContacts(context.Context, *GetContactsRequest) (*GetContactsResponse, error)
+	// Retrieves detailed information about a specific user by ID
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	// Searches for users based on a query string
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	mustEmbedUnimplementedContactServiceServer()
 }

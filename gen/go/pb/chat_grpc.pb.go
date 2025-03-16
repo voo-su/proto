@@ -32,12 +32,19 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatServiceClient interface {
+	// Retrieves real-time updates for the chat, such as new messages or chat events
 	GetUpdates(ctx context.Context, in *UpdatesRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Update], error)
+	// Retrieves the list of chats for the user
 	GetChats(ctx context.Context, in *GetChatsRequest, opts ...grpc.CallOption) (*GetChatsResponse, error)
+	// Retrieves the message history for a specific chat
 	GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error)
+	// Sends a text message to the specified receiver
 	SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*SendMessageResponse, error)
+	// Sends a photo to the specified receiver
 	SendPhoto(ctx context.Context, in *SendPhotoRequest, opts ...grpc.CallOption) (*SendPhotoResponse, error)
+	// Marks the specified messages as viewed by the receiver
 	ViewMessages(ctx context.Context, in *ViewMessagesRequest, opts ...grpc.CallOption) (*ViewMessagesResponse, error)
+	// Deletes specific messages from the chat (optional: revoke them)
 	DeleteMessages(ctx context.Context, in *DeleteMessagesRequest, opts ...grpc.CallOption) (*DeleteMessagesResponse, error)
 }
 
@@ -132,12 +139,19 @@ func (c *chatServiceClient) DeleteMessages(ctx context.Context, in *DeleteMessag
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility.
 type ChatServiceServer interface {
+	// Retrieves real-time updates for the chat, such as new messages or chat events
 	GetUpdates(*UpdatesRequest, grpc.ServerStreamingServer[Update]) error
+	// Retrieves the list of chats for the user
 	GetChats(context.Context, *GetChatsRequest) (*GetChatsResponse, error)
+	// Retrieves the message history for a specific chat
 	GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error)
+	// Sends a text message to the specified receiver
 	SendMessage(context.Context, *SendMessageRequest) (*SendMessageResponse, error)
+	// Sends a photo to the specified receiver
 	SendPhoto(context.Context, *SendPhotoRequest) (*SendPhotoResponse, error)
+	// Marks the specified messages as viewed by the receiver
 	ViewMessages(context.Context, *ViewMessagesRequest) (*ViewMessagesResponse, error)
+	// Deletes specific messages from the chat (optional: revoke them)
 	DeleteMessages(context.Context, *DeleteMessagesRequest) (*DeleteMessagesResponse, error)
 	mustEmbedUnimplementedChatServiceServer()
 }

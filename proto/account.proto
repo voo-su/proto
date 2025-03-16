@@ -5,16 +5,22 @@ package account;
 option go_package = "./account;pb";
 
 service AccountService {
+  // Retrieves the profile details of the user
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
 
+  // Updates the profile details of the user
   rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
 
+  // Updates the profile photo of the user
   rpc UpdateProfilePhoto(UpdateProfilePhotoRequest) returns (UpdateProfilePhotoResponse);
 
+  // Retrieves the notification settings for a specific entity (chat or group)
   rpc GetNotifySettings(GetNotifySettingsRequest) returns (GetNotifySettingsResponse);
 
+  // Updates the notification settings for a specific entity (chat or group)
   rpc UpdateNotifySettings(UpdateNotifySettingsRequest) returns (UpdateNotifySettingsResponse);
 
+  // Registers a device to receive notifications
   rpc RegisterDevice(RegisterDeviceRequest) returns (RegisterDeviceResponse);
 }
 

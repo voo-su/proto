@@ -16,15 +16,11 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class CreateGroupChatRequest extends $pb.GeneratedMessage {
   factory CreateGroupChatRequest({
-    $core.String? title,
-    $core.String? about,
+    $core.String? name,
   }) {
     final $result = create();
-    if (title != null) {
-      $result.title = title;
-    }
-    if (about != null) {
-      $result.about = about;
+    if (name != null) {
+      $result.name = name;
     }
     return $result;
   }
@@ -33,8 +29,7 @@ class CreateGroupChatRequest extends $pb.GeneratedMessage {
   factory CreateGroupChatRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateGroupChatRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'title')
-    ..aOS(2, _omitFieldNames ? '' : 'about')
+    ..aOS(1, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
   ;
 
@@ -60,35 +55,22 @@ class CreateGroupChatRequest extends $pb.GeneratedMessage {
   static CreateGroupChatRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get title => $_getSZ(0);
+  $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
-  set title($core.String v) { $_setString(0, v); }
+  set name($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasTitle() => $_has(0);
+  $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTitle() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get about => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set about($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasAbout() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearAbout() => clearField(2);
+  void clearName() => clearField(1);
 }
 
 class CreateGroupChatResponse extends $pb.GeneratedMessage {
   factory CreateGroupChatResponse({
     $fixnum.Int64? id,
-    $core.String? title,
   }) {
     final $result = create();
     if (id != null) {
       $result.id = id;
-    }
-    if (title != null) {
-      $result.title = title;
     }
     return $result;
   }
@@ -98,7 +80,6 @@ class CreateGroupChatResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateGroupChatResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'group_chat'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'title')
     ..hasRequiredFields = false
   ;
 
@@ -131,15 +112,6 @@ class CreateGroupChatResponse extends $pb.GeneratedMessage {
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get title => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set title($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasTitle() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearTitle() => clearField(2);
 }
 
 class GetGroupChatRequest extends $pb.GeneratedMessage {

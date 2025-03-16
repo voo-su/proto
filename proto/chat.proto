@@ -5,18 +5,25 @@ package chat;
 option go_package = "./chat;pb";
 
 service ChatService {
+  // Retrieves real-time updates for the chat, such as new messages or chat events
   rpc GetUpdates(UpdatesRequest) returns (stream Update);
 
+  // Retrieves the list of chats for the user
   rpc GetChats(GetChatsRequest) returns (GetChatsResponse) {}
 
+  // Retrieves the message history for a specific chat
   rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse) {}
 
+  // Sends a text message to the specified receiver
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
 
+  // Sends a photo to the specified receiver
   rpc SendPhoto(SendPhotoRequest) returns (SendPhotoResponse) {}
 
+  // Marks the specified messages as viewed by the receiver
   rpc ViewMessages(ViewMessagesRequest) returns (ViewMessagesResponse) {}
 
+  // Deletes specific messages from the chat (optional: revoke them)
   rpc DeleteMessages(DeleteMessagesRequest) returns (DeleteMessagesResponse);
 }
 
