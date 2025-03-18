@@ -22,6 +22,9 @@ service GroupChatService {
 
   // A user leaving the group chat
   rpc LeaveGroupChat(LeaveGroupChatRequest) returns (LeaveGroupChatResponse);
+
+  // Deleting a group chat
+  rpc DeleteGroupChat(DeleteGroupChatRequest) returns (DeleteGroupChatResponse);
 }
 
 message CreateGroupChatRequest {
@@ -82,5 +85,13 @@ message LeaveGroupChatRequest {
 }
 
 message LeaveGroupChatResponse {
+  bool success = 1;
+}
+
+message DeleteGroupChatRequest {
+  int64 id = 1;
+}
+
+message DeleteGroupChatResponse {
   bool success = 1;
 }
