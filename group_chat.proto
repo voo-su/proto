@@ -25,6 +25,12 @@ service GroupChatService {
 
   // Deleting a group chat
   rpc DeleteGroupChat(DeleteGroupChatRequest) returns (DeleteGroupChatResponse);
+
+  // Editing the group chat name
+  rpc EditNameGroupChat(EditNameGroupChatRequest) returns (EditNameGroupChatResponse);
+
+  // Editing the group chat description
+  rpc EditAboutGroupChat(EditAboutGroupChatRequest) returns (EditAboutGroupChatResponse);
 }
 
 message CreateGroupChatRequest {
@@ -93,5 +99,23 @@ message DeleteGroupChatRequest {
 }
 
 message DeleteGroupChatResponse {
+  bool success = 1;
+}
+
+message EditNameGroupChatRequest {
+  int64 id = 1;
+  string name = 2;
+}
+
+message EditNameGroupChatResponse {
+  bool success = 1;
+}
+
+message EditAboutGroupChatRequest {
+  int64 id = 1;
+  string about = 2;
+}
+
+message EditAboutGroupChatResponse {
   bool success = 1;
 }
