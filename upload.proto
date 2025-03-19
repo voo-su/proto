@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package upload;
+
+option go_package = "./upload;pb";
+
+service UploadService {
+  // Uploading a file part
+  rpc SaveFilePart (SaveFilePartRequest) returns (SaveFilePartResponse);
+}
+
+message SaveFilePartRequest {
+  // Unique file id (the same for all parts of a single file)
+  int64 file_id = 1;
+  // File part number (starting from 0)
+  int32 file_part = 2;
+  bytes bytes = 3;
+}
+
+message SaveFilePartResponse {
+  bool success = 1;
+}
