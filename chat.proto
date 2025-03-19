@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package chat;
 
-option go_package = "./chat;pb";
+option go_package = "voo.su/api/grpc/pb/chat;pb";
+
+import "common/common.proto";
 
 service ChatService {
   // Retrieves real-time updates for the chat, such as new messages or chat events
@@ -70,12 +72,6 @@ message GetChatsResponse {
   repeated ChatItem items = 1;
 }
 
-message ChatNotifySettings {
-  int32 mute_until = 1;
-  bool silent = 2;
-  bool show_previews = 3;
-}
-
 message ChatItem {
   int64 id = 1;
   Receiver receiver = 2;
@@ -84,7 +80,7 @@ message ChatItem {
   string name = 5;
   string surname = 6;
   string msg_text = 7;
-  ChatNotifySettings notify_settings = 8;
+  common.EntityNotifySettings notify_settings = 8;
   int64 unread_count = 9;
   string updated_at = 10;
   bool is_online = 11;

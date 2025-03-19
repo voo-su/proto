@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package group_chat;
 
-option go_package = "./group_chat;pb";
+option go_package = "voo.su/api/grpc/pb/group_chat;pb";
 
 service GroupChatService {
   // Creating a group chat

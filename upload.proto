@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package upload;
 
-option go_package = "./upload;pb";
+option go_package = "voo.su/api/grpc/pb/upload;pb";
 
 service UploadService {
   // Uploading a file part

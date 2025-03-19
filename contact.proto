@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package contact;
 
-option go_package = "./contact;pb";
+option go_package = "voo.su/api/grpc/pb/contact;pb";
 
 service ContactService {
   // Retrieves the list of contacts for the user
