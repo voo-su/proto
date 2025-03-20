@@ -5,29 +5,38 @@ package common;
 option go_package = "voo.su/api/grpc/pb/common";
 
 message EntityNotifySettings {
-    // Time until notifications are disabled (Unix timestamp)
-    // If mute_until = 0, notifications are enabled
-    // If mute_until > current time, notifications are disabled until the specified time
-    // If mute_until = 2147483647, notifications are disabled permanently
-    int32 mute_until = 1;
+  // Time until notifications are disabled (Unix timestamp)
+  // If mute_until = 0, notifications are enabled
+  // If mute_until > current time, notifications are disabled until the specified time
+  // If mute_until = 2147483647, notifications are disabled permanently
+  int32 mute_until = 1;
 
-    // Mute notifications sound flag
-    // If silent = true, notifications arrive without sound
-    // If silent = false, notifications arrive with sound
-    bool silent = 2;
+  // Mute notifications sound flag
+  // If silent = true, notifications arrive without sound
+  // If silent = false, notifications arrive with sound
+  bool silent = 2;
 
-    // Message preview display flag
-    // If show_previews = true, the message text is displayed in the notification
-    // If show_previews = false, only the sender's name is shown in the notification
-    bool show_previews = 3;
+  // Message preview display flag
+  // If show_previews = true, the message text is displayed in the notification
+  // If show_previews = false, only the sender's name is shown in the notification
+  bool show_previews = 3;
 }
 
 message InputFile {
-    int64 id = 1;
-    int32 parts = 2;
-    string name = 3;
+  int64 id = 1;
+  int32 parts = 2;
+  string name = 3;
 }
 
 message InputDocumentFileLocation {
-    string id = 1;
+  string id = 1;
 }
+
+message InputPhoto {
+  oneof photo {
+    inputPhotoEmpty empty = 1;
+    InputFile file = 2;
+  }
+}
+
+message inputPhotoEmpty {}

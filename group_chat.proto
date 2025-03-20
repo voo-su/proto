@@ -4,6 +4,8 @@ package group_chat;
 
 option go_package = "voo.su/api/grpc/pb/group_chat;pb";
 
+import "common/common.proto";
+
 service GroupChatService {
   // Creating a group chat
   rpc CreateGroupChat(CreateGroupChatRequest) returns (CreateGroupChatResponse);
@@ -31,6 +33,9 @@ service GroupChatService {
 
   // Editing the group chat description
   rpc EditAboutGroupChat(EditAboutGroupChatRequest) returns (EditAboutGroupChatResponse);
+
+  // Editing the group chat photo
+  rpc EditPhotoGroupChat(EditPhotoGroupChatRequest) returns (EditPhotoGroupChatResponse);
 }
 
 message CreateGroupChatRequest {
@@ -48,7 +53,7 @@ message GetGroupChatRequest {
 message GetGroupChatResponse {
   int64 id = 1;
   string name = 2;
-  string about  = 3;
+  string about = 3;
   string avatar = 4;
   int64 members = 5;
 }
@@ -118,5 +123,14 @@ message EditAboutGroupChatRequest {
 }
 
 message EditAboutGroupChatResponse {
+  bool success = 1;
+}
+
+message EditPhotoGroupChatRequest {
+  int64 id = 1;
+  common.InputPhoto photo = 2;
+}
+
+message EditPhotoGroupChatResponse {
   bool success = 1;
 }
