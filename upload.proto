@@ -4,19 +4,33 @@ package upload;
 
 option go_package = "voo.su/api/grpc/pb/upload;pb";
 
+import "common/common.proto";
+
 service UploadService {
   // Uploading a file part
   rpc SaveFilePart (SaveFilePartRequest) returns (SaveFilePartResponse);
+  // Returns content of a whole file or its part
+  rpc GetFile (GetFileRequest) returns (GetFileResponse);
 }
 
 message SaveFilePartRequest {
-  // Unique file id (the same for all parts of a single file)
-  int64 file_id = 1;
-  // File part number (starting from 0)
-  int32 file_part = 2;
+  int64 file_id = 1;  // Unique file id (the same for all parts of a single file)
+  int32 file_part = 2; // File part number (starting from 0)
   bytes bytes = 3;
 }
 
 message SaveFilePartResponse {
   bool success = 1;
+}
+
+message GetFileRequest {
+  int64 offset = 1; // Number of bytes to be skipped
+  int32 limit = 2; // Number of bytes to be returned
+  oneof location {
+    common.InputDocumentFileLocation document_location = 3;
+  }
+}
+
+message GetFileResponse {
+  bytes bytes = 1;
 }

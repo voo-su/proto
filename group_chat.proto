@@ -48,8 +48,9 @@ message GetGroupChatRequest {
 message GetGroupChatResponse {
   int64 id = 1;
   string name = 2;
-  string avatar = 3;
-  int64 members = 4;
+  string about  = 3;
+  string avatar = 4;
+  int64 members = 5;
 }
 
 message GetMembersRequest {

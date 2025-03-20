@@ -4,12 +4,6 @@ package common;
 
 option go_package = "voo.su/api/grpc/pb/common";
 
-message InputFile {
-    int64 id = 1;
-    int32 parts = 2;
-    string name = 3;
-}
-
 message EntityNotifySettings {
     // Time until notifications are disabled (Unix timestamp)
     // If mute_until = 0, notifications are enabled
@@ -26,4 +20,14 @@ message EntityNotifySettings {
     // If show_previews = true, the message text is displayed in the notification
     // If show_previews = false, only the sender's name is shown in the notification
     bool show_previews = 3;
+}
+
+message InputFile {
+    int64 id = 1;
+    int32 parts = 2;
+    string name = 3;
+}
+
+message InputDocumentFileLocation {
+    string id = 1;
 }
