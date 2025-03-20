@@ -34,9 +34,9 @@ message InputDocumentFileLocation {
 
 message InputPhoto {
   oneof photo {
-    inputPhotoEmpty empty = 1;
+    InputPhotoEmpty empty = 1;
     InputFile file = 2;
   }
 }
 
-message inputPhotoEmpty {}
+message InputPhotoEmpty {}

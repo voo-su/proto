@@ -19,8 +19,8 @@ service ChatService {
   // Sends a text message to the specified receiver
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
 
-  // Sends a photo to the specified receiver
-  rpc SendPhoto(SendPhotoRequest) returns (SendPhotoResponse) {}
+  // Sends a media file to the specified receiver
+  rpc SendMedia(SendMediaRequest) returns (SendMediaResponse) {}
 
   // Marks the specified messages as viewed by the receiver
   rpc ViewMessages(ViewMessagesRequest) returns (ViewMessagesResponse) {}
@@ -176,13 +176,18 @@ message SendMessageResponse {
   bool success = 1;
 }
 
-message SendPhotoRequest {
-  Receiver receiver = 1;
-  bytes photo = 2;
-  optional string caption = 3;
+message InputMedia {
+  common.InputFile file = 1;
 }
 
-message SendPhotoResponse {
+message SendMediaRequest {
+  Receiver receiver = 1;
+  InputMedia media = 2;
+  string message = 3;
+  int64 reply_to_msg_id = 4;
+}
+
+message SendMediaResponse {
   bool success = 1;
 }
 
