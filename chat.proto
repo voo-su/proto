@@ -176,8 +176,41 @@ message SendMessageResponse {
   bool success = 1;
 }
 
-message InputMedia {
+message InputMediaUploadedPhoto {
   common.InputFile file = 1;
+}
+
+message DocumentAttributeVideo {
+  int32 duration = 1;
+}
+
+message DocumentAttributeAudio {
+  int32 duration = 1;
+}
+
+message DocumentAttributeFilename {
+  string file_name = 1;
+}
+
+message DocumentAttribute {
+  oneof attributes {
+    DocumentAttributeVideo video = 1;
+    DocumentAttributeAudio audio = 2;
+    DocumentAttributeFilename filename = 3;
+  }
+}
+
+message InputMediaUploadedDocument {
+  common.InputFile file = 1;
+  string mime_type = 2;
+  DocumentAttribute attributes = 3;
+}
+
+message InputMedia {
+  oneof media {
+    InputMediaUploadedPhoto photo = 1;
+    InputMediaUploadedDocument document = 2;
+  }
 }
 
 message SendMediaRequest {
