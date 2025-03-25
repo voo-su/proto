@@ -150,12 +150,15 @@ message MessageMedia {
 }
 
 message MessageMediaPhoto {
-  string file = 1;
+  string id = 1;
+  string file = 2; // TODO Скоро будет удален
 }
 
 message MessageMediaDocument {
-  string file = 1;
+  string id = 1;
   string mime_type = 2;
+  int32 size = 3;  // File size in bytes
+  string file = 4; // TODO Скоро будет удален
 }
 
 message MessageReply {
@@ -180,23 +183,11 @@ message InputMediaUploadedPhoto {
   common.InputFile file = 1;
 }
 
-message DocumentAttributeVideo {
-  int32 duration = 1;
-}
-
-message DocumentAttributeAudio {
-  int32 duration = 1;
-}
-
-message DocumentAttributeFilename {
-  string file_name = 1;
-}
-
 message DocumentAttribute {
   oneof attributes {
-    DocumentAttributeVideo video = 1;
-    DocumentAttributeAudio audio = 2;
-    DocumentAttributeFilename filename = 3;
+    common.DocumentAttributeVideo video = 1;
+    common.DocumentAttributeAudio audio = 2;
+    common.DocumentAttributeFilename filename = 3;
   }
 }
 
