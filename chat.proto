@@ -116,7 +116,6 @@ message MessageItem {
       9  - Forwarded message
       10 - Login / Authentication
       11 - Voting
-      12 - Mixed content
 
     System Events (msg_type):
       1000 - System message
@@ -131,7 +130,6 @@ message MessageItem {
       1109 - Member muted in the group
       1110 - Member unmuted in the group
       1111 - Advertisement in the group
-      1113 - Group ownership transferred
   */
   int32 msg_type = 3;
   int64 user_id = 4;
@@ -158,7 +156,9 @@ message MessageMediaDocument {
   string id = 1;
   string mime_type = 2;
   int32 size = 3;  // File size in bytes
-  string file = 4; // TODO Скоро будет удален
+  string thumb = 4;
+  DocumentAttribute attribute = 5;
+  string file = 6; // TODO Скоро будет удален
 }
 
 message MessageReply {

@@ -9,6 +9,7 @@ import "common/common.proto";
 service UploadService {
   // Uploading a file part
   rpc SaveFilePart (SaveFilePartRequest) returns (SaveFilePartResponse);
+
   // Returns content of a whole file or its part
   rpc GetFile (GetFileRequest) returns (GetFileResponse);
 }

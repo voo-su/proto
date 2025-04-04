@@ -36,6 +36,9 @@ service GroupChatService {
 
   // Editing the group chat photo
   rpc EditPhotoGroupChat(EditPhotoGroupChatRequest) returns (EditPhotoGroupChatResponse);
+
+  // Editing permissions for the group chat
+  rpc EditPermissionsGroupChat(EditPermissionsGroupChatRequest) returns (EditPermissionsGroupChatResponse);
 }
 
 message CreateGroupChatRequest {
@@ -132,5 +135,14 @@ message EditPhotoGroupChatRequest {
 }
 
 message EditPhotoGroupChatResponse {
+  bool success = 1;
+}
+
+message EditPermissionsGroupChatRequest {
+  int64 id = 1;
+  bool can_send_messages = 2;
+}
+
+message EditPermissionsGroupChatResponse {
   bool success = 1;
 }
