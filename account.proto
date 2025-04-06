@@ -30,9 +30,9 @@ message GetProfileRequest {}
 
 message GetProfileResponse {
   int64 id = 1;
-  string username = 3;
-  string email = 4;
-  string avatar = 2;
+  string username = 2;
+  string email = 3;
+  common.UserPhoto photo = 4;
   string name = 5;
   string surname = 6;
   int32 gender = 7;

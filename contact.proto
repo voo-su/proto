@@ -4,6 +4,8 @@ package contact;
 
 option go_package = "voo.su/api/grpc/pb/contact;pb";
 
+import "common/common.proto";
+
 service ContactService {
   // Retrieves the list of contacts for the user
   rpc GetContacts(GetContactsRequest) returns (GetContactsResponse) {}
@@ -26,7 +28,7 @@ message ContactItem {
   string username = 2;
   string name = 3;
   string surname = 4;
-  string avatar = 5;
+  common.UserPhoto photo = 5;
 }
 
 message GetUserRequest {
@@ -36,7 +38,7 @@ message GetUserRequest {
 message GetUserResponse {
   int64 id = 1;
   string username = 2 ;
-  string avatar = 3;
+  common.UserPhoto photo = 3;
   string name = 4 ;
   string surname = 5;
   int32 gender = 6;

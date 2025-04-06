@@ -57,3 +57,11 @@ message DocumentAttributeAudio {
 message DocumentAttributeFilename {
   string file_name = 1;
 }
+
+message UserPhoto {
+  string photo_id = 1;
+}
+
+message ChatPhoto {
+  string photo_id = 1;
+}

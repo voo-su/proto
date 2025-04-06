@@ -72,13 +72,20 @@ message GetChatsResponse {
   repeated ChatItem items = 1;
 }
 
+message ChatPhoto {
+  oneof media {
+    common.UserPhoto user_photo = 1;
+    common.ChatPhoto group_chat_photo = 2;
+  }
+}
+
 message ChatItem {
   int64 id = 1;
   Receiver receiver = 2;
   string username = 3;
-  string avatar = 4;
-  string name = 5;
-  string surname = 6;
+  string name = 4;
+  string surname = 5;
+  ChatPhoto photo = 6;
   string msg_text = 7;
   common.EntityNotifySettings notify_settings = 8;
   int64 unread_count = 9;
@@ -149,7 +156,6 @@ message MessageMedia {
 
 message MessageMediaPhoto {
   string id = 1;
-  string file = 2; // TODO Скоро будет удален
 }
 
 message MessageMediaDocument {
@@ -158,7 +164,6 @@ message MessageMediaDocument {
   int32 size = 3;  // File size in bytes
   string thumb = 4;
   DocumentAttribute attribute = 5;
-  string file = 6; // TODO Скоро будет удален
 }
 
 message MessageReply {
@@ -195,6 +200,7 @@ message InputMediaUploadedDocument {
   common.InputFile file = 1;
   string mime_type = 2;
   DocumentAttribute attributes = 3;
+  common.InputFile thumb = 4;
 }
 
 message InputMedia {

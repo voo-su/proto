@@ -57,7 +57,7 @@ message GetGroupChatResponse {
   int64 id = 1;
   string name = 2;
   string about = 3;
-  string avatar = 4;
+  common.ChatPhoto photo = 4;
   int64 members = 5;
 }
 
@@ -72,7 +72,7 @@ message GetMembersResponse {
 message MemberItem {
   int64 id = 1;
   string username = 2;
-  string avatar = 3;
+  common.UserPhoto photo = 3;
   string name = 4;
   string surname = 5;
 }
