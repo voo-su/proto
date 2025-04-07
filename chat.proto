@@ -10,8 +10,14 @@ service ChatService {
   // Retrieves real-time updates for the chat, such as new messages or chat events
   rpc GetUpdates(UpdatesRequest) returns (stream Update);
 
+  // Creates a new chat with the specified participants
+  rpc CreateChat(CreateChatRequest) returns (CreateChatResponse) {}
+
   // Retrieves the list of chats for the user
   rpc GetChats(GetChatsRequest) returns (GetChatsResponse) {}
+
+  // Deletes the specified chat
+  rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse) {}
 
   // Retrieves the message history for a specific chat
   rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse) {}
@@ -70,6 +76,22 @@ message GetChatsRequest {}
 
 message GetChatsResponse {
   repeated ChatItem items = 1;
+}
+
+message CreateChatRequest {
+  Receiver receiver = 1;
+}
+
+message CreateChatResponse {
+  ChatItem item = 1;
+}
+
+message DeleteChatRequest {
+  int64 id = 1;
+}
+
+message DeleteChatResponse {
+  bool success = 1;
 }
 
 message ChatPhoto {

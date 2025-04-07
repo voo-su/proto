@@ -7,8 +7,10 @@ option go_package = "voo.su/api/grpc/pb/search;pb";
 import "common/common.proto";
 
 service SearchService {
+  // Searches for users matching the given query
   rpc Users(SearchUsersRequest) returns (SearchUserResponse);
 
+  // Searches for group chats matching the given query
   rpc GroupChats(SearchGroupChatsRequest) returns (SearchGroupChatsResponse);
 }
 
