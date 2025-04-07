@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package bot;
+
+option go_package = "voo.su/api/grpc/pb/bot;pb";
+
+service BotService {
+  rpc Create(BotCreateRequest) returns (BotCreateResponse);
+
+  rpc List(BotListRequest) returns (BotListResponse);
+}
+
+message BotCreateRequest {
+  string username = 1;
+}
+
+message BotCreateResponse {
+  string token = 1;
+}
+
+message BotListRequest {}
+
+message BotListResponse {
+  message Item {
+    int32 id = 1;
+    string username = 2;
+    string token = 3;
+  }
+
+  repeated Item items = 1;
+}
