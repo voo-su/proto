@@ -6,41 +6,59 @@ option go_package = "voo.su/api/grpc/pb/project;pb";
 
 import "common/common.proto";
 
-service UploadService {
+service ProjectService {
+  // Creates a new project
   rpc Create (ProjectCreateRequest) returns (ProjectCreateResponse);
 
+  // Retrieves a list of projects available to the user
   rpc Projects (ProjectListRequest) returns (ProjectListResponse);
 
+  // Retrieves detailed information about a specific project
   rpc Detail (ProjectDetailRequest) returns (ProjectDetailResponse);
 
+  // Retrieves the list of members in a project
   rpc Members (ProjectMembersRequest) returns (ProjectMembersResponse);
 
+  // Retrieves a list of friends that can be invited to a project
   rpc GetInviteFriends (ProjectInviteFriendsRequest) returns (ProjectInviteFriendsResponse);
 
+  // Sends an invitation to users to join a project
   rpc Invite (ProjectInviteRequest) returns (ProjectInviteResponse);
 
+  // Creates a new task within a project
   rpc CreateTask (ProjectTaskCreateRequest) returns (ProjectTaskCreateResponse);
 
+  // Retrieves a list of tasks for a specific project
   rpc Tasks (ProjectTaskRequest) returns (ProjectTaskResponse);
 
+  // Retrieves detailed information about a specific task
   rpc TaskDetail (ProjectTaskDetailRequest) returns (ProjectTaskDetailResponse);
 
+  // Assigns or updates the executor (responsible user) for a task
   rpc Executor (ProjectExecutorRequest) returns (ProjectExecutorResponse);
 
+  // Moves a task to a different status or column
   rpc TaskMove (ProjectTaskMoveRequest) returns (ProjectTaskMoveResponse);
 
+  // Updates or retrieves the name/type of a task
   rpc TaskTypeName (ProjectTaskTypeNameRequest) returns (ProjectTaskTypeNameResponse);
 
+  // Invites a user to be a co-executor (shared responsibility) of a task
   rpc TaskCoexecutorInvite (ProjectCoexecutorInviteRequest) returns (ProjectCoexecutorInviteResponse);
 
+  // Retrieves a list of co-executors assigned to a task
   rpc TaskCoexecutors (ProjectCoexecutorsRequest) returns (ProjectCoexecutorsResponse);
 
+  // Invites a user to watch a task (receive updates without being responsible)
   rpc TaskWatcherInvite (ProjectWatcherInviteRequest) returns (ProjectWatcherInviteResponse);
 
+  // Retrieves a list of watchers assigned to a task
   rpc TaskWatchers (ProjectWatchersRequest) returns (ProjectWatchersResponse);
 
+  // Creates a comment on a task
   rpc CreateComment (ProjectCommentCreateRequest) returns (ProjectCommentCreateResponse);
 
+  // Retrieves a list of comments for a task
   rpc Comments (ProjectCommentRequest) returns (ProjectCommentResponse);
 }
 

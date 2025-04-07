@@ -24,6 +24,9 @@ service AccountService {
 
   // Registers a device to receive notifications
   rpc RegisterDevice(RegisterDeviceRequest) returns (RegisterDeviceResponse);
+
+  // Updates the username of the user
+  rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
 }
 
 message GetProfileRequest {}
@@ -104,5 +107,13 @@ message RegisterDeviceRequest {
 }
 
 message RegisterDeviceResponse {
+  bool success = 1;
+}
+
+message UpdateUsernameRequest {
+  string username = 1;
+}
+
+message UpdateUsernameResponse {
   bool success = 1;
 }
