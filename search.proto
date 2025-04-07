@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package search;
+
+option go_package = "voo.su/api/grpc/pb/search;pb";
+
+import "common/common.proto";
+
+service SearchService {
+  rpc Users(SearchUsersRequest) returns (SearchUserResponse);
+
+  rpc GroupChats(SearchGroupChatsRequest) returns (SearchGroupChatsResponse);
+}
+
+message SearchUsersRequest {
+  string q = 1;
+}
+
+message SearchUserResponse {
+  message Item {
+    int32 id = 1;
+    string username = 2;
+    common.UserPhoto photo = 3;
+    string name = 4;
+    string surname = 5;
+  }
+
+  repeated Item items = 1;
+}
+
+message SearchGroupChatsRequest {
+  int32 page = 1;
+  string name = 2;
+}
+
+message SearchGroupChatsResponse {
+  message Item {
+    int32 id = 1;
+    int32 type = 2;
+    string name = 3;
+    common.ChatPhoto photo = 4;
+    string description = 5;
+    int32 count = 6;
+    int32 max_num = 7;
+    bool is_member = 8;
+    string created_at = 9;
+  }
+
+  repeated Item items = 1;
+  bool next = 2;
+}
