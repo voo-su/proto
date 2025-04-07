@@ -1,0 +1,260 @@
+syntax = "proto3";
+
+package project;
+
+option go_package = "voo.su/api/grpc/pb/project;pb";
+
+import "common/common.proto";
+
+service UploadService {
+  rpc Create (ProjectCreateRequest) returns (ProjectCreateResponse);
+
+  rpc Projects (ProjectListRequest) returns (ProjectListResponse);
+
+  rpc Detail (ProjectDetailRequest) returns (ProjectDetailResponse);
+
+  rpc Members (ProjectMembersRequest) returns (ProjectMembersResponse);
+
+  rpc GetInviteFriends (ProjectInviteFriendsRequest) returns (ProjectInviteFriendsResponse);
+
+  rpc Invite (ProjectInviteRequest) returns (ProjectInviteResponse);
+
+  rpc CreateTask (ProjectTaskCreateRequest) returns (ProjectTaskCreateResponse);
+
+  rpc Tasks (ProjectTaskRequest) returns (ProjectTaskResponse);
+
+  rpc TaskDetail (ProjectTaskDetailRequest) returns (ProjectTaskDetailResponse);
+
+  rpc Executor (ProjectExecutorRequest) returns (ProjectExecutorResponse);
+
+  rpc TaskMove (ProjectTaskMoveRequest) returns (ProjectTaskMoveResponse);
+
+  rpc TaskTypeName (ProjectTaskTypeNameRequest) returns (ProjectTaskTypeNameResponse);
+
+  rpc TaskCoexecutorInvite (ProjectCoexecutorInviteRequest) returns (ProjectCoexecutorInviteResponse);
+
+  rpc TaskCoexecutors (ProjectCoexecutorsRequest) returns (ProjectCoexecutorsResponse);
+
+  rpc TaskWatcherInvite (ProjectWatcherInviteRequest) returns (ProjectWatcherInviteResponse);
+
+  rpc TaskWatchers (ProjectWatchersRequest) returns (ProjectWatchersResponse);
+
+  rpc CreateComment (ProjectCommentCreateRequest) returns (ProjectCommentCreateResponse);
+
+  rpc Comments (ProjectCommentRequest) returns (ProjectCommentResponse);
+}
+
+message ProjectCreateRequest {
+  string title = 1;
+  string ids = 2;
+}
+
+message ProjectCreateResponse {
+  string id = 1;
+}
+
+message ProjectListRequest {}
+
+message ProjectListResponse {
+  message Item {
+    string id = 1;
+    string title = 2;
+  }
+
+  repeated Item items = 1;
+}
+
+message ProjectDetailRequest {
+  string id = 1;
+}
+
+message ProjectDetailResponse {
+  string id = 1;
+  string name = 2;
+}
+
+message ProjectMembersRequest {
+  string project_id = 1;
+}
+
+message ProjectMembersResponse {
+  message Item {
+    int64 id = 1;
+    string username = 2;
+  }
+
+  repeated Item items = 1;
+}
+
+message ProjectInviteFriendsRequest {
+  string project_id = 1;
+}
+
+message ProjectInviteFriendsResponse {
+  message Item {
+    int64 id = 1;
+    string username = 2;
+  }
+
+  repeated Item items = 1;
+}
+
+message ProjectInviteRequest {
+  string project_id = 1;
+  string ids = 2;
+}
+
+message ProjectInviteResponse {}
+
+message ProjectCommentCreateRequest {
+  string task_id = 1;
+  string comment = 2;
+}
+
+message ProjectCommentCreateResponse {
+  int64 id = 1;
+}
+
+message ProjectCommentRequest {
+  string task_id = 1;
+}
+
+message ProjectCommentResponse {
+  message User{
+    int64 id = 1;
+    string username = 2;
+    string name = 3;
+    string surname = 4;
+    common.UserPhoto photo = 5;
+  }
+
+  message Item {
+    int64 id = 1;
+    string taskId = 2;
+    string comment = 3;
+    User user = 4;
+    string created_at = 5;
+  }
+
+  repeated Item items = 1;
+}
+
+message ProjectTaskCreateRequest {
+  string project_id = 1;
+  int64 type_id = 2;
+  string title = 3;
+  string description = 4;
+}
+
+message ProjectTaskCreateResponse {
+  string id = 1;
+}
+
+message ProjectTaskRequest {
+  string project_id = 1;
+}
+
+message ProjectTaskResponse {
+  message Tasks {
+    string id = 1;
+    string title = 2;
+  }
+
+  message Categories {
+    int64 id = 1;
+    string title = 2;
+    repeated Tasks tasks = 3;
+  }
+
+  repeated Categories categories = 1;
+}
+
+message ProjectExecutorRequest {
+  string task_id = 1;
+  int64 member_id = 2;
+}
+
+message ProjectExecutorResponse {}
+
+message ProjectTaskMoveRequest {
+  string project_id = 1;
+  string task_id = 2;
+  int64 from_id = 3;
+  int64 to_id = 4;
+}
+
+message ProjectTaskMoveResponse {}
+
+message ProjectTaskDetailRequest {
+  string task_id = 1;
+}
+
+message ProjectTaskDetailResponse {
+  message Member {
+    int64 id = 1;
+    string username = 2;
+    string name = 3;
+    string surname = 4;
+    common.UserPhoto photo = 5;
+  }
+
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string created_at = 4;
+  Member assigner = 5;
+  Member executor = 6;
+}
+
+message ProjectTaskTypeNameRequest {
+  string task_id = 1;
+  string name = 2;
+}
+
+message ProjectTaskTypeNameResponse {}
+
+message ProjectCoexecutorInviteRequest {
+  string task_id = 1;
+  string member_ids = 2;
+}
+
+message ProjectCoexecutorInviteResponse {}
+
+message ProjectCoexecutorsRequest {
+  string task_id = 1;
+}
+
+message ProjectCoexecutorsResponse {
+  message Item {
+    int64 id = 1;
+    string username = 2;
+    string name = 3;
+    string surname = 4;
+    common.UserPhoto photo = 5;
+  }
+
+  repeated Item items = 1;
+}
+
+message ProjectWatcherInviteRequest {
+  string task_id = 1;
+  string member_ids = 2;
+}
+
+message ProjectWatcherInviteResponse {}
+
+message ProjectWatchersRequest {
+  string task_id = 1;
+}
+
+message ProjectWatchersResponse {
+  message Item {
+    int64 id = 1;
+    string username = 2;
+    string name = 3;
+    string surname = 4;
+    common.UserPhoto photo = 5;
+  }
+
+  repeated Item items = 1;
+}
