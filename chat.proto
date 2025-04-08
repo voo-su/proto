@@ -33,6 +33,16 @@ service ChatService {
 
   // Deletes specific messages from the chat (optional: revoke them)
   rpc DeleteMessages(DeleteMessagesRequest) returns (DeleteMessagesResponse);
+
+  rpc UploadSticker(UploadStickerRequest) returns (UploadStickerResponse);
+
+  rpc GetStickers(GetStickersRequest) returns (GetStickersResponse);
+
+  rpc DeleteSticker(DeleteStickerRequest) returns (DeleteStickerResponse);
+
+  rpc GetSystemStickers(GetSystemStickersRequest) returns (GetSystemStickersResponse);
+
+  rpc SetSystemSticker(SetSystemStickerRequest) returns (SetSystemStickerResponse);
 }
 
 message Receiver {
@@ -262,4 +272,64 @@ message DeleteMessagesRequest {
 
 message DeleteMessagesResponse {
   bool success = 1;
+}
+
+message StickerListItem {
+  int32 media_id = 1;
+  string src = 2;
+}
+
+message UploadStickerRequest {}
+
+message UploadStickerResponse {
+  int32 media_id = 1;
+  string src = 2;
+}
+
+message GetStickersRequest {}
+
+message GetStickersResponse {
+  message SysSticker {
+    int32 sticker_id = 1;
+    string url = 2;
+    string name = 3;
+    repeated StickerListItem list = 4;
+  }
+
+  repeated SysSticker sys_sticker = 1;
+  repeated StickerListItem collect_sticker = 2;
+}
+
+message DeleteStickerRequest {
+  string ids = 1;
+}
+
+message DeleteStickerResponse {}
+
+message GetSystemStickersRequest {
+  int32 sticker_id = 1;
+  int32 type = 2;
+}
+
+message GetSystemStickersResponse {
+  message Item {
+    int32 id = 1;
+    string name = 2;
+    string icon = 3;
+    int32 status = 4;
+  }
+
+  repeated Item items = 1;
+}
+
+message SetSystemStickerRequest {
+  int32 sticker_id = 1;
+  int32 type = 2;
+}
+
+message SetSystemStickerResponse {
+  int32 sticker_id = 1;
+  string url = 2;
+  string name = 3;
+  repeated StickerListItem list = 4;
 }

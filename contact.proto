@@ -79,9 +79,13 @@ message CreateRequestRequest {
   int32 friend_id = 1;
 }
 
-message CreateRequestResponse {}
+message CreateRequestResponse {
+  bool success = 1;
+}
 
-message GetRequestsRequest {
+message GetRequestsRequest {}
+
+message GetRequestsResponse {
   message Item {
     int32 id = 1;
     int32 user_id = 2;
@@ -94,16 +98,19 @@ message GetRequestsRequest {
 
   repeated Item items = 1;
 }
-message GetRequestsResponse {}
 
 message AcceptRequestRequest {
   int32 apply_id = 1;
 }
 
-message AcceptRequestResponse {}
+message AcceptRequestResponse {
+  bool success = 1;
+}
 
 message RejectRequestRequest {
   int32 apply_id = 1;
 }
 
-message RejectRequestResponse {}
+message RejectRequestResponse {
+  bool success = 1;
+}
