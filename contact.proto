@@ -15,6 +15,21 @@ service ContactService {
 
   // Searches for users based on a query string
   rpc Search(SearchRequest) returns (SearchResponse) {}
+
+  // Retrieves the number of unread contact requests for the user
+  rpc RequestUnreadNum(RequestUnreadNumRequest) returns (RequestUnreadNumResponse) {}
+
+  // Creates a new contact request from the current user to another user
+  rpc CreateRequest(CreateRequestRequest) returns (CreateRequestResponse) {}
+
+  // Retrieves a list of incoming and/or outgoing contact requests for the user
+  rpc GetRequests(GetRequestsRequest) returns (GetRequestsResponse) {}
+
+  // Accepts a received contact request, adding the user to the contact list
+  rpc AcceptRequest(AcceptRequestRequest) returns (AcceptRequestResponse) {}
+
+  // Rejects a received contact request without adding the user to the contact list
+  rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse) {}
 }
 
 message GetContactsRequest {}
@@ -53,3 +68,42 @@ message SearchRequest {
 message SearchResponse {
   repeated ContactItem items = 1;
 }
+
+message RequestUnreadNumRequest {}
+
+message RequestUnreadNumResponse {
+  int64 UnreadNum = 1;
+}
+
+message CreateRequestRequest {
+  int32 friend_id = 1;
+}
+
+message CreateRequestResponse {}
+
+message GetRequestsRequest {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    int32 friend_id = 3;
+    string username = 4;
+    string avatar = 5;
+    string name = 6;
+    string surname = 7;
+  }
+
+  repeated Item items = 1;
+}
+message GetRequestsResponse {}
+
+message AcceptRequestRequest {
+  int32 apply_id = 1;
+}
+
+message AcceptRequestResponse {}
+
+message RejectRequestRequest {
+  int32 apply_id = 1;
+}
+
+message RejectRequestResponse {}
