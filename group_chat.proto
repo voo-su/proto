@@ -39,6 +39,46 @@ service GroupChatService {
 
   // Editing permissions for the group chat
   rpc EditPermissionsGroupChat(EditPermissionsGroupChatRequest) returns (EditPermissionsGroupChatResponse);
+
+  rpc GroupChatDetail(GroupChatDetailRequest) returns (GroupChatDetailResponse);
+
+  rpc GroupChatMemberList(GroupChatMemberListRequest) returns (GroupChatMemberListResponse);
+
+  rpc GroupChatDismiss(GroupChatDismissRequest) returns (GroupDismissResponse);
+
+  rpc GroupChatInvite(GroupChatInviteRequest) returns (GroupChatInviteResponse);
+
+  rpc GroupChatGetInviteFriends(GroupChatGetInviteFriendsRequest) returns (GroupChatGetInviteFriendsResponse);
+
+  rpc GroupChatLeave(GroupChatLeaveRequest) returns (GroupChatLeaveResponse);
+
+  rpc GroupSetting(GroupSettingRequest) returns (GroupChatSettingResponse);
+
+  rpc GroupChatAssignAdmin(GroupChatAssignAdminRequest) returns (GroupChatAssignAdminResponse);
+
+  rpc GroupChatMute(GroupChatMuteRequest) returns (GroupChatMuteResponse);
+
+  rpc GroupChatOvert(GroupChatOvertRequest) returns (GroupChatOvertResponse);
+
+  rpc GroupChatRequest(GroupChatRequestCreateRequest) returns (GroupChatRequestCreateResponse);
+
+  rpc GroupChatRequestAgree(GroupChatRequestAgreeRequest) returns (GroupChatRequestAgreeResponse);
+
+  rpc GroupChatRequestDecline(GroupChatRequestDeclineRequest) returns (GroupChatRequestDeclineResponse);
+
+  rpc GroupRequestList(GroupChatUnreadNumRequest) returns (GroupChatUnreadNumResponse);
+
+  rpc GroupChatRemoveMember(GroupChatRemoveMemberRequest) returns (GroupChatRemoveMemberResponse);
+
+  rpc GroupChatRequestList(GroupChatRequestListRequest) returns (GroupChatRequestListResponse);
+
+  rpc GroupChatRequestAll(GroupChatRequestAllRequest) returns (GroupChatRequestAllResponse);
+
+  rpc GroupChatAdsDelete(GroupChatAdsDeleteRequest) returns (GroupChatAdsDeleteResponse);
+
+  rpc GroupChatAdsEdit(GroupChatAdsEditRequest) returns (GroupChatAdsEditResponse);
+
+  rpc GroupChatAdsList(GroupChatAdsListRequest) returns (GroupChatAdsListResponse);
 }
 
 message CreateGroupChatRequest {
@@ -145,4 +185,193 @@ message EditPermissionsGroupChatRequest {
 
 message EditPermissionsGroupChatResponse {
   bool success = 1;
+}
+
+message GroupChatDetailRequest {
+  int32 group_id = 1;
+}
+
+message GroupChatDetailResponse {
+  int32 group_id = 1;
+  string group_name = 2;
+  string description = 3;
+  string avatar = 4;
+  string created_at = 5;
+  bool is_manager = 6;
+  int32 is_disturb = 7;
+  int32 is_mute = 8;
+  int32 is_overt = 9;
+}
+
+message GroupChatMemberListRequest {
+  int32 group_id = 1;
+}
+
+message GroupChatMemberListResponse {
+  message Item {
+    int32 user_id = 1;
+    string username = 2;
+    string avatar = 3;
+    int32 gender = 4;
+    int32 leader = 5;
+    int32 is_mute = 6;
+  }
+
+  repeated Item items = 1;
+}
+
+message GroupChatDismissRequest {
+  int32 group_id = 1;
+}
+
+message GroupDismissResponse {}
+
+message GroupChatInviteRequest {
+  int32 group_id = 1;
+  string ids = 2;
+}
+
+message GroupChatInviteResponse {}
+
+message GroupChatGetInviteFriendsRequest {
+  int32 group_id = 1;
+}
+message GroupChatGetInviteFriendsResponse {}
+
+message GroupChatLeaveRequest {
+  int32 group_id = 1;
+}
+
+message GroupChatLeaveResponse {}
+
+message GroupSettingRequest {
+  int32 group_id = 1;
+  string group_name = 2;
+  string avatar = 3;
+  string description = 4;
+}
+
+message GroupChatSettingResponse {}
+
+message GroupChatRemoveMemberRequest {
+  int64 group_id = 1;
+  int64 member_id = 2;
+}
+
+message GroupChatRemoveMemberResponse {}
+
+message GroupChatAssignAdminRequest {
+  int32 group_id = 1;
+  int32 user_id = 2;
+  int32 mode = 3;
+}
+
+message GroupChatAssignAdminResponse {}
+
+message GroupChatMuteRequest {
+  int32 group_id = 1;
+  int32 mode = 2;
+}
+
+message GroupChatMuteResponse {}
+
+message GroupChatOvertRequest {
+  int32 group_id = 1;
+  int32 mode = 2;
+}
+
+message GroupChatOvertResponse {}
+
+message GroupChatRequestCreateRequest {
+  int32 group_id = 1;
+}
+message GroupChatRequestCreateResponse {}
+
+message GroupChatRequestAgreeRequest {
+  int32 apply_id = 1;
+}
+message GroupChatRequestAgreeResponse {}
+
+message GroupChatRequestDeclineRequest {
+  int32 apply_id = 1;
+}
+
+message GroupChatRequestDeclineResponse {}
+
+message GroupChatUnreadNumRequest {
+  int32 group_id = 1;
+}
+
+message GroupChatUnreadNumResponse {
+  int64 unread_num = 1;
+}
+
+message GroupChatRequestListRequest {
+  int32 group_id = 1;
+}
+
+message GroupChatRequestListResponse {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    int32 group_id = 3;
+    string avatar = 4;
+    string username = 5;
+    string created_at = 6;
+  }
+
+  repeated Item items = 1;
+}
+
+message GroupChatRequestAllRequest {}
+
+message GroupChatRequestAllResponse {
+  message Item {
+    int32 id = 1;
+    int32 user_id = 2;
+    int32 group_id = 3;
+    string group_name = 4;
+    string avatar = 5;
+    string username = 6;
+    string created_at = 7;
+  }
+
+  repeated Item items = 1;
+}
+
+message GroupChatAdsDeleteRequest {
+  int32 group_id = 1;
+  int32 ads_id = 2;
+}
+message GroupChatAdsDeleteResponse {}
+
+message GroupChatAdsEditRequest {
+  int32 group_id = 1;
+  int32 ads_id = 2;
+  string title = 3;
+  string content = 4;
+  int32 is_top = 5;
+  int32 is_confirm = 6;
+}
+message GroupChatAdsEditResponse {}
+
+message GroupChatAdsListRequest {
+  int32 group_id = 1;
+}
+
+message GroupChatAdsListResponse {
+  message Item {
+    int32 id = 1;
+    string title = 2;
+    string content = 3;
+    int32 is_top = 4;
+    int32 is_confirm = 5;
+    string confirm_users = 6;
+    string avatar = 7;
+    int32 creator_id = 8;
+    string created_at = 9;
+    string updated_at = 10;
+  }
+
+  repeated Item items = 1;
 }
