@@ -8,34 +8,32 @@ import "common/common.proto";
 
 service ContactService {
   // Retrieves the list of contacts for the user
-  rpc GetContacts(GetContactsRequest) returns (GetContactsResponse) {}
+  rpc GetContacts(GetContactsRequest) returns (GetContactsResponse);
+
+  rpc GetContact(GetContactRequest) returns (GetContactResponse);
+
+  rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
 
   // Retrieves detailed information about a specific user by ID
-  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
 
   // Searches for users based on a query string
-  rpc Search(SearchRequest) returns (SearchResponse) {}
+  rpc Search(SearchRequest) returns (SearchResponse);
 
   // Retrieves the number of unread contact requests for the user
-  rpc RequestUnreadNum(RequestUnreadNumRequest) returns (RequestUnreadNumResponse) {}
+  rpc RequestUnreadNum(RequestUnreadNumRequest) returns (RequestUnreadNumResponse);
 
   // Creates a new contact request from the current user to another user
-  rpc CreateRequest(CreateRequestRequest) returns (CreateRequestResponse) {}
+  rpc CreateRequest(CreateRequestRequest) returns (CreateRequestResponse);
 
   // Retrieves a list of incoming and/or outgoing contact requests for the user
-  rpc GetRequests(GetRequestsRequest) returns (GetRequestsResponse) {}
+  rpc GetRequests(GetRequestsRequest) returns (GetRequestsResponse);
 
   // Accepts a received contact request, adding the user to the contact list
-  rpc AcceptRequest(AcceptRequestRequest) returns (AcceptRequestResponse) {}
+  rpc AcceptRequest(AcceptRequestRequest) returns (AcceptRequestResponse);
 
   // Rejects a received contact request without adding the user to the contact list
-  rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse) {}
-}
-
-message GetContactsRequest {}
-
-message GetContactsResponse {
-  repeated ContactItem items = 1;
+  rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse);
 }
 
 message ContactItem {
@@ -45,6 +43,35 @@ message ContactItem {
   string surname = 4;
   common.UserPhoto photo = 5;
 }
+
+message GetContactsRequest {}
+
+message GetContactsResponse {
+  repeated ContactItem items = 1;
+}
+
+message GetContactRequest {
+  int32 user_id = 1;
+}
+
+message GetContactResponse {
+  int32 id = 1;
+  string username = 2;
+  common.UserPhoto photo = 3;
+  string name = 4;
+  string surname = 5;
+  int32 gender = 6;
+  string about = 7;
+  int32 friend_status = 8;
+  int32 folder_id = 9;
+  int32 is_bot = 10;
+}
+
+message DeleteContactRequest {
+  int32 id = 1;
+}
+
+message DeleteContactResponse {}
 
 message GetUserRequest {
   int64 id = 1;
@@ -91,7 +118,7 @@ message GetRequestsResponse {
     int32 user_id = 2;
     int32 friend_id = 3;
     string username = 4;
-    string avatar = 5;
+    common.UserPhoto photo = 5;
     string name = 6;
     string surname = 7;
   }

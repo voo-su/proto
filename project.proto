@@ -11,7 +11,7 @@ service ProjectService {
   rpc Create(ProjectCreateRequest) returns (ProjectCreateResponse);
 
   // Retrieves a list of projects available to the user
-  rpc Projects(ProjectListRequest) returns (ProjectListResponse);
+  rpc GetProjects(GetProjectsRequest) returns (GetProjectsResponse);
 
   // Retrieves detailed information about a specific project
   rpc Detail(ProjectDetailRequest) returns (ProjectDetailResponse);
@@ -71,9 +71,9 @@ message ProjectCreateResponse {
   string id = 1;
 }
 
-message ProjectListRequest {}
+message GetProjectsRequest {}
 
-message ProjectListResponse {
+message GetProjectsResponse {
   message Item {
     string id = 1;
     string title = 2;
