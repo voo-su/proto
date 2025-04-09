@@ -40,13 +40,9 @@ service GroupChatService {
   // Editing permissions for the group chat
   rpc EditPermissionsGroupChat(EditPermissionsGroupChatRequest) returns (EditPermissionsGroupChatResponse);
 
-  rpc GroupChatDetail(GroupChatDetailRequest) returns (GroupChatDetailResponse);
-
-  rpc GroupChatMemberList(GroupChatMemberListRequest) returns (GroupChatMemberListResponse);
+  rpc GroupChatMembers(GroupChatMembersRequest) returns (GroupChatMembersResponse);
 
   rpc GroupChatDismiss(GroupChatDismissRequest) returns (GroupDismissResponse);
-
-  rpc GroupChatInvite(GroupChatInviteRequest) returns (GroupChatInviteResponse);
 
   rpc GroupChatGetInviteFriends(GroupChatGetInviteFriendsRequest) returns (GroupChatGetInviteFriendsResponse);
 
@@ -99,6 +95,10 @@ message GetGroupChatResponse {
   string about = 3;
   common.ChatPhoto photo = 4;
   int64 members = 5;
+  bool is_manager = 6;
+  int32 is_disturb = 7;
+  int32 is_mute = 8;
+  int32 is_overt = 9;
 }
 
 message GetMembersRequest {
@@ -187,31 +187,15 @@ message EditPermissionsGroupChatResponse {
   bool success = 1;
 }
 
-message GroupChatDetailRequest {
+message GroupChatMembersRequest {
   int32 group_id = 1;
 }
 
-message GroupChatDetailResponse {
-  int32 group_id = 1;
-  string group_name = 2;
-  string description = 3;
-  string avatar = 4;
-  string created_at = 5;
-  bool is_manager = 6;
-  int32 is_disturb = 7;
-  int32 is_mute = 8;
-  int32 is_overt = 9;
-}
-
-message GroupChatMemberListRequest {
-  int32 group_id = 1;
-}
-
-message GroupChatMemberListResponse {
+message GroupChatMembersResponse {
   message Item {
     int32 user_id = 1;
     string username = 2;
-    string avatar = 3;
+    common.UserPhoto photo = 3;
     int32 gender = 4;
     int32 leader = 5;
     int32 is_mute = 6;
@@ -225,13 +209,6 @@ message GroupChatDismissRequest {
 }
 
 message GroupDismissResponse {}
-
-message GroupChatInviteRequest {
-  int32 group_id = 1;
-  string ids = 2;
-}
-
-message GroupChatInviteResponse {}
 
 message GroupChatGetInviteFriendsRequest {
   int32 group_id = 1;
@@ -247,7 +224,7 @@ message GroupChatLeaveResponse {}
 message GroupSettingRequest {
   int32 group_id = 1;
   string group_name = 2;
-  string avatar = 3;
+  common.ChatPhoto photo = 3;
   string description = 4;
 }
 
@@ -315,7 +292,7 @@ message GroupChatRequestListResponse {
     int32 id = 1;
     int32 user_id = 2;
     int32 group_id = 3;
-    string avatar = 4;
+    common.UserPhoto photo = 4;
     string username = 5;
     string created_at = 6;
   }
@@ -331,7 +308,7 @@ message GroupChatRequestAllResponse {
     int32 user_id = 2;
     int32 group_id = 3;
     string group_name = 4;
-    string avatar = 5;
+    common.UserPhoto photo = 5;
     string username = 6;
     string created_at = 7;
   }
@@ -367,10 +344,9 @@ message GroupChatAdsListResponse {
     int32 is_top = 4;
     int32 is_confirm = 5;
     string confirm_users = 6;
-    string avatar = 7;
-    int32 creator_id = 8;
-    string created_at = 9;
-    string updated_at = 10;
+    int32 creator_id = 7;
+    string created_at = 8;
+    string updated_at = 9;
   }
 
   repeated Item items = 1;

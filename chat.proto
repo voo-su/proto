@@ -48,8 +48,6 @@ service ChatService {
 
   rpc ChatDisturb(ChatDisturbRequest) returns (ChatDisturbResponse);
 
-  rpc DownloadChatFile(DownloadChatFileRequest) returns (DownloadChatFileResponse);
-
   rpc VoteMessageHandle(VoteMessageHandleRequest) returns (VoteMessageHandleResponse);
 
   rpc CollectMessage(CollectMessageRequest) returns (CollectMessageResponse);
@@ -259,10 +257,27 @@ message InputMediaUploadedDocument {
   common.InputFile thumb = 4;
 }
 
+message InputMediaGeoPoint {
+  string type = 1;
+  string longitude = 2;
+  string latitude = 3;
+  string description = 4;
+}
+
+message InputMediaVote {
+  string type = 1;
+  string title = 2;
+  int32 mode = 3;
+  int32 anonymous = 4;
+  repeated string options = 5;
+}
+
 message InputMedia {
   oneof media {
     InputMediaUploadedPhoto photo = 1;
     InputMediaUploadedDocument document = 2;
+    InputMediaVote vote = 3;
+    InputMediaGeoPoint geo = 5;
   }
 }
 
@@ -397,90 +412,8 @@ message KeyboardMessage{
 message CollectMessageRequest {
   int64 message_id = 1;
 }
+
 message CollectMessageResponse {}
-
-message DownloadChatFileRequest {
-  int64 message_id = 1;
-}
-
-message DownloadChatFileResponse {}
-
-message VoteMessageHandleRequest {
-  int64 message_id = 1;
-  string options = 2;
-}
-message VoteMessageHandleResponse {}
-
-message ImageMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string url = 3 ;
-  int32 width = 4;
-  int32 height = 5;
-  int32 size = 6;
-  int64 reply_to_msg_id = 7;
-}
-
-message VideoMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string url = 3;
-  int32 duration = 4;
-  int32 size = 5;
-  string cover = 6;
-}
-
-message AudioMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string url = 3;
-  int32 duration = 4;
-  int32 size = 5;
-}
-
-message FileMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string upload_id = 3;
-}
-
-message VoteMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string title = 3;
-  int32 mode = 4;
-  int32 anonymous = 5;
-  repeated string options = 6;
-}
-
-message VoteSendMessageRequest {
-  int64 receiver_id = 1;
-  int32 mode = 2;
-  int32 anonymous = 3;
-  string title = 4;
-  repeated string options = 5;
-}
-
-message StickerMessageRequest {
-  string type = 1;
-  int32 sticker_id = 2;
-  Receiver receiver = 3;
-}
-
-message CodeMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string lang = 3;
-  string code = 4;
-}
-
-message LocationMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string longitude = 3;
-  string latitude = 4;
-  string description = 5;
-}
 
 message CreateFolderRequest {
   string name = 1;
@@ -553,3 +486,31 @@ message SaveFolderRequest {
 }
 
 message SaveFolderResponse {}
+
+message VoteMessageHandleRequest {
+  int64 message_id = 1;
+  string options = 2;
+}
+
+message VoteMessageHandleResponse {}
+
+message VoteSendMessageRequest {
+  int64 receiver_id = 1;
+  int32 mode = 2;
+  int32 anonymous = 3;
+  string title = 4;
+  repeated string options = 5;
+}
+
+message StickerMessageRequest {
+  string type = 1;
+  int32 sticker_id = 2;
+  Receiver receiver = 3;
+}
+
+message CodeMessageRequest {
+  Receiver receiver = 1;
+  string type = 2;
+  string lang = 3;
+  string code = 4;
+}
