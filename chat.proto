@@ -314,14 +314,14 @@ message DeleteMessagesResponse {
 }
 
 message StickerListItem {
-  int32 media_id = 1;
+  int64 media_id = 1;
   string src = 2;
 }
 
 message UploadStickerRequest {}
 
 message UploadStickerResponse {
-  int32 media_id = 1;
+  int64 media_id = 1;
   string src = 2;
 }
 
@@ -329,7 +329,7 @@ message GetStickersRequest {}
 
 message GetStickersResponse {
   message SysSticker {
-    int32 sticker_id = 1;
+    int64 sticker_id = 1;
     string url = 2;
     string name = 3;
     repeated StickerListItem list = 4;
@@ -348,13 +348,13 @@ message DeleteStickerResponse {
 }
 
 message GetSystemStickersRequest {
-  int32 sticker_id = 1;
+  int64 sticker_id = 1;
   int32 type = 2;
 }
 
 message GetSystemStickersResponse {
   message Item {
-    int32 id = 1;
+    int64 id = 1;
     string name = 2;
     string icon = 3;
     int32 status = 4;
@@ -364,28 +364,27 @@ message GetSystemStickersResponse {
 }
 
 message SetSystemStickerRequest {
-  int32 sticker_id = 1;
+  int64 sticker_id = 1;
   int32 type = 2;
 }
 
 message SetSystemStickerResponse {
-  int32 sticker_id = 1;
+  int64 sticker_id = 1;
   string url = 2;
   string name = 3;
   repeated StickerListItem list = 4;
 }
 
 message ChatTopRequest {
-  int32 list_id = 1;
+  int64 list_id = 1;
   int32 type = 2;
 }
 
 message ChatTopResponse {}
 
 message ChatDisturbRequest {
-  int32 chat_type = 1;
-  int32 receiver_id = 2;
-  int32 is_disturb = 3;
+  Receiver receiver = 1;
+  int32 is_disturb = 2;
 }
 
 message ChatDisturbResponse {}
@@ -394,15 +393,15 @@ message ForwardMessageRequest {
   Receiver receiver = 1;
   string type = 2;
   int32 mode = 3;
-  repeated int32 message_ids = 4;
-  repeated int32 gids = 5;
-  repeated int32 uids = 6;
+  repeated int64 message_ids = 4;
+  repeated int64 gids = 5;
+  repeated int64 uids = 6;
 }
 
-message KeyboardMessage{
-  message Data{
-    int32 sender_id = 1;
-    int32 receiver_id = 2;
+message KeyboardMessage {
+  message Data {
+    int64 sender_id = 1;
+    Receiver receiver = 2;
   }
 
   string event = 1;
@@ -417,18 +416,18 @@ message CollectMessageResponse {}
 
 message CreateFolderRequest {
   string name = 1;
-  int32 sort = 2;
+  int64 sort = 2;
 }
 
 message CreateFolderResponse{
-  int32 id = 1;
+  int64 id = 1;
 }
 
 message GetFoldersRequest {}
 
 message GetFoldersResponse {
   message Item {
-    int32 id = 1;
+    int64 id = 1;
     string name = 2;
     int32 count = 3;
     int32 sort = 4;
@@ -438,35 +437,35 @@ message GetFoldersResponse {
 }
 
 message ChangeFolderRequest {
-  int32 user_id = 1;
+  int64 user_id = 1;
   int32 folder_id = 2;
 }
 
 message ChangeFolderResponse {}
 
 message UpdateFolderRequest {
-  int32 id = 1;
+  int64 id = 1;
   string name = 2;
   int32 sort = 3;
 }
 
 message UpdateFolderResponse {
-  int32 id = 1;
+  int64 id = 1;
 }
 
 message DeleteFolderRequest {
-  int32 id = 1;
+  int64 id = 1;
 }
 
 message DeleteFolderResponse {}
 
 message SortFolderRequest {
-  int32 id = 1;
+  int64 id = 1;
 }
 
 message SortFolderResponse {
   message Item {
-    int32 id = 1;
+    int64 id = 1;
     int32 sort = 2;
   }
 
@@ -477,7 +476,7 @@ message FolderSortResponse {}
 
 message SaveFolderRequest {
   message Item {
-    int32 id = 1;
+    int64 id = 1;
     int32 sort = 2;
     string name = 3;
   }
@@ -495,7 +494,7 @@ message VoteMessageHandleRequest {
 message VoteMessageHandleResponse {}
 
 message VoteSendMessageRequest {
-  int64 receiver_id = 1;
+  Receiver receiver = 1;
   int32 mode = 2;
   int32 anonymous = 3;
   string title = 4;
@@ -504,7 +503,7 @@ message VoteSendMessageRequest {
 
 message StickerMessageRequest {
   string type = 1;
-  int32 sticker_id = 2;
+  int64 sticker_id = 2;
   Receiver receiver = 3;
 }
 
