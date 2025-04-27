@@ -48,8 +48,6 @@ service GroupChatService {
 
   rpc GroupChatLeave(GroupChatLeaveRequest) returns (GroupChatLeaveResponse);
 
-  rpc GroupSetting(GroupSettingRequest) returns (GroupChatSettingResponse);
-
   rpc GroupChatAssignAdmin(GroupChatAssignAdminRequest) returns (GroupChatAssignAdminResponse);
 
   rpc GroupChatMute(GroupChatMuteRequest) returns (GroupChatMuteResponse);
@@ -65,10 +63,6 @@ service GroupChatService {
   rpc GroupRequestList(GroupChatUnreadNumRequest) returns (GroupChatUnreadNumResponse);
 
   rpc GroupChatRemoveMember(GroupChatRemoveMemberRequest) returns (GroupChatRemoveMemberResponse);
-
-  rpc GroupChatRequestList(GroupChatRequestListRequest) returns (GroupChatRequestListResponse);
-
-  rpc GroupChatRequestAll(GroupChatRequestAllRequest) returns (GroupChatRequestAllResponse);
 
   rpc GroupChatAdsDelete(GroupChatAdsDeleteRequest) returns (GroupChatAdsDeleteResponse);
 
@@ -115,6 +109,7 @@ message MemberItem {
   common.UserPhoto photo = 3;
   string name = 4;
   string surname = 5;
+  int32 leader = 6;
 }
 
 message AddUserToGroupChatRequest {
@@ -213,22 +208,21 @@ message GroupDismissResponse {}
 message GroupChatGetInviteFriendsRequest {
   int64 group_id = 1;
 }
-message GroupChatGetInviteFriendsResponse {}
+message GroupChatGetInviteFriendsResponse {
+  message Item {
+    int64 id = 1;
+    string username = 2;
+    common.UserPhoto photo = 3;
+  }
+
+  repeated Item items = 1;
+}
 
 message GroupChatLeaveRequest {
   int64 group_id = 1;
 }
 
 message GroupChatLeaveResponse {}
-
-message GroupSettingRequest {
-  int64 group_id = 1;
-  string group_name = 2;
-  common.ChatPhoto photo = 3;
-  string description = 4;
-}
-
-message GroupChatSettingResponse {}
 
 message GroupChatRemoveMemberRequest {
   int64 group_id = 1;
@@ -263,7 +257,19 @@ message GroupChatRequestCreateRequest {
   int64 group_id = 1;
 }
 
-message GroupChatRequestCreateResponse {}
+message GroupChatRequestCreateResponse {
+  message Item {
+    int64 id = 1;
+    int64 user_id = 2;
+    int64 group_id = 3;
+    string group_name = 4;
+    common.UserPhoto photo = 5;
+    string username = 6;
+    string created_at = 7;
+  }
+
+  repeated Item items = 1;
+}
 
 message GroupChatRequestAgreeRequest {
   int64 apply_id = 1;
@@ -283,39 +289,6 @@ message GroupChatUnreadNumRequest {
 
 message GroupChatUnreadNumResponse {
   int64 unread_num = 1;
-}
-
-message GroupChatRequestListRequest {
-  int64 group_id = 1;
-}
-
-message GroupChatRequestListResponse {
-  message Item {
-    int64 id = 1;
-    int64 user_id = 2;
-    int64 group_id = 3;
-    common.UserPhoto photo = 4;
-    string username = 5;
-    string created_at = 6;
-  }
-
-  repeated Item items = 1;
-}
-
-message GroupChatRequestAllRequest {}
-
-message GroupChatRequestAllResponse {
-  message Item {
-    int64 id = 1;
-    int64 user_id = 2;
-    int64 group_id = 3;
-    string group_name = 4;
-    common.UserPhoto photo = 5;
-    string username = 6;
-    string created_at = 7;
-  }
-
-  repeated Item items = 1;
 }
 
 message GroupChatAdsDeleteRequest {

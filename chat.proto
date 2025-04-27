@@ -162,43 +162,40 @@ message GetHistoryResponse {
 }
 
 message MessageItem {
+  oneof message_type {
+    Message message = 1;
+    MessageService message_service = 2;
+    MessageEmpty message_empty = 3;
+  }
+}
+
+message Message {
   int64 id = 1;
   Receiver receiver = 2;
-  /*
-    Regular Messages (msg_type):
-      1  - Text message
-      2  - Code snippet
-      3  - Image
-      4  - Audio message
-      5  - Video message
-      6  - File
-      7  - Location
-      8  - Card
-      9  - Forwarded message
-      10 - Login / Authentication
-      11 - Voting
+  int64 user_id = 3;
+  string content = 4;
+  MessageMedia media = 5;
+  MessageReply reply = 6;
+  bool is_read = 7;
+  string created_at = 8;
+}
 
-    System Events (msg_type):
-      1000 - System message
-      1101 - Group created
-      1102 - New member joined the group
-      1103 - Member left the group
-      1104 - Member was removed from the group
-      1105 - Message deleted in the group
-      1106 - Group deleted
-      1107 - Group switched to "admins only" mode
-      1108 - "Admins only" mode disabled
-      1109 - Member muted in the group
-      1110 - Member unmuted in the group
-      1111 - Advertisement in the group
-  */
-  int32 msg_type = 3;
-  int64 user_id = 4;
-  string content = 5;
-  MessageMedia media = 6;
-  MessageReply reply = 7;
-  bool is_read = 8;
-  string created_at = 9;
+message MessageService {
+  int64 id = 1;
+  oneof action {
+    messageActionEmpty message_action_empty = 2;
+    messageActionChatCreate message_action_chat_create = 3;
+  }
+}
+
+message messageActionEmpty {}
+
+message messageActionChatCreate {
+  string title = 1;
+}
+
+message MessageEmpty {
+  int64 id = 1;
 }
 
 message MessageMedia {
@@ -222,10 +219,10 @@ message MessageMediaDocument {
 
 message MessageReply {
   int64 id = 1;
-  int32 msg_type = 2;
-  int64 user_id = 3;
-  string username = 4;
-  string content = 5;
+  Receiver receiver = 2;
+  string content = 3;
+  MessageMedia media = 4;
+  string created_at = 5;
 }
 
 message SendMessageRequest {
@@ -492,14 +489,6 @@ message VoteMessageHandleRequest {
 }
 
 message VoteMessageHandleResponse {}
-
-message VoteSendMessageRequest {
-  Receiver receiver = 1;
-  int32 mode = 2;
-  int32 anonymous = 3;
-  string title = 4;
-  repeated string options = 5;
-}
 
 message StickerMessageRequest {
   string type = 1;
