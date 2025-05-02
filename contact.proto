@@ -10,13 +10,7 @@ service ContactService {
   // Retrieves the list of contacts for the user
   rpc GetContacts(GetContactsRequest) returns (GetContactsResponse);
 
-  // Retrieves detailed information about a specific user by ID
-  rpc GetContact(GetContactRequest) returns (GetContactResponse);
-
   rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
-
-  // Searches for users based on a query string
-  rpc Search(SearchRequest) returns (SearchResponse);
 
   // Retrieves the number of unread contact requests for the user
   rpc RequestUnreadNum(RequestUnreadNumRequest) returns (RequestUnreadNumResponse);
@@ -34,7 +28,7 @@ service ContactService {
   rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse);
 }
 
-message ContactItem {
+message Contact {
   int64 id = 1;
   string username = 2;
   string name = 3;
@@ -45,23 +39,7 @@ message ContactItem {
 message GetContactsRequest {}
 
 message GetContactsResponse {
-  repeated ContactItem items = 1;
-}
-
-message GetContactRequest {
-  int64 user_id = 1;
-}
-
-message GetContactResponse {
-  int64 id = 1;
-  string username = 2;
-  common.UserPhoto photo = 3;
-  string name = 4;
-  string surname = 5;
-  int32 gender = 6;
-  string about = 7;
-  bool is_bot = 8;
-  bool is_contact = 9;
+  repeated Contact items = 1;
 }
 
 message DeleteContactRequest {
@@ -69,15 +47,6 @@ message DeleteContactRequest {
 }
 
 message DeleteContactResponse {}
-
-message SearchRequest {
-  string q = 1;
-  int64 limit = 2;
-}
-
-message SearchResponse {
-  repeated ContactItem items = 1;
-}
 
 message RequestUnreadNumRequest {}
 

@@ -46,8 +46,6 @@ service ChatService {
 
   rpc ChatTop(ChatTopRequest) returns (ChatTopResponse);
 
-  rpc ChatDisturb(ChatDisturbRequest) returns (ChatDisturbResponse);
-
   rpc VoteMessageHandle(VoteMessageHandleRequest) returns (VoteMessageHandleResponse);
 
   rpc CollectMessage(CollectMessageRequest) returns (CollectMessageResponse);
@@ -107,7 +105,7 @@ message UpdateDeleteMessages {
 message GetChatsRequest {}
 
 message GetChatsResponse {
-  repeated ChatItem items = 1;
+  repeated Chat items = 1;
 }
 
 message CreateChatRequest {
@@ -115,7 +113,7 @@ message CreateChatRequest {
 }
 
 message CreateChatResponse {
-  ChatItem item = 1;
+  Chat item = 1;
 }
 
 message DeleteChatRequest {
@@ -133,7 +131,7 @@ message ChatPhoto {
   }
 }
 
-message ChatItem {
+message Chat {
   int64 id = 1;
   Receiver receiver = 2;
   string username = 3;
@@ -145,8 +143,7 @@ message ChatItem {
   int64 unread_count = 9;
   string updated_at = 10;
   bool is_online = 11;
-  bool is_disturb = 12;
-  bool is_bot = 13;
+  bool is_bot = 12;
 }
 
 message GetHistoryRequest {
@@ -254,13 +251,6 @@ message InputMediaUploadedDocument {
   common.InputFile thumb = 4;
 }
 
-message InputMediaGeoPoint {
-  string type = 1;
-  string longitude = 2;
-  string latitude = 3;
-  string description = 4;
-}
-
 message InputMediaVote {
   string type = 1;
   string title = 2;
@@ -269,12 +259,26 @@ message InputMediaVote {
   repeated string options = 5;
 }
 
+message InputMediaGeoPoint {
+  string type = 1;
+  string longitude = 2;
+  string latitude = 3;
+  string description = 4;
+}
+
+message InputMediaCode {
+  string type = 1;
+  string lang = 2;
+  string code = 3;
+}
+
 message InputMedia {
   oneof media {
     InputMediaUploadedPhoto photo = 1;
     InputMediaUploadedDocument document = 2;
     InputMediaVote vote = 3;
-    InputMediaGeoPoint geo = 5;
+    InputMediaGeoPoint geo = 4;
+    InputMediaCode code = 5;
   }
 }
 
@@ -378,13 +382,6 @@ message ChatTopRequest {
 }
 
 message ChatTopResponse {}
-
-message ChatDisturbRequest {
-  Receiver receiver = 1;
-  int32 is_disturb = 2;
-}
-
-message ChatDisturbResponse {}
 
 message ForwardMessageRequest {
   Receiver receiver = 1;
@@ -494,11 +491,4 @@ message StickerMessageRequest {
   string type = 1;
   int64 sticker_id = 2;
   Receiver receiver = 3;
-}
-
-message CodeMessageRequest {
-  Receiver receiver = 1;
-  string type = 2;
-  string lang = 3;
-  string code = 4;
 }

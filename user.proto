@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "voo.su/api/grpc/pb/user;pb";
+
+import "common/common.proto";
+
+service UserService {
+  // Retrieves detailed information about a specific user by ID
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+message GetUserRequest {
+  int64 id = 1;
+}
+
+message GetUserResponse {
+  int64 id = 1;
+  string username = 2;
+  common.UserPhoto photo = 3;
+  string name = 4;
+  string surname = 5;
+  int32 gender = 6;
+  string about = 7;
+  bool is_bot = 8;
+  bool is_contact = 9;
+}

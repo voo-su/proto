@@ -90,9 +90,8 @@ message GetGroupChatResponse {
   common.ChatPhoto photo = 4;
   int64 members = 5;
   bool is_manager = 6;
-  int32 is_disturb = 7;
-  int32 is_mute = 8;
-  int32 is_overt = 9;
+  int32 is_mute = 7;
+  int32 is_overt = 8;
 }
 
 message GetMembersRequest {
@@ -208,6 +207,7 @@ message GroupDismissResponse {}
 message GroupChatGetInviteFriendsRequest {
   int64 group_id = 1;
 }
+
 message GroupChatGetInviteFriendsResponse {
   message Item {
     int64 id = 1;
@@ -295,6 +295,7 @@ message GroupChatAdsDeleteRequest {
   int64 group_id = 1;
   int64 ads_id = 2;
 }
+
 message GroupChatAdsDeleteResponse {}
 
 message GroupChatAdsEditRequest {
@@ -305,6 +306,7 @@ message GroupChatAdsEditRequest {
   int32 is_top = 5;
   int32 is_confirm = 6;
 }
+
 message GroupChatAdsEditResponse {}
 
 message GroupChatAdsListRequest {
