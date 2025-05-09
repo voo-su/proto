@@ -179,16 +179,82 @@ message Message {
 
 message MessageService {
   int64 id = 1;
-  oneof action {
-    messageActionEmpty message_action_empty = 2;
-    messageActionChatCreate message_action_chat_create = 3;
+  MessageServiceAction action = 2;
+}
+
+message MessageServiceAction {
+  oneof message_action_type {
+    MessageActionEmpty message_action_empty = 1;
+    MessageActionLogin message_action_login = 2;
+    MessageActionGroupCreate message_action_group_create = 3;
+    MessageActionGroupJoin message_action_group_join = 4;
+    MessageActionGroupCancelMuted message_action_group_cancel_muted = 5;
+    MessageActionGroupMemberCancelMuted message_action_group_member_cancel_muted = 6;
+    MessageActionGroupMemberKicked message_action_group_member_kicked = 7;
+    MessageActionGroupMemberMuted message_action_group_member_muted = 8;
+    MessageActionGroupMemberQuit message_action_group_member_quit = 9;
+    MessageActionGroupMuted message_action_group_muted = 10;
+    MessageActionGroupTransfer message_action_group_transfer = 11;
   }
 }
 
-message messageActionEmpty {}
+message MessageActionEmpty {}
 
-message messageActionChatCreate {
-  string title = 1;
+message MessageActionLogin {
+  string ip = 1;
+  string agent = 2;
+  string address = 3;
+}
+
+message MessageActionGroupCreate {
+  int32 owner_id = 1;
+  string owner_name = 2;
+}
+
+message MessageActionGroupJoin {
+  int32 owner_id = 1;
+  string owner_name = 2;
+  common.ChatMember member = 3;
+}
+
+message MessageActionGroupCancelMuted {
+  int32 owner_id = 1;
+  string owner_name = 2;
+}
+
+message MessageActionGroupMemberCancelMuted {
+  int32 owner_id = 1;
+  string owner_name = 2;
+  common.ChatMember member = 3;
+}
+
+message MessageActionGroupMemberKicked {
+  int32 owner_id = 1;
+  string owner_name = 2;
+  common.ChatMember member = 3;
+}
+
+message MessageActionGroupMemberMuted {
+  int32 owner_id = 1;
+  string owner_name = 2;
+  common.ChatMember member = 3;
+}
+
+message MessageActionGroupMemberQuit {
+  int32 owner_id = 1;
+  string owner_name = 2;
+}
+
+message MessageActionGroupMuted {
+  int32 owner_id = 1;
+  string owner_name = 2;
+}
+
+message MessageActionGroupTransfer {
+  int32 old_owner_id = 1;
+  string old_owner_name = 2;
+  int32 new_owner_id = 3;
+  string new_owner_name = 4;
 }
 
 message MessageEmpty {
