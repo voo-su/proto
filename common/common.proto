@@ -66,8 +66,8 @@ message ChatPhoto {
   string photo_id = 1;
 }
 
-message ChatMember {
-  int32 user_id = 1;
+message User {
+  int64 id = 1;
   string username = 2;
   string name = 3;
 }
