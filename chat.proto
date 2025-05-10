@@ -190,16 +190,9 @@ message MessageServiceAction {
     MessageActionGroupUserInvite message_action_group_user_invite = 4;
     MessageActionGroupUserLeave message_action_group_user_leave = 5;
     MessageActionGroupUserRemove message_action_group_user_remove = 6;
-    MessageActionGroupMessageRevoke message_action_group_message_revoke = 7;
-    MessageActionGroupDismissed message_action_group_dismissed = 8;
-    MessageActionGroupMuted message_action_group_muted = 9;
-    MessageActionGroupCancelMuted message_action_group_cancel_muted = 10;
-    MessageActionGroupUserMuted message_action_group_user_muted = 11;
-    MessageActionGroupUserCancelMuted message_action_group_user_cancel_muted = 12;
-    MessageActionGroupAds message_action_group_ads = 13;
-    MessageActionGroupRenameChange message_action_group_rename_change = 14;
-    MessageActionGroupAvatarChange message_action_group_avatar_change = 15;
-    MessageActionGroupAvatarRoleChange message_action_group_avatar_role_change = 16;
+    MessageActionGroupRenameChange message_action_group_rename_change = 7;
+    MessageActionGroupDeletion message_action_group_deletion = 8;
+    MessageActionGroupAds message_action_group_ads = 9;
   }
 }
 
@@ -209,12 +202,12 @@ message MessageActionLogin {
   string ip = 1;
   string agent = 2;
   string address = 3;
+  string created_at = 4;
 }
 
 message MessageActionGroupCreate {
   string title = 1;
   common.User owner = 2;
-  repeated common.User members = 3;
 }
 
 message MessageActionGroupUserInvite {
@@ -231,45 +224,16 @@ message MessageActionGroupUserRemove {
   common.User member = 2;
 }
 
-message MessageActionGroupMessageRevoke {
-  common.User owner = 1;
-  common.User member = 2;
-}
-
-message MessageActionGroupDismissed {
-  common.User owner = 1;
-  common.User member = 2;
-}
-
-message MessageActionGroupMuted {
-  common.User owner = 1;
-}
-
-message MessageActionGroupCancelMuted {
-  common.User owner = 1;
-}
-
-message MessageActionGroupUserMuted {
-  common.User owner = 1;
-}
-
-message MessageActionGroupUserCancelMuted {
-  common.User owner = 1;
-}
-
-message MessageActionGroupAds {
-  common.User owner = 1;
-}
-
 message MessageActionGroupRenameChange {
   common.User owner = 1;
 }
 
-message MessageActionGroupAvatarChange {
+message MessageActionGroupDeletion {
   common.User owner = 1;
+  common.User member = 2;
 }
 
-message MessageActionGroupAvatarRoleChange {
+message MessageActionGroupAds {
   common.User owner = 1;
 }
 

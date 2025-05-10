@@ -73,6 +73,7 @@ service GroupChatService {
 
 message CreateGroupChatRequest {
   string name = 1;
+  repeated int64 user_ids = 2;
 }
 
 message CreateGroupChatResponse {
