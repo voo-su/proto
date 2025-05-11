@@ -34,6 +34,8 @@ service ChatService {
   // Deletes specific messages from the chat (optional: revoke them)
   rpc DeleteMessages(DeleteMessagesRequest) returns (DeleteMessagesResponse);
 
+  rpc SetTyping(SetTypingRequest) returns (SetTypingResponse);
+
   rpc UploadSticker(UploadStickerRequest) returns (UploadStickerResponse);
 
   rpc GetStickers(GetStickersRequest) returns (GetStickersResponse);
@@ -78,6 +80,7 @@ message Update {
     UpdateChatReadInbox chat_read_inbox = 2;
     UpdateUserTyping user_typing = 3;
     UpdateDeleteMessages delete_messages = 4;
+    UpdateUserStatus user_status = 5;
   }
 }
 
@@ -100,6 +103,11 @@ message UpdateUserTyping {
 message UpdateDeleteMessages {
   Receiver receiver = 1;
   repeated string message_ids = 2;
+}
+
+message UpdateUserStatus {
+  int64 user_id = 1;
+  bool status = 2;
 }
 
 message GetChatsRequest {}
@@ -168,8 +176,8 @@ message MessageItem {
 
 message Message {
   int64 id = 1;
-  Receiver receiver = 2;
-  int64 user_id = 3;
+  int64 sender_id = 2;
+  Receiver receiver = 3;
   string content = 4;
   MessageMedia media = 5;
   MessageReply reply = 6;
@@ -179,7 +187,10 @@ message Message {
 
 message MessageService {
   int64 id = 1;
-  MessageServiceAction action = 2;
+  int64 sender_id = 2;
+  Receiver receiver = 3;
+  MessageServiceAction action = 4;
+  string created_at = 5;
 }
 
 message MessageServiceAction {
@@ -239,6 +250,7 @@ message MessageActionGroupAds {
 
 message MessageEmpty {
   int64 id = 1;
+  Receiver receiver = 2;
 }
 
 message MessageMedia {
@@ -348,6 +360,14 @@ message ViewMessagesResponse {
   Receiver receiver = 1;
   int64 last_read_inbox_message_id = 2;
   int64 unread_count = 3;
+}
+
+message SetTypingRequest {
+  Receiver receiver = 1;
+}
+
+message SetTypingResponse {
+  bool success = 1;
 }
 
 message DeleteMessagesRequest {
