@@ -20,11 +20,7 @@ message SearchUsersRequest {
 
 message SearchUserResponse {
   message Item {
-    int64 id = 1;
-    string username = 2;
-    common.UserPhoto photo = 3;
-    string name = 4;
-    string surname = 5;
+    common.UserItem user = 1; 
   }
 
   repeated Item items = 1;

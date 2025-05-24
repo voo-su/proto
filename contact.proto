@@ -29,11 +29,7 @@ service ContactService {
 }
 
 message Contact {
-  int64 id = 1;
-  string username = 2;
-  string name = 3;
-  string surname = 4;
-  common.UserPhoto photo = 5;
+  common.UserItem user = 1;
 }
 
 message GetContactsRequest {}
@@ -65,16 +61,7 @@ message CreateRequestResponse {
 message GetRequestsRequest {}
 
 message GetRequestsResponse {
-  message Item {
-    int64 id = 1;
-    int64 user_id = 2;
-    string username = 3;
-    common.UserPhoto photo = 4;
-    string name = 5;
-    string surname = 6;
-  }
-
-  repeated Item items = 1;
+  repeated Contact items = 1;
 }
 
 message AcceptRequestRequest {

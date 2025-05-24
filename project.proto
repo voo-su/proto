@@ -138,19 +138,11 @@ message ProjectCommentRequest {
 }
 
 message ProjectCommentResponse {
-  message User{
-    int64 id = 1;
-    string username = 2;
-    string name = 3;
-    string surname = 4;
-    common.UserPhoto photo = 5;
-  }
-
   message Item {
     int64 id = 1;
     string taskId = 2;
     string comment = 3;
-    User user = 4;
+    common.UserItem user = 4;
     string created_at = 5;
   }
 
@@ -209,11 +201,7 @@ message ProjectTaskDetailRequest {
 
 message ProjectTaskDetailResponse {
   message Member {
-    int64 id = 1;
-    string username = 2;
-    string name = 3;
-    string surname = 4;
-    common.UserPhoto photo = 5;
+    common.UserItem user = 1; 
   }
 
   string id = 1;
@@ -244,11 +232,7 @@ message ProjectCoexecutorsRequest {
 
 message ProjectCoexecutorsResponse {
   message Item {
-    int64 id = 1;
-    string username = 2;
-    string name = 3;
-    string surname = 4;
-    common.UserPhoto photo = 5;
+    common.UserItem user = 1; 
   }
 
   repeated Item items = 1;
@@ -267,11 +251,7 @@ message ProjectWatchersRequest {
 
 message ProjectWatchersResponse {
   message Item {
-    int64 id = 1;
-    string username = 2;
-    string name = 3;
-    string surname = 4;
-    common.UserPhoto photo = 5;
+    common.UserItem user = 1; 
   }
 
   repeated Item items = 1;

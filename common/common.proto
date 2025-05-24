@@ -4,6 +4,33 @@ package common;
 
 option go_package = "voo.su/api/grpc/pb/common";
 
+message InputUser {
+  int64 user_id = 1;
+}
+
+message InputUserSelf {}
+
+message User {
+  int64 id = 1;
+  string username = 2;
+  string name = 3;
+  string surname = 4;
+  UserProfilePhoto photo = 5;
+  int32 gender = 6;
+  string about = 7;
+  bool is_bot = 8;
+  bool is_contact = 9;
+}
+
+message UserEmpty {
+  int64 id = 1;
+}
+
+message UserItem {
+  User user = 1;
+  UserEmpty user_empty = 2;
+}
+
 message EntityNotifySettings {
   // Time until notifications are disabled (Unix timestamp)
   // If mute_until = 0, notifications are enabled
@@ -22,24 +49,69 @@ message EntityNotifySettings {
   bool show_previews = 3;
 }
 
+message InputDocumentFileLocation {
+  string id = 1;
+}
+
 message InputFile {
   int64 id = 1;
   int32 parts = 2;
   string name = 3;
 }
 
-message InputDocumentFileLocation {
-  string id = 1;
-}
-
 message InputPhoto {
   oneof photo {
-    InputPhotoEmpty empty = 1;
-    InputFile file = 2;
+    InputFile file = 1;
+    PhotoEmpty empty = 2;
   }
 }
 
-message InputPhotoEmpty {}
+message UserProfilePhoto {
+  oneof user_profile_photo {
+    Photo photo = 1;
+    PhotoEmpty chat_photo_empty = 2;
+  }
+}
+
+message ChatPhoto {
+  oneof chat_photo {
+    Photo photo = 1;
+    PhotoEmpty chat_photo_empty = 2;
+  }
+}
+
+message Photo {
+  string photo_id = 1;
+  repeated PhotoSize sizes = 2;
+}
+
+message PhotoSize {
+  int64 size = 1;
+}
+
+message PhotoEmpty {
+  string photo_id = 1;
+}
+
+message EntityChats {}
+
+message EntityGroups {}
+
+message EntityChat {
+  int64 chat_id = 1;
+}
+
+message EntityGroup {
+  int64 group_id = 1;
+}
+
+message DocumentAttribute {
+  oneof attributes {
+    DocumentAttributeVideo video = 1;
+    DocumentAttributeAudio audio = 2;
+    DocumentAttributeFilename filename = 3;
+  }
+}
 
 message DocumentAttributeVideo {
   int32 duration = 1; // Video duration in seconds
@@ -56,18 +128,4 @@ message DocumentAttributeAudio {
 
 message DocumentAttributeFilename {
   string file_name = 1;
-}
-
-message UserPhoto {
-  string photo_id = 1;
-}
-
-message ChatPhoto {
-  string photo_id = 1;
-}
-
-message User {
-  int64 id = 1;
-  string username = 2;
-  string name = 3;
 }

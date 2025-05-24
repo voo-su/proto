@@ -132,20 +132,13 @@ message DeleteChatResponse {
   bool success = 1;
 }
 
-message ChatPhoto {
-  oneof media {
-    common.UserPhoto user_photo = 1;
-    common.ChatPhoto group_chat_photo = 2;
-  }
-}
-
 message Chat {
   int64 id = 1;
   Receiver receiver = 2;
   string username = 3;
   string name = 4;
   string surname = 5;
-  ChatPhoto photo = 6;
+  common.ChatPhoto photo = 6;
   string msg_text = 7;
   common.EntityNotifySettings notify_settings = 8;
   int64 unread_count = 9;
@@ -218,34 +211,34 @@ message MessageActionLogin {
 
 message MessageActionGroupCreate {
   string title = 1;
-  common.User owner = 2;
+  common.UserItem owner = 2;
 }
 
 message MessageActionGroupUserInvite {
-  common.User owner = 1;
-  common.User member = 2;
+  common.UserItem owner = 1;
+  common.UserItem member = 2;
 }
 
 message MessageActionGroupUserLeave {
-  common.User owner = 1;
+  common.UserItem owner = 1;
 }
 
 message MessageActionGroupUserRemove {
-  common.User owner = 1;
-  common.User member = 2;
+  common.UserItem owner = 1;
+  common.UserItem member = 2;
 }
 
 message MessageActionGroupRenameChange {
-  common.User owner = 1;
+  common.UserItem owner = 1;
 }
 
 message MessageActionGroupDeletion {
-  common.User owner = 1;
-  common.User member = 2;
+  common.UserItem owner = 1;
+  common.UserItem member = 2;
 }
 
 message MessageActionGroupAds {
-  common.User owner = 1;
+  common.UserItem owner = 1;
 }
 
 message MessageEmpty {
@@ -269,7 +262,7 @@ message MessageMediaDocument {
   string mime_type = 2;
   int32 size = 3;  // File size in bytes
   string thumb = 4;
-  DocumentAttribute attribute = 5;
+  common.DocumentAttribute attribute = 5;
 }
 
 message MessageReply {
@@ -294,18 +287,10 @@ message InputMediaUploadedPhoto {
   common.InputFile file = 1;
 }
 
-message DocumentAttribute {
-  oneof attributes {
-    common.DocumentAttributeVideo video = 1;
-    common.DocumentAttributeAudio audio = 2;
-    common.DocumentAttributeFilename filename = 3;
-  }
-}
-
 message InputMediaUploadedDocument {
   common.InputFile file = 1;
   string mime_type = 2;
-  DocumentAttribute attributes = 3;
+  common.DocumentAttribute attributes = 3;
   common.InputFile thumb = 4;
 }
 

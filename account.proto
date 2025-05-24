@@ -7,9 +7,6 @@ option go_package = "voo.su/api/grpc/pb/account;pb";
 import "common/common.proto";
 
 service AccountService {
-  // Retrieves the profile details of the user
-  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
-
   // Updates the profile details of the user
   rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
 
@@ -27,20 +24,6 @@ service AccountService {
 
   // Updates the username of the user
   rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
-}
-
-message GetProfileRequest {}
-
-message GetProfileResponse {
-  int64 id = 1;
-  string username = 2;
-  string email = 3;
-  common.UserPhoto photo = 4;
-  string name = 5;
-  string surname = 6;
-  int32 gender = 7;
-  string birthday = 8;
-  string about = 9;
 }
 
 message UpdateProfileRequest {
@@ -65,23 +48,11 @@ message UpdateProfilePhotoResponse {
 
 message NotifyEntity {
   oneof entity {
-    EntityChats chats = 2;
-    EntityGroups groups = 1;
-    EntityChat chat = 4;
-    EntityGroup group = 5;
+    common.EntityChats chats = 2;
+    common.EntityGroups groups = 1;
+    common.EntityChat chat = 4;
+    common.EntityGroup group = 5;
   }
-}
-
-message EntityChats {}
-
-message EntityGroups {}
-
-message EntityChat {
-  int64 chat_id = 1;
-}
-
-message EntityGroup {
-  int64 group_id = 1;
 }
 
 message GetNotifySettingsRequest {
