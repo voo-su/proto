@@ -19,5 +19,5 @@ message GetUserRequest {
 }
 
 message GetUserResponse {
-  common.UserItem user = 1; 
+  common.User user = 1;
 }

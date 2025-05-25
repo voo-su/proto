@@ -135,16 +135,14 @@ message DeleteChatResponse {
 message Chat {
   int64 id = 1;
   Receiver receiver = 2;
-  string username = 3;
-  string name = 4;
-  string surname = 5;
-  common.ChatPhoto photo = 6;
-  string msg_text = 7;
-  common.EntityNotifySettings notify_settings = 8;
-  int64 unread_count = 9;
-  string updated_at = 10;
-  bool is_online = 11;
-  bool is_bot = 12;
+  string title = 3;
+  common.ChatPhoto photo = 4;
+  string msg_text = 5;
+  common.EntityNotifySettings notify_settings = 6;
+  int64 unread_count = 7;
+  string updated_at = 8;
+  bool is_online = 9;
+  bool is_bot = 10;
 }
 
 message GetHistoryRequest {
@@ -211,34 +209,34 @@ message MessageActionLogin {
 
 message MessageActionGroupCreate {
   string title = 1;
-  common.UserItem owner = 2;
+  common.User owner = 2;
 }
 
 message MessageActionGroupUserInvite {
-  common.UserItem owner = 1;
-  common.UserItem member = 2;
+  common.User owner = 1;
+  common.User member = 2;
 }
 
 message MessageActionGroupUserLeave {
-  common.UserItem owner = 1;
+  common.User owner = 1;
 }
 
 message MessageActionGroupUserRemove {
-  common.UserItem owner = 1;
-  common.UserItem member = 2;
+  common.User owner = 1;
+  common.User member = 2;
 }
 
 message MessageActionGroupRenameChange {
-  common.UserItem owner = 1;
+  common.User owner = 1;
 }
 
 message MessageActionGroupDeletion {
-  common.UserItem owner = 1;
-  common.UserItem member = 2;
+  common.User owner = 1;
+  common.User member = 2;
 }
 
 message MessageActionGroupAds {
-  common.UserItem owner = 1;
+  common.User owner = 1;
 }
 
 message MessageEmpty {

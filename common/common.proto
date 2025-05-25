@@ -22,15 +22,6 @@ message User {
   bool is_contact = 9;
 }
 
-message UserEmpty {
-  int64 id = 1;
-}
-
-message UserItem {
-  User user = 1;
-  UserEmpty user_empty = 2;
-}
-
 message EntityNotifySettings {
   // Time until notifications are disabled (Unix timestamp)
   // If mute_until = 0, notifications are enabled

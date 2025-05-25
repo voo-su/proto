@@ -142,7 +142,7 @@ message ProjectCommentResponse {
     int64 id = 1;
     string taskId = 2;
     string comment = 3;
-    common.UserItem user = 4;
+    common.User user = 4;
     string created_at = 5;
   }
 
@@ -201,7 +201,7 @@ message ProjectTaskDetailRequest {
 
 message ProjectTaskDetailResponse {
   message Member {
-    common.UserItem user = 1; 
+    common.User user = 1;
   }
 
   string id = 1;
@@ -232,7 +232,7 @@ message ProjectCoexecutorsRequest {
 
 message ProjectCoexecutorsResponse {
   message Item {
-    common.UserItem user = 1; 
+    common.User user = 1;
   }
 
   repeated Item items = 1;
@@ -251,7 +251,7 @@ message ProjectWatchersRequest {
 
 message ProjectWatchersResponse {
   message Item {
-    common.UserItem user = 1; 
+    common.User user = 1;
   }
 
   repeated Item items = 1;

@@ -104,7 +104,7 @@ message GetMembersResponse {
 }
 
 message MemberItem {
-  common.UserItem user = 1;
+  common.User user = 1;
   int32 leader = 2;
 }
 
@@ -184,7 +184,7 @@ message GroupChatMembersRequest {
 
 message GroupChatMembersResponse {
   message Item {
-    common.UserItem user = 1; 
+    common.User user = 1;
     int32 leader = 2;
     int32 is_mute = 3;
   }
@@ -204,7 +204,7 @@ message GroupChatGetInviteFriendsRequest {
 
 message GroupChatGetInviteFriendsResponse {
   message Item {
-    common.UserItem user = 1;
+    common.User user = 1;
   }
 
   repeated Item items = 1;
@@ -251,7 +251,7 @@ message GroupChatRequestCreateRequest {
 
 message GroupChatRequestCreateResponse {
   message Item {
-    common.UserItem user = 1;
+    common.User user = 1;
   }
 
   repeated Item items = 1;

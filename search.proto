@@ -20,7 +20,7 @@ message SearchUsersRequest {
 
 message SearchUserResponse {
   message Item {
-    common.UserItem user = 1; 
+    common.User user = 1;
   }
 
   repeated Item items = 1;

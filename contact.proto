@@ -29,7 +29,7 @@ service ContactService {
 }
 
 message Contact {
-  common.UserItem user = 1;
+  common.User user = 1;
 }
 
 message GetContactsRequest {}
