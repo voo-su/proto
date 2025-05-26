@@ -248,6 +248,7 @@ message MessageMedia {
   oneof media {
     MessageMediaPhoto message_media_photo = 1;
     MessageMediaDocument message_media_document = 2;
+    MessageMediaGeo message_media_geo = 3;
   }
 }
 
@@ -259,8 +260,15 @@ message MessageMediaDocument {
   string id = 1;
   string mime_type = 2;
   int32 size = 3;  // File size in bytes
-  string thumb = 4;
-  common.DocumentAttribute attribute = 5;
+  repeated common.PhotoSize thumbs = 4;
+  repeated common.VideoSize video_thumbs = 5;
+  common.DocumentAttribute attribute = 6;
+}
+
+message MessageMediaGeo {
+  string id = 1;
+  string longitude = 2;
+  string latitude = 3;
 }
 
 message MessageReply {

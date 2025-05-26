@@ -40,8 +40,14 @@ message EntityNotifySettings {
   bool show_previews = 3;
 }
 
+message InputPhotoFileLocation {
+  string id = 1;
+  string thumb_size = 2;
+}
+
 message InputDocumentFileLocation {
   string id = 1;
+  string thumb_size = 2;
 }
 
 message InputFile {
@@ -60,14 +66,14 @@ message InputPhoto {
 message UserProfilePhoto {
   oneof user_profile_photo {
     Photo photo = 1;
-    PhotoEmpty chat_photo_empty = 2;
+    PhotoEmpty photo_empty = 2;
   }
 }
 
 message ChatPhoto {
   oneof chat_photo {
     Photo photo = 1;
-    PhotoEmpty chat_photo_empty = 2;
+    PhotoEmpty photo_empty = 2;
   }
 }
 
@@ -76,12 +82,22 @@ message Photo {
   repeated PhotoSize sizes = 2;
 }
 
-message PhotoSize {
-  int64 size = 1;
-}
-
 message PhotoEmpty {
   string photo_id = 1;
+}
+
+message PhotoSize {
+  string type = 1;
+  int32 width = 2;
+  int32 height = 3;
+  int64 size = 4;
+}
+
+message VideoSize {
+  string type = 1;
+  int32 width = 2;
+  int32 height = 3;
+  int64 size = 4;
 }
 
 message EntityChats {}

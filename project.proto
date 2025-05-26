@@ -97,8 +97,7 @@ message ProjectMembersRequest {
 
 message ProjectMembersResponse {
   message Item {
-    int64 id = 1;
-    string username = 2;
+    common.User user = 1;
   }
 
   repeated Item items = 1;
@@ -110,8 +109,7 @@ message ProjectInviteFriendsRequest {
 
 message ProjectInviteFriendsResponse {
   message Item {
-    int64 id = 1;
-    string username = 2;
+    common.User user = 1;
   }
 
   repeated Item items = 1;

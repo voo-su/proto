@@ -28,7 +28,8 @@ message GetFileRequest {
   int64 offset = 1; // Number of bytes to be skipped
   int32 limit = 2; // Number of bytes to be returned
   oneof location {
-    common.InputDocumentFileLocation document_location = 3;
+    common.InputPhotoFileLocation photo_file_location = 3;
+    common.InputDocumentFileLocation document_file_location = 4;
   }
 }
 
