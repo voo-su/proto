@@ -39,7 +39,7 @@ message UpdateProfileResponse {
 }
 
 message UpdateProfilePhotoRequest {
-  common.InputFile file = 1;
+  common.InputPhoto photo = 1;
 }
 
 message UpdateProfilePhotoResponse {
