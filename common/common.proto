@@ -82,9 +82,7 @@ message Photo {
   repeated PhotoSize sizes = 2;
 }
 
-message PhotoEmpty {
-  string photo_id = 1;
-}
+message PhotoEmpty {}
 
 message PhotoSize {
   string type = 1;

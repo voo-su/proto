@@ -39,7 +39,7 @@ message GetContactsResponse {
 }
 
 message DeleteContactRequest {
-  int64 id = 1;
+  int64 user_id = 1;
 }
 
 message DeleteContactResponse {}
@@ -51,7 +51,7 @@ message RequestUnreadNumResponse {
 }
 
 message CreateRequestRequest {
-  int64 id = 1;
+  int64 user_id = 1;
 }
 
 message CreateRequestResponse {
@@ -65,7 +65,7 @@ message GetRequestsResponse {
 }
 
 message AcceptRequestRequest {
-  int64 id = 1;
+  int64 user_id = 1;
 }
 
 message AcceptRequestResponse {
@@ -73,7 +73,7 @@ message AcceptRequestResponse {
 }
 
 message RejectRequestRequest {
-  int64 id = 1;
+  int64 user_id = 1;
 }
 
 message RejectRequestResponse {
