@@ -91,8 +91,8 @@ message GetGroupChatResponse {
   common.ChatPhoto photo = 4;
   int64 members = 5;
   bool is_manager = 6;
-  int32 is_mute = 7;
-  int32 is_overt = 8;
+  bool is_mute = 7;
+  bool is_overt = 8;
 }
 
 message GetMembersRequest {
@@ -186,7 +186,7 @@ message GroupChatMembersResponse {
   message Item {
     common.User user = 1;
     int32 leader = 2;
-    int32 is_mute = 3;
+    bool is_mute = 3;
   }
 
   repeated Item items = 1;
@@ -226,21 +226,21 @@ message GroupChatRemoveMemberResponse {}
 message GroupChatAssignAdminRequest {
   int64 group_id = 1;
   int64 user_id = 2;
-  int32 mode = 3;
+  bool mode = 3;
 }
 
 message GroupChatAssignAdminResponse {}
 
 message GroupChatMuteRequest {
   int64 group_id = 1;
-  int32 mode = 2;
+  bool mode = 2;
 }
 
 message GroupChatMuteResponse {}
 
 message GroupChatOvertRequest {
   int64 group_id = 1;
-  int32 mode = 2;
+  bool mode = 2;
 }
 
 message GroupChatOvertResponse {}

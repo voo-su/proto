@@ -319,7 +319,7 @@ message InputMediaUploadedPhoto {
 message InputMediaUploadedDocument {
   common.InputFile file = 1;
   string mime_type = 2;
-  common.DocumentAttribute attributes = 3;
+  common.DocumentAttribute attribute = 3;
   common.InputFile thumb = 4;
 }
 
