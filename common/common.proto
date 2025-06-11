@@ -134,3 +134,196 @@ message DocumentAttributeAudio {
 message DocumentAttributeFilename {
   string file_name = 1;
 }
+
+message Receiver {
+  int32 chat_type = 1;
+  int64 receiver_id = 2;
+}
+
+message MessageItem {
+  oneof message_type {
+    Message message = 1;
+    MessageService message_service = 2;
+    MessageEmpty message_empty = 3;
+  }
+}
+
+message Message {
+  int64 id = 1;
+  int64 sender_id = 2;
+  Receiver receiver = 3;
+  string content = 4;
+  MessageMedia media = 5;
+  MessageReply reply = 6;
+  bool is_read = 7;
+  string created_at = 8;
+}
+
+message MessageService {
+  int64 id = 1;
+  int64 sender_id = 2;
+  Receiver receiver = 3;
+  MessageServiceAction action = 4;
+  string created_at = 5;
+}
+
+message MessageServiceAction {
+  oneof message_action_type {
+    MessageActionEmpty message_action_empty = 1;
+    MessageActionLogin message_action_login = 2;
+    MessageActionGroupCreate message_action_group_create = 3;
+    MessageActionGroupUserInvite message_action_group_user_invite = 4;
+    MessageActionGroupUserLeave message_action_group_user_leave = 5;
+    MessageActionGroupUserRemove message_action_group_user_remove = 6;
+    MessageActionGroupRenameChange message_action_group_rename_change = 7;
+    MessageActionGroupDeletion message_action_group_deletion = 8;
+    MessageActionGroupAds message_action_group_ads = 9;
+  }
+}
+
+message MessageActionEmpty {}
+
+message MessageActionLogin {
+  string ip = 1;
+  string agent = 2;
+  string address = 3;
+  string created_at = 4;
+}
+
+message MessageActionGroupCreate {
+  string title = 1;
+  User owner = 2;
+}
+
+message MessageActionGroupUserInvite {
+  User owner = 1;
+  User member = 2;
+}
+
+message MessageActionGroupUserLeave {
+  User owner = 1;
+}
+
+message MessageActionGroupUserRemove {
+  User owner = 1;
+  User member = 2;
+}
+
+message MessageActionGroupRenameChange {
+  User owner = 1;
+}
+
+message MessageActionGroupDeletion {
+  User owner = 1;
+  User member = 2;
+}
+
+message MessageActionGroupAds {
+  User owner = 1;
+}
+
+message MessageEmpty {
+  int64 id = 1;
+  Receiver receiver = 2;
+}
+
+message MessageMedia {
+  oneof media {
+    MessageMediaPhoto message_media_photo = 1;
+    MessageMediaDocument message_media_document = 2;
+    MessageMediaVote message_media_vote = 3;
+    MessageMediaGeo message_media_geo = 4;
+  }
+}
+
+message MessageMediaPhoto {
+  string id = 1;
+}
+
+message MessageMediaDocument {
+  string id = 1;
+  string mime_type = 2;
+  int32 size = 3;  // File size in bytes
+  repeated PhotoSize thumbs = 4;
+  repeated VideoSize video_thumbs = 5;
+  DocumentAttribute attribute = 6;
+}
+
+message VoteAnswer {
+  string key = 1;
+  string value = 2;
+}
+
+message VoteStatistics {
+  int32 count = 1;
+  map<string, int32> options = 2;
+}
+
+message MessageMediaVote {
+  int64 id = 1;
+  string title = 2;
+  int32 answer_mode = 3;
+  int32 status = 4;
+  repeated VoteAnswer answers = 5;
+  int64 answer_num = 6;
+  int64 answered_num = 7;
+  VoteStatistics statistics = 8;
+  repeated int64 users = 9;
+}
+
+message MessageMediaGeo {
+  string id = 1;
+  string longitude = 2;
+  string latitude = 3;
+}
+
+message MessageReply {
+  int64 id = 1;
+  Receiver receiver = 2;
+  string content = 3;
+  MessageMedia media = 4;
+  string created_at = 5;
+}
+
+
+message InputMediaUploadedPhoto {
+  InputFile file = 1;
+}
+
+message InputMediaUploadedDocument {
+  InputFile file = 1;
+  string mime_type = 2;
+  DocumentAttribute attribute = 3;
+  InputFile thumb = 4;
+}
+
+message InputMediaVote {
+  string type = 1;
+  string title = 2;
+  int32 mode = 3;
+  int32 anonymous = 4;
+  repeated string options = 5;
+}
+
+message InputMediaGeoPoint {
+  string type = 1;
+  string longitude = 2;
+  string latitude = 3;
+  string description = 4;
+}
+
+message InputMediaCode {
+  string type = 1;
+  string lang = 2;
+  string code = 3;
+}
+
+message InputMedia {
+  oneof media {
+    InputMediaUploadedPhoto photo = 1;
+    InputMediaUploadedDocument document = 2;
+    InputMediaVote vote = 3;
+    InputMediaGeoPoint geo = 4;
+    InputMediaCode code = 5;
+  }
+}

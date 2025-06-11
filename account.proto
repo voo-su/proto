@@ -24,6 +24,9 @@ service AccountService {
 
   // Updates the username of the user
   rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
+
+  // Retrieves real-time updates for the chat, such as new messages or chat events
+  rpc GetUpdates(UpdatesRequest) returns (stream Update);
 }
 
 message UpdateProfileRequest {
@@ -87,4 +90,42 @@ message UpdateUsernameRequest {
 
 message UpdateUsernameResponse {
   bool success = 1;
+}
+
+message UpdatesRequest {}
+
+message Update {
+  oneof update {
+    UpdateNewMessage new_message = 1;
+    UpdateChatReadInbox chat_read_inbox = 2;
+    UpdateUserTyping user_typing = 3;
+    UpdateDeleteMessages delete_messages = 4;
+    UpdateUserStatus user_status = 5;
+  }
+}
+
+message UpdateNewMessage {
+  common.MessageItem message = 1;
+}
+
+message UpdateChatReadInbox {
+  common.Receiver receiver = 1;
+  string last_read_inbox_message_id = 2;
+  int64 unread_count = 3;
+}
+
+message UpdateUserTyping {
+  common.Receiver receiver = 1;
+  int64 user_id = 2;
+  bool is_typing = 3;
+}
+
+message UpdateDeleteMessages {
+  common.Receiver receiver = 1;
+  repeated string message_ids = 2;
+}
+
+message UpdateUserStatus {
+  int64 user_id = 1;
+  bool status = 2;
 }

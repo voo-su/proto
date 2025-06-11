@@ -7,9 +7,6 @@ option go_package = "voo.su/api/grpc/pb/chat;pb";
 import "common/common.proto";
 
 service ChatService {
-  // Retrieves real-time updates for the chat, such as new messages or chat events
-  rpc GetUpdates(UpdatesRequest) returns (stream Update);
-
   // Creates a new chat with the specified participants
   rpc CreateChat(CreateChatRequest) returns (CreateChatResponse);
 
@@ -67,49 +64,6 @@ service ChatService {
   rpc SaveFolder(SaveFolderRequest) returns (SaveFolderResponse);
 }
 
-message Receiver {
-  int32 chat_type = 1;
-  int64 receiver_id = 2;
-}
-
-message UpdatesRequest {}
-
-message Update {
-  oneof update {
-    UpdateNewMessage new_message = 1;
-    UpdateChatReadInbox chat_read_inbox = 2;
-    UpdateUserTyping user_typing = 3;
-    UpdateDeleteMessages delete_messages = 4;
-    UpdateUserStatus user_status = 5;
-  }
-}
-
-message UpdateNewMessage {
-  MessageItem message = 1;
-}
-
-message UpdateChatReadInbox {
-  Receiver receiver = 1;
-  string last_read_inbox_message_id = 2;
-  int64 unread_count = 3;
-}
-
-message UpdateUserTyping {
-  Receiver receiver = 1;
-  int64 user_id = 2;
-  bool is_typing = 3;
-}
-
-message UpdateDeleteMessages {
-  Receiver receiver = 1;
-  repeated string message_ids = 2;
-}
-
-message UpdateUserStatus {
-  int64 user_id = 1;
-  bool status = 2;
-}
-
 message GetChatsRequest {}
 
 message GetChatsResponse {
@@ -117,7 +71,7 @@ message GetChatsResponse {
 }
 
 message CreateChatRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
 }
 
 message CreateChatResponse {
@@ -134,7 +88,7 @@ message DeleteChatResponse {
 
 message Chat {
   int64 id = 1;
-  Receiver receiver = 2;
+  common.Receiver receiver = 2;
   string title = 3;
   common.ChatPhoto photo = 4;
   string msg_text = 5;
@@ -146,7 +100,7 @@ message Chat {
 }
 
 message GetHistoryRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
   int64 message_id = 2;
   int64 limit = 3;
 }
@@ -154,156 +108,11 @@ message GetHistoryRequest {
 message GetHistoryResponse {
   int64 limit = 1;
   int64 message_id = 2;
-  repeated MessageItem items = 3;
-}
-
-message MessageItem {
-  oneof message_type {
-    Message message = 1;
-    MessageService message_service = 2;
-    MessageEmpty message_empty = 3;
-  }
-}
-
-message Message {
-  int64 id = 1;
-  int64 sender_id = 2;
-  Receiver receiver = 3;
-  string content = 4;
-  MessageMedia media = 5;
-  MessageReply reply = 6;
-  bool is_read = 7;
-  string created_at = 8;
-}
-
-message MessageService {
-  int64 id = 1;
-  int64 sender_id = 2;
-  Receiver receiver = 3;
-  MessageServiceAction action = 4;
-  string created_at = 5;
-}
-
-message MessageServiceAction {
-  oneof message_action_type {
-    MessageActionEmpty message_action_empty = 1;
-    MessageActionLogin message_action_login = 2;
-    MessageActionGroupCreate message_action_group_create = 3;
-    MessageActionGroupUserInvite message_action_group_user_invite = 4;
-    MessageActionGroupUserLeave message_action_group_user_leave = 5;
-    MessageActionGroupUserRemove message_action_group_user_remove = 6;
-    MessageActionGroupRenameChange message_action_group_rename_change = 7;
-    MessageActionGroupDeletion message_action_group_deletion = 8;
-    MessageActionGroupAds message_action_group_ads = 9;
-  }
-}
-
-message MessageActionEmpty {}
-
-message MessageActionLogin {
-  string ip = 1;
-  string agent = 2;
-  string address = 3;
-  string created_at = 4;
-}
-
-message MessageActionGroupCreate {
-  string title = 1;
-  common.User owner = 2;
-}
-
-message MessageActionGroupUserInvite {
-  common.User owner = 1;
-  common.User member = 2;
-}
-
-message MessageActionGroupUserLeave {
-  common.User owner = 1;
-}
-
-message MessageActionGroupUserRemove {
-  common.User owner = 1;
-  common.User member = 2;
-}
-
-message MessageActionGroupRenameChange {
-  common.User owner = 1;
-}
-
-message MessageActionGroupDeletion {
-  common.User owner = 1;
-  common.User member = 2;
-}
-
-message MessageActionGroupAds {
-  common.User owner = 1;
-}
-
-message MessageEmpty {
-  int64 id = 1;
-  Receiver receiver = 2;
-}
-
-message MessageMedia {
-  oneof media {
-    MessageMediaPhoto message_media_photo = 1;
-    MessageMediaDocument message_media_document = 2;
-    MessageMediaVote message_media_vote = 3;
-    MessageMediaGeo message_media_geo = 4;
-  }
-}
-
-message MessageMediaPhoto {
-  string id = 1;
-}
-
-message MessageMediaDocument {
-  string id = 1;
-  string mime_type = 2;
-  int32 size = 3;  // File size in bytes
-  repeated common.PhotoSize thumbs = 4;
-  repeated common.VideoSize video_thumbs = 5;
-  common.DocumentAttribute attribute = 6;
-}
-
-message VoteAnswer {
-  string key = 1;
-  string value = 2;
-}
-
-message VoteStatistics {
-  int32 count = 1;
-  map<string, int32> options = 2;
-}
-
-message MessageMediaVote {
-  int64 id = 1;
-  string title = 2;
-  int32 answer_mode = 3;
-  int32 status = 4;
-  repeated VoteAnswer answers = 5;
-  int64 answer_num = 6;
-  int64 answered_num = 7;
-  VoteStatistics statistics = 8;
-  repeated int64 users = 9;
-}
-
-message MessageMediaGeo {
-  string id = 1;
-  string longitude = 2;
-  string latitude = 3;
-}
-
-message MessageReply {
-  int64 id = 1;
-  Receiver receiver = 2;
-  string content = 3;
-  MessageMedia media = 4;
-  string created_at = 5;
+  repeated common.MessageItem items = 3;
 }
 
 message SendMessageRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
   string message = 2;
   int64 reply_to_msg_id = 3;
 }
@@ -312,51 +121,10 @@ message SendMessageResponse {
   bool success = 1;
 }
 
-message InputMediaUploadedPhoto {
-  common.InputFile file = 1;
-}
-
-message InputMediaUploadedDocument {
-  common.InputFile file = 1;
-  string mime_type = 2;
-  common.DocumentAttribute attribute = 3;
-  common.InputFile thumb = 4;
-}
-
-message InputMediaVote {
-  string type = 1;
-  string title = 2;
-  int32 mode = 3;
-  int32 anonymous = 4;
-  repeated string options = 5;
-}
-
-message InputMediaGeoPoint {
-  string type = 1;
-  string longitude = 2;
-  string latitude = 3;
-  string description = 4;
-}
-
-message InputMediaCode {
-  string type = 1;
-  string lang = 2;
-  string code = 3;
-}
-
-message InputMedia {
-  oneof media {
-    InputMediaUploadedPhoto photo = 1;
-    InputMediaUploadedDocument document = 2;
-    InputMediaVote vote = 3;
-    InputMediaGeoPoint geo = 4;
-    InputMediaCode code = 5;
-  }
-}
 
 message SendMediaRequest {
-  Receiver receiver = 1;
-  InputMedia media = 2;
+  common.Receiver receiver = 1;
+  common.InputMedia media = 2;
   string message = 3;
   int64 reply_to_msg_id = 4;
 }
@@ -366,18 +134,18 @@ message SendMediaResponse {
 }
 
 message ViewMessagesRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
   repeated int64 message_ids = 2;
 }
 
 message ViewMessagesResponse {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
   int64 last_read_inbox_message_id = 2;
   int64 unread_count = 3;
 }
 
 message SetTypingRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
 }
 
 message SetTypingResponse {
@@ -385,7 +153,7 @@ message SetTypingResponse {
 }
 
 message DeleteMessagesRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
   repeated int64 message_ids = 2;
   bool revoke = 3;
 }
@@ -464,7 +232,7 @@ message ChatTopRequest {
 message ChatTopResponse {}
 
 message ForwardMessageRequest {
-  Receiver receiver = 1;
+  common.Receiver receiver = 1;
   string type = 2;
   int32 mode = 3;
   repeated int64 message_ids = 4;
@@ -475,7 +243,7 @@ message ForwardMessageRequest {
 message KeyboardMessage {
   message Data {
     int64 sender_id = 1;
-    Receiver receiver = 2;
+    common.Receiver receiver = 2;
   }
 
   string event = 1;
@@ -570,5 +338,5 @@ message VoteHandleResponse {}
 message StickerMessageRequest {
   string type = 1;
   int64 sticker_id = 2;
-  Receiver receiver = 3;
+  common.Receiver receiver = 3;
 }
