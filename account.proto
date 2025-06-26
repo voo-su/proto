@@ -27,6 +27,8 @@ service AccountService {
 
   // Retrieves real-time updates for the chat, such as new messages or chat events
   rpc GetUpdates(UpdatesRequest) returns (stream Update);
+
+  rpc GetEmail(GetEmailRequest) returns (GetEmailResponse);
 }
 
 message UpdateProfileRequest {
@@ -128,4 +130,10 @@ message UpdateDeleteMessages {
 message UpdateUserStatus {
   int64 user_id = 1;
   bool status = 2;
+}
+
+message GetEmailRequest {}
+
+message GetEmailResponse {
+  string email = 1;
 }

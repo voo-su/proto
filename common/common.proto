@@ -17,9 +17,10 @@ message User {
   string surname = 4;
   UserProfilePhoto photo = 5;
   int32 gender = 6;
-  string about = 7;
-  bool is_bot = 8;
-  bool is_contact = 9;
+  string birthday = 7;
+  string about = 8;
+  bool is_bot = 9;
+  bool is_contact = 10;
 }
 
 message EntityNotifySettings {
