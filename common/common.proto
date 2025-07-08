@@ -120,13 +120,13 @@ message DocumentAttribute {
 }
 
 message DocumentAttributeVideo {
-  int32 duration = 1; // Video duration in seconds
+  double duration = 1; // Video duration in seconds
   int32 width = 2;    // Video width in pixels
   int32 height = 3;   // Video height in pixels
 }
 
 message DocumentAttributeAudio {
-  int32 duration = 1; // Audio file duration in seconds
+  double duration = 1; // Audio file duration in seconds
   string title = 2;
   string performer = 3;
   bool voice = 4;
