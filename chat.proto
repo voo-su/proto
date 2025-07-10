@@ -108,7 +108,8 @@ message GetHistoryRequest {
 message GetHistoryResponse {
   int64 limit = 1;
   int64 message_id = 2;
-  repeated common.MessageItem items = 3;
+  repeated common.MessageItem messages = 3;
+  repeated common.User users = 4;
 }
 
 message SendMessageRequest {
@@ -120,7 +121,6 @@ message SendMessageRequest {
 message SendMessageResponse {
   bool success = 1;
 }
-
 
 message SendMediaRequest {
   common.Receiver receiver = 1;
