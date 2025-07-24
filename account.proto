@@ -26,7 +26,7 @@ service AccountService {
   rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
 
   // Retrieves real-time updates for the chat, such as new messages or chat events
-  rpc GetUpdates(UpdatesRequest) returns (stream Update);
+  rpc GetUpdates(stream UpdateRequest) returns (stream UpdateResponse);
 
   rpc GetEmail(GetEmailRequest) returns (GetEmailResponse);
 }
@@ -94,16 +94,46 @@ message UpdateUsernameResponse {
   bool success = 1;
 }
 
-message UpdatesRequest {}
+message UpdateRequest {
+  oneof update {
+    UpdateSystemPingEvent system_ping_event = 1;
+    UpdateSystemPongEvent system_pong_event = 2;
+  }
+}
 
-message Update {
+message UpdateResponse {
   oneof update {
     UpdateNewMessage new_message = 1;
     UpdateChatReadInbox chat_read_inbox = 2;
     UpdateUserTyping user_typing = 3;
     UpdateDeleteMessages delete_messages = 4;
     UpdateUserStatus user_status = 5;
+    UpdateSystemPingIntervalEvent system_ping_interval_event = 6;
+    UpdateSystemPingEvent system_ping_event = 7;
+    UpdateSystemPongEvent system_pong_event = 8;
+    UpdateSystemAckEvent system_ack_event = 9;
+    UpdateSystemEvent system_event = 10;
   }
+}
+
+message UpdateSystemPingIntervalEvent {
+  string ping_interval = 1;
+  string ping_timeout = 2;
+}
+
+message UpdateSystemPingEvent {}
+
+message UpdateSystemPongEvent {}
+
+message UpdateSystemAckEvent {
+  string sid = 1;
+}
+
+message UpdateSystemEvent {
+  string event = 1;
+  string sid = 2;
+  bool is_ack = 3;
+  int32 retry = 4;
 }
 
 message UpdateNewMessage {
