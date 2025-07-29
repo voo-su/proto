@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "voo.su/api/grpc/pb/auth;pb";
+option go_package = "voo.su/api/app/pb;pb";
 
 service AuthService {
   rpc Login(AuthLoginRequest) returns (AuthLoginResponse);

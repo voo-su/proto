@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package account;
 
-option go_package = "voo.su/api/grpc/pb/account;pb";
+option go_package = "voo.su/api/app/pb;pb";
 
 import "common/common.proto";
 

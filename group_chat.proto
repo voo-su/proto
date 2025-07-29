@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package group_chat;
 
-option go_package = "voo.su/api/grpc/pb/group_chat;pb";
+option go_package = "voo.su/api/app/pb;pb";
 
 import "common/common.proto";
 

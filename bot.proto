@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bot;
 
-option go_package = "voo.su/api/grpc/pb/bot;pb";
+option go_package = "voo.su/api/app/pb;pb";
 
 service BotService {
   rpc Create(BotCreateRequest) returns (BotCreateResponse);
