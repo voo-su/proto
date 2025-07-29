@@ -103,16 +103,18 @@ message UpdateRequest {
 
 message UpdateResponse {
   oneof update {
-    UpdateNewMessage new_message = 1;
-    UpdateChatReadInbox chat_read_inbox = 2;
-    UpdateUserTyping user_typing = 3;
-    UpdateDeleteMessages delete_messages = 4;
-    UpdateUserStatus user_status = 5;
-    UpdateSystemPingIntervalEvent system_ping_interval_event = 6;
-    UpdateSystemPingEvent system_ping_event = 7;
-    UpdateSystemPongEvent system_pong_event = 8;
-    UpdateSystemAckEvent system_ack_event = 9;
-    UpdateSystemEvent system_event = 10;
+    UpdateSystemPingIntervalEvent system_ping_interval_event = 1;
+    UpdateSystemPingEvent system_ping_event = 2;
+    UpdateSystemPongEvent system_pong_event = 3;
+    UpdateSystemAckEvent system_ack_event = 4;
+    UpdateSystemEvent system_event = 5;
+    UpdateNewMessage new_message = 6;
+    UpdateChatReadInbox chat_read_inbox = 7;
+    UpdateUserTyping user_typing = 8;
+    UpdateDeleteMessages delete_messages = 9;
+    UpdateUserStatus user_status = 10;
+    UpdateContactRequest contact_request = 11;
+    UpdateGroupChatRequest group_chat_request = 12;
   }
 }
 
@@ -154,12 +156,24 @@ message UpdateUserTyping {
 
 message UpdateDeleteMessages {
   common.Receiver receiver = 1;
-  repeated string message_ids = 2;
+  repeated int64 message_ids = 2;
 }
 
 message UpdateUserStatus {
   int64 user_id = 1;
   bool status = 2;
+}
+
+message UpdateContactRequest {
+  int64 sender_id = 1;
+  int64 receiver_id = 2;
+  common.User user = 3;
+}
+
+message UpdateGroupChatRequest {
+  int64 group_id = 1;
+  string group_name = 2;
+  common.User user = 3;
 }
 
 message GetEmailRequest {}
