@@ -33,15 +33,7 @@ message SearchGroupChatsRequest {
 
 message SearchGroupChatsResponse {
   message Item {
-    int64 id = 1;
-    int32 type = 2;
-    string name = 3;
-    common.ChatPhoto photo = 4;
-    string description = 5;
-    int32 count = 6;
-    int32 max_num = 7;
-    bool is_member = 8;
-    string created_at = 9;
+    common.GroupChat group_chat = 1;
   }
 
   repeated Item items = 1;

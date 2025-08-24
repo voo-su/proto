@@ -85,14 +85,7 @@ message GetGroupChatRequest {
 }
 
 message GetGroupChatResponse {
-  int64 id = 1;
-  string name = 2;
-  string about = 3;
-  common.ChatPhoto photo = 4;
-  int64 members = 5;
-  bool is_manager = 6;
-  bool is_mute = 7;
-  bool is_overt = 8;
+  common.GroupChat group_chat = 1;
 }
 
 message GetMembersRequest {
