@@ -20,7 +20,18 @@ message User {
   string birthday = 7;
   string about = 8;
   bool is_bot = 9;
-  bool is_contact = 10;
+  UserRelationStatus relation_status = 10;
+}
+
+enum UserRelationStatus {
+  // No contact and no requests
+  USER_RELATION_NONE = 0;
+  // In contacts
+  USER_RELATION_CONTACT = 1;
+  // Outgoing request (you sent)
+  USER_RELATION_REQUEST_SENT = 2;
+  // Incoming request (sent to you)
+  USER_RELATION_REQUEST_RECEIVED = 3;
 }
 
 message EntityNotifySettings {
