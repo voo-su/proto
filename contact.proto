@@ -18,6 +18,9 @@ service ContactService {
   // Creates a new contact request from the current user to another user
   rpc CreateRequest(CreateRequestRequest) returns (CreateRequestResponse);
 
+  // Cancels a previously sent contact request before it is accepted or rejected
+  rpc CancelRequest(CancelRequestRequest) returns (CancelRequestResponse);
+
   // Retrieves a list of incoming and/or outgoing contact requests for the user
   rpc GetRequests(GetRequestsRequest) returns (GetRequestsResponse);
 
@@ -42,7 +45,9 @@ message DeleteContactRequest {
   int64 user_id = 1;
 }
 
-message DeleteContactResponse {}
+message DeleteContactResponse {
+  bool success = 1;
+}
 
 message RequestUnreadNumRequest {}
 
@@ -55,6 +60,14 @@ message CreateRequestRequest {
 }
 
 message CreateRequestResponse {
+  bool success = 1;
+}
+
+message CancelRequestRequest {
+  int64 user_id = 1;
+}
+
+message CancelRequestResponse {
   bool success = 1;
 }
 
