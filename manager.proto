@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package manager;
+
+option go_package = "voo.su/api/app/pb;pb";
+
+service ManagerService {
+  rpc GetDashboard(GetDashboardRequest) returns (GetDashboardResponse);
+}
+
+message GetDashboardRequest {}
+
+message GetDashboardResponse {
+  int64 users = 1;
+  int64 bots = 2;
+  int64 total_messages = 3;
+  int64 group_chats = 4;
+  int64 group_messages = 5;
+  int64 private_messages = 6;
+}
