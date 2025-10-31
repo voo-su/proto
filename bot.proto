@@ -5,27 +5,37 @@ package bot;
 option go_package = "voo.su/api/app/pb;pb";
 
 service BotService {
-  rpc Create(BotCreateRequest) returns (BotCreateResponse);
+  rpc CreateBot(CreateBotRequest) returns (CreateBotResponse);
 
-  rpc List(BotListRequest) returns (BotListResponse);
+  rpc GetBots(GetBotsRequest) returns (GetBotsResponse);
+
+  rpc DeleteBot(DeleteBotRequest) returns (DeleteBotResponse);
 }
 
-message BotCreateRequest {
+message Bot {
+  int32 id = 1;
+  string username = 2;
+  string token = 3;
+}
+
+message CreateBotRequest {
   string username = 1;
 }
 
-message BotCreateResponse {
+message CreateBotResponse {
   string token = 1;
 }
 
-message BotListRequest {}
+message GetBotsRequest {}
 
-message BotListResponse {
-  message Item {
-    int32 id = 1;
-    string username = 2;
-    string token = 3;
-  }
+message GetBotsResponse {
+  repeated Bot items = 1;
+}
 
-  repeated Item items = 1;
+message DeleteBotRequest {
+  int64 id = 1;
+}
+
+message DeleteBotResponse {
+  bool success = 1;
 }
