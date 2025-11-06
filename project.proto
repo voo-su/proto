@@ -141,7 +141,7 @@ message ProjectCommentResponse {
     string taskId = 2;
     string comment = 3;
     common.User user = 4;
-    string created_at = 5;
+    int64 created_at = 5;
   }
 
   repeated Item items = 1;
@@ -205,7 +205,7 @@ message ProjectTaskDetailResponse {
   string id = 1;
   string title = 2;
   string description = 3;
-  string created_at = 4;
+  int64 created_at = 4;
   Member assigner = 5;
   Member executor = 6;
 }

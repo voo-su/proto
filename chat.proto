@@ -13,6 +13,8 @@ service ChatService {
   // Retrieves the list of chats for the user
   rpc GetChats(GetChatsRequest) returns (GetChatsResponse);
 
+  rpc GetChat(GetChatRequest) returns (GetChatResponse);
+
   // Deletes the specified chat
   rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
 
@@ -75,7 +77,15 @@ message CreateChatRequest {
 }
 
 message CreateChatResponse {
-  Chat item = 1;
+  Chat chat = 1;
+}
+
+message GetChatRequest {
+  common.Receiver receiver = 1;
+}
+
+message GetChatResponse {
+  Chat chat = 1;
 }
 
 message DeleteChatRequest {
@@ -94,7 +104,7 @@ message Chat {
   string msg_text = 5;
   common.EntityNotifySettings notify_settings = 6;
   int64 unread_count = 7;
-  string updated_at = 8;
+  int64 updated_at = 8;
   bool is_online = 9;
   bool is_bot = 10;
 }

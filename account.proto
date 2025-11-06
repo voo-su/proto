@@ -96,13 +96,18 @@ message UpdateUsernameResponse {
 
 message UpdateRequest {
   oneof update {
-    UpdateSystemPingEvent system_ping_event = 1;
-    UpdateSystemPongEvent system_pong_event = 2;
+    UpdateState update_state = 1;
+    UpdateSystemPingEvent system_ping_event = 2;
+    UpdateSystemPongEvent system_pong_event = 3;
   }
 }
 
 message UpdateResponse {
-  oneof update {
+  Update updates = 1;
+}
+
+message Update {
+  oneof update_type {
     UpdateSystemPingIntervalEvent system_ping_interval_event = 1;
     UpdateSystemPingEvent system_ping_event = 2;
     UpdateSystemPongEvent system_pong_event = 3;
@@ -117,6 +122,8 @@ message UpdateResponse {
     UpdateGroupChatRequest group_chat_request = 12;
   }
 }
+
+message UpdateState {}
 
 message UpdateSystemPingIntervalEvent {
   string ping_interval = 1;

@@ -168,7 +168,7 @@ message Message {
   MessageMedia media = 5;
   MessageReply reply = 6;
   bool is_read = 7;
-  string created_at = 8;
+  int64 created_at = 8;
 }
 
 message MessageService {
@@ -176,7 +176,7 @@ message MessageService {
   int64 sender_id = 2;
   Receiver receiver = 3;
   MessageServiceAction action = 4;
-  string created_at = 5;
+  int64 created_at = 5;
 }
 
 message MessageServiceAction {
@@ -199,7 +199,7 @@ message MessageActionLogin {
   string ip = 1;
   string agent = 2;
   string address = 3;
-  string created_at = 4;
+  int64 created_at = 4;
 }
 
 message MessageActionGroupCreate {
@@ -295,7 +295,7 @@ message MessageReply {
   Receiver receiver = 2;
   string content = 3;
   MessageMedia media = 4;
-  string created_at = 5;
+  int64 created_at = 5;
 }
 
 message InputMediaUploadedPhoto {
