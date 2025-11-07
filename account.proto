@@ -118,8 +118,7 @@ message Update {
     UpdateUserTyping user_typing = 8;
     UpdateDeleteMessages delete_messages = 9;
     UpdateUserStatus user_status = 10;
-    UpdateContactRequest contact_request = 11;
-    UpdateGroupChatRequest group_chat_request = 12;
+    UpdateJoinRequest join_request = 11;
   }
 }
 
@@ -150,19 +149,19 @@ message UpdateNewMessage {
 }
 
 message UpdateChatReadInbox {
-  common.Receiver receiver = 1;
-  string last_read_inbox_message_id = 2;
+  common.Peer peer = 1;
+  int64 last_read_inbox_message_id = 2;
   int64 unread_count = 3;
 }
 
 message UpdateUserTyping {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   int64 user_id = 2;
   bool is_typing = 3;
 }
 
 message UpdateDeleteMessages {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   repeated int64 message_ids = 2;
 }
 
@@ -171,16 +170,9 @@ message UpdateUserStatus {
   bool status = 2;
 }
 
-message UpdateContactRequest {
-  int64 sender_id = 1;
-  int64 receiver_id = 2;
-  common.User user = 3;
-}
-
-message UpdateGroupChatRequest {
-  int64 group_id = 1;
-  string group_name = 2;
-  common.User user = 3;
+message UpdateJoinRequest {
+  common.Peer peer = 1;
+  common.User user = 2;
 }
 
 message GetEmailRequest {}

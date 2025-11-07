@@ -147,9 +147,19 @@ message DocumentAttributeFilename {
   string file_name = 1;
 }
 
-message Receiver {
-  int32 chat_type = 1;
-  int64 receiver_id = 2;
+message PeerUser {
+  int64 user_id = 1;
+}
+
+message PeerGroupChat {
+  int64 group_chat_id = 1;
+}
+
+message Peer {
+  oneof peer {
+    PeerUser peer_user = 1;
+    PeerGroupChat peer_group_chat = 2;
+  }
 }
 
 message MessageItem {
@@ -162,9 +172,9 @@ message MessageItem {
 
 message Message {
   int64 id = 1;
-  int64 sender_id = 2;
-  Receiver receiver = 3;
-  string content = 4;
+  Peer peer_id = 2;
+  Peer from_id = 3;
+  string message = 4;
   MessageMedia media = 5;
   MessageReply reply = 6;
   bool is_read = 7;
@@ -174,7 +184,7 @@ message Message {
 message MessageService {
   int64 id = 1;
   int64 sender_id = 2;
-  Receiver receiver = 3;
+  Peer peer = 3;
   MessageServiceAction action = 4;
   int64 created_at = 5;
 }
@@ -236,7 +246,7 @@ message MessageActionGroupAds {
 
 message MessageEmpty {
   int64 id = 1;
-  Receiver receiver = 2;
+  Peer peer = 2;
 }
 
 message MessageMedia {
@@ -292,8 +302,8 @@ message MessageMediaGeo {
 
 message MessageReply {
   int64 id = 1;
-  Receiver receiver = 2;
-  string content = 3;
+  Peer peer = 2;
+  string message = 3;
   MessageMedia media = 4;
   int64 created_at = 5;
 }

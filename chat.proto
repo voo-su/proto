@@ -73,7 +73,7 @@ message GetChatsResponse {
 }
 
 message CreateChatRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
 }
 
 message CreateChatResponse {
@@ -81,7 +81,7 @@ message CreateChatResponse {
 }
 
 message GetChatRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
 }
 
 message GetChatResponse {
@@ -98,10 +98,10 @@ message DeleteChatResponse {
 
 message Chat {
   int64 id = 1;
-  common.Receiver receiver = 2;
+  common.Peer peer = 2;
   string title = 3;
   common.ChatPhoto photo = 4;
-  string msg_text = 5;
+  string message = 5;
   common.EntityNotifySettings notify_settings = 6;
   int64 unread_count = 7;
   int64 updated_at = 8;
@@ -110,7 +110,7 @@ message Chat {
 }
 
 message GetHistoryRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   int64 message_id = 2;
   int64 limit = 3;
 }
@@ -123,7 +123,7 @@ message GetHistoryResponse {
 }
 
 message SendMessageRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   string message = 2;
   int64 reply_to_msg_id = 3;
 }
@@ -133,7 +133,7 @@ message SendMessageResponse {
 }
 
 message SendMediaRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   common.InputMedia media = 2;
   string message = 3;
   int64 reply_to_msg_id = 4;
@@ -144,18 +144,18 @@ message SendMediaResponse {
 }
 
 message ViewMessagesRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   repeated int64 message_ids = 2;
 }
 
 message ViewMessagesResponse {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   int64 last_read_inbox_message_id = 2;
   int64 unread_count = 3;
 }
 
 message SetTypingRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
 }
 
 message SetTypingResponse {
@@ -163,7 +163,7 @@ message SetTypingResponse {
 }
 
 message DeleteMessagesRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   repeated int64 message_ids = 2;
   bool revoke = 3;
 }
@@ -242,7 +242,7 @@ message ChatTopRequest {
 message ChatTopResponse {}
 
 message ForwardMessageRequest {
-  common.Receiver receiver = 1;
+  common.Peer peer = 1;
   string type = 2;
   int32 mode = 3;
   repeated int64 message_ids = 4;
@@ -253,7 +253,7 @@ message ForwardMessageRequest {
 message KeyboardMessage {
   message Data {
     int64 sender_id = 1;
-    common.Receiver receiver = 2;
+    common.Peer peer = 2;
   }
 
   string event = 1;
@@ -348,5 +348,5 @@ message VoteHandleResponse {}
 message StickerMessageRequest {
   string type = 1;
   int64 sticker_id = 2;
-  common.Receiver receiver = 3;
+  common.Peer peer = 3;
 }
