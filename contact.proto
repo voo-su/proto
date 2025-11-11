@@ -7,32 +7,29 @@ option go_package = "voo.su/api/app/pb;pb";
 import "common/common.proto";
 
 service ContactService {
+    // Creates a new contact for the user
+  rpc CreateContact(CreateContactRequest) returns (CreateContactResponse);
+
   // Retrieves the list of contacts for the user
   rpc GetContacts(GetContactsRequest) returns (GetContactsResponse);
 
+  // Retrieves a specific contact by user id
+  rpc GetContact(GetContactRequest) returns (GetContactResponse);
+
+  // Deletes a contact for the user
   rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
-
-  // Retrieves the number of unread contact requests for the user
-  rpc RequestUnreadNum(RequestUnreadNumRequest) returns (RequestUnreadNumResponse);
-
-  // Creates a new contact request from the current user to another user
-  rpc CreateRequest(CreateRequestRequest) returns (CreateRequestResponse);
-
-  // Cancels a previously sent contact request before it is accepted or rejected
-  rpc CancelRequest(CancelRequestRequest) returns (CancelRequestResponse);
-
-  // Retrieves a list of incoming and/or outgoing contact requests for the user
-  rpc GetRequests(GetRequestsRequest) returns (GetRequestsResponse);
-
-  // Accepts a received contact request, adding the user to the contact list
-  rpc AcceptRequest(AcceptRequestRequest) returns (AcceptRequestResponse);
-
-  // Rejects a received contact request without adding the user to the contact list
-  rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse);
 }
 
 message Contact {
   common.User user = 1;
+}
+
+message CreateContactRequest {
+  int64 user_id = 1;
+}
+
+message CreateContactResponse {
+  bool success = 1;
 }
 
 message GetContactsRequest {}
@@ -41,54 +38,18 @@ message GetContactsResponse {
   repeated Contact items = 1;
 }
 
+message GetContactRequest {
+  int64 user_id = 1;
+}
+
+message GetContactResponse {
+  Contact contact = 1;
+}
+
 message DeleteContactRequest {
   int64 user_id = 1;
 }
 
 message DeleteContactResponse {
-  bool success = 1;
-}
-
-message RequestUnreadNumRequest {}
-
-message RequestUnreadNumResponse {
-  int64 unread_num = 1;
-}
-
-message CreateRequestRequest {
-  int64 user_id = 1;
-}
-
-message CreateRequestResponse {
-  bool success = 1;
-}
-
-message CancelRequestRequest {
-  int64 user_id = 1;
-}
-
-message CancelRequestResponse {
-  bool success = 1;
-}
-
-message GetRequestsRequest {}
-
-message GetRequestsResponse {
-  repeated Contact items = 1;
-}
-
-message AcceptRequestRequest {
-  int64 user_id = 1;
-}
-
-message AcceptRequestResponse {
-  bool success = 1;
-}
-
-message RejectRequestRequest {
-  int64 user_id = 1;
-}
-
-message RejectRequestResponse {
   bool success = 1;
 }

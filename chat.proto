@@ -41,21 +41,11 @@ service ChatService {
 
   rpc DeleteSticker(DeleteStickerRequest) returns (DeleteStickerResponse);
 
-  rpc GetSystemStickers(GetSystemStickersRequest) returns (GetSystemStickersResponse);
-
-  rpc SetSystemSticker(SetSystemStickerRequest) returns (SetSystemStickerResponse);
-
-  rpc ChatTop(ChatTopRequest) returns (ChatTopResponse);
-
   rpc VoteHandle(VoteHandleRequest) returns (VoteHandleResponse);
-
-  rpc CollectMessage(CollectMessageRequest) returns (CollectMessageResponse);
 
   rpc CreateFolder(CreateFolderRequest) returns (CreateFolderResponse);
 
   rpc GetFolders(GetFoldersRequest) returns (GetFoldersResponse);
-
-  rpc ChangeFolder(ChangeFolderRequest) returns (ChangeFolderResponse);
 
   rpc UpdateFolder(UpdateFolderRequest) returns (UpdateFolderResponse);
 
@@ -64,6 +54,8 @@ service ChatService {
   rpc SortFolder(SortFolderRequest) returns (SortFolderResponse);
 
   rpc SaveFolder(SaveFolderRequest) returns (SaveFolderResponse);
+
+  rpc ChatTop(ChatTopRequest) returns (ChatTopResponse);
 }
 
 message GetChatsRequest {}
@@ -206,41 +198,6 @@ message DeleteStickerResponse {
   bool success = 1;
 }
 
-message GetSystemStickersRequest {
-  int64 sticker_id = 1;
-  int32 type = 2;
-}
-
-message GetSystemStickersResponse {
-  message Item {
-    int64 id = 1;
-    string name = 2;
-    string icon = 3;
-    int32 status = 4;
-  }
-
-  repeated Item items = 1;
-}
-
-message SetSystemStickerRequest {
-  int64 sticker_id = 1;
-  int32 type = 2;
-}
-
-message SetSystemStickerResponse {
-  int64 sticker_id = 1;
-  string url = 2;
-  string name = 3;
-  repeated StickerListItem list = 4;
-}
-
-message ChatTopRequest {
-  int64 list_id = 1;
-  int32 type = 2;
-}
-
-message ChatTopResponse {}
-
 message ForwardMessageRequest {
   common.Peer peer = 1;
   string type = 2;
@@ -250,21 +207,12 @@ message ForwardMessageRequest {
   repeated int64 uids = 6;
 }
 
-message KeyboardMessage {
-  message Data {
-    int64 sender_id = 1;
-    common.Peer peer = 2;
-  }
-
-  string event = 1;
-  Data data = 3;
+message Folder {
+  int64 id = 1;
+  string name = 2;
+  int32 count = 3;
+  int32 sort = 4;
 }
-
-message CollectMessageRequest {
-  int64 message_id = 1;
-}
-
-message CollectMessageResponse {}
 
 message CreateFolderRequest {
   string name = 1;
@@ -278,22 +226,8 @@ message CreateFolderResponse{
 message GetFoldersRequest {}
 
 message GetFoldersResponse {
-  message Item {
-    int64 id = 1;
-    string name = 2;
-    int32 count = 3;
-    int32 sort = 4;
-  }
-
-  repeated Item items = 1;
+  repeated Folder items = 1;
 }
-
-message ChangeFolderRequest {
-  int64 user_id = 1;
-  int32 folder_id = 2;
-}
-
-message ChangeFolderResponse {}
 
 message UpdateFolderRequest {
   int64 id = 1;
@@ -324,16 +258,8 @@ message SortFolderResponse {
   repeated Item items = 1;
 }
 
-message FolderSortResponse {}
-
 message SaveFolderRequest {
-  message Item {
-    int64 id = 1;
-    int32 sort = 2;
-    string name = 3;
-  }
-
-  repeated Item items = 1;
+  repeated common.Peer items = 1;
 }
 
 message SaveFolderResponse {}
@@ -346,7 +272,13 @@ message VoteHandleRequest {
 message VoteHandleResponse {}
 
 message StickerMessageRequest {
-  string type = 1;
+  common.Peer peer = 1;
   int64 sticker_id = 2;
-  common.Peer peer = 3;
 }
+
+message ChatTopRequest {
+  common.Peer peer = 1;
+  int32 type = 2;
+}
+
+message ChatTopResponse {}

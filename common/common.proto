@@ -28,10 +28,6 @@ enum UserRelationStatus {
   USER_RELATION_NONE = 0;
   // In contacts
   USER_RELATION_CONTACT = 1;
-  // Outgoing request (you sent)
-  USER_RELATION_REQUEST_SENT = 2;
-  // Incoming request (sent to you)
-  USER_RELATION_REQUEST_RECEIVED = 3;
 }
 
 message EntityNotifySettings {
@@ -172,7 +168,7 @@ message MessageItem {
 
 message Message {
   int64 id = 1;
-  Peer peer_id = 2;
+  Peer peer = 2;
   Peer from_id = 3;
   string message = 4;
   MessageMedia media = 5;
@@ -183,8 +179,8 @@ message Message {
 
 message MessageService {
   int64 id = 1;
-  int64 sender_id = 2;
-  Peer peer = 3;
+  Peer peer = 2;
+  Peer from_id = 3;
   MessageServiceAction action = 4;
   int64 created_at = 5;
 }
