@@ -20,7 +20,8 @@ message User {
   string birthday = 7;
   string about = 8;
   bool is_bot = 9;
-  UserRelationStatus relation_status = 10;
+  bool status = 10;
+  UserRelationStatus relation_status = 11;
 }
 
 enum UserRelationStatus {
@@ -298,7 +299,7 @@ message MessageMediaGeo {
 
 message MessageReply {
   int64 id = 1;
-  Peer peer = 2;
+  Peer from_id = 2;
   string message = 3;
   MessageMedia media = 4;
   int64 created_at = 5;

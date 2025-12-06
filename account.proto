@@ -114,7 +114,7 @@ message Update {
     UpdateSystemAckEvent system_ack_event = 4;
     UpdateSystemEvent system_event = 5;
     UpdateNewMessage new_message = 6;
-    UpdateChatReadInbox chat_read_inbox = 7;
+    UpdateReadHistoryInbox read_history_inbox = 7;
     UpdateUserTyping user_typing = 8;
     UpdateDeleteMessages delete_messages = 9;
     UpdateUserStatus user_status = 10;
@@ -148,10 +148,9 @@ message UpdateNewMessage {
   common.MessageItem message = 1;
 }
 
-message UpdateChatReadInbox {
+message UpdateReadHistoryInbox {
   common.Peer peer = 1;
-  int64 last_read_inbox_message_id = 2;
-  int64 unread_count = 3;
+  int64 max_id = 2;
 }
 
 message UpdateUserTyping {
@@ -161,8 +160,7 @@ message UpdateUserTyping {
 }
 
 message UpdateDeleteMessages {
-  common.Peer peer = 1;
-  repeated int64 message_ids = 2;
+  repeated int64 message_ids = 1;
 }
 
 message UpdateUserStatus {
