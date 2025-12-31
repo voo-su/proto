@@ -5,10 +5,13 @@ package bot;
 option go_package = "voo.su/api/app/pb;pb";
 
 service BotService {
+  // Creates a new bot with the specified username and returns its authentication token
   rpc CreateBot(CreateBotRequest) returns (CreateBotResponse);
 
+  // Retrieves a list of all bots owned by the current user
   rpc GetBots(GetBotsRequest) returns (GetBotsResponse);
 
+  // Deletes a bot by its unique identifier
   rpc DeleteBot(DeleteBotRequest) returns (DeleteBotResponse);
 }
 

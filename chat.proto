@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package chat;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service ChatService {
   // Creates a new chat with the specified participants
@@ -13,6 +13,7 @@ service ChatService {
   // Retrieves the list of chats for the user
   rpc GetChats(GetChatsRequest) returns (GetChatsResponse);
 
+  // Retrieves detailed information about a specific chat
   rpc GetChat(GetChatRequest) returns (GetChatResponse);
 
   // Deletes the specified chat
@@ -33,28 +34,40 @@ service ChatService {
   // Deletes specific messages from the chat (optional: revoke them)
   rpc DeleteMessages(DeleteMessagesRequest) returns (DeleteMessagesResponse);
 
+  // Sets or clears the typing indicator for the user in a chat
   rpc SetTyping(SetTypingRequest) returns (SetTypingResponse);
 
+  // Uploads a new sticker to the user's sticker collection
   rpc UploadSticker(UploadStickerRequest) returns (UploadStickerResponse);
 
+  // Retrieves available stickers
   rpc GetStickers(GetStickersRequest) returns (GetStickersResponse);
 
+  // Deletes stickers from the user's collection
   rpc DeleteSticker(DeleteStickerRequest) returns (DeleteStickerResponse);
 
+  // Handles voting in polls or similar interactive messages
   rpc VoteHandle(VoteHandleRequest) returns (VoteHandleResponse);
 
+  // Creates a new chat folder for organizing chats
   rpc CreateFolder(CreateFolderRequest) returns (CreateFolderResponse);
 
+  // Retrieves all chat folders for the user
   rpc GetFolders(GetFoldersRequest) returns (GetFoldersResponse);
 
+  // Updates the properties of an existing chat folder
   rpc UpdateFolder(UpdateFolderRequest) returns (UpdateFolderResponse);
 
+  // Deletes a chat folder
   rpc DeleteFolder(DeleteFolderRequest) returns (DeleteFolderResponse);
 
+  // Sorts or reorders items within a chat folder
   rpc SortFolder(SortFolderRequest) returns (SortFolderResponse);
 
+  // Saves or updates a chat folder with specific chat items
   rpc SaveFolder(SaveFolderRequest) returns (SaveFolderResponse);
 
+  // Pins or unpins a chat to/from the top of the chat list
   rpc ChatTop(ChatTopRequest) returns (ChatTopResponse);
 }
 

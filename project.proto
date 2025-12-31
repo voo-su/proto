@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package project;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service ProjectService {
   // Creates a new project
@@ -138,7 +138,7 @@ message ProjectCommentRequest {
 message ProjectCommentResponse {
   message Item {
     int64 id = 1;
-    string taskId = 2;
+    string task_id = 2;
     string comment = 3;
     common.User user = 4;
     int64 created_at = 5;

@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package search;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service SearchService {
   // Searches for users matching the given query

@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package upload;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service UploadService {
   // Uploading a file part
@@ -15,8 +15,12 @@ service UploadService {
 }
 
 message SaveFilePartRequest {
-  int64 file_id = 1;  // Unique file id (the same for all parts of a single file)
-  int32 file_part = 2; // File part number (starting from 0)
+  // Unique file id (the same for all parts of a single file)
+  int64 file_id = 1;
+
+  // File part number (starting from 0)
+  int32 file_part = 2;
+
   bytes bytes = 3;
 }
 
@@ -25,8 +29,12 @@ message SaveFilePartResponse {
 }
 
 message GetFileRequest {
-  int64 offset = 1; // Number of bytes to be skipped
-  int32 limit = 2; // Number of bytes to be returned
+  // Number of bytes to be skipped
+  int64 offset = 1;
+
+  // Number of bytes to be returned
+  int32 limit = 2;
+
   oneof location {
     common.InputPhotoFileLocation photo_file_location = 3;
     common.InputDocumentFileLocation document_file_location = 4;

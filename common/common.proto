@@ -21,14 +21,7 @@ message User {
   string about = 8;
   bool is_bot = 9;
   bool status = 10;
-  UserRelationStatus relation_status = 11;
-}
-
-enum UserRelationStatus {
-  // No contact and no requests
-  USER_RELATION_NONE = 0;
-  // In contacts
-  USER_RELATION_CONTACT = 1;
+  bool contact = 11;
 }
 
 message EntityNotifySettings {
@@ -128,13 +121,19 @@ message DocumentAttribute {
 }
 
 message DocumentAttributeVideo {
-  double duration = 1; // Video duration in seconds
-  int32 width = 2;    // Video width in pixels
-  int32 height = 3;   // Video height in pixels
+  // Video duration in seconds
+  double duration = 1;
+
+  // Video width in pixels
+  int32 width = 2;
+
+  // Video height in pixels
+  int32 height = 3;
 }
 
 message DocumentAttributeAudio {
-  double duration = 1; // Audio file duration in seconds
+  // Audio file duration in seconds
+  double duration = 1;
   string title = 2;
   string performer = 3;
   bool voice = 4;
@@ -263,7 +262,8 @@ message MessageMediaPhoto {
 message MessageMediaDocument {
   string id = 1;
   string mime_type = 2;
-  int32 size = 3;  // File size in bytes
+  // File size in bytes
+  int32 size = 3;
   repeated PhotoSize thumbs = 4;
   repeated VideoSize video_thumbs = 5;
   DocumentAttribute attribute = 6;
@@ -351,9 +351,14 @@ message GroupChat {
   int64 id = 1;
   string name = 2;
   string about = 3;
-  common.ChatPhoto photo = 4;
+  ChatPhoto photo = 4;
   int64 members = 5;
   bool is_manager = 6;
   bool is_mute = 7;
   bool is_overt = 8;
+}
+
+message UpdateState {
+  int64 pts = 1;
+  int64 date = 2;
 }

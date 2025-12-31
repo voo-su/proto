@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service UserService {
   // Retrieves detailed information about a specific user by id

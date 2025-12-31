@@ -2,13 +2,18 @@ syntax = "proto3";
 
 package auth;
 
+import "common/common.proto";
+
 option go_package = "voo.su/api/app/pb;pb";
 
 service AuthService {
+  // Initiates the authentication process by sending a verification code to the user's email
   rpc Login(AuthLoginRequest) returns (AuthLoginResponse);
 
+  // Verifies the authentication code sent to the user's email and returns an access token
   rpc Verify(AuthVerifyRequest) returns (AuthVerifyResponse);
 
+  // Invalidates the current user session and access token
   rpc Logout(AuthLogoutRequest) returns (AuthLogoutResponse);
 }
 
@@ -28,9 +33,9 @@ message AuthVerifyRequest {
 }
 
 message AuthVerifyResponse {
-  string type = 1;
-  string access_token = 2;
-  int64 expires_in = 3;
+  string access_token = 1;
+  int64 expires_in = 2;
+  common.User user = 3;
 }
 
 message AuthLogoutRequest {}

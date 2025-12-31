@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package account;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service AccountService {
   // Updates the profile details of the user
@@ -28,6 +28,7 @@ service AccountService {
   // Retrieves real-time updates for the chat, such as new messages or chat events
   rpc GetUpdates(stream UpdateRequest) returns (stream UpdateResponse);
 
+  // Retrieves the email address associated with the user's account
   rpc GetEmail(GetEmailRequest) returns (GetEmailResponse);
 }
 
@@ -53,23 +54,34 @@ message UpdateProfilePhotoResponse {
 
 message NotifyEntity {
   oneof entity {
-    common.EntityChats chats = 2;
-    common.EntityGroups groups = 1;
-    common.EntityChat chat = 4;
-    common.EntityGroup group = 5;
+    // Notification settings for multiple chats (applied to a set of chats)
+    common.EntityChats chats = 1;
+
+    // Notification settings for multiple groups (applied to a set of groups)
+    common.EntityGroups groups = 2;
+
+    // Notification settings for a specific individual chat
+    common.EntityChat chat = 3;
+
+    // Notification settings for a specific group chat
+    common.EntityGroup group = 4;
   }
 }
-
 message GetNotifySettingsRequest {
+  // The entity (chat, group, or collection of entities) for which to retrieve notification settings
   NotifyEntity entity = 1;
 }
 
 message GetNotifySettingsResponse {
+  // The current notification settings for the specified entity
   common.EntityNotifySettings settings = 1;
 }
 
 message UpdateNotifySettingsRequest {
+  // The entity (chat, group, or collection of entities) for which to update notification settings
   NotifyEntity entity = 1;
+
+  // The new notification settings to apply to the entity
   common.EntityNotifySettings settings = 2;
 }
 
@@ -78,7 +90,10 @@ message UpdateNotifySettingsResponse {
 }
 
 message RegisterDeviceRequest {
+  // Type of push notification token (0=FCM, 2=WebPush)
   int32 token_type = 1;
+
+  // The actual device token for receiving push notifications
   string token = 2;
 }
 
@@ -95,45 +110,87 @@ message UpdateUsernameResponse {
 }
 
 message UpdateRequest {
+  // Current state/sequence identifier to maintain synchronization
+  common.UpdateState state = 1;
+
   oneof update {
-    UpdateState update_state = 1;
+    // Client-initiated ping event to keep connection alive
     UpdateSystemPingEvent system_ping_event = 2;
+
+    // Client response to server ping (acknowledgment)
     UpdateSystemPongEvent system_pong_event = 3;
   }
 }
 
 message UpdateResponse {
-  Update updates = 1;
+  // Updated state/sequence identifier for next request
+  common.UpdateState state = 1;
+
+  // List of application-level updates (new messages, typing indicators, etc.)
+  repeated Update updates = 2;
+
+  // System-level updates (connection management, heartbeats)
+  UpdateSystem update_system = 3;
 }
 
 message Update {
   oneof update_type {
-    UpdateSystemPingIntervalEvent system_ping_interval_event = 1;
-    UpdateSystemPingEvent system_ping_event = 2;
-    UpdateSystemPongEvent system_pong_event = 3;
-    UpdateSystemAckEvent system_ack_event = 4;
-    UpdateSystemEvent system_event = 5;
-    UpdateNewMessage new_message = 6;
-    UpdateReadHistoryInbox read_history_inbox = 7;
-    UpdateUserTyping user_typing = 8;
-    UpdateDeleteMessages delete_messages = 9;
-    UpdateUserStatus user_status = 10;
-    UpdateJoinRequest join_request = 11;
+    // A new message has been received in a chat
+    UpdateNewMessage new_message = 1;
+
+    // Messages have been marked as read by another user
+    UpdateReadHistoryInbox read_history_inbox = 2;
+
+    // A user has started or stopped typing in a chat
+    UpdateUserTyping user_typing = 3;
+
+    // Messages have been deleted from a chat
+    UpdateDeleteMessages delete_messages = 4;
+
+    // A user's online/offline status has changed
+    UpdateUserStatus user_status = 5;
+
+    // A new join request has been submitted for a group chat
+    UpdateJoinRequest join_request = 6;
   }
 }
 
-message UpdateState {}
+message UpdateSystem {
+  oneof update_system_type {
+    // Server instructs client to adjust ping interval/timeout parameters
+    UpdateSystemPingIntervalEvent system_ping_interval_event = 1;
+
+    // Server ping to check client connection
+    UpdateSystemPingEvent system_ping_event = 2;
+
+    // Server acknowledgment of client pong
+    UpdateSystemPongEvent system_pong_event = 3;
+
+    // Acknowledgment of a specific event by id
+    UpdateSystemAckEvent system_ack_event = 4;
+
+    // Generic system event with retry logic
+    UpdateSystemEvent system_event = 5;
+  }
+}
 
 message UpdateSystemPingIntervalEvent {
+  // Recommended interval between client pings
   string ping_interval = 1;
+  // Timeout duration after which connection is considered dead
   string ping_timeout = 2;
 }
 
-message UpdateSystemPingEvent {}
+message UpdateSystemPingEvent {
+  // Empty message - serves as a heartbeat/keepalive signal
+}
 
-message UpdateSystemPongEvent {}
+message UpdateSystemPongEvent {
+  // Empty message - acknowledgment of a ping
+}
 
 message UpdateSystemAckEvent {
+  // Session/event identifier being acknowledged
   string sid = 1;
 }
 
@@ -145,31 +202,47 @@ message UpdateSystemEvent {
 }
 
 message UpdateNewMessage {
+  // The complete message object that was received
   common.MessageItem message = 1;
 }
 
 message UpdateReadHistoryInbox {
+  // Chat/group where messages were read
   common.Peer peer = 1;
+
+  // Highest message id that has been read
   int64 max_id = 2;
 }
 
 message UpdateUserTyping {
+  // Chat/group where typing is occurring
   common.Peer peer = 1;
+
+  // User id of the person typing
   int64 user_id = 2;
+
+  // True = started typing, False = stopped typing
   bool is_typing = 3;
 }
 
 message UpdateDeleteMessages {
+  // List of message ids that have been deleted
   repeated int64 message_ids = 1;
 }
 
 message UpdateUserStatus {
+  // User id whose status changed
   int64 user_id = 1;
-  bool status = 2;
+
+  // true = online, false = offline
+  bool  status  = 2;
 }
 
 message UpdateJoinRequest {
+  // Group chat where the join request was made
   common.Peer peer = 1;
+
+  // User who submitted the join request
   common.User user = 2;
 }
 

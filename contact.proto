@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package contact;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
 
+option go_package = "voo.su/api/app/pb;pb";
+
 service ContactService {
-    // Creates a new contact for the user
+  // Creates a new contact for the user
   rpc CreateContact(CreateContactRequest) returns (CreateContactResponse);
 
   // Retrieves the list of contacts for the user

@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package group_chat;
 
-option go_package = "voo.su/api/app/pb;pb";
-
 import "common/common.proto";
+
+option go_package = "voo.su/api/app/pb;pb";
 
 service GroupChatService {
   // Creating a group chat
@@ -40,34 +40,46 @@ service GroupChatService {
   // Editing permissions for the group chat
   rpc EditPermissionsGroupChat(EditPermissionsGroupChatRequest) returns (EditPermissionsGroupChatResponse);
 
+  // Retrieves detailed member list with roles and mute status
   rpc GroupChatMembers(GroupChatMembersRequest) returns (GroupChatMembersResponse);
 
+  // Dismisses (permanently deletes) a group chat (admin only)
   rpc GroupChatDismiss(GroupChatDismissRequest) returns (GroupDismissResponse);
 
+  // Gets list of friends that can be invited to the group chat
   rpc GroupChatGetInviteFriends(GroupChatGetInviteFriendsRequest) returns (GroupChatGetInviteFriendsResponse);
 
+  // Leaves the group chat (alternative to LeaveGroupChat)
   rpc GroupChatLeave(GroupChatLeaveRequest) returns (GroupChatLeaveResponse);
 
+  // Assigns or removes admin privileges for a user
   rpc GroupChatAssignAdmin(GroupChatAssignAdminRequest) returns (GroupChatAssignAdminResponse);
 
-  rpc GroupChatMute(GroupChatMuteRequest) returns (GroupChatMuteResponse);
-
+  // Toggles the group chat's overt/public visibility mode
   rpc GroupChatOvert(GroupChatOvertRequest) returns (GroupChatOvertResponse);
 
+  // Creates or retrieves join requests for the group chat
   rpc GroupChatRequest(GroupChatRequestCreateRequest) returns (GroupChatRequestCreateResponse);
 
+  // Approves a join request to the group chat
   rpc GroupChatRequestAgree(GroupChatRequestAgreeRequest) returns (GroupChatRequestAgreeResponse);
 
+  // Declines a join request to the group chat
   rpc GroupChatRequestDecline(GroupChatRequestDeclineRequest) returns (GroupChatRequestDeclineResponse);
 
+  // Gets the number of unread join requests for a group chat
   rpc GroupRequestList(GroupChatUnreadNumRequest) returns (GroupChatUnreadNumResponse);
 
+  // Removes a member from the group chat (alternative to RemoveUserFromGroupChat)
   rpc GroupChatRemoveMember(GroupChatRemoveMemberRequest) returns (GroupChatRemoveMemberResponse);
 
+  // Deletes an announcement/advertisement from the group chat
   rpc GroupChatAdsDelete(GroupChatAdsDeleteRequest) returns (GroupChatAdsDeleteResponse);
 
+  // Edits an existing announcement/advertisement in the group chat
   rpc GroupChatAdsEdit(GroupChatAdsEditRequest) returns (GroupChatAdsEditResponse);
 
+  // Lists all announcements/advertisements in the group chat
   rpc GroupChatAdsList(GroupChatAdsListRequest) returns (GroupChatAdsListResponse);
 }
 
@@ -223,13 +235,6 @@ message GroupChatAssignAdminRequest {
 }
 
 message GroupChatAssignAdminResponse {}
-
-message GroupChatMuteRequest {
-  int64 group_id = 1;
-  bool mode = 2;
-}
-
-message GroupChatMuteResponse {}
 
 message GroupChatOvertRequest {
   int64 group_id = 1;
