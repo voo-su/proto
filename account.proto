@@ -25,6 +25,9 @@ service AccountService {
   // Updates the username of the user
   rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
 
+  // GetState retrieves the current synchronization state of the user's account
+  rpc GetState(GetStateRequest) returns (GetStateResponse);
+
   // Retrieves real-time updates for the chat, such as new messages or chat events
   rpc GetUpdates(stream UpdateRequest) returns (stream UpdateResponse);
 
@@ -107,6 +110,12 @@ message UpdateUsernameRequest {
 
 message UpdateUsernameResponse {
   bool success = 1;
+}
+
+message GetStateRequest {}
+
+message GetStateResponse {
+  common.UpdateState state = 1;
 }
 
 message UpdateRequest {
