@@ -129,10 +129,11 @@ message SendMessageRequest {
   common.Peer peer = 1;
   string message = 2;
   int64 reply_to_msg_id = 3;
+  int64 random_id = 4;
 }
 
 message SendMessageResponse {
-  bool success = 1;
+  int64 id = 1;
 }
 
 message SendMediaRequest {
@@ -140,10 +141,11 @@ message SendMediaRequest {
   common.InputMedia media = 2;
   string message = 3;
   int64 reply_to_msg_id = 4;
+  int64 random_id = 5;
 }
 
 message SendMediaResponse {
-  bool success = 1;
+  int64 id = 1;
 }
 
 message ViewMessagesRequest {
